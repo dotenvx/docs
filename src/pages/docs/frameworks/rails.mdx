@@ -1,0 +1,62 @@
+import { Heading } from '@/components/Heading'
+import { GuideHeading } from '@/components/GuideHeading'
+import { FrameworksBreadcrumb } from '@/components/FrameworksBreadcrumb'
+
+import { FlyIcon } from '@/components/icons/FlyIcon'
+import { HerokuIcon } from '@/components/icons/HerokuIcon'
+import { KamalIcon } from '@/components/icons/KamalIcon'
+import { RailsIcon } from '@/components/icons/RailsIcon'
+
+export const description = 
+  'Use .env.vault with Ruby on Rails'
+
+export const sections = [
+  { title: 'Platforms', id: 'platforms' },
+]
+
+<FrameworksBreadcrumb icon={
+  <>
+    <RailsIcon className="h-9 w-9 text-[#CC0000]"/>
+  </>
+} />
+# Rails
+<GuideHeading lead={description} />
+
+
+<div className="my-16 xl:max-w-none">
+  <Heading level={2} id="platforms">
+    Platforms
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="fly" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Fly
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a Rails App to Fly.io</p>
+        <p className="mt-4"><Button href="/docs/frameworks/rails/fly" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <FlyIcon className="h-9 w-9 text-[#7B3BE2]"/>
+    </div>
+    <div key="heroku" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Heroku
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a Rails App to Heroku</p>
+        <p className="mt-4"><Button href="/docs/frameworks/rails/heroku" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <HerokuIcon className="h-9 w-9 text-[#430098]"/>
+    </div>
+    <div key="kamal" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Kamal
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a Rails App with Kamal</p>
+        <p className="mt-4"><Button href="/docs/frameworks/rails/kamal" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <KamalIcon className="h-9 w-9 text-[#3A80ED]"/>
+    </div>
+  </div>
+</div>

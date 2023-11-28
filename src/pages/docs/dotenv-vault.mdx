@@ -1,0 +1,160 @@
+import { Heading } from '@/components/Heading'
+import { Button } from '@/components/Button'
+import { SafeIcon } from '@/components/icons/SafeIcon'
+import { ArrowUpIcon } from '@/components/icons/ArrowUpIcon'
+import { ArrowDownIcon } from '@/components/icons/ArrowDownIcon'
+import { ShieldLockIcon } from '@/components/icons/ShieldLockIcon'
+import { KeyIcon } from '@/components/icons/KeyIcon'
+import { PencilSquareIcon } from '@/components/icons/PencilSquareIcon'
+
+export const description =
+  'Sync, manage, and deploy your secrets with the dotenv-vault cli.'
+
+export const sections = [
+  { title: 'Commands', id: 'commands' },
+  { title: 'More commands', id: 'more-commands' },
+]
+
+##### dotenv-vault
+# CLI
+
+Generate your env vault for your project. Then securely sync and deploy secrets across teams, machines, and environments. {{ className: 'lead' }}
+
+<div className="my-16 xl:max-w-none">
+  <Heading level={2} id="commands">
+    Commands
+  </Heading>
+  <div className="not-prose mt-0 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="New" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          New
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Create an env vault for your project. Keep your secrets safe in it.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/new" variant="text" arrow="right">Read more</Button></p>
+      </div>
+      <SafeIcon className="h-7 w-7 text-zinc-500 dark:text-zinc-500"/>
+    </div>
+    <div key="Push" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Push
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Push your .env file securely.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/push" variant="text" arrow="right">Read more</Button></p>
+      </div>
+      <ArrowUpIcon className="h-4 w-4 text-zinc-500 dark:text-zinc-500"/>
+    </div>
+    <div key="Pull" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Pull
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Pull your .env file securely.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/pull" variant="text" arrow="right">Read more</Button></p>
+      </div>
+      <ArrowDownIcon className="h-4 w-4 text-zinc-500 dark:text-zinc-500"/>
+    </div>
+    <div key="Build" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Build
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Build your localized encrypted .env.vault file for use with deploy.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/build" variant="text" arrow="right">Read more</Button></p>
+      </div>
+      <ShieldLockIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-500"/>
+    </div>
+    <div key="Keys" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Keys
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">List your .env.vault decryption keys for use with deploy.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/keys" variant="text" arrow="right">Read more</Button></p>
+      </div>
+      <KeyIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-500"/>
+    </div>
+    <div key="Open" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Open
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Open the UI to your env vault. Manage multiple environments.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/open" variant="text" arrow="right">Read more</Button></p>
+      </div>
+      <PencilSquareIcon className="h-5 w-5 text-zinc-500 dark:text-zinc-500"/>
+    </div>
+  </div>
+</div>
+
+<div className="my-16 xl:max-w-none">
+  <Heading level={2} id="more-commands">
+    More commands
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="Login" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Login
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Log in to dotenv-vault.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/login" variant="text" arrow="right">Read more</Button></p>
+      </div>
+    </div>
+    <div key="Logout" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Logout
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Log out of dotenv-vault.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/logout" variant="text" arrow="right">Read more</Button></p>
+      </div>
+    </div>
+    <div key="Whoami" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Whoami
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Display the current logged in user.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/whoami" variant="text" arrow="right">Read more</Button></p>
+      </div>
+    </div>
+    <div key="Versions" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Versions
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">List version history for your env vault.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/versions" variant="text" arrow="right">Read more</Button></p>
+      </div>
+    </div>
+    <div key="RotateKey" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Rotatekey
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Rotate a project environment's DOTENV_KEY.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/rotatekey" variant="text" arrow="right">Read more</Button></p>
+      </div>
+    </div>
+    <div key="Status" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Status
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Check dotenv-vault operational status.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/status" variant="text" arrow="right">Read more</Button></p>
+      </div>
+    </div>
+    <div key="Help" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Help
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Display help for dotenv-vault.</p>
+        <p className="mt-4"><Button href="/docs/dotenv-vault/help" variant="text" arrow="right">Read more</Button></p>
+      </div>
+    </div>
+  </div>
+</div>

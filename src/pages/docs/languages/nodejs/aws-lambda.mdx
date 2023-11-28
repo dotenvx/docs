@@ -1,0 +1,185 @@
+import { GuideHeading } from '@/components/GuideHeading'
+import { LanguagesBreadcrumb } from '@/components/LanguagesBreadcrumb'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import WellDone from '@/pages/partials/wellDone.mdx'
+
+import { AwsIcon } from '@/components/icons/AwsIcon'
+import { NodeIcon } from '@/components/icons/NodeIcon'
+
+export const description = 
+  'Deploy a Node.js app with an encrypted .env.vault file to AWS Lambda.'
+
+<LanguagesBreadcrumb language="Node.js" url="/docs/languages/nodejs" icon={
+  <>
+    <NodeIcon className="h-9 w-9 text-[#339933]"/>
+    <AwsIcon className="h-9 w-9 text-[#FF9900]"/>
+  </>
+}/>
+# Deploy a Node.js App to AWS Lambda
+<GuideHeading lead={description} />
+
+<Note>
+  Find a complete <a href="https://github.com/dotenv-org/examples/tree/master/nodejs/aws-lambda">code example on GitHub</a> for this guide.
+</Note>
+
+## Initial setup
+
+Create an aws-lambda project using [node-lambda](https://www.npmjs.com/package/node-lambda).
+
+```bash
+npx node-lambda@latest setup
+```
+
+This will create a handful of files.
+
+```
+ls -1a
+.env
+context.json
+deploy.env
+event.json
+event_sources.json
+```
+
+Create an `index.js` file that includes `process.env.HELLO`.
+
+```js {{ title: 'index.js' }}
+exports.handler = function(event, context, callback) {
+  console.log(`Hello ${process.env.HELLO}.`)
+
+  callback(null, event)
+}
+```
+
+Visit your [IAM Dashboard](https://us-east-1.console.aws.amazon.com/iamv2/home?region=us-east-1#/home) and click [Users > Add user](https://us-east-1.console.aws.amazon.com/iamv2/home?region=us-east-1#/users/create). Enter `node-lambda` for the username and click 'Next'.
+
+<ScreenshotBrowser url="/assets/img/docs/aws-create-node-lambda-user.png" www="console.aws.com" />
+
+On the next screen, attach a policy directly, search for `AWSLambda_FullAccess`, and select it. Click 'Next'.
+
+<ScreenshotBrowser url="/assets/img/docs/aws-attach-node-lambda-policy.png" www="console.aws.com" />
+
+Finish creating that user and then on the user's page, generate an access key.
+
+<ScreenshotBrowser url="/assets/img/docs/aws-lambda-generate-access-key.gif" www="console.aws.com" />
+
+Grab the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` from the UI and paste into your `.env` file.
+
+```bash {{title: '.env'}}
+AWS_ENVIRONMENT=development
+AWS_ACCESS_KEY_ID="AKAI6..."
+AWS_SECRET_ACCESS_KEY="YiuNa..."
+AWS_PROFILE=
+AWS_SESSION_TOKEN=
+AWS_ROLE_ARN=
+AWS_REGION=us-east-1
+AWS_FUNCTION_NAME=
+AWS_HANDLER=index.handler
+AWS_MEMORY_SIZE=128
+AWS_TIMEOUT=3
+AWS_DESCRIPTION=
+AWS_RUNTIME=nodejs16.x
+AWS_VPC_SUBNETS=
+AWS_VPC_SECURITY_GROUPS=
+AWS_TRACING_CONFIG=
+AWS_LOGS_RETENTION_IN_DAYS=
+EXCLUDE_GLOBS="event.json build/"
+PACKAGE_DIRECTORY=build
+```
+
+Deploy your lambda code.
+
+```
+npx node-lambda@latest deploy
+```
+
+Test invocation of your function.
+
+<ScreenshotBrowser url="/assets/img/docs/aws-lambda-test-execution.gif" www="console.aws.com" />
+
+It will respond with `Hello undefined` as it doesn't have a way to access the environment variable yet. Let's do that next.
+
+## Install dotenv
+
+Install [dotenv](https://github.com/motdotla/dotenv).
+
+```bash
+npm install dotenv --save # Requires dotenv >= 16.1.0
+```
+
+As early as possible in your function, import and configure dotenv.
+
+```js {{ title: "index.js" }}
+require('dotenv').config()
+console.log(process.env) // remove this after you've confirmed it is working
+
+exports.handler = function(event, context, callback) {
+...
+```
+
+Next let's build the `.env.vault` file.
+
+## Build .env.vault
+
+Push your latest `.env` file changes and edit your production secrets. [Learn more about syncing](/docs/tutorials/sync)
+
+```shell
+npx dotenv-vault@latest push
+npx dotenv-vault@latest open production
+```
+
+Use the UI to configure those secrets per environment.
+
+<ScreenshotBrowser url="/assets/img/docs/edit-production-value.gif" www="www.dotenv.org" />
+
+Then build your encrypted `.env.vault` file.
+
+```shell
+npx dotenv-vault@latest build
+```
+
+Its contents should look something like this.
+
+```shell {{ title: '.env.vault' }}
+#/-------------------.env.vault---------------------/
+#/         cloud-agnostic vaulting standard         /
+#/   [how it works](https://dotenv.org/env-vault)   /
+#/--------------------------------------------------/
+
+# development
+DOTENV_VAULT_DEVELOPMENT="/HqNgQWsf6Oh6XB9pI/CGkdgCe6d4/vWZHgP50RRoDTzkzPQk/xOaQs="
+DOTENV_VAULT_DEVELOPMENT_VERSION=2
+
+# production
+DOTENV_VAULT_PRODUCTION="x26PuIKQ/xZ5eKrYomKngM+dO/9v1vxhwslE/zjHdg3l+H6q6PheB5GVDVIbZg=="
+DOTENV_VAULT_PRODUCTION_VERSION=2
+```
+
+## Set DOTENV_KEY
+
+Fetch your production `DOTENV_KEY`.
+
+```shell
+npx dotenv-vault@latest keys production
+# outputs: dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production
+```
+
+Using the `DOTENV_KEY` you fetched above, set it as an environment variable on the AWS Lambda dashboard.
+
+<ScreenshotBrowser url="/assets/img/docs/aws-lambda-edit-environment-variable.gif" www="console.aws.com" />
+
+Deploy it again.
+
+```
+npx node-lambda@latest deploy
+```
+
+Return to the AWS Console and invoke your function again.
+
+<ScreenshotBrowser url="/assets/img/docs/aws-lambda-invoke-with-dotenv-key.gif" www="console.aws.com" />
+
+It should say `Hello production`.
+
+That's it! On invocation, your `.env.vault` file will be decrypted and its production secrets injected as environment variables – just-in-time.
+
+<WellDone/>

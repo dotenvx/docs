@@ -1,0 +1,242 @@
+import { FrameworksBreadcrumb } from '@/components/FrameworksBreadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import WellDone from '@/pages/partials/wellDone.mdx'
+
+import { AwsIcon } from '@/components/icons/AwsIcon'
+import { ServerlessIcon } from '@/components/icons/ServerlessIcon'
+
+export const description = 
+  'Deploy a Serverless app with an encrypted .env.vault file to AWS Lambda.'
+
+<FrameworksBreadcrumb framework='Serverless' url='/docs/frameworks/serverless' icon={
+  <>
+    <ServerlessIcon className="h-9 w-9 text-[#FD5750]"/>
+    <AwsIcon className="h-9 w-9 text-[#FF9900]"/>
+  </>
+}/>
+# Deploy a Serverless App to AWS Lambda
+<GuideHeading lead={description} />
+
+<Note>
+  Find a complete <a href="https://github.com/dotenv-org/examples/tree/master/serverless/aws-lambda">code example on GitHub</a> for this guide.
+</Note>
+
+## Initial setup
+
+Create a [serverless](https://www.npmjs.com/package/serverless) project.
+
+```bash
+npx serverless
+```
+
+Here are the options I selected for this guide. Modify for your own needs.
+
+```
+? What do you want to make? AWS - Node.js - Starter
+? What do you want to call this project? aws-lambda
+? What org do you want to add this service to? dotenv
+? What application do you want to add this to? [create a new app]
+? What do you want to name this application? aws-lambda
+✔ Your project is ready to be deployed to Serverless Dashboard (org: "dotenv", app: "aws-lambda")
+? Do you want to deploy now? Yes
+Deploying aws-lambda to stage dev (us-east-1, "default" provider)
+```
+
+Edit `index.js` to include `process.env.HELLO`.
+
+```js {{ title: 'index.js' }}
+module.exports.handler = async (event) => {
+  return {
+    statusCode: 200,
+    body: JSON.stringify(
+      {
+        message: `Hello ${process.env.HELLO}`,
+        input: event,
+      },
+      null,
+      2
+    ),
+  };
+};
+```
+
+Deploy that to the cloud.
+
+```
+npx serverless deploy
+```
+
+Invoke your function.
+
+```bash {{ title: "Request" }}
+npx serverless invoke --function function1
+```
+```json {{ title: "Response" }}
+{
+    "statusCode": 200,
+    "body": "{\n  \"message\": \"Hello undefined\",\n  \"input\": {}\n}"
+}
+```
+
+It will respond with `Hello undefined` as it doesn't have a way to access the environment variable yet. Let's do that next.
+
+## Install dotenv
+
+Install [dotenv](https://github.com/motdotla/dotenv).
+
+```bash
+npm install dotenv --save # Requires dotenv >= 16.1.0
+```
+
+Create a `.env` file in the root of your project.
+
+```shell {{ title: ".env" }}
+# .env
+HELLO="World"
+```
+
+As early as possible in your function, import and configure dotenv.
+
+```js {{ title: "index.js" }}
+require('dotenv').config()
+console.log(process.env) // remove this after you've confirmed it is working
+
+module.exports.handler = async (event) => {
+...
+```
+
+Test that it is working by invoking your function locally.
+
+```bash
+npx serverless invoke local --function function1
+```
+
+It should say `Hello World`.
+
+```
+{
+    "statusCode": 200,
+    "body": "{\n  \"message\": \"Hello World\",\n  \"input\": {}\n}"
+}
+```
+
+Great! `process.env` now has the keys and values you defined in your `.env` file. That covers local development. Let's solve for production next.
+
+## Build .env.vault
+
+Push your latest `.env` file changes and edit your production secrets. [Learn more about syncing](/docs/tutorials/sync)
+
+```shell
+npx dotenv-vault@latest push
+npx dotenv-vault@latest open production
+```
+
+Use the UI to configure those secrets per environment.
+
+<ScreenshotBrowser url="/assets/img/docs/edit-production-value.gif" www="www.dotenv.org" />
+
+Then build your encrypted `.env.vault` file.
+
+```shell
+npx dotenv-vault@latest build
+```
+
+Its contents should look something like this.
+
+```shell {{ title: '.env.vault' }}
+#/-------------------.env.vault---------------------/
+#/         cloud-agnostic vaulting standard         /
+#/   [how it works](https://dotenv.org/env-vault)   /
+#/--------------------------------------------------/
+
+# development
+DOTENV_VAULT_DEVELOPMENT="/HqNgQWsf6Oh6XB9pI/CGkdgCe6d4/vWZHgP50RRoDTzkzPQk/xOaQs="
+DOTENV_VAULT_DEVELOPMENT_VERSION=2
+
+# production
+DOTENV_VAULT_PRODUCTION="x26PuIKQ/xZ5eKrYomKngM+dO/9v1vxhwslE/zjHdg3l+H6q6PheB5GVDVIbZg=="
+DOTENV_VAULT_PRODUCTION_VERSION=2
+```
+
+## Set DOTENV_KEY
+
+Fetch your production `DOTENV_KEY`.
+
+```shell
+npx dotenv-vault@latest keys production
+# outputs: dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production
+```
+
+Edit your `serverless.yml` file to inject the `DOTENV_KEY` as a param.
+
+```yaml {{ title: 'serverless.yml' }}
+...
+provider:
+  name: aws
+  runtime: nodejs18.x
+  environment:
+    DOTENV_KEY: ${param:DOTENV_KEY}
+...
+```
+
+**Important**, additionally, edit your `serverless.yml` file to ignore your `.env*` files excepting your `.env.vault` file.
+
+```yaml {{ title: 'serverless.yml' }}
+...
+package:
+  patterns:
+    - '!.env*'
+    - '.env.vault'
+```
+
+When complete, your `serverless.yml` file should look something like this.
+
+```yaml {{ title: 'serverless.yml' }}
+org: dotenv
+app: aws-lambda
+service: aws-lambda
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  environment:
+    DOTENV_KEY: ${param:DOTENV_KEY}
+
+functions:
+  function1:
+    handler: index.handler
+
+package:
+  patterns:
+    - '!.env*'
+    - '.env.vault'
+```
+
+Using the `DOTENV_KEY` you fetched above, set it as param on the Serverless dashboard.
+
+<ScreenshotBrowser url='/assets/img/docs/serverless-config-vars.gif' />
+
+Deploy to the cloud again.
+
+```
+npx serverless deploy
+```
+
+Now invoke your function.
+
+```bash {{ title: "Request" }}
+npx serverless invoke --function function1
+```
+
+That's it! On invocation, your `.env.vault` file will be decrypted and its production secrets injected as environment variables – just-in-time.
+
+```json {{ title: "Response" }}
+{
+    "statusCode": 200,
+    "body": "{\n  \"message\": \"Hello production\",\n  \"input\": {}\n}"
+}
+```
+
+<WellDone/>

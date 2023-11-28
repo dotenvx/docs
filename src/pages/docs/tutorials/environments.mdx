@@ -1,0 +1,82 @@
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+
+export const description =
+  'Use dotenv-vault to manage your environment variables across multiple environments - like production and staging.'
+
+##### Tutorials
+# Managing Environments
+
+## Run dotenv-vault open
+
+Open terminal, enter your project's root directory (where your .env.vault file is), and run dotenv-vault open.
+
+```
+$ npx dotenv-vault open
+```
+
+<ScreenshotBrowser url='/assets/img/cloudinary/Screen_Shot_2022-08-04_at_8.53.10_AM_cgkgkk.png' />
+
+<small>FYI: Not a developer? You can navigate to this page by visiting ui.dotenv.org.</small>
+
+## Click Environment Dropdown Button
+
+Click the environment dropdown button labeled 'development' and then click 'production'.
+
+<ScreenshotBrowser url='/assets/img/cloudinary/Screen_Shot_2022-08-04_at_8.53.16_AM_pukxin.png' />
+
+## Edit Your Production Environment Variables
+
+Click the edit icon next to the environment variable you want to edit.
+
+<ScreenshotBrowser url='/assets/img/cloudinary/Screen_Shot_2022-08-04_at_9.01.21_AM_vcrkkd.png' />
+
+<small>FYI: You'll notice that your production environment variable names are already setup but with blank values. This is by design. Each time you add an environment variable to your .env file it gets copied over to your other environments.</small>
+
+## Set the Production Value
+
+Enter a value and click 'Save changes'.
+
+<ScreenshotBrowser url='/assets/img/cloudinary/Screen_Shot_2022-08-04_at_9.24.43_AM_hqarvz.png' />
+
+## Pull .env.production
+
+Return to terminal and run dotenv-vault pull production.
+
+```
+$ npx dotenv-vault pull production
+
+remote:   Securely pulling production... done
+remote:   Securely pulled production (.env.production)
+```
+
+## View .env.production file
+
+Run ls -al to view it.
+
+```
+$ ls -al
+Jul 28 17:54 .
+Jul 27 13:46 ..
+Jul 27 14:51 .env
+Jul 27 14:51 .env.me
+Jul 28 18:09 .env.vault
+Jul 28 18:09 .env.production
+Jul 28 17:54 .gitignore
+...
+```
+<ScreenshotBrowser url='/assets/img/cloudinary/Screen_Shot_2022-08-04_at_9.44.05_AM_fqavup.png' />
+
+## Push .env.production file (optional)
+
+Prefer to manage your non-development environments with the cli? Edit .env.production and run dotenv-vault push production.
+
+```
+$ npx dotenv-vault push production
+
+remote:   Securely pushing production (.env.production)... done
+remote:   Securely pushed production (.env.production)
+```
+<ScreenshotBrowser url='/assets/img/cloudinary/push-production_gdegey.gif' />
+<ScreenshotBrowser url='/assets/img/cloudinary/Screen_Shot_2022-08-04_at_10.11.25_AM_llgwx9.png' />
+
+That's it! Thanks for using dotenv-vault with multiple environments.

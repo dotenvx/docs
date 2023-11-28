@@ -1,0 +1,30 @@
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+
+export const description = 'Sync your secrets to Heroku when an environment variable is changed.'
+
+##### [Add-ons](/docs/addons)
+# Heroku
+
+Sync your secrets to Heroku when an environment variable is changed.
+
+## Step 1
+
+Navigate to the add-ons page. Click Heroku. Then click Connect Heroku.
+
+<ScreenshotBrowser url='/assets/img/cloudinary/development-Dotenv_13_zmhxmk.png' />
+
+## Step 2
+
+You will be redirected to Heroku's website. Click Allow. This grants Dotenv access to sync config vars between Heroku and Dotenv.
+
+That completes the steps to authorize Dotenv with Vercel.
+
+## Step 3
+
+The last step is to select an app from the drop down. Choose the app and click Finish Configuration.
+
+<ScreenshotBrowser url='/assets/img/cloudinary/development-Dotenv_14_pwrnhc.png' />
+
+That's it! Your secrets are now synced to Heroku and will continue to stay in sync when you modify your secrets.
+
+Thanks for using Dotenv.

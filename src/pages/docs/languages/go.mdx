@@ -1,0 +1,39 @@
+import { Heading } from '@/components/Heading'
+import { Button } from '@/components/Button'
+import { GuideHeading } from '@/components/GuideHeading'
+import { LanguagesBreadcrumb } from '@/components/LanguagesBreadcrumb'
+
+import { GoIcon } from '@/components/icons/GoIcon'
+
+export const description = 
+  'Use .env.vault with Go 🐹'
+
+export const sections = [
+  { title: 'Quickstart', id: 'quickstart' },
+]
+
+<LanguagesBreadcrumb icon={
+  <>
+    <GoIcon className="h-10 w-10 text-[#00ADD8]"/>
+  </>
+}/>
+# Go
+<GuideHeading lead={description} />
+
+<div className="my-16 xl:max-w-none">
+  <Heading level={2} id="quickstart">
+    Quickstart
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="quickstart" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Quickstart
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Quickstart guide for Go and .env.vault</p>
+        <p className="mt-4"><Button href="/docs/quickstart" variant="text" arrow="right">Quickstart</Button></p>
+      </div>
+      <GoIcon className="h-10 w-10 text-[#00ADD8]"/>
+    </div>
+  </div>
+</div>

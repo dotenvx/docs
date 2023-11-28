@@ -1,0 +1,214 @@
+import { Video } from '@/components/Video'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { PythonIcon } from '@/components/icons/PythonIcon'
+import { RubyIcon } from '@/components/icons/RubyIcon'
+import { GoIcon } from '@/components/icons/GoIcon'
+import { PhpIcon } from '@/components/icons/PhpIcon'
+import { RustIcon } from '@/components/icons/RustIcon'
+
+export const description =
+  'Manage multiple environments like .env.ci, .env.staging, and .env.production with this quickstart guide.'
+
+##### [Quickstart](/docs/quickstart)
+# Manage multiple environments
+
+Manage multiple environments like `.env.ci`, `.env.staging`, and `.env.production` with this quickstart guide. {{ className: 'lead' }}
+
+<div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10">
+  <a href="/docs/languages/nodejs"><NodeIcon className="h-9 w-9 text-[#339933]"/></a>
+  <a href="/docs/languages/python"><PythonIcon className="h-9 w-9 text-[#3776AB]"/></a>
+  <a href="/docs/languages/ruby"><RubyIcon className="h-9 w-9 text-[#CC342D]"/></a>
+  <a href="/docs/languages/go"><GoIcon className="h-10 w-10 text-[#00ADD8]"/></a>
+  <a href="/docs/languages/php"><PhpIcon className="h-10 w-10 text-[#777BB4]"/></a>
+  <a href="/docs/languages/rust"><RustIcon className="h-10 w-10 text-[#000000] dark:invert"/></a>
+</div>
+
+## Create .env.production
+
+Create a `.env.production` file.
+
+```bash {{ title: ".env.production" }}
+# production
+HELLO="Production"
+```
+<ScreenshotBrowser url='/assets/img/docs/dotenv-env-production.gif' www='edit .env.production' />
+
+Next, push `.env.production` to its env vault.
+
+## Push
+
+Run the **push** command with the *environment* argument.
+
+<CodeGroup>
+```bash {{title: "npx"}}
+npx dotenv-vault push production
+```
+
+```bash {{title: "Homebrew"}}
+dotenv-vault push production
+```
+</CodeGroup>
+
+<ScreenshotBrowser url='/assets/img/docs/dotenv-push-production.gif' www='npx dotenv-vault push production' />
+
+This securely pushes your `.env.production` secrets to your project vault's *production* environment.
+
+Next, let's view your secrets in the UI.
+
+## Open
+
+Run the **open** command to view your production environment variables in the UI.
+
+<CodeGroup>
+```bash {{title: "npx"}}
+npx dotenv-vault open production
+```
+
+```bash {{title: "Homebrew"}}
+dotenv-vault open production
+```
+</CodeGroup>
+
+<ScreenshotBrowser url='/assets/img/docs/dotenv-open-production.gif' www='npx dotenv-vault open production' />
+
+Just like the **push** command, you pass an additional *production* environment argument to open directly to that environment's secrets.
+
+Make a change in the UI and then pull the latest `.env.production` file.
+
+## Pull
+
+<CodeGroup>
+```bash {{title: "npx"}}
+npx dotenv-vault pull production
+```
+
+```bash {{title: "Homebrew"}}
+dotenv-vault pull production
+```
+</CodeGroup>
+
+<ScreenshotBrowser url='/assets/img/docs/dotenv-pull-production.gif' www='npx dotenv-vault pull production' />
+
+## Conclusion
+
+Solid! You completed this quickstart guide – managing your secrets across multiple environments. I recommend learning how to [load `.env` files in development](/docs/quickstart/development) next.
+
+* [Load `.env` files](/docs/quickstart/development) in development
+* [Add teammates](/docs/tutorials/teammates) to your projects
+
+---
+
+## Advanced Commands
+
+Run the **help push** and **help pull** commands to see how you can further customize these commands.
+
+<CodeGroup>
+```bash {{title: "npx"}}
+npx dotenv-vault help push
+npx dotenv-vault help pull
+```
+
+```bash {{title: "Homebrew"}}
+dotenv-vault help push
+dotenv-vault help pull
+```
+</CodeGroup>
+
+For example, a common need is to pull production secrets to a normal .env file. You can do so with this command.
+
+<CodeGroup>
+```bash {{title: "npx"}}
+npx dotenv-vault pull production .env
+```
+
+```bash {{title: "Homebrew"}}
+dotenv-vault pull production .env
+```
+</CodeGroup>
+
+### Default environments
+
+Every project comes with four default environments and their corresponding `.env.ENVIRONMENT` files.
+
+* *development* => `.env`
+* *ci* => `.env.ci`
+* *staging* => `.env.staging`
+* *production* => `.env.production`
+
+<Note>Want to customize your default environments? You can do so from the [ui](https://vault.dotenv.org).</Note>
+
+You can push to each one by appending the environment name after **push**.
+
+<CodeGroup>
+```bash {{title: "npx"}}
+npx dotenv-vault push development
+npx dotenv-vault push ci
+npx dotenv-vault push staging
+npx dotenv-vault push production
+```
+
+```bash {{title: "Homebrew"}}
+dotenv-vault push development
+dotenv-vault push ci
+dotenv-vault push staging
+dotenv-vault push production
+```
+</CodeGroup>
+
+The same for pulling. Append the environment name after **pull**.
+
+<CodeGroup>
+```bash {{title: "npx"}}
+npx dotenv-vault pull development
+npx dotenv-vault pull ci
+npx dotenv-vault pull staging
+npx dotenv-vault pull production
+```
+
+```bash {{title: "Homebrew"}}
+dotenv-vault pull development
+dotenv-vault pull ci
+dotenv-vault pull staging
+dotenv-vault pull production
+```
+</CodeGroup>
+
+<Note>Appending your main environment (*development*) is redundant. The cli assumes the main environment when the environment argument is ommitted.</Note>
+
+### Custom filenames
+
+You can push and pull a different filename to each one by further appending the filename after the environment argument.
+
+<CodeGroup>
+```bash {{title: "npx"}}
+npx dotenv-vault push development .env.local
+npx dotenv-vault pull ci secrets.txt
+npx dotenv-vault push staging any-filename
+npx dotenv-vault pull production .env
+```
+
+```bash {{title: "Homebrew"}}
+dotenv-vault push development .env.local
+dotenv-vault pull ci secrets.txt
+dotenv-vault push staging any-filename
+dotenv-vault pull production .env
+```
+</CodeGroup>
+
+### DOTENV_ME flag
+
+In some automation scenarios, you might not have a `.env.me` file present. In those cases you can pass the value of your `DOTENV_ME` credential to the cli using the `--dotenvMe` flag.
+
+<CodeGroup>
+```bash {{title: "npx"}}
+npx dotenv-vault pull --dotenvMe=me_1z1z1z
+```
+
+```bash {{title: "Homebrew"}}
+dotenv-vault pull --dotenvMe=me_1z1z1z
+```
+</CodeGroup>
+
+Big congrats! You have advanced knowledge now – when it comes to managing multiple environments and using the **push** and **pull** commands.

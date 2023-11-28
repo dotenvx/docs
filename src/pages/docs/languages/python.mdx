@@ -1,0 +1,65 @@
+import { Heading } from '@/components/Heading'
+import { Button } from '@/components/Button'
+import { GuideHeading } from '@/components/GuideHeading'
+import { LanguagesBreadcrumb } from '@/components/LanguagesBreadcrumb'
+import { FrameworksPython } from '@/components/FrameworksPython'
+
+import { PythonIcon } from '@/components/icons/PythonIcon'
+import { FlaskIcon } from '@/components/icons/FlaskIcon'
+import { HerokuIcon } from '@/components/icons/HerokuIcon'
+
+export const description = 
+  'Use .env.vault with Python 🐍.'
+
+export const sections = [
+  { title: 'Quickstart', id: 'quickstart' },
+  { title: 'Frameworks', id: 'frameworks' },
+  { title: 'Platforms', id: 'platforms' },
+]
+
+<LanguagesBreadcrumb icon={
+  <>
+    <PythonIcon className="h-9 w-9 text-[#3776AB]"/>
+  </>
+}/>
+# Python
+<GuideHeading lead={description} />
+
+<div className="my-16 xl:max-w-none">
+  <Heading level={2} id="quickstart">
+    Quickstart
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="quickstart" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Quickstart
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Quickstart guide for Python and .env.vault</p>
+        <p className="mt-4"><Button href="/docs/quickstart" variant="text" arrow="right">Quickstart</Button></p>
+      </div>
+      <PythonIcon className="h-9 w-9 text-[#3776AB]"/>
+    </div>
+  </div>
+  <Heading level={2} id="frameworks">
+    Frameworks
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <FrameworksPython />
+  </div>
+  <Heading level={2} id="platforms">
+    Platforms
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="heroku" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Heroku
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a Flask App to Heroku</p>
+        <p className="mt-4"><Button href="/docs/frameworks/flask/heroku" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <HerokuIcon className="h-9 w-9 text-[#430098]"/>
+    </div>
+  </div>
+</div>

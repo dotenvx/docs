@@ -1,0 +1,218 @@
+import { Video } from '@/components/Video'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { PythonIcon } from '@/components/icons/PythonIcon'
+import { RubyIcon } from '@/components/icons/RubyIcon'
+import { GoIcon } from '@/components/icons/GoIcon'
+import { PhpIcon } from '@/components/icons/PhpIcon'
+import { RustIcon } from '@/components/icons/RustIcon'
+
+import { DockerIcon } from '@/components/icons/DockerIcon'
+import { ExpressIcon } from '@/components/icons/ExpressIcon'
+import { GitHubIcon } from '@/components/icons/GitHubIcon'
+import { GitlabIcon } from '@/components/icons/GitlabIcon'
+import { NextIcon } from '@/components/icons/NextIcon'
+import { VercelIcon } from '@/components/icons/VercelIcon'
+
+export const description =
+  'Deploy your .env.vault file to production using this quickstart guide.'
+
+##### [Quickstart](/docs/quickstart)
+# Deploy .env.vault files in production
+
+Deploy your encrypted `.env.vault` files to production (or staging or ci) using this quickstart guide. {{ className: 'lead' }}
+
+<div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10">
+  <a href="/docs/languages/nodejs"><NodeIcon className="h-9 w-9 text-[#339933]"/></a>
+  <a href="/docs/languages/python"><PythonIcon className="h-9 w-9 text-[#3776AB]"/></a>
+  <a href="/docs/languages/ruby"><RubyIcon className="h-9 w-9 text-[#CC342D]"/></a>
+  <a href="/docs/languages/go"><GoIcon className="h-10 w-10 text-[#00ADD8]"/></a>
+  <a href="/docs/languages/php"><PhpIcon className="h-10 w-10 text-[#777BB4]"/></a>
+  <a href="/docs/languages/rust"><RustIcon className="h-10 w-10 text-[#000000] dark:invert"/></a>
+</div>
+
+## Build .env.vault
+
+Begin by building your project's encrypted `.env.vault` file. It securely encrypts your secrets in a cloud-agnostic payload.
+
+<CodeGroup>
+```bash {{title: "npx"}}
+npx dotenv-vault build
+```
+
+```bash {{title: "Homebrew"}}
+dotenv-vault build
+```
+</CodeGroup>
+
+Commit that safely to code.
+
+```bash
+git add .env.vault
+git commit -am "Build encrypted .env.vault file for deploy"
+```
+
+<Note>
+  Yes it safe AND recommended you commit the `.env.vault` file to code. It contains AES-256 GCM encrypted ciphers of your environment secrets - that are decrypted just-in-time using an environment `DOTENV_KEY`.
+</Note>
+
+## Fetch `DOTENV_KEY`
+
+Fetch your production decryption key - the `DOTENV_KEY` - to decrypt your `.env.vault` file.
+
+<CodeGroup>
+```bash {{title: "npx"}}
+npx dotenv-vault keys production
+```
+
+```bash {{title: "Homebrew"}}
+dotenv-vault keys production
+```
+</CodeGroup>
+
+This will output your production `DOTENV_KEY`.
+
+Use that `DOTENV_KEY` to run your application in production mode locally - as a quick test.
+
+<CodeGroup>
+
+```bash {{ title: "Node.js" }}
+DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' node index.js
+# visit http://localhost:3000
+```
+
+```bash {{ title: "Python" }}
+DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' flask --app index run
+# visit http://127.0.0.1:5000
+```
+
+```bash {{ title: "Ruby" }}
+DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' ruby index.rb
+# visit http://localhost:4567
+```
+
+```bash {{ title: "Go" }}
+DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' go run index.go
+# visit http://localhost:1323
+```
+
+```bash {{ title: "PHP" }}
+DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' php index.php
+# Hello production
+```
+
+```bash {{ title: "Rust" }}
+DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' cargo run
+# Hello production
+```
+
+</CodeGroup>
+
+<ScreenshotBrowser url='/assets/img/docs/hello-production.png'/>
+
+You will know it is working if you see the log message `Loading env from encrypted .env.vault`.
+
+<CodeGroup>
+
+```bash {{ title: "Node.js" }}
+$ quickstart: DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' node index.js
+[dotenv@16.3.1][INFO] Loading env from encrypted .env.vault
+Example app listening on port 3000
+```
+
+```bash {{ title: "Python" }}
+$ quickstart: DOTENV_KEY='dotenv://:key_3889c2a7ed0ff28ccaf2984fdf020bf0e4a702ecfd2e0c00a129f838b0cb4e71@dotenv.org/vault/.env.vault?environment=production' flask --app index run
+INFO:dotenv_vault.main:Loading env from encrypted .env.vault
+ * Serving Flask app 'index'
+```
+
+```bash {{ title: "Ruby" }}
+$ quickstart: DOTENV_KEY='dotenv://:1234@dotenv.org/vault/.env.vault?environment=production' ruby index.rb
+INFO -- : [dotenv-vault] Loading env from encrypted .env.vault
+== Sinatra (v3.0.6) has taken the stage on 4567 for development with backup from Puma
+```
+
+```bash {{ title: "Go" }}
+$ quickstart: DOTENV_KEY='dotenv://:1234@dotenv.org/vault/.env.vault?environment=production' go run index.go
+[dotenv-vault] Loading env from encrypted .env.vault
+⇨ http server started on [::]:1323
+```
+
+```bash {{ title: "PHP" }}
+$ hello-world: DOTENV_KEY='dotenv://:1234@dotenv.org/vault/.env.vault?environment=production' php index.phhp
+[dotenv-vault][INFO] Loading env from encrypted .env.vault
+Hello production
+```
+
+```bash {{ title: "Rust" }}
+$ hello-world: DOTENV_KEY='dotenv://:1234@dotenv.org/vault/.env.vault?environment=production' cargo run
+[dotenv-vault][INFO] Loading env from encrypted .env.vault
+Hello production
+```
+
+</CodeGroup>
+
+The `DOTENV_KEY` decrypts the production contents of `.env.vault` and injects its secrets just-in-time to your running process. All that's left to do is set your `DOTENV_KEY` on your production server and deploy your code.
+
+## Set `DOTENV_KEY`
+
+Set your production `DOTENV_KEY` on your server. For example, on Heroku you set it with their [cli](https://devcenter.heroku.com/articles/heroku-cli).
+
+```shell
+$ heroku config:set DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production'
+```
+
+Here's a video showing the entire process.
+
+<Video poster='/assets/img/cloudinary/deploy-encrypted-vault_shdiav.gif'
+  mp4='/assets/img/cloudinary/deploy-encrypted-vault_shdiav.mp4'
+  webm='/assets/img/cloudinary/deploy-encrypted-vault_shdiav.webm'/>
+
+## Conclusion
+
+Congrats! You now understand how `.env.vault` files work.
+
+This is much safer than syncing your secrets to third-parties where they could leak. [CircleiCi had a secrets breach not long ago](https://techcrunch.com/2023/01/05/circleci-breach/). `.env.vault` protects you from breaches like that. An attacker would have to get their hands on both your `DOTENV_KEY` AND your codebase.
+
+In addition, you now have a single source of truth that is easy to manage. Make a change in the UI, run the build command, and redeploy. Spend less time juggling secrets and more time coding.
+
+The best part is the technology is platform and framework agnostic. We've compiled a list of almost 100 guides (so far). Linked below are some of our most-visited guides. Click a logo and get started.
+
+<div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10">
+  <a href="/docs/languages/nodejs"><NodeIcon className="h-9 w-9 text-[#339933]"/></a>
+  <a href="/docs/languages/python"><PythonIcon className="h-9 w-9 text-[#3776AB]"/></a>
+  <a href="/docs/languages/ruby"><RubyIcon className="h-9 w-9 text-[#CC342D]"/></a>
+  <a href="/docs/languages/go"><GoIcon className="h-10 w-10 text-[#00ADD8]"/></a>
+  <a href="/docs/languages/php"><PhpIcon className="h-10 w-10 text-[#777BB4]"/></a>
+  <a href="/docs/languages/rust"><RustIcon className="h-10 w-10 text-[#000000] dark:invert"/></a>
+  <a href="/docs/frameworks/express"><ExpressIcon className="h-9 w-9 text-[#000000] dark:invert"/></a>
+  <a href="/docs/frameworks/nextjs"><NextIcon className="h-9 w-9 text-[#000000] dark:invert"/></a>
+  <a href="/docs/languages/nodejs/github-actions"><GitHubIcon className="h-9 w-9 text-[#181717] dark:invert"/></a>
+  <a href="/docs/languages/nodejs/docker"><DockerIcon className="h-9 w-9 text-[#2496ED]"/></a>
+  <a href="/docs/platforms/vercel"><VercelIcon className="h-9 w-9 text-[#000000] dark:invert"/></a>
+  <a href="/docs/languages/nodejs/gitlab-ci"><GitlabIcon className="h-9 w-9 text-[#FC6D26]"/></a>
+</div>
+
+Thanks for using Dotenv!
+
+---
+
+## FAQ
+
+### What happens if `DOTENV_KEY` is not set?
+
+It gracefully falls back to loading from your `.env` file. This is the default for development so that you can focus on editing your `.env` file and save the `build` command until you are ready to deploy those environment variables changes.
+
+### Should I commit my `.env.vault` file?
+
+Yes. It is safe and recommended to do so. It contains your encrypted envs, and your vault identifier.
+
+### Can I share the `DOTENV_KEY`?
+
+No. It is the key that unlocks your encrypted environment variables. Be very careful who you share this key with. Do not let it leak.
+
+### Should I commit my `.env` file?
+
+No. We **strongly** recommend against committing your `.env` file to version control. It should only include environment-specific values such as database passwords or API keys. Your production database should have a different password than your development database.
+

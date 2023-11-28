@@ -1,0 +1,144 @@
+import { Heading } from '@/components/Heading'
+import { GuideHeading } from '@/components/GuideHeading'
+import { PlatformsBreadcrumb } from '@/components/PlatformsBreadcrumb'
+
+import { HerokuIcon } from '@/components/icons/HerokuIcon'
+import { PhpIcon } from '@/components/icons/PhpIcon'
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { ExpressIcon } from '@/components/icons/ExpressIcon'
+import { NestIcon } from '@/components/icons/NestIcon'
+import { Pm2Icon } from '@/components/icons/Pm2Icon'
+import { FastApiIcon } from '@/components/icons/FastApiIcon'
+import { FlaskIcon } from '@/components/icons/FlaskIcon'
+import { SinatraIcon } from '@/components/icons/SinatraIcon'
+import { LaravelIcon } from '@/components/icons/LaravelIcon'
+import { RocketRsIcon } from '@/components/icons/RocketRsIcon'
+
+export const description = 
+  'Use .env.vault with Heroku'
+
+export const sections = [
+  { title: 'Languages', id: 'languages' },
+  { title: 'Frameworks', id: 'frameworks' },
+]
+
+<PlatformsBreadcrumb icon={
+  <>
+    <HerokuIcon className="h-9 w-9 text-[#430098]"/>
+  </>
+} />
+# Heroku
+<GuideHeading lead={description} />
+
+<div className="my-16 xl:max-w-none">
+  <Heading level={2} id="languages">
+    Languages
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="nodejs" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Node.js
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a Node.js App to Heroku</p>
+        <p className="mt-1"><Button href="/docs/languages/nodejs/heroku" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <NodeIcon className="h-9 w-9 text-[#339933]"/>
+    </div>
+    <div key="php" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          PHP
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a PHP App to Heroku</p>
+        <p className="mt-1"><Button href="/docs/languages/php/heroku" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <PhpIcon className="h-10 w-10 text-[#777BB4]"/>
+    </div>
+  </div>
+  <Heading level={2} id="frameworks">
+    Frameworks
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="express" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Express.js
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy an Express.js App to Heroku</p>
+        <p className="mt-4"><Button href="/docs/frameworks/express/heroku" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <ExpressIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+    </div>
+    <div key="nestjs" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Nest.js
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a Nest.js App to Heroku</p>
+        <p className="mt-4"><Button href="/docs/frameworks/nextjs/heroku" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <NestIcon className="h-9 w-9 text-[#E0234E]"/>
+    </div>
+    <div key="pm2" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          PM2
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a PM2 App to Heroku</p>
+        <p className="mt-4"><Button href="/docs/frameworks/pm2/heroku" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <Pm2Icon className="h-9 w-9 text-[#2B037A] dark:text-[#AC2E95]"/>
+    </div>
+    <div key="fastapi" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          FastApi
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a FastApi App to Heroku</p>
+        <p className="mt-4"><Button href="/docs/frameworks/fastapi/heroku" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <FastApiIcon className="h-9 w-9 text-[#009688]"/>
+    </div>
+    <div key="flask" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Flask
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a Flask App to Heroku</p>
+        <p className="mt-4"><Button href="/docs/frameworks/flask/heroku" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <FlaskIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+    </div>
+    <div key="sinatra" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Sinatra
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a Sinatra App to Heroku</p>
+        <p className="mt-4"><Button href="/docs/frameworks/sinatra/heroku" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <SinatraIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+    </div>
+    <div key="laravel" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Laravel
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a Laravel App to Heroku</p>
+        <p className="mt-4"><Button href="/docs/frameworks/laravel/heroku" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <LaravelIcon className="h-9 w-9 text-[#FF2D20]"/>
+    </div>
+    <div key="rocket" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Rocket
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a Rocket App to Heroku</p>
+        <p className="mt-4"><Button href="/docs/frameworks/rocket-rs/heroku" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <RocketRsIcon className="h-9 w-9 text-[#C3454C]"/>
+    </div>
+  </div>
+</div>

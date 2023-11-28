@@ -1,0 +1,51 @@
+import { Heading } from '@/components/Heading'
+import { GuideHeading } from '@/components/GuideHeading'
+import { FrameworksBreadcrumb } from '@/components/FrameworksBreadcrumb'
+
+import { NuxtIcon } from '@/components/icons/NuxtIcon'
+import { VercelIcon } from '@/components/icons/VercelIcon'
+import { EdgioIcon } from '@/components/icons/EdgioIcon'
+
+export const description = 
+  'Use .env.vault with Nuxt.js'
+
+export const sections = [
+  { title: 'Platforms', id: 'platforms' },
+]
+
+<FrameworksBreadcrumb icon={
+  <>
+    <NuxtIcon className="h-9 w-9 text-[#00DC82]"/>
+  </>
+} />
+# Nuxt.js
+<GuideHeading lead={description} />
+
+<div className="my-16 xl:max-w-none">
+  <Heading level={2} id="platforms">
+    Platforms
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="edgio" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Edgio
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Deploy a Nuxt.js App to Edgio</p>
+        <p className="mt-4"><Button href="/docs/frameworks/nuxtjs/edgio" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <EdgioIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+    </div>
+    <div key="vercel" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Vercel
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with Nuxt.js and Vercel</p>
+        <p className="mt-4"><Button href="/docs/frameworks/nuxtjs/vercel" variant="text" arrow="right">Read guide</Button></p>
+      </div>
+      <VercelIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+    </div>
+
+  </div>
+</div>

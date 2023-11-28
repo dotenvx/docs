@@ -1,0 +1,177 @@
+import WellDone from '@/pages/partials/wellDone.mdx'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import { GuideHeading } from '@/components/GuideHeading'
+import { FrameworksBreadcrumb } from '@/components/FrameworksBreadcrumb'
+import { GoogleCloudIcon } from '@/components/icons/GoogleCloudIcon'
+import { ExpressIcon } from '@/components/icons/ExpressIcon'
+
+export const description =
+  'Run Express.js CI/CD in Google Cloud Build with an encrypted .env.vault file'
+
+<FrameworksBreadcrumb framework='Express.js' url='/docs/frameworks/express' icon={
+  <>
+    <ExpressIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+    <GoogleCloudIcon className="h-9 w-9 text-[#4285F4]"/>
+  </>
+} />
+# CI/CD in Express.js with Google Cloud Build
+<GuideHeading lead={description} />
+
+<Note>
+  Find a complete <a href="https://github.com/dotenv-org/examples/tree/master/express/google-cloud-build">code example on GitHub</a> for this guide.
+</Note>
+
+## Initial setup
+
+Install [express](https://github.com/expressjs/express).
+
+```
+npm install express --save
+```
+
+Create an `index.js` file with the web server code.
+
+```js {{ title: 'index.js' }}
+const PORT = process.env.PORT || 3000
+const express = require('express')
+const app = express()
+
+app.listen(PORT, () => {
+  console.log(`Running on port ${PORT}.`)
+})
+
+app.get('/', function (req, res) {
+  res.send(`Hello ${process.env.HELLO}`)
+})
+```
+
+Add a `Procfile` to run your app on Heroku.
+
+```yaml {{ title: 'Procfile' }}
+web: node index.js
+```
+
+Commit that to code and push it to Heroku.
+
+```shell
+heroku create
+git push heroku
+```
+
+Once deployed, your app will say `'Hello undefined'` as it doesn't have a way to access the environment variable yet. Let's do that next.
+
+<ScreenshotBrowser url="/assets/img/docs/hello-undefined.png" www="yourapp.herokuapp.com" />
+
+## Install dotenv
+
+Install [`dotenv`](https://github.com/motdotla/dotenv).
+
+```shell
+npm install dotenv --save # Requires dotenv >= 16.1.0
+```
+
+Create a `.env` file in the root of your project.
+
+```shell {{ title: '.env' }}
+# .env
+HELLO="World"
+```
+
+As early as possible in your application, import and configure dotenv.
+
+```js {{ title: 'index.js' }}
+require('dotenv').config()
+console.log(process.env) // remove this after you've confirmed it is working
+
+const PORT = process.env.PORT || 3000
+const express = require('express')
+...
+```
+
+Try running it locally.
+
+```shell
+node index.js
+{
+  ...
+  HELLO: 'World'
+}
+Server running on port:3000/
+```
+
+It should say `Hello World`.
+
+<ScreenshotBrowser url='/assets/img/docs/nextjs-hello-world.png' />
+
+
+Great! `process.env` now has the keys and values you defined in your `.env` file. That covers local development. Let's solve for production next.
+
+## Build .env.vault
+
+Push your latest `.env` file changes and edit your production secrets. [Learn more about syncing](/docs/tutorials/sync)
+
+```shell
+npx dotenv-vault@latest push
+npx dotenv-vault@latest open production
+```
+
+Use the UI to configure those secrets per environment.
+
+<ScreenshotBrowser url="/assets/img/docs/edit-production-value.gif" www="www.dotenv.org" />
+
+Then build your encrypted `.env.vault` file.
+
+```shell
+npx dotenv-vault@latest build
+```
+
+Its contents should look something like this.
+
+```shell {{ title: '.env.vault' }}
+#/-------------------.env.vault---------------------/
+#/         cloud-agnostic vaulting standard         /
+#/   [how it works](https://dotenv.org/env-vault)   /
+#/--------------------------------------------------/
+
+# development
+DOTENV_VAULT_DEVELOPMENT="/HqNgQWsf6Oh6XB9pI/CGkdgCe6d4/vWZHgP50RRoDTzkzPQk/xOaQs="
+DOTENV_VAULT_DEVELOPMENT_VERSION=2
+
+# production
+DOTENV_VAULT_PRODUCTION="x26PuIKQ/xZ5eKrYomKngM+dO/9v1vxhwslE/zjHdg3l+H6q6PheB5GVDVIbZg=="
+DOTENV_VAULT_PRODUCTION_VERSION=2
+```
+
+## Set DOTENV_KEY
+
+Fetch your production `DOTENV_KEY`.
+
+```shell
+npx dotenv-vault@latest keys production
+# outputs: dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production
+```
+
+Set `DOTENV_KEY` on Heroku using the CLI.
+
+```shell
+heroku config:set DOTENV_KEY='dotenv://:key_1234…@dotenv.org/vault/.env.vault?environment=production'
+```
+
+Or use Heroku's UI.
+
+<ScreenshotBrowser url="/assets/img/docs/heroku-config-vars.png" www="www.heroku.com" />
+
+## Deploy
+
+Commit those changes safely to code and deploy.
+
+That's it! On deploy, your `.env.vault` file will be decrypted and its production secrets injected as environment variables‚ just in time.
+
+<ScreenshotBrowser url='/assets/img/docs/hello-production.png' www='yourapp.herokuapp.com' />
+
+You'll know things worked correctly when you see `'Loading env from encrypted .env.vault'` in your logs. If a `DOTENV_KEY` is not set (for example when developing on your local machine) it will fall back to standard [dotenv](https://github.com/motdotla/dotenv) functionality.
+
+<ScreenshotBrowser url="/assets/img/docs/heroku-logs-vault.png" www="heroku logs --tail" />
+
+<WellDone/>
+

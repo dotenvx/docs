@@ -1,0 +1,140 @@
+import { Heading } from '@/components/Heading'
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { PythonIcon } from '@/components/icons/PythonIcon'
+import { RubyIcon } from '@/components/icons/RubyIcon'
+import { GoIcon } from '@/components/icons/GoIcon'
+import { PhpIcon } from '@/components/icons/PhpIcon'
+import { RustIcon } from '@/components/icons/RustIcon'
+
+import { Frameworks } from '@/components/Frameworks'
+import { Platforms } from '@/components/Platforms'
+import { Cis } from '@/components/Cis'
+import { Concepts } from '@/components/Concepts'
+
+export const description =
+  'Documentation for .env and .env.vault'
+
+export const sections = [
+  { title: 'Getting Started', id: 'getting-started' },
+  { title: 'Languages', id: 'languages' },
+  { title: 'Frameworks', id: 'frameworks' },
+  { title: 'Platforms', id: 'platforms' },
+  { title: 'CI/CDs', id: 'cis' },
+  { title: 'Concepts', id: 'concepts' },
+]
+
+<HeroPattern />
+
+##### dotenv-vault
+# Documentation
+
+The secrets manager for .env files – from the same people that pioneered dotenv. {{ className: 'lead' }}
+
+<div className="not-prose mb-16 mt-6 flex gap-3">
+  <Button href="/docs/quickstart" arrow="right" children="Quickstart" />
+  <Button href="https://www.youtube.com/watch?v=z-lBjxfhWeY" variant="outline" children="Watch 1 minute video" />
+</div>
+
+## Getting Started
+
+Benefit immediately. Run the push command to sync your `.env` file right now.
+
+<CodeGroup>
+```bash {{title: "npx"}}
+# npx is likely already installed on your machine
+npx dotenv-vault@latest push
+```
+
+```bash {{title: "Homebrew"}}
+# install with brew and then use the dotenv-vault command
+brew install dotenv-org/brew/dotenv-vault
+dotenv-vault push
+```
+
+```bash {{title: "Windows"}}
+# Download the appropriate installer for your Windows installation
+32-bit installer: https://dotenv-vault-assets.dotenv.org/channels/stable/dotenv-vault-x86.exe
+64-bit installer: https://dotenv-vault-assets.dotenv.org/channels/stable/dotenv-vault-x64.exe
+```
+
+```bash {{title: "Docker"}}
+# Run dotenv-vault as a docker image
+docker run -w $(pwd) -v $(pwd):$(pwd) -it dotenv/dotenv-vault push
+```
+</CodeGroup>
+
+<div className="my-16 xl:max-w-none">
+  <Heading level={2} id="languages">
+    Languages
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="nodejs" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Node.js
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with Node.js</p>
+        <p className="mt-1"><Button href="/docs/languages/nodejs" variant="text" arrow="right">Node.js Guides</Button></p>
+      </div>
+      <NodeIcon className="h-9 w-9 text-[#339933]"/>
+    </div>
+    <div key="python" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Python
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with Python</p>
+        <p className="mt-1"><Button href="/docs/languages/python" variant="text" arrow="right">Python Guides</Button></p>
+      </div>
+      <PythonIcon className="h-9 w-9 text-[#3776AB]"/>
+    </div>
+    <div key="ruby" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Ruby
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with Ruby</p>
+        <p className="mt-1"><Button href="/docs/languages/ruby" variant="text" arrow="right">Ruby Guides</Button></p>
+      </div>
+      <RubyIcon className="h-9 w-9 text-[#CC342D]"/>
+    </div>
+    <div key="go" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Go
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with Go</p>
+        <p className="mt-1"><Button href="/docs/languages/go" variant="text" arrow="right">Go Guides</Button></p>
+      </div>
+      <GoIcon className="h-10 w-10 text-[#00ADD8]"/>
+    </div>
+    <div key="php" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          PHP
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with PHP</p>
+        <p className="mt-1"><Button href="/docs/languages/php" variant="text" arrow="right">PHP Guides</Button></p>
+      </div>
+      <PhpIcon className="h-10 w-10 text-[#777BB4]"/>
+    </div>
+    <div key="rust" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Rust
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with Rust</p>
+        <p className="mt-1"><Button href="/docs/languages/rust" variant="text" arrow="right">Rust Guides</Button></p>
+      </div>
+      <RustIcon className="h-10 w-10 text-[#000000] dark:invert"/>
+    </div>
+  </div>
+</div>
+
+<Frameworks/>
+<Platforms/>
+<Cis/>
+<Concepts/>

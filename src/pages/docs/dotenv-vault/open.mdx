@@ -1,0 +1,65 @@
+##### [CLI](/docs/dotenv-vault)
+# dotenv-vault open
+
+Open project page on dotenv-vault.
+
+## Usage
+
+#### 1. Run open command
+
+```
+$ npx dotenv-vault open
+
+local:    Press y (or any key) to open up the browser to view your project or q to exit: y
+local:    Opening project page... ‚°ø
+```
+
+![](/assets/img/cloudinary/Screen_Shot_2022-07-31_at_5.28.08_PM_ms9hzz.png)
+
+That's it!
+
+---
+
+## Command Details
+
+For more information on the open command, run dotenv-vault help open.
+
+```
+Open project page
+
+USAGE
+  $ dotenv-vault open [ENVIRONMENT] [-y]
+
+ARGUMENTS
+  ENVIRONMENT  Set environment to open to. Defaults to development
+
+FLAGS
+  -y, --yes  Automatic yes to prompts. Assume yes to all prompts and run non-interactively.
+
+DESCRIPTION
+  Open project page
+
+EXAMPLES
+  $ dotenv-vault open
+```
+
+##### ARGUMENTS
+
+*[ENVIRONMENT]*
+
+Set environment to open to. Defaults to development.
+
+```
+$ npx dotenv-vault open production
+```
+
+##### FLAGS
+
+*-y, --yes*
+
+Automatic yes to prompts. Assume yes to all prompts and run non-interactively.
+
+```
+$ npx dotenv-vault open -y
+```
+

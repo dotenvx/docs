@@ -1,0 +1,52 @@
+##### [CLI](/docs/dotenv-vault)
+# dotenv-vault build
+
+Build your encrypted .env.vault file.
+
+## Usage
+
+#### 1. Run build command
+
+```
+$ npx dotenv-vault build
+```
+
+#### 2. Set DOTENV_KEY
+
+Run the `keys` command to get your product key and set it on your production environment.
+
+```
+$ npx dotenv-vault keys production
+```
+
+#### 3. Commit .env.vault to code
+
+Safely commit your encrypted .env.vault file to code.
+
+Deploy your code.
+
+On application boot your `.env.vault` will be decrypted and its secrets injected just in time to your application.
+
+---
+
+## Command Details
+
+For more information on the build command, run dotenv-vault help build.
+
+```
+$ npx dotenv-vault help build
+Build .env.vault
+
+USAGE
+  $ dotenv-vault build [-m <value>] [-y]
+
+FLAGS
+  -m, --dotenvMe=<value>  Pass .env.me (DOTENV_ME) credential directly (rather than reading from .env.me file)
+  -y, --yes               Automatic yes to prompts. Assume yes to all prompts and run non-interactively.
+
+DESCRIPTION
+  Build .env.vault
+
+EXAMPLES
+  $ dotenv-vault build
+```

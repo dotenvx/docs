@@ -1,0 +1,88 @@
+##### [CLI](/docs/dotenv-vault)
+# dotenv-vault login
+
+Log in to dotenv-vault.
+
+## Usage
+
+#### 1. Run login command
+
+```
+$ npx dotenv-vault login
+
+local:    Press y (or any key) to open up the browser to login and generate credential (.env.me) or q to exit: y
+local:    Opening browser to https://vault.dotenv.org/login?DOTENV_VAULT=vlt_6beaa5‚Ä¶
+local:    Waiting for login and credential (.env.me) to be generated... ‚°ø
+```
+
+#### 2. Click log in
+
+On the next screen, follow the login process and click 'Log in'.
+
+![](/assets/img/cloudinary/dotenv-vault-login-2_vdb9sq.png)
+
+#### 3. View .env.me (optional)
+
+You now have a .env.me file in the root of your project. The .env.me file uniquely authorizes you to access a project's shared .env file. You can think of it like your unique SSH key at GitHub.
+
+Run ls -al to view it.
+
+```
+$ ls -al
+Jul 28 17:54 .
+Jul 27 13:46 ..
+Jul 27 14:51 .env
+Jul 28 18:11 .env.me
+Jul 28 18:09 .env.vault
+Jul 28 17:54 .gitignore
+...
+```
+![](/assets/img/cloudinary/dotenv-me_bsffi2.png)
+
+That's it!
+
+---
+
+## Command Details
+
+For more information on the login command, run dotenv-vault help login.
+
+```
+$ npx dotenv-vault help login
+Log in to dotenv-vault
+
+USAGE
+  $ dotenv-vault login [DOTENV_ME] [-y]
+
+ARGUMENTS
+  DOTENV_ME  Set .env.me credential. Defaults to generated value.
+
+FLAGS
+  -y, --yes  Automatic yes to prompts. Assume yes to all prompts and run non-interactively.
+
+DESCRIPTION
+  Log in to dotenv-vault
+
+EXAMPLES
+  $ dotenv-vault login
+```
+
+##### ARGUMENTS
+
+*[DOTENV_ME]*
+
+Set .env.me identifier. Defaults to generated value.
+
+```
+$ npx dotenv-vault login me_00c7fa‚Ä¶
+```
+
+##### FLAGS
+
+*-y, --yes*
+
+Automatic yes to prompts. Assume yes to all prompts and run non-interactively.
+
+```
+$ npx dotenv-vault login -y
+```

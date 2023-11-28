@@ -1,0 +1,161 @@
+import { GuideHeading } from '@/components/GuideHeading'
+import { LanguagesBreadcrumb } from '@/components/LanguagesBreadcrumb'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import WellDone from '@/pages/partials/wellDone.mdx'
+
+import { GitlabIcon } from '@/components/icons/GitlabIcon'
+import { NodeIcon } from '@/components/icons/NodeIcon'
+
+export const description = 
+  'Run Node.js CI/CD in Gitlab CI with an encrypted .env.vault file'
+
+<LanguagesBreadcrumb language="Node.js" url="/docs/languages/nodejs" icon={
+  <>
+    <NodeIcon className="h-9 w-9 text-[#339933]"/>
+    <GitlabIcon className="h-9 w-9 text-[#FC6D26]"/>
+  </>
+}/>
+# CI/CD in Node.js with Gitlab CI
+<GuideHeading lead={description} />
+
+<Note>
+  Find a complete <a href="https://github.com/dotenv-org/examples/tree/master/nodejs/gitlab-ci">code example on GitHub</a> for this guide.
+</Note>
+
+## Initial setup
+
+Create a `build.js` file. It's a very simple build script that outputs 'Hello World'.
+
+```js {{ title: 'build.js' }}
+// build.js
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+Create a `package.json` file.
+
+```json {{ title: 'package.json' }}
+{
+  "scripts": {
+    "build": "node build.js"
+  }
+}
+```
+
+Create a `.gitlab-ci.yml` file.
+
+```yaml {{ title: '.gitlab-ci.yml' }}
+image: node:20.5
+
+build:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+```
+
+Commit that to code and push to Gitlab.
+
+<ScreenshotBrowser url='/assets/img/docs/gitlab-hello-undefined.png' www='gitlab.com/your-org/your-repo' />
+
+Once pushed, the Gitlab CI build will say `'Hello undefined'` as it doesn't have a way to access the environment variable yet. Let's do that next.
+
+## Install dotenv
+
+Install [`dotenv`](https://github.com/motdotla/dotenv).
+
+```shell
+npm install dotenv --save # Requires dotenv >= 16.1.0
+```
+
+Create a `.env` file in the root of your project.
+
+```shell {{ title: '.env' }}
+# .env
+HELLO="World"
+```
+
+As early as possible in your application, import and configure dotenv.
+
+```js {{ title: 'build.js' }}
+// build.js
+require('dotenv').config()
+console.log(process.env) // remove this after you've confirmed it is working
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+Try running it locally.
+
+```shell
+node build.js
+{
+  ...
+  HELLO: 'World'
+}
+Hello World
+```
+
+Perfect. `process.env` now has the keys and values you defined in your `.env` file.
+
+That covers local simulation of the CI. Let's solve for the real CI environment next.
+
+## Build .env.vault
+
+Push your latest `.env` file changes and edit your CI secrets. [Learn more about syncing](/docs/tutorials/sync)
+
+```shell
+npx dotenv-vault@latest push
+npx dotenv-vault@latest open ci
+```
+
+Use the UI to configure those secrets per environment.
+
+<ScreenshotBrowser url='/assets/img/docs/edit-ci-value.gif' www='dotenv.org' />
+
+Then build your encrypted `.env.vault` file.
+
+```shell
+npx dotenv-vault@latest build
+```
+
+Its contents should look something like this.
+
+```shell {{ title: '.env.vault' }}
+#/-------------------.env.vault---------------------/
+#/         cloud-agnostic vaulting standard         /
+#/   [how it works](https://dotenv.org/env-vault)   /
+#/--------------------------------------------------/
+
+# development
+DOTENV_VAULT_DEVELOPMENT="/HqNgQWsf6Oh6XB9pI/CGkdgCe6d4/vWZHgP50RRoDTzkzPQk/xOaQs="
+DOTENV_VAULT_DEVELOPMENT_VERSION=2
+
+# ci
+DOTENV_VAULT_CI="x26PuIKQ/xZ5eKrYomKngM+dO/9v1vxhwslE/zjHdg3l+H6q6PheB5GVDVIbZg=="
+DOTENV_VAULT_CI_VERSION=2
+```
+
+## Set DOTENV_KEY
+
+Fetch your CI `DOTENV_KEY`.
+
+```shell
+npx dotenv-vault@latest keys ci
+# outputs: dotenv://:key_4567@dotenv.org/vault/.env.vault?environment=ci
+```
+
+Set `DOTENV_KEY` on Gitlab.
+
+<ScreenshotBrowser url='/assets/img/docs/gitlab-config-vars.gif' www='gitlab.com' />
+
+## Build CI
+
+Commit those changes safely to code and rerun the build.
+
+That's it! On rerun, your `.env.vault` file will be decrypted and its CI secrets injected as environment variables – just in time.
+
+You'll know things worked correctly when you see `'Loading env from encrypted .env.vault'` in your logs. If a `DOTENV_KEY` is not set (for example when developing on your local machine) it will fall back to standard [dotenv](https://github.com/motdotla/dotenv) functionality.
+
+<ScreenshotBrowser url='/assets/img/docs/gitlab-logs-vault.png' www='gitlab.com' />
+
+<WellDone/>

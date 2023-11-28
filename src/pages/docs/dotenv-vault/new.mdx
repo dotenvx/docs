@@ -1,0 +1,91 @@
+export const description = 'Create your project with dotenv-vault'
+
+##### [CLI](/docs/dotenv-vault)
+# dotenv-vault new
+
+Create a .env.vault for your project. Keep your secrets safe in it.
+
+## Usage
+
+#### 1. Run new command
+
+```
+$ npx dotenv-vault new
+
+local:    Press y (or any key) to open up the browser to create a new project vault (.env.vault) or q to exit: y
+local:    Opening browser to https://vault.dotenv.org/new?project_name=Name
+local:    Waiting for project vault (.env.vault) to be created... ‚°ø
+```
+
+#### 2. Name your project
+
+On the page that opens, name your project (typically prefilled for you), and enter your email address.
+
+![](/assets/img/cloudinary/Screen_Shot_2022-07-28_at_5.55.15_PM_jnnhto.png)
+
+#### 3. View .env.vault (optional)
+
+A .env.vault was generated for your project. It uniquely identifies your project in dotenv-vault. Think of it like a unique git url at GitHub. It identifies your project so that you (and your teammates) pull the correct .env from dotenv-vault.
+
+Run ls -al to view it.
+
+```
+$ ls -al
+Jul 28 17:54 .
+Jul 27 13:46 ..
+Jul 27 14:51 .env
+Jul 28 18:09 .env.vault
+Jul 28 17:54 .gitignore
+...
+```
+![](/assets/img/cloudinary/Screen_Shot_2022-07-28_at_6.46.24_PM_s5qd3s.png)
+
+That's it!
+
+---
+
+## Command Details
+
+For more information on the new command, run dotenv-vault help new.
+
+```
+$ npx dotenv-vault help new
+Create your project
+
+USAGE
+  $ dotenv-vault new [DOTENV_VAULT] [-y]
+
+ARGUMENTS
+  DOTENV_VAULT  Set .env.vault identifier. Defaults to generated value.
+
+FLAGS
+  -y, --yes  Automatic yes to prompts. Assume yes to all prompts and run non-interactively.
+
+DESCRIPTION
+  Create your project
+
+EXAMPLES
+  $ dotenv-vault new
+```
+
+##### ARGUMENTS
+
+*[DOTENV_VAULT]*
+
+Set .env.vault identifier. Defaults to generated value.
+
+```
+$ npx dotenv-vault new vlt_6beaae5‚Ä¶
+local:    Adding .env.vault (DOTENV_VAULT)... done
+local:    Added to .env.vault (DOTENV_VAULT=vlt_6beaa...)
+```
+
+##### FLAGS
+
+*-y, --yes*
+
+Automatic yes to prompts. Assume yes to all prompts and run non-interactively.
+
+```
+$ npx dotenv-vault new -y
+```
