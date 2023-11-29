@@ -15,26 +15,27 @@ const withMDX = nextMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // images: {
+  //   loader: 'akamai',
+  //   path: ''
+  // },
+  // assetPrefix: './'
+
+  output: 'export', // https://nextjs.org/docs/pages/building-your-application/deploying/static-exports
   images: {
-    loader: 'akamai',
-    path: ''
+    unoptimized: true, // https://stackoverflow.com/questions/75785972/nextjs-export-folder-out-doesnt-have-index-html
   },
-  assetPrefix: './'
-  //output: 'export', // https://nextjs.org/docs/pages/building-your-application/deploying/static-exports
-  //images: {
-  //  unoptimized: true, // https://stackoverflow.com/questions/75785972/nextjs-export-folder-out-doesnt-have-index-html
-  //},
-  //reactStrictMode: true,
-  //pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
-  //experimental: {
-  //  scrollRestoration: true,
-  //},
-  //exportPathMap: function () {
-  //  return {
-  //    '/docs/libraries.html': { page: '/docs' },
-  //    '/docs/libraries': { page: '/docs' },
-  //  };
-  //},
+  reactStrictMode: true,
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+  experimental: {
+    scrollRestoration: true,
+  },
+  exportPathMap: function () {
+    return {
+      '/docs/libraries.html': { page: '/docs' },
+      '/docs/libraries': { page: '/docs' },
+    };
+  },
 }
 
 export default withSearch(withMDX(nextConfig))
