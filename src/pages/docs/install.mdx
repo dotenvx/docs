@@ -1,0 +1,55 @@
+export const description =
+  'Install dotenvx'
+
+##### dotenvx
+# Install
+
+`dotenvx` is a *better dotenv*–from the creator of [dotenv](https://github.com/motdotla/dotenv). {{ className: 'lead' }}
+
+## brew
+
+Installing with [brew](https://brew.sh) is the most straight forward:
+
+```bash
+brew install dotenvx/brew/dotenvx
+```
+
+## binary
+
+Or download it directly as a standalone binary:
+
+```bash
+# download it to `/user/local/bin/dotenvx`
+curl -fsS https://dotenvx.sh/ | sh
+
+# check it works
+dotenvx help
+```
+
+## npm
+
+Or use [npm](https://www.npmjs.com/package/@dotenvx/dotenvx)'s global install:
+
+```bash
+npm install @dotenvx/dotenvx --global
+```
+
+Or install it locally, so your repo has it built-in for your teammates:
+
+```bash
+npm i @dotenvx/dotenvx --save
+```
+```json
+{
+  "scripts": {
+    "start": "./node_modules/.bin/dotenvx run -- node index.js"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^0.6.0"
+  }
+}
+```
+
+## windows
+
+Download [the windows executable](https://github.com/dotenvx/dotenvx/releases) directly from the [releases page](https://github.com/dotenvx/dotenvx/releases).
