@@ -213,13 +213,13 @@ function SmallPrint() {
         &copy; Copyright {new Date().getFullYear()}. All rights reserved.
       </p>
       <div className="flex gap-4">
-        <SocialLink href="https://x.com/dotenvorg" icon={XIcon}>
+        <SocialLink href="https://x.com/dotenvx" icon={XIcon}>
           Follow us on X
         </SocialLink>
-        <SocialLink href="https://github.com/dotenv-org" icon={GitHubIcon}>
+        <SocialLink href="https://github.com/dotenvx" icon={GitHubIcon}>
           Follow us on GitHub
         </SocialLink>
-        <SocialLink href="https://youtube.com/@dotenvorg" icon={YoutubeIcon}>
+        <SocialLink href="https://youtube.com/@dotenvx" icon={YoutubeIcon}>
           Follow us on YouTube
         </SocialLink>
         <SocialLink href="https://marketplace.visualstudio.com/items?itemName=dotenv.dotenv-vscode" icon={VSCodeIcon}>
