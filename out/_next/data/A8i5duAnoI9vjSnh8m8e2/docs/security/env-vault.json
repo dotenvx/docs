@@ -1,0 +1,1 @@
+{"pageProps":{"description":"The .env.vault file uniquely identifies your project in dotenv-vault. You can think of it like a unique git url at GitHub. It identifies your project so that your teammates pull the correct .env file from dotenv-vault.","sections":[{"title":"Example","id":"example"},{"title":"Generating","id":"generating"}],"title":".env.vault"},"__N_SSG":true}

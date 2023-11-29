@@ -15,14 +15,6 @@ const withMDX = nextMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // images: {
-  //   loader: 'akamai',
-  //   path: ''
-  // },
-  // assetPrefix: './'
-
-  basePath: '/docs',
-  assetPrefix: '/docs',
   output: 'export', // https://nextjs.org/docs/pages/building-your-application/deploying/static-exports
   images: {
     unoptimized: true, // https://stackoverflow.com/questions/75785972/nextjs-export-folder-out-doesnt-have-index-html
