@@ -15,10 +15,7 @@ import { Cis } from '@/components/Cis'
 import { Concepts } from '@/components/Concepts'
 
 export const description =
-  'documentation for `dotenvx`'
-
-export const sections = [
-]
+  'Documentation for `dotenvx`'
 
 <HeroPattern />
 
@@ -29,11 +26,11 @@ export const sections = [
 
 <div className="not-prose mt-6 mb-16 flex gap-3">
   <Button href="/docs/quickstart" arrow="right" children="Quickstart" />
+  <Button href="/docs/install" variant="outline" children="Installation" />
 </div>
 
 ## Getting Started
 
-> run anywhere (cross-platform), multi-environment, encrypted envs.
 
 <CodeGroup>
 
@@ -68,9 +65,13 @@ docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
 
 </CodeGroup>
 
+* run anywhere (cross-platform)
+* multi-environment
+* encrypted envs
+
 ## Run Anywhere
 
-Simply preface your application with `dotenvx run --`.
+`dotenvx` works the same across every language, framework, and platform. Simply preface your application process with `dotenvx run --`.
 
 <CodeGroup>
 
@@ -148,7 +149,7 @@ $ dotenvx run -- your-app-boot-command
 
 ## Multiple Environments
 
-Create a `.env.production` file and use `--env-file` to load it. It's straightforward, yet flexible.
+Run any environment locally. Simply create a `.env.ENVIRONMENT` file and use `--env-file` to load it. It's straightforward, yet flexible.
 
 <CodeGroup>
 
@@ -209,7 +210,7 @@ Hello production
 
 ## Encryption
 
-Encrypt your secrets to a `.env.vault` file.
+Encrypt your secrets to an encrypted `.env.vault` file and then load them securely (and just-in-time) to production, staging, or ci. No more scattering your secrets across multiple third-parties platforms where they [could leak](https://techcrunch.com/2023/01/05/circleci-breach/).
 
 <CodeGroup>
 

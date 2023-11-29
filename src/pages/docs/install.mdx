@@ -4,13 +4,42 @@ export const description =
 ##### dotenvx
 # Install
 
-`dotenvx` is a *better dotenv*–from the creator of [dotenv](https://github.com/motdotla/dotenv). {{ className: 'lead' }}
+Install `dotenvx` where you need it. {{ className: 'lead' }}
+
+<CodeGroup>
+
+```bash {{ title: "Brew" }}
+brew install dotenvx/brew/dotenvx
+```
+
+```bash {{ title: "Curl" }}
+curl -fsS https://dotenvx.sh/ | sh
+```
+
+```bash {{ title: "Npm" }}
+npm install @dotenvx/dotenvx -g
+```
+
+```bash {{ title: "Docker" }}
+docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
+```
+
+```bash {{ title: "Windows" }}
+# download the appropriate installer for your Windows installation
+32-bit installer: https://github.com/dotenvx/dotenvx/releases
+64-bit installer: https://github.com/dotenvx/dotenvx/releases
+```
+
+</CodeGroup>
+
+---
 
 ## Brew
 
 Installing with [brew](https://brew.sh) is the most straight forward:
 
 ```bash
+# install with Homebrew and then use the dotenvx command
 brew install dotenvx/brew/dotenvx
 ```
 
@@ -31,6 +60,7 @@ dotenvx help
 Or use [npm](https://www.npmjs.com/package/@dotenvx/dotenvx)'s global install:
 
 ```bash
+# install globally with npm
 npm install @dotenvx/dotenvx --global
 ```
 
@@ -55,6 +85,8 @@ npm i @dotenvx/dotenvx --save
 Use [docker](https://hub.docker.com/r/dotenv/dotenvx) if you prefer:
 
 ```bash
+# use Docker if you prefer
+docker run -it --rm -v $(pwd):/app dotenv/dotenvx help
 docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
 ```
 
