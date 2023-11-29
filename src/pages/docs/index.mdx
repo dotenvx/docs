@@ -26,3 +26,35 @@ export const sections = [
 # Documentation
 
 *a better dotenv*–from the creator of dotenv. {{ className: 'lead' }}
+
+<div className="not-prose mb-16 mt-6 flex gap-3">
+  <Button href="/docs/quickstart" arrow="right" children="Quickstart" />
+</div>
+
+## Getting Started
+
+Benefit immediately. Run the push command to sync your `.env` file right now.
+
+<CodeGroup>
+```bash {{title: "npx"}}
+# npx is likely already installed on your machine
+npx dotenv-vault@latest push
+```
+
+```bash {{title: "Homebrew"}}
+# install with brew and then use the dotenv-vault command
+brew install dotenv-org/brew/dotenv-vault
+dotenv-vault push
+```
+
+```bash {{title: "Windows"}}
+# Download the appropriate installer for your Windows installation
+32-bit installer: https://dotenv-vault-assets.dotenv.org/channels/stable/dotenv-vault-x86.exe
+64-bit installer: https://dotenv-vault-assets.dotenv.org/channels/stable/dotenv-vault-x64.exe
+```
+
+```bash {{title: "Docker"}}
+# Run dotenv-vault as a docker image
+docker run -w $(pwd) -v $(pwd):$(pwd) -it dotenv/dotenv-vault push
+```
+</CodeGroup>

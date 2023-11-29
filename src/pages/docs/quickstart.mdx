@@ -1,0 +1,383 @@
+import { Video } from '@/components/Video'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+
+import { GoIcon } from '@/components/icons/GoIcon'
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { PhpIcon } from '@/components/icons/PhpIcon'
+import { PythonIcon } from '@/components/icons/PythonIcon'
+import { RubyIcon } from '@/components/icons/RubyIcon'
+import { RustIcon } from '@/components/icons/RustIcon'
+
+export const description =
+  'Manage secrets with dotenvx'
+
+##### dotenvx
+# Quickstart ⚡️
+
+Manage secrets with dotenvx. {{ className: 'lead' }} 
+
+<div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10">
+  <a href="/docs/languages/nodejs"><NodeIcon className="h-9 w-9 text-[#339933]"/></a>
+  <a href="/docs/languages/python"><PythonIcon className="h-9 w-9 text-[#3776AB]"/></a>
+  <a href="/docs/languages/ruby"><RubyIcon className="h-9 w-9 text-[#CC342D]"/></a>
+  <a href="/docs/languages/go"><GoIcon className="h-10 w-10 text-[#00ADD8]"/></a>
+  <a href="/docs/languages/php"><PhpIcon className="h-10 w-10 text-[#777BB4]"/></a>
+  <a href="/docs/languages/rust"><RustIcon className="h-10 w-10 text-[#000000] dark:invert"/></a>
+</div>
+
+## Initial setup
+
+Install the necessary libraries for your application in the language of your choice.
+
+<CodeGroup>
+
+```bash {{ title: "Node.js" }}
+npm install dotenv --save
+```
+
+```bash {{ title: "Python" }}
+pip install --upgrade flask python-dotenv-vault
+```
+
+```bash {{ title: "Ruby" }}
+bundle init
+bundle add sinatra puma dotenv-vault
+```
+
+```bash {{ title: "Go" }}
+go mod init hello-world
+go get github.com/labstack/echo/v4
+go get github.com/dotenv-org/godotenvvault
+```
+
+```bash {{ title: "PHP" }}
+composer require dotenv-org/phpdotenv-vault
+```
+
+```bash {{ title: "Rust" }}
+cargo add dotenv-vault
+```
+
+</CodeGroup>
+
+Write the application code.
+
+<CodeGroup>
+
+```js {{ title: "Node.js" }}
+// index.js
+require('dotenv').config()
+const PORT = process.env.PORT || 3000
+const http = require('http')
+const server = http.createServer((req, res) => {
+  res.statusCode = 200
+  res.setHeader('Content-Type', 'text/plain')
+  res.end(`Hello ${process.env.HELLO}`)
+})
+
+server.listen(PORT, () => {
+  console.log(`Server running on port:${PORT}/`)
+})
+```
+
+```python {{ title: "Python" }}
+# index.py
+import os
+
+from dotenv_vault import load_dotenv
+load_dotenv()
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+  hello = os.getenv("HELLO")
+  return f"Hello {hello}"
+```
+
+```ruby {{ title: "Ruby" }}
+# index.rb
+require "dotenv-vault/load"
+require "sinatra"
+
+get "/" do
+  "Hello #{ENV["HELLO"]}"
+end
+```
+
+```go {{ title: "Go" }}
+// index.go
+package main
+
+import (
+    "net/http"
+    "log"
+    "os"
+
+    "github.com/labstack/echo/v4"
+    "github.com/dotenv-org/godotenvvault"
+)
+
+func main() {
+    err := godotenvvault.Load()
+    if err != nil {
+      log.Fatal("Error loading .env file")
+    }
+
+    hello := os.Getenv("HELLO")
+    output := "Hello " + hello
+
+    e := echo.New()
+    e.GET("/", func(c echo.Context) error {
+        return c.String(http.StatusOK, output)
+    })
+    e.Logger.Fatal(e.Start(":1323"))
+}
+```
+
+```php {{ title: "PHP" }}
+<?php
+  // index.php
+  require 'vendor/autoload.php';
+
+  $dotenv = DotenvVault\DotenvVault::createImmutable(__DIR__);
+  $dotenv->safeLoad();
+
+  echo "Hello {$_SERVER['HELLO']}";
+```
+
+```rust {{ title: "Rust" }}
+fn main() {
+    let _ = dotenv_vault::dotenv();
+
+    let hello = std::env::var("HELLO").unwrap_or("".to_string());
+
+    println!("Hello {hello}");
+}
+```
+
+</CodeGroup>
+
+Create your `.env` file.
+
+```bash {{ title: '.env' }}
+# .env
+HELLO="World"
+```
+
+Run your application.
+
+<CodeGroup>
+
+```bash {{ title: 'Node.js' }}
+node index.js
+# visit http://localhost:3000
+```
+
+```bash {{ title: 'Python' }}
+flask --app index run
+# visit http://127.0.0.1:5000
+```
+
+```bash {{ title: 'Ruby' }}
+ruby index.rb
+# visit http://localhost:4567
+```
+
+```bash {{ title: 'Go' }}
+go run index.go
+# visit http://localhost:1323
+```
+
+```bash {{ title: 'PHP' }}
+php index.php
+```
+
+```bash {{ title: 'Rust' }}
+cargo run
+```
+
+</CodeGroup>
+
+It worked if you see "Hello World".
+
+<ScreenshotBrowser url='/assets/img/docs/nextjs-hello-world.png'/>
+
+Next, sync your `.env` file.
+
+## Sync
+
+Push and pull changes to your `.env` file. Begin by creating your project's env vault and authenticating against it.
+
+```bash
+npx dotenv-vault@latest new
+npx dotenv-vault@latest login
+```
+
+Push and pull your .env file securely.
+
+```bash
+npx dotenv-vault@latest push
+npx dotenv-vault@latest pull
+```
+
+That's it! You synced our `.env` file. Next, configure your production secrets.
+
+## Manage
+
+Open the production environment to edit the production `HELLO` value.
+
+```shell
+npx dotenv-vault@latest open production
+```
+
+Edit the `HELLO` value so that your production secrets will render as `Hello production`.
+
+<ScreenshotBrowser url="/assets/img/docs/edit-production-value.gif" www="www.dotenv.org" />
+
+Looking good. Next, deploy your production secrets using your encrypted `.env.vault` file.
+
+## Deploy
+
+Begin by building your project's encrypted `.env.vault` file. It securely encrypts your secrets in a cloud-agnostic payload.
+
+```bash
+npx dotenv-vault@latest build
+```
+
+Commit that safely to code.
+
+```bash
+git add .env.vault
+git commit -am "Build encrypted .env.vault file for deploy"
+```
+
+<Note>
+  Yes it safe AND recommended you commit the `.env.vault` file to code. It contains AES-256 GCM encrypted ciphers of your environment secrets - that are decrypted just-in-time using an environment `DOTENV_KEY`.
+</Note>
+
+Fetch your production decryption key - the `DOTENV_KEY` - to decrypt your `.env.vault` file.
+
+```bash
+npx dotenv-vault@latest keys production
+```
+
+This will output your production `DOTENV_KEY`. Use that `DOTENV_KEY` to run your application in production mode.
+
+<CodeGroup>
+
+```bash {{ title: "Node.js" }}
+DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' node index.js
+# visit http://localhost:3000
+```
+
+```bash {{ title: "Python" }}
+DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' flask --app index run
+# visit http://127.0.0.1:5000
+```
+
+```bash {{ title: "Ruby" }}
+DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' ruby index.rb
+# visit http://localhost:4567
+```
+
+```bash {{ title: "Go" }}
+DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' go run index.go
+# visit http://localhost:1323
+```
+
+```bash {{ title: "PHP" }}
+DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' php index.php
+# Hello production
+```
+
+```bash {{ title: "Rust" }}
+DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' cargo run
+# Hello production
+```
+
+</CodeGroup>
+
+<ScreenshotBrowser url='/assets/img/docs/hello-production.png'/>
+
+You will know it is working if you see the log message `Loading env from encrypted .env.vault`.
+
+<CodeGroup>
+
+```bash {{ title: "Node.js" }}
+$ hello-world: DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production' node index.js
+[dotenv@16.3.1][INFO] Loading env from encrypted .env.vault
+Example app listening on port 3000
+```
+
+```bash {{ title: "Python" }}
+$ flask-hello-world: DOTENV_KEY='dotenv://:key_3889c2a7ed0ff28ccaf2984fdf020bf0e4a702ecfd2e0c00a129f838b0cb4e71@dotenv.org/vault/.env.vault?environment=production' flask --app index run
+INFO:dotenv_vault.main:Loading env from encrypted .env.vault
+ * Serving Flask app 'index'
+```
+
+```bash {{ title: "Ruby" }}
+$ hello-world: DOTENV_KEY='dotenv://:1234@dotenv.org/vault/.env.vault?environment=production' ruby index.rb
+INFO -- : [dotenv-vault] Loading env from encrypted .env.vault
+== Sinatra (v3.0.6) has taken the stage on 4567 for development with backup from Puma
+```
+
+```bash {{ title: "Go" }}
+$ hello-world: DOTENV_KEY='dotenv://:1234@dotenv.org/vault/.env.vault?environment=production' go run index.go
+[dotenv-vault] Loading env from encrypted .env.vault
+⇨ http server started on [::]:1323
+```
+
+```bash {{ title: "PHP" }}
+$ hello-world: DOTENV_KEY='dotenv://:1234@dotenv.org/vault/.env.vault?environment=production' php index.phhp
+[dotenv-vault][INFO] Loading env from encrypted .env.vault
+Hello production
+```
+
+```bash {{ title: "Rust" }}
+$ hello-world: DOTENV_KEY='dotenv://:1234@dotenv.org/vault/.env.vault?environment=production' cargo run
+[dotenv-vault][INFO] Loading env from encrypted .env.vault
+Hello production
+```
+
+</CodeGroup>
+
+That's it! The `DOTENV_KEY` decrypts the production contents of `.env.vault` and injects its secrets just-in-time to your running process.
+
+## Conclusion
+
+Congrats! You now understand how `.env.vault` works. This is much safer than syncing your secrets to third-parties where they could leak. [CircleiCi had a secrets breach not long ago](https://techcrunch.com/2023/01/05/circleci-breach/). `.env.vault` protects you from breaches like that. An attacker would have to get their hands on both your `DOTENV_KEY` AND your codebase. That is much more difficult.
+
+In addition, you now have a single source of truth that is easy to manage. Make a change in the UI, run the build command, and redeploy. Spend less time juggling secrets and more time coding.
+
+All that's left to do is set your `DOTENV_KEY` on your production server and deploy your code.
+
+For example on heroku it is as easy as:
+
+```shell
+$ heroku config:set DOTENV_KEY='dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production'
+```
+
+<Video poster='/assets/img/cloudinary/deploy-encrypted-vault_shdiav.gif'
+  mp4='/assets/img/cloudinary/deploy-encrypted-vault_shdiav.mp4'
+  webm='/assets/img/cloudinary/deploy-encrypted-vault_shdiav.webm'/>
+
+## FAQ
+
+### What happens if `DOTENV_KEY` is not set?
+
+It gracefully falls back to loading from your `.env` file. This is the default for development so that you can focus on editing your `.env` file and save the `build` command until you are ready to deploy those environment variables changes.
+
+### Should I commit my `.env` file?
+
+No. We **strongly** recommend against committing your `.env` file to version control. It should only include environment-specific values such as database passwords or API keys. Your production database should have a different password than your development database.
+
+### Should I commit my `.env.vault` file?
+
+Yes. It is safe and recommended to do so. It contains your encrypted envs, and your vault identifier.
+
+### Can I share the `DOTENV_KEY`?
+
+No. It is the key that unlocks your encrypted environment variables. Be very careful who you share this key with. Do not let it leak.

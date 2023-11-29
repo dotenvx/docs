@@ -192,8 +192,9 @@ export const navigation = [
     title: 'docs',
     href: '/docs',
     links: [
-      { title: 'Overview', href: '/docs' },
-      { title: 'Install', href: '/docs/install' }
+      { title: 'Introduction', href: '/docs' },
+      { title: 'Quickstart', href: '/docs/quickstart' },
+      { title: 'Install', href: '/docs/install' },
     ],
   }
 ]

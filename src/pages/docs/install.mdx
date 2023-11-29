@@ -50,6 +50,28 @@ npm i @dotenvx/dotenvx --save
 }
 ```
 
+## docker
+
+Use [docker](https://hub.docker.com/r/dotenv/dotenvx) if you prefer:
+
+```bash
+docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
+```
+
+Or in any image:
+
+```
+FROM node:latest
+RUN echo "HELLO=World" > .env && echo "console.log('Hello ' + process.env.HELLO)" > index.js
+RUN curl -fsS https://dotenvx.sh/ | sh
+CMD ["dotenvx", "run", "--", "echo", "Hello $HELLO"]
+```
+
 ## windows
 
 Download [the windows executable](https://github.com/dotenvx/dotenvx/releases) directly from the [releases page](https://github.com/dotenvx/dotenvx/releases).
+
+> * [dotenvx-windows-amd64.tar.gz
+](https://github.com/dotenvx/dotenvx/releases)
+> * [dotenvx-windows-x86_64.tar.gz
+](https://github.com/dotenvx/dotenvx/releases)
