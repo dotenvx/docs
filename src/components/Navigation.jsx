@@ -193,6 +193,7 @@ export const navigation = [
     href: '/docs',
     links: [
       { title: 'Introduction', href: '/docs' },
+      { title: 'Quickstart', href: '/docs/quickstart' },
     ],
   }
 ]
