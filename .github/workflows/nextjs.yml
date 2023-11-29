@@ -37,8 +37,6 @@ jobs:
       #     static_site_generator: next
       - run: npm install
       - run: NODE_ENV='production' npm run build
-      # - name: Static HTML export with Next.js
-      #   run: npm run export
       - uses: actions/upload-pages-artifact@v2
         with:
           path: ./out
