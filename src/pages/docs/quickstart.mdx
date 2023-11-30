@@ -74,6 +74,10 @@ npm install express --save
 pip install --upgrade flask
 ```
 
+```bash {{ title: "PHP" }}
+# nothing addiitonal to install
+```
+
 ```bash {{ title: "Ruby" }}
 bundle init
 bundle add sinatra
@@ -124,6 +128,12 @@ app = Flask(__name__)
 def hello():
   hello = os.getenv("HELLO")
   return f"Hello {hello}"
+```
+
+```php {{ title: "PHP" }}
+<?php
+  // index.php
+  echo "Hello {$_SERVER['HELLO']}";
 ```
 
 ```ruby {{ title: "Ruby" }}
@@ -193,6 +203,12 @@ Running on http://127.0.0.1:5000
 # Hello None
 ```
 
+```bash {{ title: "PHP" }}
+$ php index.php
+PHP Warning:  Undefined array key "HELLO"
+# Hello
+```
+
 ```bash {{ title: "Ruby" }}
 $ ruby index.rb
 Listening on http://127.0.0.1:4567
@@ -237,6 +253,13 @@ $ dotenvx run -- flask --app index run
 Running on http://127.0.0.1:5000
 # http://127.0.0.1:5000
 # Hello None
+```
+
+```bash {{ title: "PHP" }}
+$ dotenvx run -- php index.php
+[dotenvx][WARN] ENOENT: no such file or directory, open '/path/to/.env'
+PHP Warning:  Undefined array key "HELLO"
+# Hello
 ```
 
 ```bash {{ title: "Ruby" }}
@@ -295,6 +318,13 @@ Running on http://127.0.0.1:5000
 # Hello None
 ```
 
+```bash {{ title: "PHP" }}
+$ dotenvx run -- php index.php
+[dotenvx][INFO] injecting 1 environment variable from .env
+PHP Warning:  Undefined array key "HELLO"
+# Hello
+```
+
 ```bash {{ title: "Ruby" }}
 $ dotenvx run -- ruby index.rb
 [dotenvx][INFO] injecting 1 environment variable from .env
@@ -338,6 +368,16 @@ $ dotenvx run --debug -- node index.js
 
 ```bash {{ title: "Python" }}
 $ dotenvx run --debug -- flask --app index run
+[dotenvx][VERBOSE] injecting env from /path/to/.env
+[dotenvx][DEBUG] reading env from /path/to/.env
+[dotenvx][DEBUG] parsing env from /path/to/.env
+[dotenvx][DEBUG] {"JELLO":"World"}
+
+# Oops, HELLO not JELLO ^^
+```
+
+```bash {{ title: "PHP" }}
+$ dotenvx run --debug -- php index.php
 [dotenvx][VERBOSE] injecting env from /path/to/.env
 [dotenvx][DEBUG] reading env from /path/to/.env
 [dotenvx][DEBUG] parsing env from /path/to/.env
@@ -404,6 +444,12 @@ $ dotenvx run -- flask --app index run
 [dotenvx][INFO] injecting 1 environment variable from .env
 Running on http://127.0.0.1:5000
 # http://127.0.0.1:5000
+# Hello World
+```
+
+```bash {{ title: "PHP" }}
+$ dotenvx run -- php index.php
+[dotenvx][INFO] injecting 1 environment variable from .env
 # Hello World
 ```
 
