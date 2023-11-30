@@ -84,6 +84,14 @@ go mod init hello-world
 go get github.com/labstack/echo/v4
 ```
 
+```bash {{ title: "Rust" }}
+cargo new app
+cd app
+cargo add rocket
+rustup override set nightly
+```
+
+
 </CodeGroup>
 
 Create a simple *Hello World* program.
@@ -149,6 +157,22 @@ func main() {
 }
 ```
 
+```rust {{ title: "Rust" }}
+// src/main.rs
+#[macro_use] extern crate rocket;
+
+#[get("/")]
+fn index() -> String {
+    let hello = std::env::var("HELLO").unwrap_or("".to_string());
+    format!("Hello {}", hello)
+}
+
+#[launch]
+fn rocket() -> _ {
+    rocket::build().mount("/", routes![index])
+}
+```
+
 </CodeGroup>
 
 Run it.
@@ -182,6 +206,14 @@ http server started on [::]:1323
 # http://localhost:1323
 # Hello
 ```
+
+```bash {{ title: "Rust" }}
+$ cargo run
+Rocket has launched from http://127.0.0.1:8000
+# http://127.0.0.1:8000
+# Hello
+```
+
 
 </CodeGroup>
 
@@ -222,6 +254,15 @@ http server started on [::]:1323
 # http://localhost:1323
 # Hello
 ```
+
+```bash {{ title: "Rust" }}
+$ dotenvx run -- cargo run
+[dotenvx][WARN] ENOENT: no such file or directory, open '/path/to/.env'
+Rocket has launched from http://127.0.0.1:8000
+# http://127.0.0.1:8000
+# Hello
+```
+
 
 </CodeGroup>
 
@@ -270,6 +311,15 @@ http server started on [::]:1323
 # Hello
 ```
 
+```bash {{ title: "Rust" }}
+$ dotenvx run -- cargo run
+[dotenvx][INFO] injecting 1 environment variable from .env
+Rocket has launched from http://127.0.0.1:8000
+# http://127.0.0.1:8000
+# Hello
+```
+
+
 </CodeGroup>
 
 Hrm, still not saying `Hello  World`. Pass the `--debug` flag to to see what's going wrong.
@@ -308,6 +358,16 @@ $ dotenvx run --debug -- ruby index.rb
 
 ```bash {{ title: "Go" }}
 $ dotenvx run --debug -- go run main.go
+[dotenvx][VERBOSE] injecting env from /path/to/.env
+[dotenvx][DEBUG] reading env from /path/to/.env
+[dotenvx][DEBUG] parsing env from /path/to/.env
+[dotenvx][DEBUG] {"JELLO":"World"}
+
+# Oops, HELLO not JELLO ^^
+```
+
+```bash {{ title: "Rust" }}
+$ dotenvx run --debug -- cargo run
 [dotenvx][VERBOSE] injecting env from /path/to/.env
 [dotenvx][DEBUG] reading env from /path/to/.env
 [dotenvx][DEBUG] parsing env from /path/to/.env
@@ -363,6 +423,13 @@ http server started on [::]:1323
 # Hello World
 ```
 
+```bash {{ title: "Rust" }}
+$ dotenvx run -- cargo run
+[dotenvx][INFO] injecting 1 environment variable from .env
+Rocket has launched from http://127.0.0.1:8000
+# http://127.0.0.1:8000
+# Hello World
+```
 
 </CodeGroup>
 
