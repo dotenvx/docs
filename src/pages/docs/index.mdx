@@ -106,6 +106,13 @@ $ dotenvx run -- ruby index.rb
 Hello World
 ```
 
+```bash {{ title: 'Go' }}
+$ echo "HELLO=World" > .env && echo 'package main; import ("fmt"; "os"); func main() { fmt.Printf("Hello %s\n", os.Getenv("HELLO")) }' > main.go
+
+$ dotenvx run -- go run main.go
+Hello World
+```
+
 ```bash {{ title: 'Rust' }}
 $ echo "HELLO=World" > .env && echo 'fn main() {let hello = std::env::var("HELLO").unwrap_or("".to_string());println!("Hello {hello}");}' > src/main.rs
 

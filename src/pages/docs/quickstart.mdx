@@ -75,19 +75,13 @@ pip install --upgrade flask
 ```
 
 ```bash {{ title: "Ruby" }}
-
+bundle init
+bundle add sinatra
 ```
 
 ```bash {{ title: "Go" }}
-
-```
-
-```bash {{ title: "PHP" }}
-
-```
-
-```bash {{ title: "Rust" }}
-
+go mod init hello-world
+go get github.com/labstack/echo/v4
 ```
 
 </CodeGroup>
@@ -134,14 +128,12 @@ end
 ```
 
 ```go {{ title: "Go" }}
-// index.go
+// main.go
 package main
 
 import (
     "net/http"
-    "log"
     "os"
-
     "github.com/labstack/echo/v4"
 )
 
@@ -154,22 +146,6 @@ func main() {
         return c.String(http.StatusOK, output)
     })
     e.Logger.Fatal(e.Start(":1323"))
-}
-```
-
-```php {{ title: "PHP" }}
-<?php
-  // index.php
-  require 'vendor/autoload.php';
-
-  echo "Hello {$_SERVER['HELLO']}";
-```
-
-```rust {{ title: "Rust" }}
-fn main() {
-    let hello = std::env::var("HELLO").unwrap_or("".to_string());
-
-    println!("Hello {hello}");
 }
 ```
 
@@ -191,6 +167,20 @@ $ flask --app index run
 Running on http://127.0.0.1:5000
 # http://127.0.0.1:5000
 # Hello None
+```
+
+```bash {{ title: "Ruby" }}
+$ ruby index.rb
+Listening on http://127.0.0.1:4567
+# http://127.0.0.1:4567
+# Hello
+```
+
+```bash {{ title: "Go" }}
+$ go run main.go
+http server started on [::]:1323
+# http://localhost:1323
+# Hello
 ```
 
 </CodeGroup>
@@ -215,6 +205,22 @@ $ dotenvx run -- flask --app index run
 Running on http://127.0.0.1:5000
 # http://127.0.0.1:5000
 # Hello None
+```
+
+```bash {{ title: "Ruby" }}
+$ dotenvx run -- ruby index.rb
+[dotenvx][WARN] ENOENT: no such file or directory, open '/path/to/.env'
+Listening on http://127.0.0.1:4567
+# http://127.0.0.1:4567
+# Hello
+```
+
+```bash {{ title: "Go" }}
+$ dotenvx run -- go run main.go
+[dotenvx][WARN] ENOENT: no such file or directory, open '/path/to/.env'
+http server started on [::]:1323
+# http://localhost:1323
+# Hello
 ```
 
 </CodeGroup>
@@ -248,6 +254,22 @@ Running on http://127.0.0.1:5000
 # Hello None
 ```
 
+```bash {{ title: "Ruby" }}
+$ dotenvx run -- ruby index.rb
+[dotenvx][INFO] injecting 1 environment variable from .env
+Listening on http://127.0.0.1:4567
+# http://127.0.0.1:4567
+# Hello
+```
+
+```bash {{ title: "Go" }}
+$ dotenvx run -- go run main.go
+[dotenvx][INFO] injecting 1 environment variable from .env
+http server started on [::]:1323
+# http://localhost:1323
+# Hello
+```
+
 </CodeGroup>
 
 Hrm, still not saying `Hello  World`. Pass the `--debug` flag to to see what's going wrong.
@@ -274,9 +296,29 @@ $ dotenvx run --debug -- flask --app index run
 # Oops, HELLO not JELLO ^^
 ```
 
+```bash {{ title: "Ruby" }}
+$ dotenvx run --debug -- ruby index.rb
+[dotenvx][VERBOSE] injecting env from /path/to/.env
+[dotenvx][DEBUG] reading env from /path/to/.env
+[dotenvx][DEBUG] parsing env from /path/to/.env
+[dotenvx][DEBUG] {"JELLO":"World"}
+
+# Oops, HELLO not JELLO ^^
+```
+
+```bash {{ title: "Go" }}
+$ dotenvx run --debug -- go run main.go
+[dotenvx][VERBOSE] injecting env from /path/to/.env
+[dotenvx][DEBUG] reading env from /path/to/.env
+[dotenvx][DEBUG] parsing env from /path/to/.env
+[dotenvx][DEBUG] {"JELLO":"World"}
+
+# Oops, HELLO not JELLO ^^
+```
+
 </CodeGroup>
 
-`dotenvx` is easier to debug with than [dotenv](https://github.com/motdotla/dotenv).
+It's easier to debug with `dotenvx` than [dotenv](https://github.com/motdotla/dotenv).
 
 Fix your `.env` file.
 
@@ -304,6 +346,23 @@ Running on http://127.0.0.1:5000
 # http://127.0.0.1:5000
 # Hello World
 ```
+
+```bash {{ title: "Ruby" }}
+$ dotenvx run -- ruby index.rb
+[dotenvx][INFO] injecting 1 environment variable from .env
+Listening on http://127.0.0.1:4567
+# http://127.0.0.1:4567
+# Hello World
+```
+
+```bash {{ title: "Go" }}
+$ dotenvx run -- go run main.go
+[dotenvx][INFO] injecting 1 environment variable from .env
+http server started on [::]:1323
+# http://localhost:1323
+# Hello World
+```
+
 
 </CodeGroup>
 
