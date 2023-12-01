@@ -189,9 +189,9 @@ Hello World
 $ echo "HELLO=production" > .env.production
 
 $ dotenvx run --env-file=.env.production --verbose -- node index.js
-[dotenvx][VERBOSE] injecting env from /path/to/.env.production
-[dotenvx][VERBOSE] HELLO set
-[dotenvx][INFO] injecting 1 environment variable from .env.production
+[dotenvx][verbose] loading env from /path/to/.env.production
+[dotenvx][verbose] HELLO set
+[dotenvx][info] loading env (1) from .env.production
 Hello production
 ```
 
@@ -199,16 +199,16 @@ Hello production
 $ echo "HELLO=production" > .env.production
 
 $ dotenvx run --env-file=.env.production --debug -- node index.js
-[dotenvx][DEBUG] configuring options
-[dotenvx][DEBUG] {"envFile":[".env.production"]}
-[dotenvx][VERBOSE] injecting env from /path/to/.env.production
-[dotenvx][DEBUG] reading env from /path/to/.env.production
-[dotenvx][DEBUG] parsing env from /path/to/.env.production
-[dotenvx][DEBUG] {"HELLO":"production"}
-[dotenvx][DEBUG] writing env from /path/to/.env.production
-[dotenvx][VERBOSE] HELLO set
-[dotenvx][DEBUG] HELLO set to production
-[dotenvx][INFO] injecting 1 environment variable from .env.production
+[dotenvx][debug] configuring options
+[dotenvx][debug] {"envFile":[".env.production"]}
+[dotenvx][verbose] loading env from /path/to/.env.production
+[dotenvx][debug] reading env from /path/to/.env.production
+[dotenvx][debug] parsing env from /path/to/.env.production
+[dotenvx][debug] {"HELLO":"production"}
+[dotenvx][debug] writing env from /path/to/.env.production
+[dotenvx][verbose] HELLO set
+[dotenvx][debug] HELLO set to production
+[dotenvx][info] loading env (1) from .env.production
 Hello production
 ```
 
@@ -227,7 +227,7 @@ $ echo "HELLO=World" > .env && echo "console.log('Hello ' + process.env.HELLO)" 
 $ echo "HELLO=production" > .env.production
 
 $ dotenvx encrypt
-[dotenvx][INFO] encrypted .env,.env.production to .env.vault
+[dotenvx][info] encrypted .env,.env.production to .env.vault
 ```
 
 ```bash {{ title: "Step 2" }}
@@ -243,7 +243,7 @@ DOTENV_KEY_PRODUCTION="dotenv://:key_456production@dotenvx.com/vault/.env.vault?
 ```bash {{ title: "Step 3" }}
 # 3. Preface dotenvx run -- with `DOTENV_KEY` (decrypts your .env.vault and injects your encrypted envs)
 DOTENV_KEY='dotenv://:key_45yproduction@dotenvx.com/vault/.env.vault?environment=production' dotenvx run -- node index.js
-[dotenvx@0.6.3][INFO] injecting 1 environment variable from encrypted .env.vault
+[dotenvx@0.6.3][info] loading env(1) from encrypted .env.vault
 Hello production
 > :-D
 ```
