@@ -75,7 +75,8 @@ docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
 <CodeGroup>
 
 ```bash {{ title: 'Node' }}
-$ echo "HELLO=World" > .env && echo "console.log('Hello ' + process.env.HELLO)" > index.js
+$ echo "HELLO=World" > .env
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 $ node index.js
 Hello undefined
@@ -86,42 +87,48 @@ Hello World
 ```
 
 ```bash {{ title: 'Python' }}
-$ echo "HELLO=World" > .env && echo 'import os;print("Hello " + os.getenv("HELLO", ""))' > index.py
+$ echo "HELLO=World" > .env 
+$ echo 'import os;print("Hello " + os.getenv("HELLO", ""))' > index.py
 
 $ dotenvx run -- python3 index.py
 Hello World
 ```
 
 ```bash {{ title: 'PHP' }}
-$ echo "HELLO=World" > .env && echo '<?php echo "Hello {$_SERVER["HELLO"]}\n";' > index.php
+$ echo "HELLO=World" > .env 
+$ echo '<?php echo "Hello {$_SERVER["HELLO"]}\n";' > index.php
 
 $ dotenvx run -- php index.php
 Hello World
 ```
 
 ```bash {{ title: 'Ruby' }}
-$ echo "HELLO=World" > .env && echo 'puts "Hello #{ENV["HELLO"]}"' > index.rb
+$ echo "HELLO=World" > .env 
+$ echo 'puts "Hello #{ENV["HELLO"]}"' > index.rb
 
 $ dotenvx run -- ruby index.rb
 Hello World
 ```
 
 ```bash {{ title: 'Go' }}
-$ echo "HELLO=World" > .env && echo 'package main; import ("fmt"; "os"); func main() { fmt.Printf("Hello %s\n", os.Getenv("HELLO")) }' > main.go
+$ echo "HELLO=World" > .env 
+$ echo 'package main; import ("fmt"; "os"); func main() { fmt.Printf("Hello %s\n", os.Getenv("HELLO")) }' > main.go
 
 $ dotenvx run -- go run main.go
 Hello World
 ```
 
 ```bash {{ title: 'Rust' }}
-$ echo "HELLO=World" > .env && echo 'fn main() {let hello = std::env::var("HELLO").unwrap_or("".to_string());println!("Hello {hello}");}' > src/main.rs
+$ echo "HELLO=World" > .env 
+$ echo 'fn main() {let hello = std::env::var("HELLO").unwrap_or("".to_string());println!("Hello {hello}");}' > src/main.rs
 
 $ dotenvx run -- cargo run
 Hello World
 ```
 
 ```bash {{ title: 'Java' }}
-$ echo "HELLO=World" > .env && echo 'public class Index { public static void main(String[] args) { System.out.println("Hello " + System.getenv("HELLO")); } }' > index.java
+$ echo "HELLO=World" > .env 
+$ echo 'public class Index { public static void main(String[] args) { System.out.println("Hello " + System.getenv("HELLO")); } }' > index.java
 
 $ dotenvx run -- java index.java
 Hello World
@@ -130,7 +137,8 @@ Hello World
 ```bash {{ title: '.NET' }}
 $ dotnet new console -n HelloWorld -o HelloWorld
 $ cd HelloWorld
-$ echo "HELLO=World" > .env && echo 'Console.WriteLine($"Hello {Environment.GetEnvironmentVariable("HELLO")}");' > Program.cs
+$ echo "HELLO=World" > .env 
+$ echo 'Console.WriteLine($"Hello {Environment.GetEnvironmentVariable("HELLO")}");' > Program.cs
 
 $ dotenvx run -- dotnet run
 Hello World
@@ -160,7 +168,8 @@ Run any environment locally. Simply create a `.env.ENVIRONMENT` file and use `--
 <CodeGroup>
 
 ```bash {{ title: '--env-file' }}
-$ echo "HELLO=production" > .env.production && echo "console.log('Hello ' + process.env.HELLO)" > index.js
+$ echo "HELLO=production" > .env.production 
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 $ dotenvx run --env-file=.env.production -- node index.js
 Hello production
@@ -222,12 +231,13 @@ Encrypt your secrets to an encrypted `.env.vault` file and then load them secure
 
 ```bash {{ title: "Step 1" }}
 # 1. dotenvx encrypt (encrypt your .env.* file to .env.vault)
-$ echo "HELLO=World" > .env && echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
+$ echo "HELLO=World" > .env
 $ echo "HELLO=production" > .env.production
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 $ dotenvx encrypt
-[dotenvx][info] encrypted .env,.env.production to .env.vault
+[dotenvx][info] encrypted to .env.vault (.env,.env.production)
+[dotenvx][info] keys added to .env.keys (DOTENV_KEY_DEVELOPMENT,DOTENV_KEY_PRODUCTION)
 ```
 
 ```bash {{ title: "Step 2" }}
