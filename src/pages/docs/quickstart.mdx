@@ -304,7 +304,7 @@ Run it again.
 
 ```bash {{ title: "Node" }}
 $ dotenvx run -- node index.js
-[dotenvx][INFO] injecting 1 environment variable from .env
+[dotenvx][info] loading env (1) from .env
 Server running on port:3000
 # http://localhost:3000
 # Hello undefined
@@ -312,7 +312,7 @@ Server running on port:3000
 
 ```bash {{ title: "Python" }}
 $ dotenvx run -- flask --app index run
-[dotenvx][INFO] injecting 1 environment variable from .env
+[dotenvx][info] loading env (1) from .env
 Running on http://127.0.0.1:5000
 # http://127.0.0.1:5000
 # Hello None
@@ -320,14 +320,14 @@ Running on http://127.0.0.1:5000
 
 ```bash {{ title: "PHP" }}
 $ dotenvx run -- php index.php
-[dotenvx][INFO] injecting 1 environment variable from .env
+[dotenvx][info] loading env (1) from .env
 PHP Warning:  Undefined array key "HELLO"
 # Hello
 ```
 
 ```bash {{ title: "Ruby" }}
 $ dotenvx run -- ruby index.rb
-[dotenvx][INFO] injecting 1 environment variable from .env
+[dotenvx][info] loading env (1) from .env
 Listening on http://127.0.0.1:4567
 # http://127.0.0.1:4567
 # Hello
@@ -335,7 +335,7 @@ Listening on http://127.0.0.1:4567
 
 ```bash {{ title: "Go" }}
 $ dotenvx run -- go run main.go
-[dotenvx][INFO] injecting 1 environment variable from .env
+[dotenvx][info] loading env (1) from .env
 http server started on [::]:1323
 # http://localhost:1323
 # Hello
@@ -343,7 +343,7 @@ http server started on [::]:1323
 
 ```bash {{ title: "Rust" }}
 $ dotenvx run -- cargo run
-[dotenvx][INFO] injecting 1 environment variable from .env
+[dotenvx][info] loading env (1) from .env
 Rocket has launched from http://127.0.0.1:8000
 # http://127.0.0.1:8000
 # Hello
@@ -358,60 +358,60 @@ Hrm, still not saying `Hello  World`. Pass the `--debug` flag to to see what's g
 
 ```bash {{ title: "Node" }}
 $ dotenvx run --debug -- node index.js
-[dotenvx][VERBOSE] injecting env from /path/to/.env
-[dotenvx][DEBUG] reading env from /path/to/.env
-[dotenvx][DEBUG] parsing env from /path/to/.env
-[dotenvx][DEBUG] {"JELLO":"World"}
+[dotenvx][verbose] laoding env from /path/to/.env
+[dotenvx][debug] reading env from /path/to/.env
+[dotenvx][debug] parsing env from /path/to/.env
+[dotenvx][debug] {"JELLO":"World"}
 
 # Oops, HELLO not JELLO ^^
 ```
 
 ```bash {{ title: "Python" }}
 $ dotenvx run --debug -- flask --app index run
-[dotenvx][VERBOSE] injecting env from /path/to/.env
-[dotenvx][DEBUG] reading env from /path/to/.env
-[dotenvx][DEBUG] parsing env from /path/to/.env
-[dotenvx][DEBUG] {"JELLO":"World"}
+[dotenvx][verbose] loading env from /path/to/.env
+[dotenvx][debug] reading env from /path/to/.env
+[dotenvx][debug] parsing env from /path/to/.env
+[dotenvx][debug] {"JELLO":"World"}
 
 # Oops, HELLO not JELLO ^^
 ```
 
 ```bash {{ title: "PHP" }}
 $ dotenvx run --debug -- php index.php
-[dotenvx][VERBOSE] injecting env from /path/to/.env
-[dotenvx][DEBUG] reading env from /path/to/.env
-[dotenvx][DEBUG] parsing env from /path/to/.env
-[dotenvx][DEBUG] {"JELLO":"World"}
+[dotenvx][verbose] loading env from /path/to/.env
+[dotenvx][debug] reading env from /path/to/.env
+[dotenvx][debug] parsing env from /path/to/.env
+[dotenvx][debug] {"JELLO":"World"}
 
 # Oops, HELLO not JELLO ^^
 ```
 
 ```bash {{ title: "Ruby" }}
 $ dotenvx run --debug -- ruby index.rb
-[dotenvx][VERBOSE] injecting env from /path/to/.env
-[dotenvx][DEBUG] reading env from /path/to/.env
-[dotenvx][DEBUG] parsing env from /path/to/.env
-[dotenvx][DEBUG] {"JELLO":"World"}
+[dotenvx][verbose] loading env from /path/to/.env
+[dotenvx][debug] reading env from /path/to/.env
+[dotenvx][debug] parsing env from /path/to/.env
+[dotenvx][debug] {"JELLO":"World"}
 
 # Oops, HELLO not JELLO ^^
 ```
 
 ```bash {{ title: "Go" }}
 $ dotenvx run --debug -- go run main.go
-[dotenvx][VERBOSE] injecting env from /path/to/.env
-[dotenvx][DEBUG] reading env from /path/to/.env
-[dotenvx][DEBUG] parsing env from /path/to/.env
-[dotenvx][DEBUG] {"JELLO":"World"}
+[dotenvx][verbose] loading env from /path/to/.env
+[dotenvx][debug] reading env from /path/to/.env
+[dotenvx][debug] parsing env from /path/to/.env
+[dotenvx][debug] {"JELLO":"World"}
 
 # Oops, HELLO not JELLO ^^
 ```
 
 ```bash {{ title: "Rust" }}
 $ dotenvx run --debug -- cargo run
-[dotenvx][VERBOSE] injecting env from /path/to/.env
-[dotenvx][DEBUG] reading env from /path/to/.env
-[dotenvx][DEBUG] parsing env from /path/to/.env
-[dotenvx][DEBUG] {"JELLO":"World"}
+[dotenvx][verbose] loading env from /path/to/.env
+[dotenvx][debug] reading env from /path/to/.env
+[dotenvx][debug] parsing env from /path/to/.env
+[dotenvx][debug] {"JELLO":"World"}
 
 # Oops, HELLO not JELLO ^^
 ```
@@ -433,7 +433,7 @@ Run it one last time.
 
 ```bash {{ title: "Node" }}
 $ dotenvx run -- node index.js
-[dotenvx][INFO] injecting 1 environment variable from .env
+[dotenvx][info] loading env (1) from .env
 Server running on port:3000
 # http://localhost:3000
 # Hello World
@@ -441,7 +441,7 @@ Server running on port:3000
 
 ```bash {{ title: "Python" }}
 $ dotenvx run -- flask --app index run
-[dotenvx][INFO] injecting 1 environment variable from .env
+[dotenvx][info] loading env (1) from .env
 Running on http://127.0.0.1:5000
 # http://127.0.0.1:5000
 # Hello World
@@ -449,13 +449,13 @@ Running on http://127.0.0.1:5000
 
 ```bash {{ title: "PHP" }}
 $ dotenvx run -- php index.php
-[dotenvx][INFO] injecting 1 environment variable from .env
+[dotenvx][info] loading env (1) from .env
 # Hello World
 ```
 
 ```bash {{ title: "Ruby" }}
 $ dotenvx run -- ruby index.rb
-[dotenvx][INFO] injecting 1 environment variable from .env
+[dotenvx][info] loading env (1) from .env
 Listening on http://127.0.0.1:4567
 # http://127.0.0.1:4567
 # Hello World
@@ -463,7 +463,7 @@ Listening on http://127.0.0.1:4567
 
 ```bash {{ title: "Go" }}
 $ dotenvx run -- go run main.go
-[dotenvx][INFO] injecting 1 environment variable from .env
+[dotenvx][info] loading env (1) from .env
 http server started on [::]:1323
 # http://localhost:1323
 # Hello World
@@ -471,7 +471,7 @@ http server started on [::]:1323
 
 ```bash {{ title: "Rust" }}
 $ dotenvx run -- cargo run
-[dotenvx][INFO] injecting 1 environment variable from .env
+[dotenvx][info] loading env (1) from .env
 Rocket has launched from http://127.0.0.1:8000
 # http://127.0.0.1:8000
 # Hello World
