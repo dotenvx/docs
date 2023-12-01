@@ -241,7 +241,7 @@ Run it with `dotenvx run --`.
 
 ```bash {{ title: "Node" }}
 $ dotenvx run -- node index.js
-[dotenvx][WARN] ENOENT: no such file or directory, open '/path/to/.env'
+[dotenvx][warn] ENOENT: no such file or directory, open '/path/to/.env'
 Server running on port:3000
 # http://localhost:3000
 # Hello undefined
@@ -249,7 +249,7 @@ Server running on port:3000
 
 ```bash {{ title: "Python" }}
 $ dotenvx run -- flask --app index run
-[dotenvx][WARN] ENOENT: no such file or directory, open '/path/to/.env'
+[dotenvx][warn] ENOENT: no such file or directory, open '/path/to/.env'
 Running on http://127.0.0.1:5000
 # http://127.0.0.1:5000
 # Hello None
@@ -257,14 +257,14 @@ Running on http://127.0.0.1:5000
 
 ```bash {{ title: "PHP" }}
 $ dotenvx run -- php index.php
-[dotenvx][WARN] ENOENT: no such file or directory, open '/path/to/.env'
+[dotenvx][warn] ENOENT: no such file or directory, open '/path/to/.env'
 PHP Warning:  Undefined array key "HELLO"
 # Hello
 ```
 
 ```bash {{ title: "Ruby" }}
 $ dotenvx run -- ruby index.rb
-[dotenvx][WARN] ENOENT: no such file or directory, open '/path/to/.env'
+[dotenvx][warn] ENOENT: no such file or directory, open '/path/to/.env'
 Listening on http://127.0.0.1:4567
 # http://127.0.0.1:4567
 # Hello
@@ -272,7 +272,7 @@ Listening on http://127.0.0.1:4567
 
 ```bash {{ title: "Go" }}
 $ dotenvx run -- go run main.go
-[dotenvx][WARN] ENOENT: no such file or directory, open '/path/to/.env'
+[dotenvx][warn] ENOENT: no such file or directory, open '/path/to/.env'
 http server started on [::]:1323
 # http://localhost:1323
 # Hello
@@ -280,7 +280,7 @@ http server started on [::]:1323
 
 ```bash {{ title: "Rust" }}
 $ dotenvx run -- cargo run
-[dotenvx][WARN] ENOENT: no such file or directory, open '/path/to/.env'
+[dotenvx][warn] ENOENT: no such file or directory, open '/path/to/.env'
 Rocket has launched from http://127.0.0.1:8000
 # http://127.0.0.1:8000
 # Hello
