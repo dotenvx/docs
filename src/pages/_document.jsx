@@ -62,7 +62,7 @@ export default function Document() {
         {process.env.NODE_ENV === 'production' && (
           <Script
             src="https://dotenv-umami-fd0ec6de187e.herokuapp.com/script.js"
-            data-website-id="681d3274-93f4-459b-b6a3-2f6b2d433009"
+            data-website-id="5c4c9a9b-ba1c-4bae-a734-3a1fe609c5a5"
             strategy="lazyOnload"
           />
         )}
