@@ -4,7 +4,7 @@ export const description =
 ##### dotenvx
 # Install
 
-Other ways to install `dotenvx`. {{ className: 'lead' }}
+Choose your preferred method to install `dotenvx`. {{ className: 'lead' }}
 
 <CodeGroup>
 
@@ -32,7 +32,9 @@ docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
 
 </CodeGroup>
 
----
+&nbsp;
+
+# Other Ways to Install
 
 ## Brew
 
@@ -43,37 +45,42 @@ Installing with [brew](https://brew.sh) is the most straight forward:
 brew install dotenvx/brew/dotenvx
 ```
 
-## Curl
+## Shell
 
-Or download it directly as a standalone binary:
+After brew our installer is easiest. With curl:
 
 ```bash
-# download it to `/user/local/bin/dotenvx`
 curl -fsS https://dotenvx.sh/ | sh
-
-# check it works
-dotenvx help
 ```
 
-With wget:
+<Note>
+  Wanna read that script before you run it? [github.com/dotenvx/dotenvx.sh/installer.sh](https://github.com/dotenvx/dotenvx.sh/blob/main/installer.sh)
+</Note>
+
+Or with wget:
 
 ```bash
-# download it to `/user/local/bin/dotenvx`
 wget -qO- https://dotenvx.sh/ | sh
 ```
 
-You can view the [raw installer.sh script here](https://dotenvx.sh/installer.sh) before downloading.
-
 ## Npm
 
-Or use [npm](https://www.npmjs.com/package/@dotenvx/dotenvx)'s global install:
+`dotenvx` is made with javascript – so you can use also install with [npm](https://www.npmjs.com/package/@dotenvx/dotenvx).
+
+With `npx`:
 
 ```bash
-# install globally with npm
-npm install @dotenvx/dotenvx --global
+npx @dotenvx/dotenvx help
 ```
 
-Or install it locally, so your repo has it built-in for your teammates:
+Globally:
+
+```bash
+npm install @dotenvx/dotenvx --global
+dotenvx help
+```
+
+Locally:
 
 ```bash
 npm i @dotenvx/dotenvx --save
@@ -89,12 +96,22 @@ npm i @dotenvx/dotenvx --save
 }
 ```
 
+Or even in your code:
+
+```js
+// index.js
+require('@dotenvx/dotenvx').config()
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+Find the [@dotenvx/dotenvx package here](https://www.npmjs.com/package/@dotenvx/dotenvx).
+
 ## Docker
 
-Use [docker](https://hub.docker.com/r/dotenv/dotenvx) if you prefer:
+We also provide a [docker image](https://hub.docker.com/r/dotenv/dotenvx) for your convenience:
 
 ```bash
-# use Docker if you prefer
 docker run -it --rm -v $(pwd):/app dotenv/dotenvx help
 docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
 ```
@@ -116,3 +133,40 @@ Download [the windows executable](https://github.com/dotenvx/dotenvx/releases) d
 ](https://github.com/dotenvx/dotenvx/releases)
 > * [dotenvx-windows-x86_64.tar.gz
 ](https://github.com/dotenvx/dotenvx/releases)
+
+## Standalone
+
+`dotenvx` is a standalone binary, so (if you want) you can just download it directly:
+
+```sh
+# download it to `./dotenvx`
+curl -fsS --proto '=https' https://dotenvx.sh/$(uname)/$(uname -m).tgz | sudo tar xz
+
+# install it to `/usr/local/bin/dotenvx`
+sudo install -m 755 dotenvx /usr/local/bin
+
+# check it works
+dotenvx help
+```
+
+Download a specific version:
+
+```sh
+# download version 0.6.9
+curl -fsS --proto '=https' "https://dotenvx.sh/$(uname)/$(uname -m).tgz?version=v0.6.9" | sudo tar xz
+
+# check the version
+./dotenvx --version
+```
+
+<Note>
+  You can view available versions at [github.com/dotenvx/releases](https://github.com/dotenvx/releases/tree/main)
+</Note>
+
+## GitHub Releases
+
+You can also download straight from [GitHub Releases](https://github.com/dotenvx/dotenvx/releases).
+
+<Note>
+  If you download manually you'll need to move the binary somewhere in your PATH.
+</Note>
