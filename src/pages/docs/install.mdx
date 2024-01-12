@@ -1,7 +1,7 @@
 export const description =
   'Other ways to install `dotenvx`'
 
-##### dotenvx
+##### [dotenvx](/docs)
 # Install
 
 Choose your preferred method to install `dotenvx`. {{ className: 'lead' }}
@@ -123,6 +123,21 @@ FROM node:latest
 RUN echo "HELLO=World" > .env && echo "console.log('Hello ' + process.env.HELLO)" > index.js
 RUN curl -fsS https://dotenvx.sh/ | sh
 CMD ["dotenvx", "run", "--", "echo", "Hello $HELLO"]
+```
+
+## Heroku
+
+For our Heroku friends, we have a [heroku buildpack](https://github.com/dotenvx/heroku-buildpack-dotenvx).
+
+```bash
+heroku buildpacks:add https://github.com/dotenvx/heroku-buildpack-dotenvx
+```
+
+The `dotenvx` binary will be available to your deployment so that you can use it in your Procfile like so.
+
+```bash
+# Procfile
+web: dotenvx run -- node index.js
 ```
 
 ## Windows
