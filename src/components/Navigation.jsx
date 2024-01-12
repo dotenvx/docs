@@ -196,6 +196,20 @@ export const navigation = [
       { title: 'Quickstart', href: '/docs/quickstart' },
       { title: 'Install', href: '/docs/install' },
     ],
+  },
+  {
+    title: 'Languages',
+    href: '/docs/languages',
+    links: [
+      { title: 'Node.js', href: '/docs/languages/nodejs' },
+      { title: 'Python', href: '/docs/languages/python' },
+      { title: 'PHP', href: '/docs/languages/php' },
+      { title: 'Ruby', href: '/docs/languages/ruby' },
+      { title: 'Go', href: '/docs/languages/go' },
+      { title: 'Rust', href: '/docs/languages/rust' },
+      { title: 'Java', href: '/docs/languages/java' },
+      { title: '.NET', href: '/docs/languages/dotnet' },
+    ]
   }
 ]
 
