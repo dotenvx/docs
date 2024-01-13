@@ -1,5 +1,8 @@
 import { Video } from '@/components/Video'
 import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import InstallCodeGroup from '@/pages/partials/installCodeGroup.mdx'
+import InstallLibariesCodeGroup from '@/pages/partials/installLibrariesCodeGroup.mdx'
+import HelloWorldCodeGroup from '@/pages/partials/helloWorldCodeGroup.mdx'
 
 import { GoIcon } from '@/components/icons/GoIcon'
 import { NodeIcon } from '@/components/icons/NodeIcon'
@@ -17,173 +20,27 @@ export const description =
 Manage secrets with `dotenvx`. {{ className: 'lead' }} 
 
 <div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10">
-  <a href="/docs/languages/nodejs"><NodeIcon className="h-9 w-9 text-[#339933]"/></a>
-  <a href="/docs/languages/python"><PythonIcon className="h-9 w-9 text-[#3776AB]"/></a>
-  <a href="/docs/languages/ruby"><RubyIcon className="h-9 w-9 text-[#CC342D]"/></a>
-  <a href="/docs/languages/go"><GoIcon className="h-10 w-10 text-[#00ADD8]"/></a>
-  <a href="/docs/languages/php"><PhpIcon className="h-10 w-10 text-[#777BB4]"/></a>
-  <a href="/docs/languages/rust"><RustIcon className="h-10 w-10 text-[#000000] dark:invert"/></a>
+  <NodeIcon className="h-9 w-9 text-[#339933]"/>
+  <PythonIcon className="h-9 w-9 text-[#3776AB]"/>
+  <RubyIcon className="h-9 w-9 text-[#CC342D]"/>
+  <GoIcon className="h-10 w-10 text-[#00ADD8]"/>
+  <PhpIcon className="h-10 w-10 text-[#777BB4]"/>
+  <RustIcon className="h-10 w-10 text-[#000000] dark:invert"/>
 </div>
 
 ## Setup
 
 Install `dotenvx`.
 
-<CodeGroup>
-
-```bash {{ title: "Brew" }}
-# install with Homebrew and then use the dotenvx command
-brew install dotenvx/brew/dotenvx
-dotenvx help
-```
-
-```bash {{ title: "Curl" }}
-# download it directly as a standalone binary
-curl -fsS https://dotenvx.sh/ | sh
-dotenvx help
-```
-
-```bash {{ title: "Npm" }}
-# install globally with npm
-npm install @dotenvx/dotenvx -g
-dotenvx help
-```
-
-```bash {{ title: "Docker" }}
-# use Docker if you prefer
-docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
-```
-
-```bash {{ title: "Windows" }}
-# download the appropriate installer for your Windows installation
-32-bit installer: https://github.com/dotenvx/dotenvx/releases
-64-bit installer: https://github.com/dotenvx/dotenvx/releases
-```
-
-</CodeGroup>
+<InstallCodeGroup />
 
 Install the necessary web server libraries in the language of your choice.
 
-<CodeGroup>
-
-```bash {{ title: "Node" }}
-npm install express --save
-```
-
-```bash {{ title: "Python" }}
-pip install --upgrade flask
-```
-
-```bash {{ title: "PHP" }}
-# nothing addiitonal to install
-```
-
-```bash {{ title: "Ruby" }}
-bundle init
-bundle add sinatra
-```
-
-```bash {{ title: "Go" }}
-go mod init hello-world
-go get github.com/labstack/echo/v4
-```
-
-```bash {{ title: "Rust" }}
-cargo new app
-cd app
-cargo add rocket
-rustup override set nightly
-```
-
-
-</CodeGroup>
+<InstallLibariesCodeGroup/>
 
 Create a simple *Hello World* program.
 
-<CodeGroup>
-
-```js {{ title: "Node" }}
-// index.js
-const express = require('express')
-const app = express()
-const PORT = process.env.PORT || 3000
-
-app.get('/', (req, res) => {
-  res.send(`Hello ${process.env.HELLO}`)
-})
-
-app.listen(PORT, () => {
-  console.log(`Server running on port:${PORT}`)
-})
-```
-
-```python {{ title: "Python" }}
-# index.py
-import os
-from flask import Flask
-
-app = Flask(__name__)
-
-@app.route('/')
-def hello():
-  hello = os.getenv("HELLO")
-  return f"Hello {hello}"
-```
-
-```php {{ title: "PHP" }}
-<?php
-  // index.php
-  echo "Hello {$_SERVER['HELLO']}";
-```
-
-```ruby {{ title: "Ruby" }}
-# index.rb
-require "sinatra"
-
-get "/" do
-  "Hello #{ENV["HELLO"]}"
-end
-```
-
-```go {{ title: "Go" }}
-// main.go
-package main
-
-import (
-    "net/http"
-    "os"
-    "github.com/labstack/echo/v4"
-)
-
-func main() {
-    hello := os.Getenv("HELLO")
-    output := "Hello " + hello
-
-    e := echo.New()
-    e.GET("/", func(c echo.Context) error {
-        return c.String(http.StatusOK, output)
-    })
-    e.Logger.Fatal(e.Start(":1323"))
-}
-```
-
-```rust {{ title: "Rust" }}
-// src/main.rs
-#[macro_use] extern crate rocket;
-
-#[get("/")]
-fn index() -> String {
-    let hello = std::env::var("HELLO").unwrap_or("".to_string());
-    format!("Hello {}", hello)
-}
-
-#[launch]
-fn rocket() -> _ {
-    rocket::build().mount("/", routes![index])
-}
-```
-
-</CodeGroup>
+<HelloWorldCodeGroup/>
 
 Run it.
 

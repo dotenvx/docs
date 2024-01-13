@@ -1,0 +1,265 @@
+import WellDone from '@/pages/partials/wellDone.mdx'
+import InstallCodeGroup from '@/pages/partials/installCodeGroup.mdx'
+import InstallLibrariesCodeGroup from '@/pages/partials/installLibrariesCodeGroup.mdx'
+import HelloWorldCodeGroup from '@/pages/partials/helloWorldCodeGroup.mdx'
+import DotenvxRunLocalCodeGroup from '@/pages/partials/dotenvxRunLocalCodeGroup.mdx'
+import DotenvxRunProductionLocalCodeGroup from '@/pages/partials/dotenvxRunProductionLocalCodeGroup.mdx'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import { GuideHeading } from '@/components/GuideHeading'
+import { PlatformsBreadcrumb } from '@/components/PlatformsBreadcrumb'
+
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { RubyIcon } from '@/components/icons/RubyIcon'
+import { HerokuIcon } from '@/components/icons/HerokuIcon'
+
+export const description = 
+  'Use dotenvx with Heroku'
+
+<PlatformsBreadcrumb platform="Heroku" icon={
+  <>
+    <HerokuIcon className="h-9 w-9 text-[#430098]"/>
+  </>
+}/>
+# Use dotenvx with Heroku
+<GuideHeading lead={description} />
+
+<Note>
+  Find <a href="https://github.com/dotenvx/examples/tree/master/platforms/heroku">code examples for this guide</a> on GitHub.
+</Note>
+
+<div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10">
+  <NodeIcon className="h-9 w-9 text-[#339933]"/>
+  <RubyIcon className="h-9 w-9 text-[#CC342D]"/>
+</div>
+
+
+## Initial setup
+
+Add a `Procfile` to run your app.
+
+<CodeGroup>
+
+```yaml {{ title: 'Node' }}
+# Procfile
+web: node index.js
+```
+
+```yaml {{ title: 'Ruby' }}
+# Procfile
+web: ruby index.rb
+```
+
+</CodeGroup>
+
+Install the necessary web server libraries in the language of your choice.
+
+<InstallLibrariesCodeGroup/>
+
+Create a simple *Hello World* program.
+
+<HelloWorldCodeGroup/>
+
+Commit to code and push to Heroku.
+
+```shell
+git commit -am "initial commit"
+heroku create
+git push heroku
+```
+
+<ScreenshotBrowser url="/assets/img/docs/hello-blank.png" www="yourapp.herokuapp.com" />
+
+Once deployed, your app will say `'Hello [blank]'` as it doesn't have a way to access the environment variable yet. Let's do that next.
+
+## Run dotenvx
+
+Install [`dotenvx`](https://github.com/dotenvx/dotenvx).
+
+<InstallCodeGroup />
+
+Create a `.env` file in the root of your project.
+
+```shell {{ title: '.env' }}
+# .env
+HELLO="World"
+```
+
+Inject your env using `dotenvx`.
+
+<DotenvxRunLocalCodeGroup/>
+
+<ScreenshotBrowser url="/assets/img/docs/hello-world.png" www="localhost:$PORT" />
+
+Your app will say `Hello World`. The values from your `.env` file were successfully injected into your env. That covers local development. Let's solve for production next.
+
+## Add production environment
+
+Create a `.env.production` file in the root of your project.
+
+```shell {{ title: '.env.production' }}
+# .env.production
+HELLO="production"
+```
+
+Use `dotenvx` to load your `.env.production` file.
+
+<DotenvxRunProductionLocalCodeGroup/>
+
+<ScreenshotBrowser url="/assets/img/docs/hello-production.png" www="localhost:$PORT" />
+
+Your app will say `Hello production`, simulating production. Solid. Let's encrypt your secrets next.
+
+## Encrypt secrets
+
+Use `dotenvx` to encrypt your secrets.
+
+```shell
+dotenvx encrypt
+```
+
+This generates a `.env.vault` and `.env.keys` file.
+
+```bash {{ title: ".env.vault" }}
+#/-------------------.env.vault---------------------/
+#/         cloud-agnostic vaulting standard         /
+#/   [how it works](https://dotenv.org/env-vault)   /
+#/--------------------------------------------------/
+
+# development
+DOTENV_VAULT_DEVELOPMENT="UGENcusNOqvnrfxcOf+jS6Hlzd8E6TYmPP6lfegKOUZnIqKtqHM1LLhRU5gRuKIB3g4="
+
+# production
+DOTENV_VAULT_PRODUCTION="24zpgmbQBq+FRkaKzs3NJOdh5cNJEKap6XmuftJtaRq0sLGQx8TD9iKJSVTab1nrHCFZDnnc7j4Nu2i+Atd3D+UM"
+```
+
+The `.env.vault` file contains encrypted ([AES-256-GCM](https://www.reddit.com/r/cryptography/comments/13kl9ds/how_much_longer_do_you_think_aes_will_last/)) versions of your secrets, and the `.env.keys` file contains the decryption keys.
+
+```bash {{ title: ".env.keys" }}
+#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
+#/   DOTENV_KEYs. DO NOT commit to source control   /
+#/   [how it works](https://dotenv.org/env-keys)    /
+#/--------------------------------------------------/
+DOTENV_KEY_DEVELOPMENT="dotenv://:key_e507c60efa8841d8d5bbb85bd701ee92406cf3b06506d1d80f1553c2a72791e4@dotenvx.com/vault/.env.vault?environment=development"
+DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production"
+```
+
+<Note>
+  You SHOULD commit `.env.vault` to code. It is safe and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [dotenvx hub](https://hub.dotenvx.com).
+</Note>
+
+We're ready to add `dotenvx` to Heroku.
+
+## Add dotenvx buildpack
+
+Install the [dotenvx buildpack](https://github.com/dotenvx/heroku-buildpack-dotenvx).
+
+```
+heroku buildpacks:add https://github.com/dotenvx/heroku-buildpack-dotenvx
+```
+
+Update your `Procfile` to use `dotenvx`.
+
+<CodeGroup>
+
+```yaml {{ title: 'Node' }}
+# Procfile
+web: dotenvx run -- node index.js
+```
+
+```yaml {{ title: 'Ruby' }}
+# Procfile
+web: dotenvx run -- ruby index.rb
+```
+
+</CodeGroup>
+
+Redeploy to Heroku.
+
+```
+git push heroku
+```
+
+<CodeGroup>
+
+```shell {{ title: 'Node' }}
+$ heroku logs --tail
+heroku[web.1]: Starting process with command `dotenvx run -- node index.js`
+app[web.1]: [dotenvx@0.9.0] missing .env file (/app/.env)
+app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
+app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
+```
+
+```shell {{ title: 'Ruby' }}
+$ heroku logs --tail
+heroku[web.1]: Starting process with command `dotenvx run -- ruby index.rb`
+app[web.1]: [dotenvx@0.9.0] missing .env file (/app/.env)
+app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
+app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
+```
+
+</CodeGroup>
+
+The logs tell us `missing .env file`. This is expected, as we don't want to commit `.env` to code. It also tells us, for production, that we should set `DOTENV_KEY`. That is what we want to do. Let's do that next.
+
+## Set DOTENV_KEY
+
+Set `DOTENV_KEY` on Heroku using the production key in your `.env.keys` file.
+
+```shell
+heroku config:set DOTENV_KEY='dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production'
+```
+
+<ScreenshotBrowser url="/assets/img/docs/heroku-config-vars.png" www="www.heroku.com" />
+
+Your app restarts and `env` is successfully injected using the encrypted contents of `.env.vault`.
+
+<CodeGroup>
+
+```shell {{ title: 'Node' }}
+heroku[web.1]: Starting process with command `dotenvx run -- node index.js`
+app[web.1]: [dotenvx@0.9.0] injecting env (1) from encrypted .env.vault
+app[web.1]: Server running on port:7521/
+```
+
+```shell {{ title: 'Ruby' }}
+heroku[web.1]: Starting process with command `dotenvx run -- ruby index.rb`
+app[web.1]: [dotenvx@0.9.0] injecting env (1) from encrypted .env.vault
+app[web.1]: == Sinatra (v3.2.0) has taken the stage on 20576 for production with backup from WEBrick
+```
+
+
+</CodeGroup>
+
+Visit your url and it says `Hello production`.
+
+<ScreenshotBrowser url="/assets/img/docs/hello-production.png" www="yourapp.herokuapp.com" />
+
+<WellDone/>
+
+Great job! That's pretty much it. See the bonus section(s) below to go a little deeper.
+
+---
+
+## Change secret and redeploy
+
+Try changing the value of `.env.production` to your name.
+
+```shell {{ title: '.env.production' }}
+# .env.production
+HELLO="Mot"
+```
+
+Re-encrypt it.
+
+```shell
+dotenvx encrypt
+```
+
+Commit `.env.vault` safely to code and redeploy.
+
+```shell
+git commit -am "update production secret"
+git push heroku
+```
+
+<ScreenshotBrowser url="/assets/img/docs/hello-mot.png" />

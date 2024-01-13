@@ -1,0 +1,84 @@
+<CodeGroup>
+
+```js {{ title: "Node" }}
+// index.js
+const express = require('express')
+const app = express()
+const PORT = process.env.PORT || 3000
+
+app.get('/', (req, res) => {
+  res.send(`Hello ${process.env.HELLO || ''}`)
+})
+
+app.listen(PORT, () => {
+  console.log(`Server running on port:${PORT}`)
+})
+```
+
+```python {{ title: "Python" }}
+# index.py
+import os
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+  hello = os.getenv("HELLO")
+  return f"Hello {hello}"
+```
+
+```php {{ title: "PHP" }}
+<?php
+  // index.php
+  echo "Hello {$_SERVER['HELLO']}";
+```
+
+```ruby {{ title: "Ruby" }}
+# index.rb
+require "sinatra"
+get "/" do
+  "Hello #{ENV["HELLO"]}"
+end
+```
+
+```go {{ title: "Go" }}
+// main.go
+package main
+
+import (
+    "net/http"
+    "os"
+    "github.com/labstack/echo/v4"
+)
+
+func main() {
+    hello := os.Getenv("HELLO")
+    output := "Hello " + hello
+
+    e := echo.New()
+    e.GET("/", func(c echo.Context) error {
+        return c.String(http.StatusOK, output)
+    })
+    e.Logger.Fatal(e.Start(":1323"))
+}
+```
+
+```rust {{ title: "Rust" }}
+// src/main.rs
+#[macro_use] extern crate rocket;
+
+#[get("/")]
+fn index() -> String {
+    let hello = std::env::var("HELLO").unwrap_or("".to_string());
+    format!("Hello {}", hello)
+}
+
+#[launch]
+fn rocket() -> _ {
+    rocket::build().mount("/", routes![index])
+}
+```
+
+</CodeGroup>
+
