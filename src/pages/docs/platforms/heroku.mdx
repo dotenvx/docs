@@ -6,9 +6,11 @@ import DotenvxRunLocalCodeGroup from '@/pages/partials/dotenvxRunLocalCodeGroup.
 import DotenvxRunProductionLocalCodeGroup from '@/pages/partials/dotenvxRunProductionLocalCodeGroup.mdx'
 import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
 import { GuideHeading } from '@/components/GuideHeading'
-import { HerokuIcon } from '@/components/icons/HerokuIcon'
-import { NodeIcon } from '@/components/icons/NodeIcon'
 import { PlatformsBreadcrumb } from '@/components/PlatformsBreadcrumb'
+
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { RubyIcon } from '@/components/icons/RubyIcon'
+import { HerokuIcon } from '@/components/icons/HerokuIcon'
 
 export const description = 
   'Use dotenvx with Heroku'
@@ -22,8 +24,14 @@ export const description =
 <GuideHeading lead={description} />
 
 <Note>
-  Find a complete <a href="https://github.com/dotenvx/examples/tree/master/nodejs/heroku">code example on GitHub</a> for this guide.
+  Find <a href="https://github.com/dotenvx/examples/tree/master/platforms/heroku">code examples for this guide</a> on GitHub.
 </Note>
+
+<div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10">
+  <NodeIcon className="h-9 w-9 text-[#339933]"/>
+  <RubyIcon className="h-9 w-9 text-[#CC342D]"/>
+</div>
+
 
 ## Initial setup
 
