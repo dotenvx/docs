@@ -198,6 +198,13 @@ export const navigation = [
     ],
   },
   {
+    title: 'Platforms',
+    href: '/docs/platforms',
+    links: [
+      { title: 'Heroku', href: '/docs/platforms/heroku' },
+    ]
+  },
+  {
     title: 'Languages',
     href: '/docs/languages',
     links: [
