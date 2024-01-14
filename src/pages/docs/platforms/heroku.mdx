@@ -44,10 +44,16 @@ Add a `Procfile` to run your app.
 web: node index.js
 ```
 
+```yaml {{ title: 'Python' }}
+# Procfile
+web: gunicorn --workers 4 --bind 0.0.0.0:${PORT} wsgi:app
+```
+
 ```yaml {{ title: 'Ruby' }}
 # Procfile
 web: ruby index.rb
 ```
+
 
 </CodeGroup>
 
@@ -166,6 +172,11 @@ Update your `Procfile` to use `dotenvx`.
 web: dotenvx run -- node index.js
 ```
 
+```yaml {{ title: 'Python' }}
+# Procfile
+web: dotenvx run -- gunicorn --workers 4 --bind 0.0.0.0:${PORT} wsgi:app
+```
+
 ```yaml {{ title: 'Ruby' }}
 # Procfile
 web: dotenvx run -- ruby index.rb
@@ -217,9 +228,16 @@ Your app restarts and `env` is successfully injected using the encrypted content
 
 ```shell {{ title: 'Node' }}
 heroku[web.1]: Starting process with command `dotenvx run -- node index.js`
-app[web.1]: [dotenvx@0.9.0] injecting env (1) from encrypted .env.vault
+app[web.1]: [dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
 app[web.1]: Server running on port:7521/
 ```
+
+```shell {{ title: 'Python' }}
+heroku[web.1]: Starting process with command `dotenvx run -- gunicorn --workers 4 --bind 0.0.0.0:${PORT} wsgi:app`
+app[web.1]: [dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+app[web.1]: [INFO] Starting gunicorn 21.2.0
+```
+
 
 ```shell {{ title: 'Ruby' }}
 heroku[web.1]: Starting process with command `dotenvx run -- ruby index.rb`

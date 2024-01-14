@@ -5,7 +5,8 @@ npm install express --save
 ```
 
 ```bash {{ title: "Python" }}
-pip install --upgrade flask
+pip install --upgrade flask gunicorn
+pip freeze > requirements.txt
 ```
 
 ```bash {{ title: "PHP" }}
@@ -15,6 +16,7 @@ pip install --upgrade flask
 ```bash {{ title: "Ruby" }}
 bundle init
 bundle add sinatra webrick
+bundle lock --add-platform x86_64-linux
 ```
 
 ```bash {{ title: "Go" }}
