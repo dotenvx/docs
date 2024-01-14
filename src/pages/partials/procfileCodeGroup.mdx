@@ -25,4 +25,9 @@ web: ruby index.rb
 web: app
 ```
 
+```yaml {{ title: 'Rust' }}
+# Procfile
+web: ROCKET_ADDRESS=0.0.0.0 ROCKET_PORT=$PORT ./target/release/your-app
+```
+
 </CodeGroup>

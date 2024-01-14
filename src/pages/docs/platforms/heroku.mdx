@@ -3,6 +3,7 @@ import ProcfileCodeGroup from '@/pages/partials/procfileCodeGroup.mdx'
 import InstallCodeGroup from '@/pages/partials/installCodeGroup.mdx'
 import InstallLibrariesCodeGroup from '@/pages/partials/installLibrariesCodeGroup.mdx'
 import HelloWorldCodeGroup from '@/pages/partials/helloWorldCodeGroup.mdx'
+import HerokuCreateCodeGroup from '@/pages/partials/herokuCreateCodeGroup.mdx'
 import DotenvxRunLocalCodeGroup from '@/pages/partials/dotenvxRunLocalCodeGroup.mdx'
 import DotenvxRunProductionLocalCodeGroup from '@/pages/partials/dotenvxRunProductionLocalCodeGroup.mdx'
 import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
@@ -14,6 +15,7 @@ import { PhpIcon } from '@/components/icons/PhpIcon'
 import { PythonIcon } from '@/components/icons/PythonIcon'
 import { RubyIcon } from '@/components/icons/RubyIcon'
 import { GoIcon } from '@/components/icons/GoIcon'
+import { RustIcon } from '@/components/icons/RustIcon'
 import { HerokuIcon } from '@/components/icons/HerokuIcon'
 
 export const description = 
@@ -37,6 +39,7 @@ export const description =
   <PhpIcon className="h-10 w-10 text-[#777BB4]"/>
   <RubyIcon className="h-9 w-9 text-[#CC342D]"/>
   <GoIcon className="h-10 w-10 text-[#00ADD8]"/>
+  <RustIcon className="h-10 w-10 text-[#000000] dark:invert"/>
 </div>
 
 ## Initial setup
@@ -55,11 +58,7 @@ Create a simple *Hello World* program.
 
 Commit to code and push to Heroku.
 
-```shell
-git commit -am "initial commit"
-heroku create
-git push heroku
-```
+<HerokuCreateCodeGroup/>
 
 <ScreenshotBrowser url="/assets/img/docs/hello-blank.png" www="yourapp.herokuapp.com" />
 
@@ -180,6 +179,11 @@ web: dotenvx run -- ruby index.rb
 web: dotenvx run -- app
 ```
 
+```yaml {{ title: 'Rust' }}
+# Procfile
+web: ROCKET_ADDRESS=0.0.0.0 ROCKET_PORT=20629 dotenvx run -- ./target/release/your-app
+```
+
 </CodeGroup>
 
 Redeploy to Heroku.
@@ -230,6 +234,14 @@ app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-ru
 app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
 
+```shell {{ title: 'Rust' }}
+$ heroku logs --tail
+heroku[web.1]: Starting process with command `ROCKET_ADDRESS=0.0.0.0 ROCKET_PORT=20629 dotenvx run -- ./target/release/your-app`
+app[web.1]: [dotenvx@0.10.1] missing .env file (/app/.env)
+app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
+app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
+```
+
 </CodeGroup>
 
 The logs tell us `missing .env file`. This is expected, as we don't want to commit `.env` to code. It also tells us, for production, that we should set `DOTENV_KEY`. That is what we want to do. Let's do that next.
@@ -269,18 +281,24 @@ app[web.1]: Starting php-fpm with 4 workers...
 
 ```shell {{ title: 'Ruby' }}
 heroku[web.1]: Starting process with command `dotenvx run -- ruby index.rb`
-app[web.1]: [dotenvx@0.9.0] injecting env (1) from encrypted .env.vault
+app[web.1]: [dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
 app[web.1]: == Sinatra (v3.2.0) has taken the stage on 20576 for production with backup from WEBrick
 ```
 
 ```shell {{ title: 'Go' }}
 heroku[web.1]: Starting process with command `dotenvx run -- app`
-app[web.1]: [dotenvx@0.9.0] injecting env (1) from encrypted .env.vault
+app[web.1]: [dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
 app[web.1]:
 app[web.1]: ____    __
 app[web.1]: / __/___/ /  ___
 app[web.1]: / _// __/ _ \/ _ \
 app[web.1]: /___/\__/_//_/\___/ v4.11.4
+```
+
+```shell {{ title: 'Rust' }}
+heroku[web.1]: Starting process with command `ROCKET_ADDRESS=0.0.0.0 ROCKET_PORT=20629 dotenvx run -- ./target/release/your-app`
+app[web.1]: [dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+app[web.1]: Rocket has launched from http://0.0.0.0:8930
 ```
 
 </CodeGroup>
