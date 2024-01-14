@@ -1,0 +1,23 @@
+<CodeGroup>
+
+```yaml {{ title: 'Node' }}
+# Procfile
+web: node index.js
+```
+
+```yaml {{ title: 'Python' }}
+# Procfile
+web: gunicorn --workers 4 --bind 0.0.0.0:${PORT} wsgi:app
+```
+
+```yaml {{ title: 'PHP' }}
+# Procfile
+web: heroku-php-apache2
+```
+
+```yaml {{ title: 'Ruby' }}
+# Procfile
+web: ruby index.rb
+```
+
+</CodeGroup>
