@@ -175,6 +175,11 @@ web: dotenvx run -- heroku-php-apache2
 web: dotenvx run -- ruby index.rb
 ```
 
+```yaml {{ title: 'Go' }}
+# Procfile
+web: dotenvx run -- app
+```
+
 </CodeGroup>
 
 Redeploy to Heroku.
@@ -196,7 +201,7 @@ app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
 ```shell {{ title: 'Python' }}
 $ heroku logs --tail
 heroku[web.1]: Starting process with command `dotenvx run -- gunicorn --workers 4 --bind 0.0.0.0:${PORT} wsgi:app`
-app[web.1]: [dotenvx@0.9.0] missing .env file (/app/.env)
+app[web.1]: [dotenvx@0.10.1] missing .env file (/app/.env)
 app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
 app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
@@ -212,7 +217,15 @@ app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
 ```shell {{ title: 'Ruby' }}
 $ heroku logs --tail
 heroku[web.1]: Starting process with command `dotenvx run -- ruby index.rb`
-app[web.1]: [dotenvx@0.9.0] missing .env file (/app/.env)
+app[web.1]: [dotenvx@0.10.1] missing .env file (/app/.env)
+app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
+app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
+```
+
+```shell {{ title: 'Go' }}
+$ heroku logs --tail
+heroku[web.1]: Starting process with command `dotenvx run -- app`
+app[web.1]: [dotenvx@0.10.1] missing .env file (/app/.env)
 app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
 app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
@@ -260,6 +273,15 @@ app[web.1]: [dotenvx@0.9.0] injecting env (1) from encrypted .env.vault
 app[web.1]: == Sinatra (v3.2.0) has taken the stage on 20576 for production with backup from WEBrick
 ```
 
+```shell {{ title: 'Go' }}
+heroku[web.1]: Starting process with command `dotenvx run -- app`
+app[web.1]: [dotenvx@0.9.0] injecting env (1) from encrypted .env.vault
+app[web.1]:
+app[web.1]: ____    __
+app[web.1]: / __/___/ /  ___
+app[web.1]: / _// __/ _ \/ _ \
+app[web.1]: /___/\__/_//_/\___/ v4.11.4
+```
 
 </CodeGroup>
 

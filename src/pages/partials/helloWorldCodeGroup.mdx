@@ -66,7 +66,13 @@ func main() {
     e.GET("/", func(c echo.Context) error {
         return c.String(http.StatusOK, output)
     })
-    e.Logger.Fatal(e.Start(":1323"))
+
+    // $PORT or 1323
+    port := os.Getenv("PORT")
+    if port == "" {
+        port = "1323" // Default port if not specified
+    }
+    e.Logger.Fatal(e.Start(":" + port))
 }
 ```
 
