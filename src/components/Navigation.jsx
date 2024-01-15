@@ -198,6 +198,19 @@ export const navigation = [
     ],
   },
   {
+    title: 'Languages',
+    // href: '/docs/platforms',
+    links: [
+      { title: 'Node.js', href: '/docs/languages/nodejs' },
+      { title: 'Python', href: '/docs/languages/python' },
+      { title: 'PHP', href: '/docs/languages/php' },
+      { title: 'Ruby', href: '/docs/languages/ruby' },
+      { title: 'Go', href: '/docs/languages/go' },
+      { title: 'Rust', href: '/docs/languages/rust' },
+    ]
+  },
+
+  {
     title: 'Platforms',
     // href: '/docs/platforms',
     links: [
