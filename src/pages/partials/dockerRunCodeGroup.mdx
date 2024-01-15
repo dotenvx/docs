@@ -21,6 +21,10 @@ docker build -t app . && docker run -it --init --rm -p 1323:1323 app
 ```
 
 ```bash {{ title: "Rust" }}
+docker build -t app . && docker run -it --init --rm -p 20629:20629 app
+
+# if you get the error [FATAL tini (6)] exec ./target/release/app failed: No such file or directory
+# make sure your package.NAME in Cargo.toml matches your CMD ["./target/release/NAME"] in your Dockerfile
 ```
 
 </CodeGroup>

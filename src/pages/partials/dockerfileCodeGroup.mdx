@@ -62,6 +62,16 @@ CMD ["./main"]
 ```
 
 ```rust {{ title: "Rust" }}
+# Dockerfile
+FROM rust:latest
+RUN rustup default nightly
+WORKDIR /app
+COPY . .
+ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_PORT=20629
+RUN cargo build --release
+EXPOSE 20629
+CMD ["./target/release/app"]
 ```
 
 </CodeGroup>
