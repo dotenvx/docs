@@ -170,6 +170,7 @@ docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30e
 ```
 
 ```yaml {{ title: 'Go' }}
+docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 1323:1323 app
 ```
 
 ```yaml {{ title: 'Rust' }}
@@ -202,6 +203,11 @@ Server running on port:3000
 ```
 
 ```shell {{ title: 'Go' }}
+[dotenvx@0.10.2] injecting env (1) from encrypted .env.vault
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.11.4
 ```
 
 ```shell {{ title: 'Rust' }}
