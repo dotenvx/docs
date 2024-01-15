@@ -121,7 +121,7 @@ export default function Index() {
 
 Preload Remix.js scripts with `dotenvx`. This will inject environment variables ahead of Remix.js.
 
-```json {{ title: 'pacakge.json' }}
+```json {{ title: 'package.json' }}
 ...
 "scripts": {
   "build": "dotenvx run -- remix build",
@@ -143,3 +143,52 @@ $ npm run dev
 [dotenvx@0.10.2] injecting env (1) from .env
 [remix-serve] http://localhost:3000 (http://192.168.1.53:3000)
 ```
+
+## Next
+
+> Use dotenvx (as an npm module) with [next.js](https://github.com/vercel/next.js).
+
+Create a next.js application.
+
+```
+npx create-next-app@latest --example hello-world .
+```
+
+Install `dotenvx` as an npm module.
+
+```bash
+npm install @dotenvx/dotenvx --save
+```
+
+Edit `app/page.tsx` to include `process.env.HELLO`.
+
+```js {{ title: 'pages/index.tsx' }}
+export default function Page() {
+  return <h1>Hello {process.env.HELLO}</h1>;
+}
+```
+
+Preload Next.js scripts with `dotenvx`. This will inject environment variables ahead of Next.js.
+
+```json {{ title: 'package.json' }}
+...
+"scripts": {
+  "dev": "dotenvx run -- next dev --turbo",
+  "build": "dotenvx run -- next build",
+  "start": "dotenvx run -- next start"
+},
+```
+
+Run it.
+
+```bash {{ title: 'npm run dev' }}
+$ npm run dev
+
+> dev
+> dotenvx run -- next dev --turbo
+
+[dotenvx@0.10.2] injecting env (1) from .env
+   ▲ Next.js 14.0.4 (turbo)
+   - Local:        http://localhost:3000
+```
+
