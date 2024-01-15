@@ -1,0 +1,79 @@
+import { QuickstartsBreadcrumb } from '@/components/QuickstartsBreadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Run any environment locally. Create a `.env.ENVIRONMENT` file and use `--env-file` to load it. It\'s straightforward, yet flexible.'
+
+<QuickstartsBreadcrumb quickstart="Environments" icon={
+  <>
+    ⚡️
+  </>
+} />
+# Multiple Environments
+<GuideHeading lead={description} />
+
+## --env-file
+
+<CodeGroup>
+
+```bash {{ title: '--env-file' }}
+$ echo "HELLO=production" > .env.production 
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run --env-file=.env.production -- node index.js
+Hello production
+> ^^
+```
+
+```bash {{ title: 'multiple' }}
+$ echo "HELLO=local" > .env.local
+
+$ echo "HELLO=World" > .env
+
+$ dotenvx run --env-file=.env.local --env-file=.env -- node index.js
+Hello local
+```
+
+</CodeGroup>
+
+## --overload
+
+```bash {{ title: '--overload' }}
+$ echo "HELLO=local" > .env.local
+
+$ echo "HELLO=World" > .env
+
+$ dotenvx run --env-file=.env.local --env-file=.env --overload -- node index.js
+Hello World
+```
+
+## --verbose
+
+```bash {{ title: '--verbose' }}
+$ echo "HELLO=production" > .env.production
+
+$ dotenvx run --env-file=.env.production --verbose -- node index.js
+[dotenvx][verbose] loading env from /path/to/.env.production
+[dotenvx][verbose] HELLO set
+[dotenvx][info] loading env (1) from .env.production
+Hello production
+```
+
+## --debug
+
+```bash {{ title: '--debug' }}
+$ echo "HELLO=production" > .env.production
+
+$ dotenvx run --env-file=.env.production --debug -- node index.js
+[dotenvx][debug] configuring options
+[dotenvx][debug] {"envFile":[".env.production"]}
+[dotenvx][verbose] loading env from /path/to/.env.production
+[dotenvx][debug] reading env from /path/to/.env.production
+[dotenvx][debug] parsing env from /path/to/.env.production
+[dotenvx][debug] {"HELLO":"production"}
+[dotenvx][debug] writing env from /path/to/.env.production
+[dotenvx][verbose] HELLO set
+[dotenvx][debug] HELLO set to production
+[dotenvx][info] loading env (1) from .env.production
+Hello production
+```

@@ -1,0 +1,53 @@
+import { QuickstartsBreadcrumb } from '@/components/QuickstartsBreadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Encrypt your secrets to an encrypted `.env.vault` and then load them securely (and just-in-time) to production, staging, or ci'
+
+<QuickstartsBreadcrumb quickstart="Encryption" icon={
+  <>
+    ⚡️
+  </>
+} />
+# Encrypt Secrets
+<GuideHeading lead={description} />
+
+## Step 1
+
+Run `dotenvx encrypt` to encrypt your `.env.*` file(s) to `.env.vault`.
+
+```bash {{ title: "dotenvx encrypt" }}
+$ echo "HELLO=World" > .env
+$ echo "HELLO=production" > .env.production
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx encrypt
+[dotenvx][info] encrypted to .env.vault (.env,.env.production)
+[dotenvx][info] keys added to .env.keys (DOTENV_KEY_DEVELOPMENT,DOTENV_KEY_PRODUCTION)
+```
+
+## Step 2
+
+Locate your `DOTENV_KEY` in .env.keys
+
+```bash {{ title: "cat .env.keys" }}
+$ cat .env.keys
+#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
+#/   DOTENV_KEYs. DO NOT commit to source control   /
+#/--------------------------------------------------/
+DOTENV_KEY_DEVELOPMENT="dotenv://:key_123development@dotenvx.com/vault/.env.vault?environment=development"
+DOTENV_KEY_PRODUCTION="dotenv://:key_456production@dotenvx.com/vault/.env.vault?environment=production"
+```
+
+## Step 3
+
+Prepend `DOTENV_KEY` in front of `dotenvx run --` to trigger decrypting your .env.vault. This injects your encrypted envs just in time.
+
+```bash {{ title: "DOTENV_KEY={key} dotenvx run -- command" }}
+DOTENV_KEY='dotenv://:key_45yproduction@dotenvx.com/vault/.env.vault?environment=production' dotenvx run -- node index.js
+[dotenvx][info] loading env (1) from encrypted .env.vault
+Hello production
+> :-D
+```
+
+No more scattering your secrets across multiple third-parties platforms where they [could leak](https://techcrunch.com/2023/01/05/circleci-breach/)!

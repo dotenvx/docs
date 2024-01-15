@@ -193,9 +193,24 @@ export const navigation = [
     href: '/docs',
     links: [
       { title: 'Introduction', href: '/docs' },
-      { title: 'Quickstart', href: '/docs/quickstart' },
       { title: 'Install', href: '/docs/install' },
+      { title: 'Quickstart', href: '/docs/quickstart' },
     ],
+  },
+  {
+    title: 'Quickstarts',
+    links: [
+      { title: 'Run', href: '/docs/quickstart/run' },
+      { title: 'Environments', href: '/docs/quickstart/environments' },
+      { title: 'Encryption', href: '/docs/quickstart/encryption' },
+      { title: 'Hub', href: '/docs/quickstart/hub' },
+    ]
+  },
+  {
+    title: 'Features',
+    links: [
+      { title: 'Precommit', href: '/docs/features/precommit' },
+    ]
   },
   {
     title: 'Languages',

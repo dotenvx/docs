@@ -9,6 +9,7 @@ import { GoIcon } from '@/components/icons/GoIcon'
 import { PhpIcon } from '@/components/icons/PhpIcon'
 import { RustIcon } from '@/components/icons/RustIcon'
 
+import { Languages } from '@/components/Languages'
 import { Frameworks } from '@/components/Frameworks'
 import { Platforms } from '@/components/Platforms'
 import { Cis } from '@/components/Cis'
@@ -16,6 +17,12 @@ import { Concepts } from '@/components/Concepts'
 
 export const description =
   'Documentation for `dotenvx`'
+
+export const sections = [
+  { title: 'Getting Started', id: 'getting-started' },
+  { title: 'Languages', id: 'languages' },
+  { title: 'Frameworks', id: 'frameworks' },
+]
 
 <HeroPattern />
 
@@ -68,207 +75,5 @@ docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
 * multi-environment
 * encrypted envs
 
-## Run Anywhere
-
-`dotenvx` works the same across every language, framework, and platform. Simply preface your application process with `dotenvx run --`.
-
-<CodeGroup>
-
-```bash {{ title: 'Node' }}
-$ echo "HELLO=World" > .env
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-$ node index.js
-Hello undefined
-
-$ dotenvx run -- node index.js
-Hello World
-> :-D
-```
-
-```bash {{ title: 'Python' }}
-$ echo "HELLO=World" > .env 
-$ echo 'import os;print("Hello " + os.getenv("HELLO", ""))' > index.py
-
-$ dotenvx run -- python3 index.py
-Hello World
-```
-
-```bash {{ title: 'PHP' }}
-$ echo "HELLO=World" > .env 
-$ echo '<?php echo "Hello {$_SERVER["HELLO"]}\n";' > index.php
-
-$ dotenvx run -- php index.php
-Hello World
-```
-
-```bash {{ title: 'Ruby' }}
-$ echo "HELLO=World" > .env 
-$ echo 'puts "Hello #{ENV["HELLO"]}"' > index.rb
-
-$ dotenvx run -- ruby index.rb
-Hello World
-```
-
-```bash {{ title: 'Go' }}
-$ echo "HELLO=World" > .env 
-$ echo 'package main; import ("fmt"; "os"); func main() { fmt.Printf("Hello %s\n", os.Getenv("HELLO")) }' > main.go
-
-$ dotenvx run -- go run main.go
-Hello World
-```
-
-```bash {{ title: 'Rust' }}
-$ echo "HELLO=World" > .env 
-$ echo 'fn main() {let hello = std::env::var("HELLO").unwrap_or("".to_string());println!("Hello {hello}");}' > src/main.rs
-
-$ dotenvx run -- cargo run
-Hello World
-```
-
-```bash {{ title: 'Java' }}
-$ echo "HELLO=World" > .env 
-$ echo 'public class Index { public static void main(String[] args) { System.out.println("Hello " + System.getenv("HELLO")); } }' > index.java
-
-$ dotenvx run -- java index.java
-Hello World
-```
-
-```bash {{ title: '.NET' }}
-$ dotnet new console -n HelloWorld -o HelloWorld
-$ cd HelloWorld
-$ echo "HELLO=World" > .env 
-$ echo 'Console.WriteLine($"Hello {Environment.GetEnvironmentVariable("HELLO")}");' > Program.cs
-
-$ dotenvx run -- dotnet run
-Hello World
-```
-
-```bash {{ title: 'Frameworks' }}
-$ dotenvx run -- next dev
-$ dotenvx run -- npm start
-$ dotenvx run -- bin/rails s
-$ dotenvx run -- php artisan serve
-```
-
-```bash {{ title: 'Other' }}
-# dotenvx works with any language or framework
-# 1. create your application
-# 2. create your .env file
-# 3. preface its boot command with `dotenvx run --`
-$ dotenvx run -- your-app-boot-command
-```
-
-</CodeGroup>
-
-## Multiple Environments
-
-Run any environment locally. Simply create a `.env.ENVIRONMENT` file and use `--env-file` to load it. It's straightforward, yet flexible.
-
-<CodeGroup>
-
-```bash {{ title: '--env-file' }}
-$ echo "HELLO=production" > .env.production 
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-$ dotenvx run --env-file=.env.production -- node index.js
-Hello production
-> ^^
-```
-
-```bash {{ title: 'multiple' }}
-$ echo "HELLO=local" > .env.local
-
-$ echo "HELLO=World" > .env
-
-$ dotenvx run --env-file=.env.local --env-file=.env -- node index.js
-Hello local
-```
-
-```bash {{ title: '--overload' }}
-$ echo "HELLO=local" > .env.local
-
-$ echo "HELLO=World" > .env
-
-$ dotenvx run --env-file=.env.local --env-file=.env --overload -- node index.js
-Hello World
-```
-
-```bash {{ title: '--verbose' }}
-$ echo "HELLO=production" > .env.production
-
-$ dotenvx run --env-file=.env.production --verbose -- node index.js
-[dotenvx][verbose] loading env from /path/to/.env.production
-[dotenvx][verbose] HELLO set
-[dotenvx][info] loading env (1) from .env.production
-Hello production
-```
-
-```bash {{ title: '--debug' }}
-$ echo "HELLO=production" > .env.production
-
-$ dotenvx run --env-file=.env.production --debug -- node index.js
-[dotenvx][debug] configuring options
-[dotenvx][debug] {"envFile":[".env.production"]}
-[dotenvx][verbose] loading env from /path/to/.env.production
-[dotenvx][debug] reading env from /path/to/.env.production
-[dotenvx][debug] parsing env from /path/to/.env.production
-[dotenvx][debug] {"HELLO":"production"}
-[dotenvx][debug] writing env from /path/to/.env.production
-[dotenvx][verbose] HELLO set
-[dotenvx][debug] HELLO set to production
-[dotenvx][info] loading env (1) from .env.production
-Hello production
-```
-
-</CodeGroup>
-
-## Encryption
-
-Encrypt your secrets to an encrypted `.env.vault` file and then load them securely (and just-in-time) to production, staging, or ci. No more scattering your secrets across multiple third-parties platforms where they [could leak](https://techcrunch.com/2023/01/05/circleci-breach/).
-
-<CodeGroup>
-
-```bash {{ title: "Step 1" }}
-# 1. dotenvx encrypt (encrypt your .env.* file to .env.vault)
-$ echo "HELLO=World" > .env
-$ echo "HELLO=production" > .env.production
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-$ dotenvx encrypt
-[dotenvx][info] encrypted to .env.vault (.env,.env.production)
-[dotenvx][info] keys added to .env.keys (DOTENV_KEY_DEVELOPMENT,DOTENV_KEY_PRODUCTION)
-```
-
-```bash {{ title: "Step 2" }}
-# 2. locate your DOTENV_KEY in .env.keys
-$ cat .env.keys
-#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
-#/   DOTENV_KEYs. DO NOT commit to source control   /
-#/--------------------------------------------------/
-DOTENV_KEY_DEVELOPMENT="dotenv://:key_123development@dotenvx.com/vault/.env.vault?environment=development"
-DOTENV_KEY_PRODUCTION="dotenv://:key_456production@dotenvx.com/vault/.env.vault?environment=production"
-```
-
-```bash {{ title: "Step 3" }}
-# 3. Preface dotenvx run -- with `DOTENV_KEY` (decrypts your .env.vault and injects your encrypted envs)
-DOTENV_KEY='dotenv://:key_45yproduction@dotenvx.com/vault/.env.vault?environment=production' dotenvx run -- node index.js
-[dotenvx][info] loading env (1) from encrypted .env.vault
-Hello production
-> :-D
-```
-
-</CodeGroup>
-
-## GitHub
-
-Integrate with your GitHub account, track encrypted secret changes in your Pull Requests, protect yourself against accidentally putting secrets in your code.
-
-<CodeGroup>
-
-```
-coming soon
-```
-</CodeGroup>
-
-
+<Languages/>
+<Platforms/>
