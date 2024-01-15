@@ -224,13 +224,18 @@ export const navigation = [
       { title: 'Rust', href: '/docs/languages/rust' },
     ]
   },
-
   {
     title: 'Platforms',
     // href: '/docs/platforms',
     links: [
       { title: 'Docker', href: '/docs/platforms/docker' },
       { title: 'Heroku', href: '/docs/platforms/heroku' },
+    ]
+  },
+  {
+    title: 'Package Managers',
+    links: [
+      { title: 'npm', href: '/docs/package-managers/npm' },
     ]
   },
 ]

@@ -1,0 +1,67 @@
+import { NpmIcon } from '@/components/icons/NpmIcon'
+import { PackageManagersBreadcrumb } from '@/components/PackageManagersBreadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Use dotenvx with npm'
+
+<PackageManagersBreadcrumb manager="npm" icon={
+  <>
+    <NpmIcon className="w-10 h-10 text-[#CB3837]" />
+  </>
+} />
+# npm
+<GuideHeading lead={description} />
+
+## Express
+
+> Use dotenvx (as an npm module) with [express.js](https://github.com/expressjs/express).
+
+Install `dotenvx` as an npm module.
+
+```bash
+npm install express @dotenvx/dotenvx --save
+```
+
+Create a simple *Hello World* application.
+
+```js {{ title: "index.js" }}
+// index.js
+const express = require('express')
+const app = express()
+const PORT = process.env.PORT || 3000
+
+app.get('/', (req, res) => {
+  res.send(`Hello ${process.env.HELLO || ''}`)
+})
+
+app.listen(PORT, () => {
+  console.log(`Server running on port:${PORT}`)
+})
+```
+
+Add `dotenvx run --` to your start script.
+
+```json {{ title: "package.json" }}
+{
+  "dependencies": {
+    "@dotenvx/dotenvx": "^0.10.2",
+    "express": "^4.18.2"
+  },
+  "scripts": {
+    "start": "dotenvx run -- node index.js"
+  }
+}
+```
+
+Run it.
+
+```bash {{title: "npm start"}}
+$ npm start
+
+> start
+> dotenvx run -- node index.js
+
+[dotenvx@0.10.2] injecting env (1) from .env
+Server running on port:3000
+```
