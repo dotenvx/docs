@@ -13,6 +13,7 @@ CMD ["dotenvx", "run", "--env-file=.env.production", "--", "apache2-foreground"]
 ```
 
 ```bash {{ title: "Ruby" }}
+CMD ["dotenvx", "run", "--env-file=.env.production", "--", "ruby", "index.rb", "-o", "0.0.0.0"]
 ```
 
 ```bash {{ title: "Go" }}

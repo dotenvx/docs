@@ -166,6 +166,7 @@ docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30e
 ```
 
 ```yaml {{ title: 'Ruby' }}
+docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 4567:4567 app
 ```
 
 ```yaml {{ title: 'Go' }}
@@ -196,6 +197,8 @@ Server running on port:3000
 ```
 
 ```shell {{ title: 'Ruby' }}
+[dotenvx@0.10.2] injecting env (1) from encrypted .env.vault
+== Sinatra (v3.2.0) has taken the stage on 4567 for development with backup from WEBrick
 ```
 
 ```shell {{ title: 'Go' }}
