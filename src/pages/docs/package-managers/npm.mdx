@@ -13,6 +13,10 @@ export const description =
 # npm
 <GuideHeading lead={description} />
 
+<Note>
+  The below framework guides all assume the presence of a `.env` file containing `HELLO=World`. Find <a href="https://github.com/dotenvx/examples/tree/master/package-managers/npm">code examples on GitHub</a>.
+</Note>
+
 ## Express
 
 > Use dotenvx (as an npm module) with [express.js](https://github.com/expressjs/express).
@@ -64,4 +68,78 @@ $ npm start
 
 [dotenvx@0.10.2] injecting env (1) from .env
 Server running on port:3000
+```
+
+## Remix
+
+> Use dotenvx (as an npm module) with [remix.js](https://github.com/remix-run/remix).
+
+Create a remix application.
+
+```
+npx create-remix@latest
+```
+
+Install `dotenvx` as an npm module.
+
+```bash
+npm install @dotenvx/dotenvx --save
+```
+
+Edit `app/routes/_index.tsx` to include `process.env.HELLO` using a Remix [loader](https://remix.run/docs/en/main/route/loader).
+
+```js {{ title: 'app/routes/_index.tsx' }}
+import type { V2_MetaFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+
+export const meta: V2_MetaFunction = () => {
+  return [
+    { title: "New Remix App" },
+    { name: "description", content: "Welcome to Remix!" },
+  ];
+};
+
+export async function loader() {
+  return json({
+    ENV: {
+      HELLO: process.env.HELLO, // HELLO="World" in .env file
+    },
+  });
+}
+
+export default function Index() {
+  const data = useLoaderData()
+
+  return (
+    <div>
+      Hello {data.ENV.HELLO}.
+    </div>
+  );
+}
+```
+
+Preload Remix.js scripts with `dotenvx`. This will inject environment variables ahead of Remix.js.
+
+```json {{ title: 'pacakge.json' }}
+...
+"scripts": {
+  "build": "dotenvx run -- remix build",
+  "dev": "dotenvx run -- remix dev --manual",
+  "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+  "start": "dotenvx run -- remix-serve ./build/index.js",
+  "typecheck": "tsc"
+},
+```
+
+Run it.
+
+```bash {{ title: 'npm run dev' }}
+$ npm run dev
+
+> dev
+> dotenvx run -- remix dev --manual
+
+[dotenvx@0.10.2] injecting env (1) from .env
+[remix-serve] http://localhost:3000 (http://192.168.1.53:3000)
 ```
