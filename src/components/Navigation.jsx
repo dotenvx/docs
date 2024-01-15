@@ -199,8 +199,9 @@ export const navigation = [
   },
   {
     title: 'Platforms',
-    href: '/docs/platforms',
+    // href: '/docs/platforms',
     links: [
+      { title: 'Docker', href: '/docs/platforms/docker' },
       { title: 'Heroku', href: '/docs/platforms/heroku' },
     ]
   },

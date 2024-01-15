@@ -1,0 +1,30 @@
+<CodeGroup>
+
+```js {{ title: "Node" }}
+# Dockerfile
+FROM node:20
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["node", "index.js"]
+```
+
+```python {{ title: "Python" }}
+```
+
+```php {{ title: "PHP" }}
+```
+
+```ruby {{ title: "Ruby" }}
+```
+
+```go {{ title: "Go" }}
+```
+
+```rust {{ title: "Rust" }}
+```
+
+</CodeGroup>
+

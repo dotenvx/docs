@@ -1,0 +1,36 @@
+<CodeGroup>
+
+```js {{ title: "Node" }}
+# Dockerfile
+FROM node:20
+WORKDIR /app
+
+# Install dotenvx
+RUN curl -fsS https://dotenvx.sh/ | sh
+
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+
+# Prepend dotenvx run
+CMD ["dotenvx", "run", "--", "node", "index.js"]
+```
+
+```python {{ title: "Python" }}
+```
+
+```php {{ title: "PHP" }}
+```
+
+```ruby {{ title: "Ruby" }}
+```
+
+```go {{ title: "Go" }}
+```
+
+```rust {{ title: "Rust" }}
+```
+
+</CodeGroup>
+
