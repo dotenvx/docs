@@ -5,6 +5,7 @@ CMD ["dotenvx", "run",  "--env-file=.env.production", "--", "node", "index.js"]
 ```
 
 ```bash {{ title: "Python" }}
+CMD ["dotenvx", "run",  "--env-file=.env.production", "--", "gunicorn", "--workers", "4", "--bind", "0.0.0.0:5000", "wsgi:app"]
 ```
 
 ```bash {{ title: "PHP" }}

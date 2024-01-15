@@ -18,6 +18,22 @@ CMD ["dotenvx", "run", "--", "node", "index.js"]
 ```
 
 ```python {{ title: "Python" }}
+# Dockerfile
+FROM python:3.8
+WORKDIR /app
+
+# Install dotenvx
+RUN curl -fsS https://dotenvx.sh/ | sh
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 5000
+ENV FLASK_APP=index.py
+ENV FLASK_RUN_HOST=0.0.0.0
+
+# Prepend dotenvx run
+CMD ["dotenvx", "run", "--", "gunicorn", "--workers", "4", "--bind", "0.0.0.0:5000", "wsgi:app"]
 ```
 
 ```php {{ title: "PHP" }}
