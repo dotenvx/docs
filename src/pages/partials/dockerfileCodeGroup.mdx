@@ -25,6 +25,14 @@ CMD ["gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]
 ```
 
 ```php {{ title: "PHP" }}
+# Dockerfile
+FROM php:8.0-apache
+WORKDIR /var/www/html
+RUN echo 'PassEnv HELLO' > /etc/apache2/conf-available/passenv.conf
+RUN a2enconf passenv
+COPY . .
+EXPOSE 80
+CMD ["apache2-foreground"]
 ```
 
 ```ruby {{ title: "Ruby" }}

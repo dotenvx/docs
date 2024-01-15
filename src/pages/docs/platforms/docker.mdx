@@ -162,6 +162,7 @@ docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30e
 ```
 
 ```yaml {{ title: 'PHP' }}
+docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 8080:80 app
 ```
 
 ```yaml {{ title: 'Ruby' }}
@@ -190,6 +191,8 @@ Server running on port:3000
 ```
 
 ```shell {{ title: 'PHP' }}
+[dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+[Mon Jan 15 05:18:12.420951 2024] [core:notice] [pid 15] AH00094: Command line: 'apache2 -D FOREGROUND'
 ```
 
 ```shell {{ title: 'Ruby' }}

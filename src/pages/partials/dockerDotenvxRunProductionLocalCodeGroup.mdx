@@ -9,6 +9,7 @@ CMD ["dotenvx", "run",  "--env-file=.env.production", "--", "gunicorn", "--worke
 ```
 
 ```bash {{ title: "PHP" }}
+CMD ["dotenvx", "run", "--env-file=.env.production", "--", "apache2-foreground"]
 ```
 
 ```bash {{ title: "Ruby" }}
