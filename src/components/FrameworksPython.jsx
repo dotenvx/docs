@@ -12,7 +12,7 @@ export function FrameworksPython() {
             Flask
           </h3>
           <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Flask</p>
-          <p className="mt-4"><Button href="/docs/frameworks/flask" variant="text" arrow="right">Read guide</Button></p>
+          <p className="mt-4"><Button href="/docs/frameworks/flask" variant="text" arrow="right">Flask Guides</Button></p>
         </div>
         <FlaskIcon className="h-9 w-9 text-[#000000] dark:invert"/>
       </div>
