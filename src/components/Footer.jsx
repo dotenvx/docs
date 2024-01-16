@@ -216,7 +216,7 @@ function SmallPrint() {
         <SocialLink href="https://x.com/dotenvx" icon={XIcon}>
           Follow us on X
         </SocialLink>
-        <SocialLink href="https://github.com/dotenvx" icon={GitHubIcon}>
+        <SocialLink href="https://github.com/dotenvx/dotenvx" icon={GitHubIcon}>
           Follow us on GitHub
         </SocialLink>
         <SocialLink href="https://youtube.com/@dotenvx" icon={YoutubeIcon}>

@@ -1,0 +1,246 @@
+import WellDone from '@/pages/partials/wellDone.mdx'
+import ProcfileCodeGroup from '@/pages/partials/procfileCodeGroup.mdx'
+import InstallCodeGroup from '@/pages/partials/installCodeGroup.mdx'
+import InstallLibrariesCodeGroup from '@/pages/partials/installLibrariesCodeGroup.mdx'
+import HelloWorldCodeGroup from '@/pages/partials/helloWorldCodeGroup.mdx'
+import HerokuCreateCodeGroup from '@/pages/partials/herokuCreateCodeGroup.mdx'
+import DotenvxRunLocalCodeGroup from '@/pages/partials/dotenvxRunLocalCodeGroup.mdx'
+import DotenvxRunProductionLocalCodeGroup from '@/pages/partials/dotenvxRunProductionLocalCodeGroup.mdx'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import { GuideHeading } from '@/components/GuideHeading'
+import { PlatformsBreadcrumb } from '@/components/PlatformsBreadcrumb'
+
+import { NextIcon } from '@/components/icons/NextIcon'
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { PhpIcon } from '@/components/icons/PhpIcon'
+import { PythonIcon } from '@/components/icons/PythonIcon'
+import { RubyIcon } from '@/components/icons/RubyIcon'
+import { GoIcon } from '@/components/icons/GoIcon'
+import { RustIcon } from '@/components/icons/RustIcon'
+import { VercelIcon } from '@/components/icons/VercelIcon'
+
+export const description = 
+  'Use dotenvx with Vercel'
+
+<PlatformsBreadcrumb platform="Vercel" icon={
+  <>
+    <VercelIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+  </>
+}/>
+# Use dotenvx with Vercel
+<GuideHeading lead={description} />
+
+<Note>
+  Find <a href="https://github.com/dotenvx/examples/tree/master/platforms/vercel">code examples for this guide</a> on GitHub.
+</Note>
+
+<div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10 items-center">
+  <NextIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+</div>
+
+## Initial setup
+
+Install the necessary web server libraries in the framework of your choice.
+
+<CodeGroup>
+
+```bash {{ title: 'Next' }}
+npx create-next-app@latest --example hello-world .
+```
+
+</CodeGroup>
+
+Create a simple *Hello World* program.
+
+<CodeGroup>
+
+```js {{ title: 'Next' }}
+// app/page.tsx
+export default function Page() {
+  return <h1>Hello {process.env.HELLO}</h1>;
+}
+```
+
+</CodeGroup>
+
+Add `.vercelignore` file.
+
+```ini
+# vercelignore
+.env*
+!.env.vault
+```
+
+Commit to code and deploy to Vercel.
+
+<CodeGroup>
+
+```bash {{ title: 'Next' }}
+npx vercel@latest deploy --prod
+```
+
+</CodeGroup>
+
+<ScreenshotBrowser url="/assets/img/docs/hello-blank.png" www="yourapp.vercel.app" />
+
+Once deployed, your app will say `'Hello [blank]'` as it doesn't have a way to access the environment variable yet. Let's do that next.
+
+## Install dotenvx
+
+Install [`dotenvx`](https://github.com/dotenvx/dotenvx).
+
+```bash
+npm install @dotenvx/dotenvx --save
+```
+
+Preload scripts with dotenvx. This will inject environment variables ahead of any build, start, or dev commands.
+
+<CodeGroup>
+
+```json {{ title: "Next" }}
+...
+"scripts": {
+  "dotenvx": "dotenvx",
+  "dev": "dotenvx run -- next dev --turbo",
+  "build": "dotenvx run -- next build",
+  "start": "dotenvx run -- next start"
+},
+```
+
+</CodeGroup>
+
+## Encrypt secrets
+
+Create `.env.production` in the root of your project.
+
+<CodeGroup>
+
+```shell {{ title: 'Next' }}
+# .env.production
+HELLO="production"
+```
+
+</CodeGroup>
+
+Encrypt it to `.env.vault`.
+
+```shell
+npm run dotenvx encrypt
+```
+
+The `.env.vault` file contains encrypted ([AES-256-GCM](https://www.reddit.com/r/cryptography/comments/13kl9ds/how_much_longer_do_you_think_aes_will_last/)) versions of your secrets, and the `.env.keys` file contains the decryption keys.
+
+```bash {{ title: ".env.vault" }}
+#/-------------------.env.vault---------------------/
+#/         cloud-agnostic vaulting standard         /
+#/--------------------------------------------------/
+# production
+DOTENV_VAULT_PRODUCTION="YZkhtbh1IlzBgIamAAsG5nzGPfH6p8Zbuj9egXoziviVu/eYIyNjJWtIYyhiW/vHhFbqbsvo5+P9b27OC6ZC7qU="
+```
+
+```bash {{ title: ".env.keys" }}
+#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
+#/   DOTENV_KEYs. DO NOT commit to source control   /
+#/--------------------------------------------------/
+DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production"
+```
+
+<Note>
+  You SHOULD commit `.env.vault` to code. It is safe and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [dotenvx hub](https://hub.dotenvx.com).
+</Note>
+
+Redeploy to Vercel.
+
+```
+npx vercel@latest deploy --prod
+```
+
+<CodeGroup>
+
+```shell {{ title: 'Express' }}
+$ npx vercel@latest logs https://yourapp.vercel.app
+Running "npm run build"
+
+> build
+> dotenvx run -- next build
+
+[dotenvx@0.10.2] missing .env file (/vercel/path0/.env)
+? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- next build]
+? for production: set [DOTENV_KEY] on your server and re-deploy
+```
+
+</CodeGroup>
+
+The logs tell us `missing .env file`. This is expected, as we don't want to commit `.env` to code. It also tells us, for production, that we should set `DOTENV_KEY`. That is what we want to do. Let's do that next.
+
+## Set DOTENV_KEY
+
+Set  `DOTENV_KEY` to the `DOTENV_KEY_PRODUCTION` value. We'll use the Vercel cli, but you can also use their dashboard.
+
+```shell
+npx vercel@latest env add DOTENV_KEY
+```
+```shell
+? What’s the value of DOTENV_KEY? dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production
+✅  Added Environment Variable DOTENV_KEY to Project nodejs-vercel [94ms]
+```
+
+Redeploy.
+
+<CodeGroup>
+
+```bash {{ title: 'Next' }}
+npx vercel@latest deploy --prod
+```
+
+</CodeGroup>
+
+<CodeGroup>
+
+```shell {{ title: 'Next' }}
+$ npx vercel@latest logs https://yourapp.vercel.app
+Running "npm run build"
+
+> build
+> dotenvx run -- next build
+
+[dotenvx@0.10.2] injecting env (1) from encrypted .env.vault
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+```
+
+</CodeGroup>
+
+Your app restarts and `env` is successfully injected using the encrypted contents of `.env.vault`. Visit your url and it says `Hello production`. 
+
+<ScreenshotBrowser url="/assets/img/docs/hello-production.png" www="yourapp.vercel.app" />
+
+<WellDone/>
+
+Great job! That's pretty much it. See the bonus section(s) below to go a little deeper.
+
+---
+
+## Change secret and redeploy
+
+Try changing the value of `.env.production` to your name.
+
+```shell {{ title: '.env.production' }}
+# .env.production
+HELLO="Mot"
+```
+
+Re-encrypt it.
+
+```shell
+dotenvx encrypt
+```
+
+Commit `.env.vault` safely to code and redeploy.
+
+```shell
+git commit -am "update production secret"
+npx vercel@latest deploy --prod
+```
+
+<ScreenshotBrowser url="/assets/img/docs/hello-mot.png" />

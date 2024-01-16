@@ -1,6 +1,11 @@
 import { LanguagesBreadcrumb } from '@/components/LanguagesBreadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 import { NodeIcon } from '@/components/icons/NodeIcon'
+import { NpmIcon } from '@/components/icons/NpmIcon'
+import { AstroIcon } from '@/components/icons/AstroIcon'
+import { ExpressIcon } from '@/components/icons/ExpressIcon'
+import { NextIcon } from '@/components/icons/NextIcon'
+import { RemixIcon } from '@/components/icons/RemixIcon'
 
 import { Heading } from '@/components/Heading'
 import { HerokuIcon } from '@/components/icons/HerokuIcon'
@@ -17,4 +22,72 @@ export const description =
 # Node.js
 <GuideHeading lead={description} />
 
+<div className="my-16 xl:max-w-none">
+  <Heading level={2} id="frameworks">
+    Frameworks
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="astro" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Astro
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Astro</p>
+        <p className="mt-4"><Button href="/docs/package-managers/npm#astro" variant="text" arrow="right">Astro Guide</Button></p>
+      </div>
+      <AstroIcon className="h-9 w-9 text-[#FF5D01]"/>
+    </div>
+    <div key="express" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Express.js
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Express.js</p>
+        <p className="mt-4"><Button href="/docs/package-managers/npm#express" variant="text" arrow="right">Express Guide</Button></p>
+      </div>
+      <ExpressIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+    </div>
+    <div key="nextjs" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Next.js
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Next.js</p>
+        <p className="mt-4 flex gap-x-2">
+          <Button href="/docs/package-managers/npm#next" variant="text" arrow="right">Next.js Guide</Button>
+        </p>
+      </div>
+      <NextIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+    </div>
+    <div key="remix" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Remix
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Remix</p>
+        <p className="mt-4"><Button href="/docs/package-managers/npm#remix" variant="text" arrow="right">Remix Guide</Button></p>
+      </div>
+      <RemixIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+    </div>
+  </div>
+</div>
+
 <Platforms/>
+
+<div className="my-16 xl:max-w-none">
+  <Heading level={2} id="package-managers">
+    Package Managers
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="npm" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          NPM
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with npm</p>
+        <p className="mt-4"><Button href="/docs/package-managers/npm" variant="text" arrow="right">NPM Guides</Button></p>
+      </div>
+      <NpmIcon className="w-10 h-10 text-[#CB3837]" />
+    </div>
+  </div>
+</div>
