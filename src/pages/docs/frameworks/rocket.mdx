@@ -1,0 +1,49 @@
+import { FrameworksBreadcrumb } from '@/components/FrameworksBreadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { NpmIcon } from '@/components/icons/NpmIcon'
+import { RocketIcon } from '@/components/icons/RocketIcon'
+import { DockerIcon } from '@/components/icons/DockerIcon'
+import { HerokuIcon } from '@/components/icons/HerokuIcon'
+
+import { Heading } from '@/components/Heading'
+import { VercelIcon } from '@/components/icons/VercelIcon'
+
+export const description =
+  'Use `dotenvx` with Rocket.'
+
+<FrameworksBreadcrumb icon={
+  <>
+    <RocketIcon className="h-9 w-9 text-[#C3454C]"/>
+  </>
+} />
+# Rocket
+<GuideHeading lead={description} />
+
+<div className="my-16 xl:max-w-none">
+  <Heading level={2} id="platforms">
+    Platforms
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="docker" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Docker
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">dotenvx, Rocket, and Docker</p>
+        <p className="mt-4"><Button href="/docs/platforms/docker" variant="text" arrow="right">Read Guide</Button></p>
+      </div>
+      <DockerIcon className="h-9 w-9 text-[#2496ED]"/>
+    </div>
+    <div key="heroku" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Heroku
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">dotenvx, Rocket, and Heroku</p>
+        <p className="mt-4"><Button href="/docs/platforms/heroku" variant="text" arrow="right">Read Guide</Button></p>
+      </div>
+      <HerokuIcon className="h-9 w-9 text-[#430098]"/>
+    </div>
+  </div>
+</div>

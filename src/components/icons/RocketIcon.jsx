@@ -1,4 +1,4 @@
-export function RocketRsIcon(props) {
+export function RocketIcon(props) {
   return (
     <svg fill="currentColor" role="img" viewBox="0 0 25 25" {...props}>
       <defs>

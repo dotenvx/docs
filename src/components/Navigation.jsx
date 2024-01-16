@@ -241,6 +241,10 @@ export const navigation = [
       { title: 'Express', href: '/docs/frameworks/express' },
       { title: 'Next', href: '/docs/frameworks/next' },
       { title: 'Remix', href: '/docs/frameworks/remix' },
+      { title: 'Flask', href: '/docs/frameworks/flask' },
+      { title: 'Sinatra', href: '/docs/frameworks/sinatra' },
+      { title: 'Echo', href: '/docs/frameworks/echo' },
+      { title: 'Rocket', href: '/docs/frameworks/rocket' },
     ]
   },
   {
