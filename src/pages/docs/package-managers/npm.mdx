@@ -2,6 +2,11 @@ import { NpmIcon } from '@/components/icons/NpmIcon'
 import { PackageManagersBreadcrumb } from '@/components/PackageManagersBreadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
+import { AstroIcon } from '@/components/icons/AstroIcon'
+import { ExpressIcon } from '@/components/icons/ExpressIcon'
+import { NextIcon } from '@/components/icons/NextIcon'
+import { RemixIcon } from '@/components/icons/RemixIcon'
+
 export const description =
   'Use dotenvx with npm'
 
@@ -13,9 +18,77 @@ export const description =
 # npm
 <GuideHeading lead={description} />
 
+<div class="flex gap-2 items-center">
+  <AstroIcon className="h-9 w-9 text-[#FF5D01]"/>
+  <ExpressIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+  <NextIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+  <RemixIcon className="h-7 w-7 text-[#000000] dark:invert"/>
+</div>
+
 <Note>
   The below framework guides all assume the presence of a `.env` file containing `HELLO=World`. Find <a href="https://github.com/dotenvx/examples/tree/master/package-managers/npm">code examples on GitHub</a>.
 </Note>
+
+## Astro
+
+> Use dotenvx (as an npm module) with [astro.js](https://github.com/withastro/astro).
+
+Create an astro.js application.
+
+```bash
+npm create astro@latest
+```
+
+Install `dotenvx` as an npm module.
+
+```bash
+npm install @dotenvx/dotenvx --save
+```
+
+Edit `src/pages/index.astro` to include `process.env.HELLO`.
+
+```js {{ title: 'src/pages/index.astro' }}
+---
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro</title>
+    </head>
+    <body>
+        <h1>Hello {import.meta.env.HELLO}.</h1>
+    </body>
+</html>
+```
+
+Preload Astro.js scripts with `dotenvx`. This will inject environment variables ahead of Astro.js.
+
+```json {{ title: 'package.json' }}
+...
+"scripts": {
+  "dev": "dotenvx run -- astro dev",
+  "start": "dotenvx run -- astro dev",
+  "build": "astro check && dotenvx run -- astro build",
+  "preview": "dotenvx run -- astro preview",
+  "astro": "astro"
+},
+```
+
+Run it.
+
+```bash {{ title: 'npm run dev' }}
+$ npm run dev
+
+> dev
+> dotenvx run -- astro dev
+
+[dotenvx@0.10.2] injecting env (1) from .env
+┃ Local    http://localhost:4321/
+```
 
 ## Express
 
@@ -192,63 +265,4 @@ $ npm run dev
    - Local:        http://localhost:3000
 ```
 
-## Astro
 
-> Use dotenvx (as an npm module) with [astro.js](https://github.com/withastro/astro).
-
-Create an astro.js application.
-
-```bash
-npm create astro@latest
-```
-
-Install `dotenvx` as an npm module.
-
-```bash
-npm install @dotenvx/dotenvx --save
-```
-
-Edit `src/pages/index.astro` to include `process.env.HELLO`.
-
-```js {{ title: 'src/pages/index.astro' }}
----
----
-
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Astro</title>
-    </head>
-    <body>
-        <h1>Hello {import.meta.env.HELLO}.</h1>
-    </body>
-</html>
-```
-
-Preload Astro.js scripts with `dotenvx`. This will inject environment variables ahead of Astro.js.
-
-```json {{ title: 'package.json' }}
-...
-"scripts": {
-  "dev": "dotenvx run -- astro dev",
-  "start": "dotenvx run -- astro dev",
-  "build": "astro check && dotenvx run -- astro build",
-  "preview": "dotenvx run -- astro preview",
-  "astro": "astro"
-},
-```
-
-Run it.
-
-```bash {{ title: 'npm run dev' }}
-$ npm run dev
-
-> dev
-> dotenvx run -- astro dev
-
-[dotenvx@0.10.2] injecting env (1) from .env
-┃ Local    http://localhost:4321/
-```
