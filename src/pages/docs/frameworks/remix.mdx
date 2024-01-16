@@ -1,0 +1,35 @@
+import { FrameworksBreadcrumb } from '@/components/FrameworksBreadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+import { NpmIcon } from '@/components/icons/NpmIcon'
+import { RemixIcon } from '@/components/icons/RemixIcon'
+
+import { Heading } from '@/components/Heading'
+
+export const description =
+  'Use `dotenvx` with Remix.'
+
+<FrameworksBreadcrumb icon={
+  <>
+    <RemixIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+  </>
+} />
+# Remix
+<GuideHeading lead={description} />
+
+<div className="my-16 xl:max-w-none">
+  <Heading level={2} id="package-managers">
+    Package Managers
+  </Heading>
+  <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="npm" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          NPM
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">dotenvx, Remix, and npm</p>
+        <p className="mt-4"><Button href="/docs/package-managers/npm#remix" variant="text" arrow="right">Read Guide</Button></p>
+      </div>
+      <NpmIcon className="w-10 h-10 text-[#CB3837]" />
+    </div>
+  </div>
+</div>

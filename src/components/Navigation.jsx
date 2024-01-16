@@ -234,6 +234,16 @@ export const navigation = [
     ]
   },
   {
+    title: 'Frameworks',
+    // href: '/docs/platforms',
+    links: [
+      { title: 'Astro', href: '/docs/frameworks/astro' },
+      { title: 'Express', href: '/docs/frameworks/express' },
+      { title: 'Next', href: '/docs/frameworks/next' },
+      { title: 'Remix', href: '/docs/frameworks/remix' },
+    ]
+  },
+  {
     title: 'Package Managers',
     links: [
       { title: 'npm', href: '/docs/package-managers/npm' },
