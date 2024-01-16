@@ -17,7 +17,7 @@ import { RailwayIcon } from '@/components/icons/RailwayIcon'
 import { RenderIcon } from '@/components/icons/RenderIcon'
 import { VercelIcon } from '@/components/icons/VercelIcon'
 
-export function Platforms() {
+export function Platforms(props) {
   return (
     <div className="my-16 xl:max-w-none">
       <Heading level={2} id="platforms">
@@ -44,16 +44,22 @@ export function Platforms() {
           </div>
           <HerokuIcon className="h-9 w-9 text-[#430098]"/>
         </div>
-        <div key="vercel" className="flex flex-row-reverse gap-6">
-          <div className="flex-auto">
-            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
-              Vercel
-            </h3>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Vercel</p>
-            <p className="mt-4"><Button href="/docs/platforms/vercel" variant="text" arrow="right">Vercel Guide</Button></p>
+        {}
+        {props.includeVercel ? (
+          <div key="vercel" className="flex flex-row-reverse gap-6">
+            <div className="flex-auto">
+              <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+                Vercel
+              </h3>
+              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Vercel</p>
+              <p className="mt-4"><Button href="/docs/platforms/vercel" variant="text" arrow="right">Vercel Guide</Button></p>
+            </div>
+            <VercelIcon className="h-9 w-9 text-[#000000] dark:invert"/>
           </div>
-          <VercelIcon className="h-9 w-9 text-[#000000] dark:invert"/>
-        </div>
+        ) : (
+          <>
+          </>
+        )}
       </div>
     </div>
   )
