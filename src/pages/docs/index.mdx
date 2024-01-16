@@ -21,6 +21,7 @@ export const description =
 export const sections = [
   { title: 'Getting Started', id: 'getting-started' },
   { title: 'Languages', id: 'languages' },
+  { title: 'Platforms', id: 'platforms' },
   { title: 'Frameworks', id: 'frameworks' },
 ]
 
@@ -76,4 +77,5 @@ docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
 * encrypted envs
 
 <Languages/>
-<Platforms/>
+<Platforms includeVercel="true"/>
+<Frameworks/>

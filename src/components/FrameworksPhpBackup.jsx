@@ -5,7 +5,7 @@ import { LaravelIcon } from '@/components/icons/LaravelIcon'
 export function FrameworksPhp() {
   return (
     <>
-      <div key="laravel" className="flex flex-row-reverse gap-6">
+      <div key="rails" className="flex flex-row-reverse gap-6">
         <div className="flex-auto">
           <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
             Laravel

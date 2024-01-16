@@ -17,7 +17,6 @@ export function Frameworks() {
         <FrameworksNodejs />
         <FrameworksPython />
         <FrameworksRuby />
-        <FrameworksPhp />
         <FrameworksRust />
       </div>
     </div>
