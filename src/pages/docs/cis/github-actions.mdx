@@ -48,8 +48,9 @@ console.log(`Hello ${process.env.HELLO || ''}`)
 
 ```bash {{ title: 'Python' }}
 # build.py
+import os
+print(f"Hello {os.environ.get('HELLO', '')}")
 ```
-
 
 </CodeGroup>
 
@@ -58,6 +59,7 @@ Create a `.github/workflows/ci.yml` file.
 <CodeGroup>
 
 ```yaml {{ title: "Node" }}
+# node
 name: build
 on: [push]
 jobs:
@@ -75,6 +77,19 @@ jobs:
 
 ```yaml {{ title: 'Python' }}
 # python
+name: build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - run: python build.py
+      env:
+        DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
 ```
 
 </CodeGroup>
@@ -85,9 +100,9 @@ Commit that to code and push to GitHub.
 
 The build will say `Hello [blank]` as it doesn't have a way to access the environment variable yet. Let's do that next.
 
-## Install dotenv
+## Install dotenvx
 
-Install [`dotenv`](https://github.com/motdotla/dotenv) to your `.github/workflows/ci.yml` file.
+Install [`dotenvx`](https://github.com/dotenvx/dotenvx) to your `.github/workflows/ci.yml` file.
 
 <CodeGroup>
 
@@ -110,6 +125,20 @@ jobs:
 
 ```yaml {{ title: 'Python' }}
 # python
+name: build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - run: curl -fsS https://dotenvx.sh/ | sh
+    - run: dotenvx run -- python build.py
+      env:
+        DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
 ```
 
 </CodeGroup>
