@@ -1,0 +1,182 @@
+import WellDone from '@/pages/partials/wellDone.mdx'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import { GuideHeading } from '@/components/GuideHeading'
+import { CisBreadcrumb } from '@/components/CisBreadcrumb'
+
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { PhpIcon } from '@/components/icons/PhpIcon'
+import { PythonIcon } from '@/components/icons/PythonIcon'
+import { RubyIcon } from '@/components/icons/RubyIcon'
+import { GoIcon } from '@/components/icons/GoIcon'
+import { RustIcon } from '@/components/icons/RustIcon'
+import { GitHubIcon } from '@/components/icons/GitHubIcon'
+
+export const description = 
+  'Use dotenvx with GitHub Actions'
+
+<CisBreadcrumb platform="GitHub Actions" icon={
+  <>
+    <GitHubIcon className="h-9 w-9 text-[#181717] dark:invert"/>
+  </>
+}/>
+# Use dotenvx with GitHub Actions
+<GuideHeading lead={description} />
+
+<Note>
+  Find <a href="https://github.com/dotenvx/examples/tree/master/cis/github-actions">code examples for this guide</a> on GitHub.
+</Note>
+
+<div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10">
+  <NodeIcon className="h-9 w-9 text-[#339933]"/>
+  <PythonIcon className="h-9 w-9 text-[#3776AB]"/>
+  <PhpIcon className="h-10 w-10 text-[#777BB4]"/>
+  <RubyIcon className="h-9 w-9 text-[#CC342D]"/>
+  <GoIcon className="h-10 w-10 text-[#00ADD8]"/>
+  <RustIcon className="h-10 w-10 text-[#000000] dark:invert"/>
+</div>
+
+## Initial setup
+
+Create a *Hello World* build file. It's a very simple build script but yours could be more complicated - like a test suite or something.
+
+<CodeGroup>
+
+```bash {{ title: 'Node' }}
+// build.js
+console.log(`Hello ${process.env.HELLO || ''}`)
+```
+
+```bash {{ title: 'Python' }}
+# build.py
+```
+
+
+</CodeGroup>
+
+Create a `.github/workflows/ci.yml` file.
+
+<CodeGroup>
+
+```yaml {{ title: "Node" }}
+name: build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - run: node build.js
+      env:
+        DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
+```
+
+```yaml {{ title: 'Python' }}
+# python
+```
+
+</CodeGroup>
+
+Commit that to code and push to GitHub.
+
+<ScreenshotBrowser url='/assets/docs/github-actions-hello-blank.png' www='github actions build' />
+
+The build will say `Hello [blank]` as it doesn't have a way to access the environment variable yet. Let's do that next.
+
+## Install dotenv
+
+Install [`dotenv`](https://github.com/motdotla/dotenv) to your `.github/workflows/ci.yml` file.
+
+<CodeGroup>
+
+```yaml {{ title: 'Node' }}
+name: build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - run: curl -fsS https://dotenvx.sh/ | sh
+    - run: dotenvx run -- node build.js
+      env:
+        DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
+```
+
+```yaml {{ title: 'Python' }}
+# python
+```
+
+</CodeGroup>
+
+<ScreenshotBrowser url='/assets/docs/github-actions-hello-missing-env-file.png' www='github actions build' />
+
+The logs tell us `missing .env file`. This is expected, as we don't want to commit `.env` to code. It also tells us, for ci, that we should set `DOTENV_KEY`. That is what we want to do. Let's do that next by first adding our `.env.ci` environment.
+
+## Add ci environment
+
+Create a `.env.ci` file in the root of your project.
+
+```ini {{ tite: '.env.ci' }}
+# .env.ci
+HELLO="ci/cd"
+```
+
+## Encrypt secrets
+
+Use `dotenvx` to encrypt your secrets.
+
+```shell
+dotenvx encrypt
+```
+
+This generates a `.env.vault` and `.env.keys` file.
+
+```bash {{ title: ".env.vault" }}
+#/-------------------.env.vault---------------------/
+#/         cloud-agnostic vaulting standard         /
+#/   [how it works](https://dotenv.org/env-vault)   /
+#/--------------------------------------------------/
+
+# ci
+DOTENV_VAULT_CI="Fzz16lWV2m2m15DEhsMKSQUtPDYceiUGI+1xAUjZ+FpXde0h9fWM/jlITUR7mll9BwVzag=="
+```
+
+The `.env.vault` file contains encrypted ([AES-256-GCM](https://www.reddit.com/r/cryptography/comments/13kl9ds/how_much_longer_do_you_think_aes_will_last/)) versions of your secrets, and the `.env.keys` file contains the decryption keys.
+
+```bash {{ title: ".env.keys" }}
+#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
+#/   DOTENV_KEYs. DO NOT commit to source control   /
+#/   [how it works](https://dotenv.org/env-keys)    /
+#/--------------------------------------------------/
+DOTENV_KEY_CI="dotenv://:key_a78ddf83e06fc4cfd357f7ebb68bc59f20a64b5b6bc607c82e16635df26cf9bf@dotenvx.com/vault/.env.vault?environment=ci"
+```
+
+<Note>
+  You SHOULD commit `.env.vault` to code. It is safe and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [dotenvx hub](https://hub.dotenvx.com).
+</Note>
+
+We're ready to set `DOTENV_KEY` on GitHub actions.
+
+## Set DOTENV_KEY
+
+Set `DOTENV_KEY` on GitHub Actions using the ci key in your `.env.keys` file.
+
+<ScreenshotBrowser url="/assets/docs/github-actions-config-vars.png" www="www.github.com" />
+
+## Build CI
+
+Commit those changes safely to code and rerun the build.
+
+That's it! On rerun, your `.env.vault` file will be decrypted and its CI secrets injected as environment variables – just in time. Your build script will say `Hello ci/cd`.
+
+You'll know things worked correctly when you see `'Loading env from encrypted .env.vault'` in your logs.
+
+<ScreenshotBrowser url='/assets/docs/github-actions-logs-vault.png' www='github actions build' />
+
+<WellDone/>
