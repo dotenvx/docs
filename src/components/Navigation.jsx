@@ -234,6 +234,14 @@ export const navigation = [
     ]
   },
   {
+    title: 'CI/CDs',
+    // href: '/docs/platforms',
+    links: [
+      { title: 'GitHub Actions', href: '/docs/cis/github-actions' },
+    ]
+  },
+
+  {
     title: 'Frameworks',
     // href: '/docs/platforms',
     links: [

@@ -60,7 +60,7 @@ Commit to code and push to Heroku.
 
 <HerokuCreateCodeGroup/>
 
-<ScreenshotBrowser url="/assets/img/docs/hello-blank.png" www="yourapp.herokuapp.com" />
+<ScreenshotBrowser url="/assets/docs/hello-blank.png" www="yourapp.herokuapp.com" />
 
 Once deployed, your app will say `'Hello [blank]'` as it doesn't have a way to access the environment variable yet. Let's do that next.
 
@@ -81,7 +81,7 @@ Inject your env using `dotenvx`.
 
 <DotenvxRunLocalCodeGroup/>
 
-<ScreenshotBrowser url="/assets/img/docs/hello-world.png" www="localhost:$PORT" />
+<ScreenshotBrowser url="/assets/docs/hello-world.png" www="localhost:$PORT" />
 
 Your app will say `Hello World`. The values from your `.env` file were successfully injected into your env. That covers local development. Let's solve for production next.
 
@@ -98,7 +98,7 @@ Use `dotenvx` to load your `.env.production` file.
 
 <DotenvxRunProductionLocalCodeGroup/>
 
-<ScreenshotBrowser url="/assets/img/docs/hello-production.png" www="localhost:$PORT" />
+<ScreenshotBrowser url="/assets/docs/hello-production.png" www="localhost:$PORT" />
 
 Your app will say `Hello production`, simulating production. Solid. Let's encrypt your secrets next.
 
@@ -254,7 +254,7 @@ Set `DOTENV_KEY` on Heroku using the production key in your `.env.keys` file.
 heroku config:set DOTENV_KEY='dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production'
 ```
 
-<ScreenshotBrowser url="/assets/img/docs/heroku-config-vars.png" www="www.heroku.com" />
+<ScreenshotBrowser url="/assets/docs/heroku-config-vars.png" www="www.heroku.com" />
 
 Your app restarts and `env` is successfully injected using the encrypted contents of `.env.vault`.
 
@@ -305,7 +305,7 @@ app[web.1]: Rocket has launched from http://0.0.0.0:8930
 
 Visit your url and it says `Hello production`.
 
-<ScreenshotBrowser url="/assets/img/docs/hello-production.png" www="yourapp.herokuapp.com" />
+<ScreenshotBrowser url="/assets/docs/hello-production.png" www="yourapp.herokuapp.com" />
 
 <WellDone/>
 
@@ -335,4 +335,4 @@ git commit -am "update production secret"
 git push heroku
 ```
 
-<ScreenshotBrowser url="/assets/img/docs/hello-mot.png" />
+<ScreenshotBrowser url="/assets/docs/hello-mot.png" />

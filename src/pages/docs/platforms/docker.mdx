@@ -61,7 +61,7 @@ Build and run it with Docker.
 
 <DockerRunCodeGroup/>
 
-<ScreenshotBrowser url="/assets/img/docs/hello-blank.png" www="docker container" />
+<ScreenshotBrowser url="/assets/docs/hello-blank.png" www="docker container" />
 
 Once deployed, your app will say `'Hello [blank]'` as it doesn't have a way to access the environment variable yet. Let's do that next.
 
@@ -82,7 +82,7 @@ Build and run it with Docker.
 
 <DockerRunCodeGroup/>
 
-<ScreenshotBrowser url="/assets/img/docs/hello-world.png" www="localhost:$PORT" />
+<ScreenshotBrowser url="/assets/docs/hello-world.png" www="localhost:$PORT" />
 
 Your app will say `Hello World`. The values from your `.env` file were successfully injected into your env. That covers local development. Let's solve for production next.
 
@@ -103,7 +103,7 @@ Build and run it with Docker.
 
 <DockerRunCodeGroup/>
 
-<ScreenshotBrowser url="/assets/img/docs/hello-production.png" www="localhost:$PORT" />
+<ScreenshotBrowser url="/assets/docs/hello-production.png" www="localhost:$PORT" />
 
 Your app will say `Hello production`, simulating production. Solid. Let's encrypt your secrets next.
 
@@ -220,7 +220,7 @@ Server running on port:3000
 
 Visit your url and it says `Hello production`.
 
-<ScreenshotBrowser url="/assets/img/docs/hello-production.png" www="docker container" />
+<ScreenshotBrowser url="/assets/docs/hello-production.png" www="docker container" />
 
 <WellDone/>
 
@@ -245,4 +245,4 @@ dotenvx encrypt
 
 Commit `.env.vault` safely to code and re-run your Docker container.
 
-<ScreenshotBrowser url="/assets/img/docs/hello-mot.png" />
+<ScreenshotBrowser url="/assets/docs/hello-mot.png" />
