@@ -89,6 +89,17 @@ EXPOSE 80
 CMD ["apache2-foreground"]
 ```
 
+```ini {{ title: 'Ruby' }}
+# Dockerfile
+FROM ruby:3.2
+WORKDIR /app
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+COPY . .
+EXPOSE 4567
+CMD ["ruby", "index.rb", "-o", "0.0.0.0"]
+```
+
 </CodeGroup>
 
 Create `.dockerignore`.
@@ -108,10 +119,21 @@ Create `fly.toml`.
   internal_port = 3000
 ```
 
-```ini {{ title: 'Python' }}
+```yaml {{ title: 'Python' }}
 [http_service]
   internal_port = 5000
 ```
+
+```yaml {{ title: 'PHP' }}
+[http_service]
+  internal_port = 80
+```
+
+```yaml {{ title: 'Ruby' }}
+[http_service]
+  internal_port = 4567
+```
+
 </CodeGroup>
 
 Commit that to code and deploy it to Fly.
@@ -294,11 +316,14 @@ $ flyctl logs
 [info][dotenvx@0.10.5] missing .env file (/var/www/html/.env)
 [info]? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- apache2-foreground]
 [info]? for production: set [DOTENV_KEY] on your server and re-deploy
-[info]? for ci: set [DOTENV_KEY] on your ci and re-build
-[info][core:notice] [pid 316] AH00094: Command line: 'apache2 -D FOREGROUND'
 ```
 
 ```shell {{ title: 'Ruby' }}
+$ flyctl logs
+[info] INFO Preparing to run: `docker-php-entrypoint dotenvx run -- ruby index.rb -o 0.0.0.0` as root
+[info][dotenvx@0.10.5] missing .env file (/app/.env)
+[info]? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- ruby index.rb -o 0.0.0.0]
+[info]? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
 
 ```shell {{ title: 'Go' }}
@@ -346,6 +371,10 @@ $ flyctl logs
 ```
 
 ```shell {{ title: 'Ruby' }}
+$ flyctl logs
+[info] INFO Preparing to run: `docker-php-entrypoint dotenvx run -- ruby index.rb -o 0.0.0.0` as root
+[info][dotenvx@0.10.5] injecting env (1) from encrypted .env.vault
+[info]== Sinatra (v3.2.0) has taken the stage on 4567 for development with backup from WEBrick
 ```
 
 ```shell {{ title: 'Go' }}
