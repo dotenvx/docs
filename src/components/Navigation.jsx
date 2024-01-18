@@ -210,6 +210,7 @@ export const navigation = [
     title: 'Features',
     links: [
       { title: 'Precommit', href: '/docs/features/precommit' },
+      { title: 'Prebuild', href: '/docs/features/prebuild' },
     ]
   },
   {
