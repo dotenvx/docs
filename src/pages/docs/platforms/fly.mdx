@@ -115,6 +115,19 @@ EXPOSE 1323
 CMD ["./main"]
 ```
 
+```ini {{ title: 'Rust' }}
+# Dockerfile
+FROM rust:latest
+RUN rustup default nightly
+WORKDIR /app
+COPY . .
+ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_PORT=20629
+RUN cargo build --release
+EXPOSE 20629
+CMD ["./target/release/app"]
+```
+
 </CodeGroup>
 
 Create `.dockerignore`.
@@ -152,6 +165,11 @@ Create `fly.toml`.
 ```yaml {{ title: 'Go' }}
 [http_service]
   internal_port = 1323
+```
+
+```yaml {{ title: 'Rust' }}
+[http_service]
+  internal_port = 20629
 ```
 
 </CodeGroup>
@@ -345,6 +363,25 @@ EXPOSE 1323
 CMD ["dotenvx", "run", "--", "./main"]
 ```
 
+```ini {{ title: 'Rust' }}
+# Dockerfile
+FROM rust:latest
+RUN rustup default nightly
+WORKDIR /app
+
+# Install dotenvx
+RUN curl -fsS https://dotenvx.sh/ | sh
+
+COPY . .
+ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_PORT=20629
+RUN cargo build --release
+EXPOSE 20629
+
+# Prepend dotenvx run
+CMD ["dotenvx", "run", "--", "./target/release/app"]
+```
+
 </CodeGroup>
 
 Redeploy to Fly.
@@ -396,6 +433,11 @@ $ flyctl logs
 ```
 
 ```shell {{ title: 'Rust' }}
+$ flyctl logs
+[info] INFO Preparing to run: `dotenvx run -- ./target/release/app` as root
+[info][dotenvx@0.10.5] missing .env file (/app/.env)
+[info]? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- ./target/release/app]
+[info]? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
 
 </CodeGroup>
@@ -454,6 +496,10 @@ $ flyctl logs
 ```
 
 ```shell {{ title: 'Rust' }}
+$ flyctl logs
+[info] INFO Preparing to run: `dotenvx run -- ./target/release/app` as root
+[info][dotenvx@0.10.5] injecting env (1) from encrypted .env.vault
+[info]Rocket has launched from http://0.0.0.0:20629
 ```
 
 </CodeGroup>
