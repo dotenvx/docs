@@ -67,6 +67,15 @@ CMD ["node", "index.js"]
 
 ```ini {{ title: 'Python' }}
 # Dockerfile
+FROM python:3.8
+WORKDIR /app
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 5000
+ENV FLASK_APP=index.py
+ENV FLASK_RUN_HOST=0.0.0.0
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]
 ```
 
 </CodeGroup>
@@ -81,7 +90,8 @@ Create `fly.toml`.
 ```
 
 ```ini {{ title: 'Python' }}
-# todo
+[http_service]
+  internal_port = 5000
 ```
 </CodeGroup>
 
@@ -199,6 +209,21 @@ CMD ["dotenvx", "run", "--", "node", "index.js"]
 
 ```ini {{ title: 'Python' }}
 # Dockerfile
+FROM python:3.8
+WORKDIR /app
+
+# Install dotenvx
+RUN curl -fsS https://dotenvx.sh/ | sh
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 5000
+ENV FLASK_APP=index.py
+ENV FLASK_RUN_HOST=0.0.0.0
+
+# Prepend dotenvx run
+CMD ["dotenvx", "run", "--", "gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]
 ```
 
 </CodeGroup>
@@ -220,6 +245,11 @@ $ flyctl logs
 ```
 
 ```shell {{ title: 'Python' }}
+$ flyctl logs
+[info] INFO Preparing to run: `dotenvx run -- gunicorn --bind 0.0.0.0:5000 wsgi:app` as root
+[info][dotenvx@0.10.3] missing .env file (/app/.env)
+[info]? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
+[info]? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
 
 ```shell {{ title: 'PHP' }}
@@ -258,6 +288,11 @@ $ flyctl logs
 ```
 
 ```shell {{ title: 'Python' }}
+$ flyctl logs
+[info] INFO Preparing to run: `dotenvx run -- gunicorn --bind 0.0.0.0:5000 wsgi:app` as root
+[info][dotenvx@0.10.3] injecting env (1) from encrypted .env.vault
+[info][INFO] Starting gunicorn 21.2.0
+[info][INFO] Listening at: http://0.0.0.0:5000
 ```
 
 ```shell {{ title: 'PHP' }}
