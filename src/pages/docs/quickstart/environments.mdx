@@ -25,7 +25,13 @@ Hello production
 > ^^
 ```
 
-```bash {{ title: 'multiple' }}
+</CodeGroup>
+
+## --env-file (multiple)
+
+<CodeGroup>
+
+```bash {{ title: '--env-file (multiple)' }}
 $ echo "HELLO=local" > .env.local
 
 $ echo "HELLO=World" > .env
@@ -35,6 +41,8 @@ Hello local
 ```
 
 </CodeGroup>
+
+The order matters. The first `--env-file` will 'win' for an environment variable. You can use `--overload` if you prefer the last to 'win'.
 
 ## --overload
 
@@ -47,6 +55,8 @@ $ dotenvx run --env-file=.env.local --env-file=.env --overload -- node index.js
 Hello World
 ```
 
+Keep in mind that `--overload` will also overload any environment variables already set on your machine or server. Use `--verbose` to get better visibility into this.
+
 ## --verbose
 
 ```bash {{ title: '--verbose' }}
@@ -58,6 +68,8 @@ $ dotenvx run --env-file=.env.production --verbose -- node index.js
 [dotenvx][info] loading env (1) from .env.production
 Hello production
 ```
+
+If you also want to use the actual value being sent use `--debug`.
 
 ## --debug
 
@@ -77,3 +89,5 @@ $ dotenvx run --env-file=.env.production --debug -- node index.js
 [dotenvx][info] loading env (1) from .env.production
 Hello production
 ```
+
+Be careful with `--debug` as this will leak your secrets out to your logs unless you've configured your logs to avoid it.
