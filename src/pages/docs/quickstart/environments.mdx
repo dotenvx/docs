@@ -33,8 +33,8 @@ Hello production
 
 ```bash {{ title: '--env-file (multiple)' }}
 $ echo "HELLO=local" > .env.local
-
 $ echo "HELLO=World" > .env
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 $ dotenvx run --env-file=.env.local --env-file=.env -- node index.js
 Hello local
@@ -48,8 +48,8 @@ The order matters. The first `--env-file` will 'win' for an environment variable
 
 ```bash {{ title: '--overload' }}
 $ echo "HELLO=local" > .env.local
-
 $ echo "HELLO=World" > .env
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 $ dotenvx run --env-file=.env.local --env-file=.env --overload -- node index.js
 Hello World
@@ -61,6 +61,7 @@ Keep in mind that `--overload` will also overload any environment variables alre
 
 ```bash {{ title: '--verbose' }}
 $ echo "HELLO=production" > .env.production
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 $ dotenvx run --env-file=.env.production --verbose -- node index.js
 [dotenvx][verbose] loading env from /path/to/.env.production
@@ -75,6 +76,7 @@ If you also want to see the secret value being set, use `--debug`.
 
 ```bash {{ title: '--debug' }}
 $ echo "HELLO=production" > .env.production
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 $ dotenvx run --env-file=.env.production --debug -- node index.js
 [dotenvx][debug] configuring options
