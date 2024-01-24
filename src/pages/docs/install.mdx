@@ -8,16 +8,16 @@ Choose your preferred method to install `dotenvx`. {{ className: 'lead' }}
 
 <CodeGroup>
 
+```bash {{ title: "Npm" }}
+npm install @dotenvx/dotenvx --save
+```
+
 ```bash {{ title: "Brew" }}
 brew install dotenvx/brew/dotenvx
 ```
 
 ```bash {{ title: "Curl" }}
 curl -fsS https://dotenvx.sh/ | sh
-```
-
-```bash {{ title: "Npm" }}
-npm install @dotenvx/dotenvx -g
 ```
 
 ```bash {{ title: "Docker" }}
@@ -36,14 +36,32 @@ docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
 
 # Other Ways to Install
 
+## Npm
+
+`dotenvx` is made with javascript – so you can use it just like you use `dotenv` – as a drop-in replacement.
+
+```bash
+npm install @dotenvx/dotenvx --save
+```
+```js
+// index.js
+require('@dotenvx/dotenvx').config()
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+Find the [@dotenvx/dotenvx package here](https://www.npmjs.com/package/@dotenvx/dotenvx).
+
 ## Brew
 
-Installing with [brew](https://brew.sh) is the most straight forward:
+Installing with [brew](https://brew.sh) is the most straight forward global install:
 
 ```bash
 # install with Homebrew and then use the dotenvx command
 brew install dotenvx/brew/dotenvx
 ```
+
+Find the [dotenvx brew tap here](https://github.com/dotenvx/homebrew-brew).
 
 ## Shell
 
@@ -53,59 +71,13 @@ After brew our installer is easiest. With curl:
 curl -fsS https://dotenvx.sh/ | sh
 ```
 
-<Note>
-  Wanna read that script before you run it? [github.com/dotenvx/dotenvx.sh/installer.sh](https://github.com/dotenvx/dotenvx.sh/blob/main/installer.sh)
-</Note>
-
 Or with wget:
 
 ```bash
 wget -qO- https://dotenvx.sh/ | sh
 ```
 
-## Npm
-
-`dotenvx` is made with javascript – so you can use also install with [npm](https://www.npmjs.com/package/@dotenvx/dotenvx).
-
-With `npx`:
-
-```bash
-npx @dotenvx/dotenvx help
-```
-
-Globally:
-
-```bash
-npm install @dotenvx/dotenvx --global
-dotenvx help
-```
-
-Locally:
-
-```bash
-npm i @dotenvx/dotenvx --save
-```
-```json
-{
-  "scripts": {
-    "start": "./node_modules/.bin/dotenvx run -- node index.js"
-  },
-  "dependencies": {
-    "@dotenvx/dotenvx": "^0.6.0"
-  }
-}
-```
-
-Or even in your code:
-
-```js
-// index.js
-require('@dotenvx/dotenvx').config()
-
-console.log(`Hello ${process.env.HELLO}`)
-```
-
-Find the [@dotenvx/dotenvx package here](https://www.npmjs.com/package/@dotenvx/dotenvx).
+Read the [installer.sh script here](https://github.com/dotenvx/dotenvx.sh/blob/main/installer.sh).
 
 ## Docker
 
@@ -177,6 +149,43 @@ curl -fsS --proto '=https' "https://dotenvx.sh/$(uname)/$(uname -m).tgz?version=
 <Note>
   You can view available versions at [github.com/dotenvx/releases](https://github.com/dotenvx/releases/tree/main)
 </Note>
+
+## Npm local
+
+Use dotenvx locally as a cli in your node project.
+
+```sh
+npm i @dotenvx/dotenvx --save
+```
+```json
+{
+  "scripts": {
+    "start": "./node_modules/.bin/dotenvx run -- node index.js"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^0.6.0"
+  }
+}
+```
+
+## Npm global
+
+You can also install globally using npm's `--global` flag.
+
+```bash
+npm install @dotenvx/dotenvx --global
+dotenvx help
+```
+
+## Npx
+
+Or prefer to run as needed, uses `npx`.
+
+```bash
+npx @dotenvx/dotenvx help
+```
+
+
 
 ## GitHub Releases
 
