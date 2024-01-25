@@ -232,6 +232,7 @@ export const navigation = [
       { title: 'Docker', href: '/docs/platforms/docker' },
       { title: 'Fly', href: '/docs/platforms/fly' },
       { title: 'Heroku', href: '/docs/platforms/heroku' },
+      { title: 'Netlify', href: '/docs/platforms/netlify' },
       { title: 'Vercel', href: '/docs/platforms/vercel' },
     ]
   },

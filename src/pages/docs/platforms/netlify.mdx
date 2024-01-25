@@ -17,22 +17,22 @@ import { PythonIcon } from '@/components/icons/PythonIcon'
 import { RubyIcon } from '@/components/icons/RubyIcon'
 import { GoIcon } from '@/components/icons/GoIcon'
 import { RustIcon } from '@/components/icons/RustIcon'
-import { VercelIcon } from '@/components/icons/VercelIcon'
+import { NetlifyIcon } from '@/components/icons/NetlifyIcon'
 import { AstroIcon } from '@/components/icons/AstroIcon'
 
 export const description = 
-  'Use dotenvx with Vercel'
+  'Use dotenvx with Netlify'
 
-<PlatformsBreadcrumb platform="Vercel" icon={
+<PlatformsBreadcrumb platform="Netlify" icon={
   <>
-    <VercelIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+    <NetlifyIcon className="h-9 w-9 text-[#00C7B7]"/>
   </>
 }/>
-# Use dotenvx with Vercel
+# Use dotenvx with Netlify
 <GuideHeading lead={description} />
 
 <Note>
-  Find <a href="https://github.com/dotenvx/examples/tree/master/platforms/vercel">code examples for this guide</a> on GitHub.
+  Find <a href="https://github.com/dotenvx/examples/tree/master/platforms/netlify">code examples for this guide</a> on GitHub.
 </Note>
 
 <div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10 items-center">
@@ -81,36 +81,52 @@ export default function Page() {
         <title>Astro</title>
     </head>
     <body>
-        <h1>Hello {import.meta.env.HELLO}</h1>
+        <h1>Hello {import.meta.env.PUBLIC_HELLO}</h1>
     </body>
 </html>
 ```
 
 </CodeGroup>
 
-Add `.vercelignore` file.
-
-```ini {{ title: '.vercelignore' }}
-# vercelignore
-.env*
-!.env.vault
-```
-
-Commit to code and deploy to Vercel.
+Add `netlify.toml` file.
 
 <CodeGroup>
 
-```bash {{ title: 'Next' }}
-npx vercel@latest deploy --prod
+```toml {{ title: 'Next' }}
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build]
+  command = "npm run build"
+  publish = ".next"
 ```
 
-```bash {{ title: 'Astro' }}
-npx vercel@latest deploy --prod
+```toml {{ title: 'Astro' }}
+[build]
+  command = "npm run build"
+  publish = "dist"
 ```
 
 </CodeGroup>
 
-<ScreenshotBrowser url="/assets/docs/hello-blank.png" www="yourapp.vercel.app" />
+Commit to code and deploy to Netlify.
+
+<CodeGroup>
+
+```bash {{ title: 'Next' }}
+brew install vips # most machines can skip this step
+npx netlify-cli@latest deploy --build --prod
+```
+
+```bash {{ title: 'Astro' }}
+brew install vips # most machines can skip this step
+npx astro add netlify # important. add the astro netlify adapter
+npx netlify-cli@latest deploy --build --prod
+```
+
+</CodeGroup>
+
+<ScreenshotBrowser url="/assets/docs/hello-blank.png" www="yourapp.netlify.app" />
 
 Once deployed, your app will say `'Hello [blank]'` as it doesn't have a way to access the environment variable yet. Let's do that next.
 
@@ -163,7 +179,7 @@ HELLO="production"
 
 ```shell {{ title: 'Astro' }}
 # .env.production
-HELLO="production"
+PUBLIC_HELLO="production"
 ```
 
 </CodeGroup>
@@ -195,35 +211,40 @@ DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021
   You SHOULD commit `.env.vault` to code. It is safe and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [dotenvx hub](https://hub.dotenvx.com).
 </Note>
 
-Redeploy to Vercel.
+Redeploy to Netlify.
 
 ```
-npx vercel@latest deploy --prod
+npx netlify-cli@latest deploy --build --prod
 ```
 
 <CodeGroup>
 
 ```shell {{ title: 'Next' }}
-$ npx vercel@latest logs https://yourapp.vercel.app
-Running "npm run build"
+...
+$ npm run build
 
 > build
 > dotenvx run -- next build
 
-[dotenvx@0.10.2] missing .env file (/vercel/path0/.env)
+[dotenvx@0.10.6] missing .env file (/../jan-24/netlify-next/.env)
 ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- next build]
 ? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
 
 ```shell {{ title: 'Astro' }}
-$ npx vercel@latest logs https://yourapp.vercel.app
-Running "npm run build"
+$ npm run build
 
 > build
 > astro check && dotenvx run -- astro build
 
-[dotenvx@0.10.2] missing .env file (/vercel/path0/.env)
-? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- next build]
+16:29:11 [check] Getting diagnostics for Astro files in /../jan-24/netlify-astro...
+Result (5 files):
+- 0 errors
+- 0 warnings
+- 0 hints
+
+[dotenvx@0.10.6] missing .env file (/../jan-24/netlify-astro/.env)
+? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- astro build]
 ? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
 
@@ -233,14 +254,10 @@ The logs tell us `missing .env file`. This is expected, as we don't want to comm
 
 ## Set DOTENV_KEY
 
-Set  `DOTENV_KEY` to the `DOTENV_KEY_PRODUCTION` value. We'll use the Vercel cli, but you can also use their dashboard.
+Set  `DOTENV_KEY` to the `DOTENV_KEY_PRODUCTION` value. We'll use the Netlify cli, but you can also use their dashboard.
 
 ```shell
-npx vercel@latest env add DOTENV_KEY
-```
-```shell
-? What’s the value of DOTENV_KEY? dotenv://:key_1234@dotenv.org/vault/.env.vault?environment=production
-✅  Added Environment Variable DOTENV_KEY to Project nodejs-vercel [94ms]
+npx netlify-cli@latest env:set DOTENV_KEY "dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production"
 ```
 
 Redeploy.
@@ -248,7 +265,11 @@ Redeploy.
 <CodeGroup>
 
 ```bash {{ title: 'Next' }}
-npx vercel@latest deploy --prod
+npx netlify-cli@latest deploy --build --prod
+```
+
+```bash {{ title: 'Astro' }}
+npx netlify-cli@latest deploy --build --prod
 ```
 
 </CodeGroup>
@@ -256,33 +277,36 @@ npx vercel@latest deploy --prod
 <CodeGroup>
 
 ```shell {{ title: 'Next' }}
-$ npx vercel@latest logs https://yourapp.vercel.app
-Running "npm run build"
+$ npm run build
 
 > build
 > dotenvx run -- next build
 
-[dotenvx@0.10.2] injecting env (1) from encrypted .env.vault
-   Creating an optimized production build ...
- ✓ Compiled successfully
+[dotenvx@0.10.6] injecting env (1) from encrypted .env.vault
+✓ Compiled successfully
 ```
 
 ```shell {{ title: 'Astro' }}
-$ npx vercel@latest logs https://yourapp.vercel.app
-Running "npm run build"
+$ npm run build
 
 > build
 > astro check && dotenvx run -- astro build
 
-[dotenvx@0.10.2] injecting env (1) from encrypted .env.vault
-[build] output: "static"
+16:33:32 [check] Getting diagnostics for Astro files in /../jan-24/netlify-astro...
+Result (5 files):
+- 0 errors
+- 0 warnings
+- 0 hints
+
+[dotenvx@0.10.6] injecting env (1) from encrypted .env.vault
+16:33:35 [build] ✓ Completed in 54ms.
 ```
 
 </CodeGroup>
 
 Your app restarts and `env` is successfully injected using the encrypted contents of `.env.vault`. Visit your url and it says `Hello production`. 
 
-<ScreenshotBrowser url="/assets/docs/hello-production.png" www="yourapp.vercel.app" />
+<ScreenshotBrowser url="/assets/docs/hello-production.png" www="yourapp.netlify.app" />
 
 <WellDone/>
 
@@ -309,7 +333,7 @@ Commit `.env.vault` safely to code and redeploy.
 
 ```shell
 git commit -am "update production secret"
-npx vercel@latest deploy --prod
+npx netlify-cli@latest deploy --build --prod
 ```
 
 <ScreenshotBrowser url="/assets/docs/hello-mot.png" />
