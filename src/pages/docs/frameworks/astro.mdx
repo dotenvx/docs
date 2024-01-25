@@ -6,6 +6,7 @@ import { AstroIcon } from '@/components/icons/AstroIcon'
 import { ExpressIcon } from '@/components/icons/ExpressIcon'
 
 import { Heading } from '@/components/Heading'
+import { NetlifyIcon } from '@/components/icons/NetlifyIcon'
 import { VercelIcon } from '@/components/icons/VercelIcon'
 
 export const description =
@@ -24,6 +25,16 @@ export const description =
     Platforms
   </Heading>
   <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+    <div key="netlify" className="flex flex-row-reverse gap-6">
+      <div className="flex-auto">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+          Netlify
+        </h3>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">dotenvx, Astro, and Netlify</p>
+        <p className="mt-4"><Button href="/docs/platforms/netlify" variant="text" arrow="right">Read Guide</Button></p>
+      </div>
+      <NetlifyIcon className="h-9 w-9 text-[#00C7B7]"/>
+    </div>
     <div key="vercel" className="flex flex-row-reverse gap-6">
       <div className="flex-auto">
         <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
