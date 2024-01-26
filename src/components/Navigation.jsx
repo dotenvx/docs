@@ -233,6 +233,7 @@ export const navigation = [
       { title: 'Fly', href: '/docs/platforms/fly' },
       { title: 'Heroku', href: '/docs/platforms/heroku' },
       { title: 'Netlify', href: '/docs/platforms/netlify' },
+      { title: 'Railway', href: '/docs/platforms/railway' },
       { title: 'Vercel', href: '/docs/platforms/vercel' },
     ]
   },
