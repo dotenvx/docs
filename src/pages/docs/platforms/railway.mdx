@@ -195,9 +195,11 @@ Railway also requires you set the correct `PORT` environment variable for your a
 ```
 
 ```bash {{ title: "PHP" }}
+# set PORT to 80
 ```
 
 ```bash {{ title: "Ruby" }}
+# set PORT to 4567
 ```
 
 ```bash {{ title: "Go" }}
@@ -470,6 +472,10 @@ $ npx @railway/cli@latest logs
 
 ```shell {{ title: 'PHP' }}
 $ npx @railway/cli@latest logs
+INFO Preparing to run: `docker-php-entrypoint dotenvx run -- apache2-foreground` as root
+[dotenvx@0.10.5] missing .env file (/var/www/html/.env)
+? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- apache2-foreground]
+? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
 
 ```shell {{ title: 'Ruby' }}
@@ -517,10 +523,10 @@ $ npx @railway/cli@latest logs
 ```
 
 ```shell {{ title: 'PHP' }}
-$ flyctl logs
-[info] INFO Preparing to run: `docker-php-entrypoint dotenvx run -- apache2-foreground` as root
-[info][dotenvx@0.10.5] injecting env (1) from encrypted .env.vault
-[info][core:notice] [pid 316] AH00094: Command line: 'apache2 -D FOREGROUND'
+$ npx @railway/cli@latest logs
+INFO Preparing to run: `docker-php-entrypoint dotenvx run -- apache2-foreground` as root
+[dotenvx@0.10.5] injecting env (1) from encrypted .env.vault
+[core:notice] [pid 316] AH00094: Command line: 'apache2 -D FOREGROUND'
 ```
 
 ```shell {{ title: 'Ruby' }}
