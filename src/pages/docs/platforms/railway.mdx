@@ -203,9 +203,11 @@ Railway also requires you set the correct `PORT` environment variable for your a
 ```
 
 ```bash {{ title: "Go" }}
+# set PORT to 1323
 ```
 
 ```bash {{ title: "Rust" }}
+# set PORT to 20629
 ```
 
 </CodeGroup>
@@ -472,22 +474,30 @@ $ npx @railway/cli@latest logs
 
 ```shell {{ title: 'PHP' }}
 $ npx @railway/cli@latest logs
-INFO Preparing to run: `docker-php-entrypoint dotenvx run -- apache2-foreground` as root
-[dotenvx@0.10.5] missing .env file (/var/www/html/.env)
+[dotenvx@0.11.0] missing .env file (/var/www/html/.env)
 ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- apache2-foreground]
 ? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
 
 ```shell {{ title: 'Ruby' }}
 $ npx @railway/cli@latest logs
+[dotenvx@0.11.0] missing .env file (/app/.env)
+? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- ruby index.rb -o 0.0.0.0]
+? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
 
 ```shell {{ title: 'Go' }}
 $ npx @railway/cli@latest logs
+[dotenvx@0.11.0] missing .env file (/root/.env)
+? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- ./main]
+? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
 
 ```shell {{ title: 'Rust' }}
 $ npx @railway/cli@latest logs
+[dotenvx@0.11.0] missing .env file (/app/.env)
+? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- ./target/release/app]
+? for production: set [DOTENV_KEY] on your server and re-deploy
 ```
 
 </CodeGroup>
@@ -525,39 +535,36 @@ $ npx @railway/cli@latest logs
 ```shell {{ title: 'PHP' }}
 $ npx @railway/cli@latest logs
 INFO Preparing to run: `docker-php-entrypoint dotenvx run -- apache2-foreground` as root
-[dotenvx@0.10.5] injecting env (1) from encrypted .env.vault
+[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
 [core:notice] [pid 316] AH00094: Command line: 'apache2 -D FOREGROUND'
 ```
 
 ```shell {{ title: 'Ruby' }}
-$ flyctl logs
-[info] INFO Preparing to run: `docker-php-entrypoint dotenvx run -- ruby index.rb -o 0.0.0.0` as root
-[info][dotenvx@0.10.5] injecting env (1) from encrypted .env.vault
-[info]== Sinatra (v3.2.0) has taken the stage on 4567 for development with backup from WEBrick
+$ npx @railway/cli@latest logs
+[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
+== Sinatra (v3.2.0) has taken the stage on 4567 for development with backup from WEBrick
 ```
 
 ```shell {{ title: 'Go' }}
-$ flyctl logs
-[info] INFO Preparing to run: `dotenvx run -- ./main` as root
-[info][dotenvx@0.10.5] injecting env (1) from encrypted .env.vault
-[info]   ____    __
-[info]  / __/___/ /  ___
-[info] / _// __/ _ \/ _ \
-[info]/___/\__/_//_/\___/ v4.11.4
+$ npx @railway/cli@latest logs
+[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.11.4
 ```
 
 ```shell {{ title: 'Rust' }}
-$ flyctl logs
-[info] INFO Preparing to run: `dotenvx run -- ./target/release/app` as root
-[info][dotenvx@0.10.5] injecting env (1) from encrypted .env.vault
-[info]Rocket has launched from http://0.0.0.0:20629
+$ npx @railway/cli@latest logs
+[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
+Rocket has launched from http://0.0.0.0:20629
 ```
 
 </CodeGroup>
 
 Visit your url and it says `Hello production`.
 
-<ScreenshotBrowser url="/assets/docs/hello-production.png" www="yourapp.fly.com" />
+<ScreenshotBrowser url="/assets/docs/hello-production.png" www="yourapp.railway.app" />
 
 <WellDone/>
 
@@ -584,7 +591,7 @@ Commit `.env.vault` safely to code and redeploy.
 
 ```shell
 git commit -am "update production secret"
-flyctl deploy
+npx @railway/cli@latest up
 ```
 
 <ScreenshotBrowser url="/assets/docs/hello-mot.png" />
