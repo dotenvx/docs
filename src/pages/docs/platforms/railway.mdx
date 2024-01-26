@@ -180,7 +180,68 @@ npx @railway/cli@latest domain
 
 </CodeGroup>
 
+Railway also requires you set the correct `PORT` environment variable for your app.
+
+<ScreenshotBrowser url="/assets/docs/railway-set-port.png" www="railway.app/dashboard" />
+
+<CodeGroup>
+
+```bash {{ title: "Node" }}
+# set PORT to 3000
+```
+
+```bash {{ title: "Python" }}
+# set PORT to 5000
+```
+
+```bash {{ title: "PHP" }}
+```
+
+```bash {{ title: "Ruby" }}
+```
+
+```bash {{ title: "Go" }}
+```
+
+```bash {{ title: "Rust" }}
+```
+
+</CodeGroup>
+
+Redeploy to Railway.
+
+<CodeGroup>
+
+```bash {{ title: "Node" }}
+npx @railway/cli@latest up
+```
+
+```bash {{ title: "Python" }}
+npx @railway/cli@latest up
+```
+
+```bash {{ title: "PHP" }}
+npx @railway/cli@latest up
+```
+
+```bash {{ title: "Ruby" }}
+npx @railway/cli@latest up
+```
+
+```bash {{ title: "Go" }}
+npx @railway/cli@latest up
+```
+
+```bash {{ title: "Rust" }}
+npx @railway/cli@latest up
+```
+
+</CodeGroup>
+
+
 <ScreenshotBrowser url="/assets/docs/hello-blank.png" www="yourapp.railway.app" />
+
+
 
 Once deployed, your app will say `'Hello [blank]'` as it doesn't have a way to access the environment variable yet. Let's do that next.
 
@@ -260,7 +321,7 @@ DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021
   You SHOULD commit `.env.vault` to code. It is safe and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [dotenvx hub](https://hub.dotenvx.com).
 </Note>
 
-We're ready to add `dotenvx` to Fly.
+We're ready to add `dotenvx` to Railway.
 
 ## Add dotenvx to Dockerfile
 
@@ -401,6 +462,10 @@ Server running on port:7136
 
 ```shell {{ title: 'Python' }}
 $ npx @railway/cli@latest logs
+[dotenvx@0.11.0] missing .env file (/app/.env)
+? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- gunicorn --bind 0.0.0.0:5000 wsgi:app]
+? for production: set [DOTENV_KEY] on your server and re-deploy
+[2024-01-26 17:39:35 +0000] [13] [INFO] Listening at: http://0.0.0.0:5000 (13)
 ```
 
 ```shell {{ title: 'PHP' }}
@@ -446,11 +511,9 @@ Server running on port:5821
 ```
 
 ```shell {{ title: 'Python' }}
-$ flyctl logs
-[info] INFO Preparing to run: `dotenvx run -- gunicorn --bind 0.0.0.0:5000 wsgi:app` as root
-[info][dotenvx@0.10.3] injecting env (1) from encrypted .env.vault
-[info][INFO] Starting gunicorn 21.2.0
-[info][INFO] Listening at: http://0.0.0.0:5000
+$ npx @railway/cli@latest logs
+[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
+[2024-01-26 17:42:34 +0000] [13] [INFO] Listening at: http://0.0.0.0:5000 (13)
 ```
 
 ```shell {{ title: 'PHP' }}
