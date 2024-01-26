@@ -1,0 +1,521 @@
+import WellDone from '@/pages/partials/wellDone.mdx'
+import InstallCodeGroup from '@/pages/partials/installCodeGroup.mdx'
+import InstallLibrariesCodeGroup from '@/pages/partials/installLibrariesCodeGroup.mdx'
+import HelloWorldCodeGroup from '@/pages/partials/helloWorldCodeGroup.mdx'
+import DotenvxRunLocalCodeGroup from '@/pages/partials/dotenvxRunLocalCodeGroup.mdx'
+import DotenvxRunProductionLocalCodeGroup from '@/pages/partials/dotenvxRunProductionLocalCodeGroup.mdx'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import { GuideHeading } from '@/components/GuideHeading'
+import { PlatformsBreadcrumb } from '@/components/PlatformsBreadcrumb'
+
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { PhpIcon } from '@/components/icons/PhpIcon'
+import { PythonIcon } from '@/components/icons/PythonIcon'
+import { RubyIcon } from '@/components/icons/RubyIcon'
+import { GoIcon } from '@/components/icons/GoIcon'
+import { RustIcon } from '@/components/icons/RustIcon'
+import { RailwayIcon } from '@/components/icons/RailwayIcon'
+
+export const description = 
+  'Use dotenvx with Railway'
+
+<PlatformsBreadcrumb platform="Railway" icon={
+  <>
+    <RailwayIcon className="h-9 w-9 text-[#0B0D0E] dark:invert"/>
+  </>
+}/>
+# Use dotenvx with Railway
+<GuideHeading lead={description} />
+
+<Note>
+  Find <a href="https://github.com/dotenvx/examples/tree/master/platforms/railway">code examples for this guide</a> on GitHub.
+</Note>
+
+<div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10">
+  <NodeIcon className="h-9 w-9 text-[#339933]"/>
+  <PythonIcon className="h-9 w-9 text-[#3776AB]"/>
+  <PhpIcon className="h-10 w-10 text-[#777BB4]"/>
+  <RubyIcon className="h-9 w-9 text-[#CC342D]"/>
+  <GoIcon className="h-10 w-10 text-[#00ADD8]"/>
+  <RustIcon className="h-10 w-10 text-[#000000] dark:invert"/>
+</div>
+
+## Initial setup
+
+Install the necessary web server libraries in the language of your choice.
+
+<InstallLibrariesCodeGroup/>
+
+Create a simple *Hello World* program.
+
+<HelloWorldCodeGroup/>
+
+Create `Dockerfile`.
+
+<CodeGroup>
+
+```ini {{ title: 'Node' }}
+# Dockerfile
+FROM node:20
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["node", "index.js"]
+```
+
+```ini {{ title: 'Python' }}
+# Dockerfile
+FROM python:3.8
+WORKDIR /app
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 5000
+ENV FLASK_APP=index.py
+ENV FLASK_RUN_HOST=0.0.0.0
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]
+```
+
+```ini {{ title: 'PHP' }}
+# Dockerfile
+FROM php:8.0-apache
+WORKDIR /var/www/html
+RUN echo 'PassEnv HELLO' > /etc/apache2/conf-available/passenv.conf
+RUN a2enconf passenv
+COPY . .
+EXPOSE 80
+CMD ["apache2-foreground"]
+```
+
+```ini {{ title: 'Ruby' }}
+# Dockerfile
+FROM ruby:3.2
+WORKDIR /app
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+COPY . .
+EXPOSE 4567
+CMD ["ruby", "index.rb", "-o", "0.0.0.0"]
+```
+
+```ini {{ title: 'Go' }}
+# Dockerfile
+FROM golang:1.18 as builder
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+FROM alpine:latest
+WORKDIR /root/
+COPY --from=builder /app/main .
+EXPOSE 1323
+CMD ["./main"]
+```
+
+```ini {{ title: 'Rust' }}
+# Dockerfile
+FROM rust:latest
+RUN rustup default nightly
+WORKDIR /app
+COPY . .
+ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_PORT=20629
+RUN cargo build --release
+EXPOSE 20629
+CMD ["./target/release/app"]
+```
+
+</CodeGroup>
+
+Create `.dockerignore`.
+
+```ini {{ title: '.dockerignore' }}
+# .dockerignore
+.env*
+!.env.vault
+```
+
+Commit to code and push to Railway.
+
+<CodeGroup>
+
+```bash {{ title: "Node" }}
+npx @railway/cli@latest init
+npx @railway/cli@latest up
+npx @railway/cli@latest domain
+```
+
+```bash {{ title: "Python" }}
+npx @railway/cli@latest init
+npx @railway/cli@latest up
+npx @railway/cli@latest domain
+```
+
+```bash {{ title: "PHP" }}
+npx @railway/cli@latest init
+npx @railway/cli@latest up
+npx @railway/cli@latest domain
+```
+
+```bash {{ title: "Ruby" }}
+npx @railway/cli@latest init
+npx @railway/cli@latest up
+npx @railway/cli@latest domain
+```
+
+```bash {{ title: "Go" }}
+npx @railway/cli@latest init
+npx @railway/cli@latest up
+npx @railway/cli@latest domain
+```
+
+```bash {{ title: "Rust" }}
+npx @railway/cli@latest init
+npx @railway/cli@latest up
+npx @railway/cli@latest domain
+```
+
+</CodeGroup>
+
+<ScreenshotBrowser url="/assets/docs/hello-blank.png" www="yourapp.railway.app" />
+
+Once deployed, your app will say `'Hello [blank]'` as it doesn't have a way to access the environment variable yet. Let's do that next.
+
+## Run dotenvx
+
+Install [`dotenvx`](https://github.com/dotenvx/dotenvx).
+
+<InstallCodeGroup />
+
+Create a `.env` file in the root of your project.
+
+```shell {{ title: '.env' }}
+# .env
+HELLO="World"
+```
+
+Inject your env using `dotenvx`.
+
+<DotenvxRunLocalCodeGroup/>
+
+<ScreenshotBrowser url="/assets/docs/hello-world.png" www="localhost:$PORT" />
+
+Your app will say `Hello World`. The values from your `.env` file were successfully injected into your env. That covers local development. Let's solve for production next.
+
+## Add production environment
+
+Create a `.env.production` file in the root of your project.
+
+```shell {{ title: '.env.production' }}
+# .env.production
+HELLO="production"
+```
+
+Use `dotenvx` to load your `.env.production` file.
+
+<DotenvxRunProductionLocalCodeGroup/>
+
+<ScreenshotBrowser url="/assets/docs/hello-production.png" www="localhost:$PORT" />
+
+Your app will say `Hello production`, simulating production. Solid. Let's encrypt your secrets next.
+
+## Encrypt secrets
+
+Use `dotenvx` to encrypt your secrets.
+
+```shell
+dotenvx encrypt
+```
+
+This generates a `.env.vault` and `.env.keys` file.
+
+```bash {{ title: ".env.vault" }}
+#/-------------------.env.vault---------------------/
+#/         cloud-agnostic vaulting standard         /
+#/   [how it works](https://dotenv.org/env-vault)   /
+#/--------------------------------------------------/
+
+# development
+DOTENV_VAULT_DEVELOPMENT="V4NYVn0Pow6Uf2ez2mbHEzTrYURloHL6VDAFRLqnQBppA/OmHI5x5AXoxCMVor7wOg=="
+
+# production
+DOTENV_VAULT_PRODUCTION="YZkhtbh1IlzBgIamAAsG5nzGPfH6p8Zbuj9egXoziviVu/eYIyNjJWtIYyhiW/vHhFbqbsvo5+P9b27OC6ZC7qU="
+```
+
+The `.env.vault` file contains encrypted ([AES-256-GCM](https://www.reddit.com/r/cryptography/comments/13kl9ds/how_much_longer_do_you_think_aes_will_last/)) versions of your secrets, and the `.env.keys` file contains the decryption keys.
+
+```bash {{ title: ".env.keys" }}
+#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
+#/   DOTENV_KEYs. DO NOT commit to source control   /
+#/   [how it works](https://dotenv.org/env-keys)    /
+#/--------------------------------------------------/
+DOTENV_KEY_DEVELOPMENT="dotenv://:key_e507c60efa8841d8d5bbb85bd701ee92406cf3b06506d1d80f1553c2a72791e4@dotenvx.com/vault/.env.vault?environment=development"
+DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production"
+```
+
+<Note>
+  You SHOULD commit `.env.vault` to code. It is safe and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [dotenvx hub](https://hub.dotenvx.com).
+</Note>
+
+We're ready to add `dotenvx` to Fly.
+
+## Add dotenvx to Dockerfile
+
+Install `dotenvx` to your Dockerfile and prepend your app command with `dotenvx run --`.
+
+<CodeGroup>
+
+```ini {{ title: 'Node' }}
+# Dockerfile
+FROM node:20
+WORKDIR /app
+
+# Install dotenvx
+RUN curl -fsS https://dotenvx.sh/ | sh
+
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+
+# Prepend dotenvx run
+CMD ["dotenvx", "run", "--", "node", "index.js"]
+```
+
+```ini {{ title: 'Python' }}
+# Dockerfile
+FROM python:3.8
+WORKDIR /app
+
+# Install dotenvx
+RUN curl -fsS https://dotenvx.sh/ | sh
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 5000
+ENV FLASK_APP=index.py
+ENV FLASK_RUN_HOST=0.0.0.0
+
+# Prepend dotenvx run
+CMD ["dotenvx", "run", "--", "gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]
+```
+
+```ini {{ title: 'PHP' }}
+# Dockerfile
+FROM php:8.0-apache
+WORKDIR /var/www/html
+
+# Install dotenvx
+RUN curl -fsS https://dotenvx.sh/ | sh
+
+RUN echo 'PassEnv HELLO' > /etc/apache2/conf-available/passenv.conf
+RUN a2enconf passenv
+COPY . .
+EXPOSE 80
+
+# Prepend dotenvx run
+CMD ["dotenvx", "run", "--", "apache2-foreground"]
+```
+
+```ini {{ title: 'Ruby' }}
+# Dockerfile
+FROM ruby:3.2
+WORKDIR /app
+
+# Install dotenvx
+RUN curl -fsS https://dotenvx.sh/ | sh
+
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+COPY . .
+EXPOSE 4567
+
+# Prepend dotenvx run
+CMD ["dotenvx", "run", "--", "ruby", "index.rb", "-o", "0.0.0.0"]
+```
+
+```ini {{ title: 'Go' }}
+# Dockerfile
+FROM golang:1.18 as builder
+WORKDIR /app
+
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+FROM alpine:latest
+WORKDIR /root/
+
+# Install dotenvx
+RUN apk --no-cache add curl
+RUN curl -fsS https://dotenvx.sh/ | sh
+COPY --from=builder /app/.env* ./
+
+COPY --from=builder /app/main .
+EXPOSE 1323
+
+# Prepend dotenvx run
+CMD ["dotenvx", "run", "--", "./main"]
+```
+
+```ini {{ title: 'Rust' }}
+# Dockerfile
+FROM rust:latest
+RUN rustup default nightly
+WORKDIR /app
+
+# Install dotenvx
+RUN curl -fsS https://dotenvx.sh/ | sh
+
+COPY . .
+ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_PORT=20629
+RUN cargo build --release
+EXPOSE 20629
+
+# Prepend dotenvx run
+CMD ["dotenvx", "run", "--", "./target/release/app"]
+```
+
+</CodeGroup>
+
+Redeploy to Railway.
+
+```
+npx @railway/cli@latest up
+```
+
+<CodeGroup>
+
+```shell {{ title: 'Node' }}
+$ npx @railway/cli@latest logs
+[dotenvx@0.11.0] missing .env file (/app/.env)
+? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
+? for production: set [DOTENV_KEY] on your server and re-deploy
+Server running on port:7136
+```
+
+```shell {{ title: 'Python' }}
+$ npx @railway/cli@latest logs
+```
+
+```shell {{ title: 'PHP' }}
+$ npx @railway/cli@latest logs
+```
+
+```shell {{ title: 'Ruby' }}
+$ npx @railway/cli@latest logs
+```
+
+```shell {{ title: 'Go' }}
+$ npx @railway/cli@latest logs
+```
+
+```shell {{ title: 'Rust' }}
+$ npx @railway/cli@latest logs
+```
+
+</CodeGroup>
+
+The logs tell us `missing .env file`. This is expected, as we don't want to commit `.env` to code. It also tells us, for production, that we should set `DOTENV_KEY`. That is what we want to do. Let's do that next.
+
+## Set DOTENV_KEY
+
+Set `DOTENV_KEY` on Railway using the production key in your `.env.keys` file.
+
+<ScreenshotBrowser url="/assets/docs/railway-set-dotenv-key.gif" www="yourapp.railway.app" />
+
+Redeploy.
+
+```sh
+npx @railway/cli@latest up
+```
+
+Your app reboots and `env` is successfully injected using the encrypted contents of `.env.vault`.
+
+<CodeGroup>
+
+```shell {{ title: 'Node' }}
+$ npx @railway/cli@latest logs
+[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
+Server running on port:5821
+```
+
+```shell {{ title: 'Python' }}
+$ flyctl logs
+[info] INFO Preparing to run: `dotenvx run -- gunicorn --bind 0.0.0.0:5000 wsgi:app` as root
+[info][dotenvx@0.10.3] injecting env (1) from encrypted .env.vault
+[info][INFO] Starting gunicorn 21.2.0
+[info][INFO] Listening at: http://0.0.0.0:5000
+```
+
+```shell {{ title: 'PHP' }}
+$ flyctl logs
+[info] INFO Preparing to run: `docker-php-entrypoint dotenvx run -- apache2-foreground` as root
+[info][dotenvx@0.10.5] injecting env (1) from encrypted .env.vault
+[info][core:notice] [pid 316] AH00094: Command line: 'apache2 -D FOREGROUND'
+```
+
+```shell {{ title: 'Ruby' }}
+$ flyctl logs
+[info] INFO Preparing to run: `docker-php-entrypoint dotenvx run -- ruby index.rb -o 0.0.0.0` as root
+[info][dotenvx@0.10.5] injecting env (1) from encrypted .env.vault
+[info]== Sinatra (v3.2.0) has taken the stage on 4567 for development with backup from WEBrick
+```
+
+```shell {{ title: 'Go' }}
+$ flyctl logs
+[info] INFO Preparing to run: `dotenvx run -- ./main` as root
+[info][dotenvx@0.10.5] injecting env (1) from encrypted .env.vault
+[info]   ____    __
+[info]  / __/___/ /  ___
+[info] / _// __/ _ \/ _ \
+[info]/___/\__/_//_/\___/ v4.11.4
+```
+
+```shell {{ title: 'Rust' }}
+$ flyctl logs
+[info] INFO Preparing to run: `dotenvx run -- ./target/release/app` as root
+[info][dotenvx@0.10.5] injecting env (1) from encrypted .env.vault
+[info]Rocket has launched from http://0.0.0.0:20629
+```
+
+</CodeGroup>
+
+Visit your url and it says `Hello production`.
+
+<ScreenshotBrowser url="/assets/docs/hello-production.png" www="yourapp.fly.com" />
+
+<WellDone/>
+
+Great job! That's pretty much it. See the bonus section(s) below to go a little deeper.
+
+---
+
+## Bonus
+
+Try changing the value of `.env.production` to your name.
+
+```shell {{ title: '.env.production' }}
+# .env.production
+HELLO="Mot"
+```
+
+Re-encrypt it.
+
+```shell
+dotenvx encrypt
+```
+
+Commit `.env.vault` safely to code and redeploy.
+
+```shell
+git commit -am "update production secret"
+flyctl deploy
+```
+
+<ScreenshotBrowser url="/assets/docs/hello-mot.png" />
