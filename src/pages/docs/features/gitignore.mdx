@@ -1,0 +1,27 @@
+import { Logo } from '@/components/Logo'
+import { FeaturesBreadcrumb } from '@/components/FeaturesBreadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Append to .gitignore file (and if existing, `.dockerignore`, `.npmignore`, and `.vercelignore`)'
+
+<FeaturesBreadcrumb feature="Precommit" icon={
+  <>
+    <Logo className="w-10 h-10" />
+  </>
+} />
+# Gitignore append
+<GuideHeading lead={description} />
+
+## Usage
+
+```bash
+dotenvx gitignore
+```
+
+This appends to your `.gitignore` file:
+
+```ini {{ title: '.gitignore' }}
+.env*
+!.env.vault
+```

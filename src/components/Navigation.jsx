@@ -209,6 +209,7 @@ export const navigation = [
   {
     title: 'Features',
     links: [
+      { title: 'Gitignore', href: '/docs/features/gitignore' },
       { title: 'Precommit', href: '/docs/features/precommit' },
       { title: 'Prebuild', href: '/docs/features/prebuild' },
     ]
