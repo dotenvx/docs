@@ -8,6 +8,7 @@ import { RubyIcon } from '@/components/icons/RubyIcon'
 import { GoIcon } from '@/components/icons/GoIcon'
 import { PhpIcon } from '@/components/icons/PhpIcon'
 import { RustIcon } from '@/components/icons/RustIcon'
+import { GitHubIcon } from '@/components/icons/GitHubIcon'
 import { NpmIcon } from '@/components/icons/NpmIcon'
 
 import { Languages } from '@/components/Languages'
@@ -22,8 +23,10 @@ export const description =
 export const sections = [
   { title: 'Getting Started', id: 'getting-started' },
   { title: 'Languages', id: 'languages' },
-  { title: 'Platforms', id: 'platforms' },
   { title: 'Frameworks', id: 'frameworks' },
+  { title: 'Platforms', id: 'platforms' },
+  { title: 'CI/CD', id: 'cis' },
+  { title: 'Package Managers', id: 'package-managers' },
 ]
 
 <HeroPattern />
@@ -78,8 +81,24 @@ docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
 * encrypted envs
 
 <Languages/>
-<Platforms includeNode="true"/>
 <Frameworks/>
+<Platforms includeNode="true"/>
+
+<Heading level={2} id="cis">
+  CI/CDs
+</Heading>
+<div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+  <div key="github-actions" className="flex flex-row-reverse gap-6">
+    <div className="flex-auto">
+      <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+        GitHub Actions
+      </h3>
+      <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with GitHub Actions</p>
+      <p className="mt-4"><Button href="/docs/cis/github-actions" variant="text" arrow="right">GitHub Actions Guide</Button></p>
+    </div>
+    <GitHubIcon className="h-9 w-9 text-[#181717] dark:invert"/>
+  </div>
+</div>
 
 <Heading level={2} id="package-managers">
   Package Managers

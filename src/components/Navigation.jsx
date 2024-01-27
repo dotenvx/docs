@@ -207,14 +207,6 @@ export const navigation = [
     ]
   },
   {
-    title: 'Features',
-    links: [
-      { title: 'Gitignore', href: '/docs/features/gitignore' },
-      { title: 'Precommit', href: '/docs/features/precommit' },
-      { title: 'Prebuild', href: '/docs/features/prebuild' },
-    ]
-  },
-  {
     title: 'Languages',
     // href: '/docs/platforms',
     links: [
@@ -224,6 +216,20 @@ export const navigation = [
       { title: 'Ruby', href: '/docs/languages/ruby' },
       { title: 'Go', href: '/docs/languages/go' },
       { title: 'Rust', href: '/docs/languages/rust' },
+    ]
+  },
+  {
+    title: 'Frameworks',
+    // href: '/docs/platforms',
+    links: [
+      { title: 'Astro', href: '/docs/frameworks/astro' },
+      { title: 'Express', href: '/docs/frameworks/express' },
+      { title: 'Next', href: '/docs/frameworks/next' },
+      { title: 'Remix', href: '/docs/frameworks/remix' },
+      { title: 'Flask', href: '/docs/frameworks/flask' },
+      { title: 'Sinatra', href: '/docs/frameworks/sinatra' },
+      { title: 'Echo', href: '/docs/frameworks/echo' },
+      { title: 'Rocket', href: '/docs/frameworks/rocket' },
     ]
   },
   {
@@ -245,25 +251,18 @@ export const navigation = [
       { title: 'GitHub Actions', href: '/docs/cis/github-actions' },
     ]
   },
-
-  {
-    title: 'Frameworks',
-    // href: '/docs/platforms',
-    links: [
-      { title: 'Astro', href: '/docs/frameworks/astro' },
-      { title: 'Express', href: '/docs/frameworks/express' },
-      { title: 'Next', href: '/docs/frameworks/next' },
-      { title: 'Remix', href: '/docs/frameworks/remix' },
-      { title: 'Flask', href: '/docs/frameworks/flask' },
-      { title: 'Sinatra', href: '/docs/frameworks/sinatra' },
-      { title: 'Echo', href: '/docs/frameworks/echo' },
-      { title: 'Rocket', href: '/docs/frameworks/rocket' },
-    ]
-  },
   {
     title: 'Package Managers',
     links: [
       { title: 'npm', href: '/docs/package-managers/npm' },
+    ]
+  },
+  {
+    title: 'More Features',
+    links: [
+      { title: 'Gitignore', href: '/docs/features/gitignore' },
+      { title: 'Precommit', href: '/docs/features/precommit' },
+      { title: 'Prebuild', href: '/docs/features/prebuild' },
     ]
   },
 ]

@@ -34,6 +34,16 @@ export function Platforms(props) {
           </div>
           <DockerIcon className="h-9 w-9 text-[#2496ED]"/>
         </div>
+        <div key="fly" className="flex flex-row-reverse gap-6">
+          <div className="flex-auto">
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+              Fly
+            </h3>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Fly</p>
+            <p className="mt-4"><Button href="/docs/platforms/fly" variant="text" arrow="right">Heroku Guide</Button></p>
+          </div>
+          <FlyIcon className="h-9 w-9 text-[#7B3BE2]"/>
+        </div>
         <div key="heroku" className="flex flex-row-reverse gap-6">
           <div className="flex-auto">
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
@@ -51,7 +61,7 @@ export function Platforms(props) {
                 Netlify
               </h3>
               <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenv with Netlify</p>
-              <p className="mt-4"><Button href="/docs/platforms/netlify" variant="text" arrow="right">Read Guide</Button></p>
+              <p className="mt-4"><Button href="/docs/platforms/netlify" variant="text" arrow="right">Netlify Guide</Button></p>
             </div>
             <NetlifyIcon className="h-9 w-9 text-[#00C7B7]"/>
           </div>

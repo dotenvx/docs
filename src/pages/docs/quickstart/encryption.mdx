@@ -12,7 +12,7 @@ export const description =
 # Encrypt Secrets
 <GuideHeading lead={description} />
 
-## Step 1
+## Encrypt
 
 Run `dotenvx encrypt` to encrypt your `.env.*` file(s) to `.env.vault`.
 
@@ -38,7 +38,7 @@ DOTENV_VAULT_DEVELOPMENT="V4NYVn0Pow6Uf2ez2mbHEzTrYURloHL6VDAFRLqnQBppA/OmHI5x5A
 DOTENV_VAULT_PRODUCTION="YZkhtbh1IlzBgIamAAsG5nzGPfH6p8Zbuj9egXoziviVu/eYIyNjJWtIYyhiW/vHhFbqbsvo5+P9b27OC6ZC7qU="
 ```
 
-## Step 2
+## DOTENV_KEY
 
 Locate your `DOTENV_KEY` in .env.keys
 
@@ -54,7 +54,7 @@ DOTENV_KEY_DEVELOPMENT="dotenv://:key_e507c60efa8841d8d5bbb85bd701ee92406cf3b065
 DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production"
 ```
 
-## Step 3
+## Run
 
 Prepend `DOTENV_KEY` in front of `dotenvx run --` to trigger decrypting your .env.vault. This injects your encrypted envs just in time.
 
