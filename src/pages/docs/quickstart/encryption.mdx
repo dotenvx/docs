@@ -25,6 +25,18 @@ $ dotenvx encrypt
 [dotenvx][info] encrypted to .env.vault (.env,.env.production)
 [dotenvx][info] keys added to .env.keys (DOTENV_KEY_DEVELOPMENT,DOTENV_KEY_PRODUCTION)
 ```
+```ini {{ title: '.env.vault' }}
+#/-------------------.env.vault---------------------/
+#/         cloud-agnostic vaulting standard         /
+#/   [how it works](https://dotenv.org/env-vault)   /
+#/--------------------------------------------------/
+
+# development
+DOTENV_VAULT_DEVELOPMENT="V4NYVn0Pow6Uf2ez2mbHEzTrYURloHL6VDAFRLqnQBppA/OmHI5x5AXoxCMVor7wOg=="
+
+# production
+DOTENV_VAULT_PRODUCTION="YZkhtbh1IlzBgIamAAsG5nzGPfH6p8Zbuj9egXoziviVu/eYIyNjJWtIYyhiW/vHhFbqbsvo5+P9b27OC6ZC7qU="
+```
 
 ## Step 2
 
@@ -32,11 +44,14 @@ Locate your `DOTENV_KEY` in .env.keys
 
 ```bash {{ title: "cat .env.keys" }}
 $ cat .env.keys
+```
+```ini {{ title: '.env.keys' }}
 #/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
 #/   DOTENV_KEYs. DO NOT commit to source control   /
+#/   [how it works](https://dotenv.org/env-keys)    /
 #/--------------------------------------------------/
-DOTENV_KEY_DEVELOPMENT="dotenv://:key_123development@dotenvx.com/vault/.env.vault?environment=development"
-DOTENV_KEY_PRODUCTION="dotenv://:key_456production@dotenvx.com/vault/.env.vault?environment=production"
+DOTENV_KEY_DEVELOPMENT="dotenv://:key_e507c60efa8841d8d5bbb85bd701ee92406cf3b06506d1d80f1553c2a72791e4@dotenvx.com/vault/.env.vault?environment=development"
+DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production"
 ```
 
 ## Step 3
@@ -44,8 +59,8 @@ DOTENV_KEY_PRODUCTION="dotenv://:key_456production@dotenvx.com/vault/.env.vault?
 Prepend `DOTENV_KEY` in front of `dotenvx run --` to trigger decrypting your .env.vault. This injects your encrypted envs just in time.
 
 ```bash {{ title: "DOTENV_KEY={key} dotenvx run -- command" }}
-DOTENV_KEY='dotenv://:key_45yproduction@dotenvx.com/vault/.env.vault?environment=production' dotenvx run -- node index.js
-[dotenvx][info] loading env (1) from encrypted .env.vault
+$ DOTENV_KEY='dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production' dotenvx run -- node index.js
+[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
 Hello production
 > :-D
 ```
