@@ -255,6 +255,7 @@ export const navigation = [
     title: 'Package Managers',
     links: [
       { title: 'npm', href: '/docs/package-managers/npm' },
+      { title: 'pnpm', href: '/docs/package-managers/pnpm' },
     ]
   },
   {
