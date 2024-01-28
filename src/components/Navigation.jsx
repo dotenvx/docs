@@ -242,6 +242,7 @@ export const navigation = [
       { title: 'Heroku', href: '/docs/platforms/heroku' },
       { title: 'Netlify', href: '/docs/platforms/netlify' },
       { title: 'Railway', href: '/docs/platforms/railway' },
+      { title: 'Render', href: '/docs/platforms/render' },
       { title: 'Vercel', href: '/docs/platforms/vercel' },
     ]
   },

@@ -103,6 +103,16 @@ export function Platforms(props) {
           </div>
           <RailwayIcon className="h-9 w-9 text-[#0B0D0E] dark:invert"/>
         </div>
+        <div key="render" className="flex flex-row-reverse gap-6">
+          <div className="flex-auto">
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+              Render
+            </h3>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Render</p>
+            <p className="mt-4"><Button href="/docs/platforms/render" variant="text" arrow="right">Railway Guide</Button></p>
+          </div>
+          <RenderIcon className="h-9 w-9 text-[#46E3B7]"/>
+        </div>
       </div>
     </div>
   )

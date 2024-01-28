@@ -1,0 +1,256 @@
+import WellDone from '@/pages/partials/wellDone.mdx'
+import ProcfileCodeGroup from '@/pages/partials/procfileCodeGroup.mdx'
+import InstallLibrariesCodeGroup from '@/pages/partials/installLibrariesCodeGroup.mdx'
+import HelloWorldCodeGroup from '@/pages/partials/helloWorldCodeGroup.mdx'
+import DockerRunCodeGroup from '@/pages/partials/dockerRunCodeGroup.mdx'
+import DockerfileCodeGroup from '@/pages/partials/dockerfileCodeGroup.mdx'
+import DockerfileDotenvxCodeGroup from '@/pages/partials/dockerfileDotenvxCodeGroup.mdx'
+import DockerDotenvxRunLocalCodeGroup from '@/pages/partials/dockerDotenvxRunLocalCodeGroup.mdx'
+import DockerDotenvxRunProductionLocalCodeGroup from '@/pages/partials/dockerDotenvxRunProductionLocalCodeGroup.mdx'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import { GuideHeading } from '@/components/GuideHeading'
+import { PlatformsBreadcrumb } from '@/components/PlatformsBreadcrumb'
+
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { PhpIcon } from '@/components/icons/PhpIcon'
+import { PythonIcon } from '@/components/icons/PythonIcon'
+import { RubyIcon } from '@/components/icons/RubyIcon'
+import { GoIcon } from '@/components/icons/GoIcon'
+import { RustIcon } from '@/components/icons/RustIcon'
+import { RenderIcon } from '@/components/icons/RenderIcon'
+
+export const description = 
+  'Use dotenvx with Render'
+
+<PlatformsBreadcrumb platform="Render" icon={
+  <>
+    <RenderIcon className="h-9 w-9 text-[#46E3B7]"/>
+  </>
+}/>
+# Use dotenvx with Render
+<GuideHeading lead={description} />
+
+<Note>
+  Find <a href="https://github.com/dotenvx/examples/tree/main/platforms/docker">code examples for this guide</a> on GitHub.
+</Note>
+
+<div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10">
+  <NodeIcon className="h-9 w-9 text-[#339933]"/>
+  <PythonIcon className="h-9 w-9 text-[#3776AB]"/>
+  <PhpIcon className="h-10 w-10 text-[#777BB4]"/>
+  <RubyIcon className="h-9 w-9 text-[#CC342D]"/>
+  <GoIcon className="h-10 w-10 text-[#00ADD8]"/>
+  <RustIcon className="h-10 w-10 text-[#000000] dark:invert"/>
+</div>
+
+## Initial setup
+
+Install the necessary web server libraries in the language of your choice.
+
+<InstallLibrariesCodeGroup/>
+
+Create a simple *Hello World* program.
+
+<HelloWorldCodeGroup/>
+
+Create a `Dockerfile`.
+
+<DockerfileCodeGroup/>
+
+Build and run it with Docker.
+
+<DockerRunCodeGroup/>
+
+<ScreenshotBrowser url="/assets/docs/hello-blank.png" www="docker container" />
+
+Once deployed, your app will say `'Hello [blank]'` as it doesn't have a way to access the environment variable yet. Let's do that next.
+
+<Note>
+  Deploying to [Render](http://render.com) takes more steps than we want to document here. Follow their [docker guide](https://docs.render.com/docker#docker-builds-on-render) (Render recognizes your `Dockerfile` automatically) and then return to this page. This guide will give the examples in Docker.
+</Note>
+
+## Run dotenvx
+
+Install [`dotenvx`](https://github.com/dotenvx/dotenvx) to your Dockerfile and prepend your app command with `dotenvx run --`.
+
+<DockerfileDotenvxCodeGroup/>
+
+Create a `.env` file in the root of your project.
+
+```shell {{ title: '.env' }}
+# .env
+HELLO="World"
+```
+
+Build and run it with Docker.
+
+<DockerRunCodeGroup/>
+
+<ScreenshotBrowser url="/assets/docs/hello-world.png" www="localhost:$PORT" />
+
+Your app will say `Hello World`. The values from your `.env` file were successfully injected into your env. That covers local development. Let's solve for production next.
+
+## Add production environment
+
+Create a `.env.production` file in the root of your project.
+
+```shell {{ title: '.env.production' }}
+# .env.production
+HELLO="production"
+```
+
+Use `dotenvx` to load your `.env.production` file by updating your Dockerfile `CMD`.
+
+<DockerDotenvxRunProductionLocalCodeGroup/>
+
+Build and run it with Docker.
+
+<DockerRunCodeGroup/>
+
+<ScreenshotBrowser url="/assets/docs/hello-production.png" www="localhost:$PORT" />
+
+Your app will say `Hello production`, simulating production. Solid. Let's encrypt your secrets next.
+
+## Encrypt secrets
+
+Use `dotenvx` to encrypt your secrets.
+
+```shell
+dotenvx encrypt
+```
+
+This generates a `.env.vault` and `.env.keys` file.
+
+```bash {{ title: ".env.vault" }}
+#/-------------------.env.vault---------------------/
+#/         cloud-agnostic vaulting standard         /
+#/   [how it works](https://dotenv.org/env-vault)   /
+#/--------------------------------------------------/
+
+# development
+DOTENV_VAULT_DEVELOPMENT="V4NYVn0Pow6Uf2ez2mbHEzTrYURloHL6VDAFRLqnQBppA/OmHI5x5AXoxCMVor7wOg=="
+
+# production
+DOTENV_VAULT_PRODUCTION="YZkhtbh1IlzBgIamAAsG5nzGPfH6p8Zbuj9egXoziviVu/eYIyNjJWtIYyhiW/vHhFbqbsvo5+P9b27OC6ZC7qU="
+```
+
+The `.env.vault` file contains encrypted ([AES-256-GCM](https://www.reddit.com/r/cryptography/comments/13kl9ds/how_much_longer_do_you_think_aes_will_last/)) versions of your secrets, and the `.env.keys` file contains the decryption keys.
+
+```bash {{ title: ".env.keys" }}
+#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
+#/   DOTENV_KEYs. DO NOT commit to source control   /
+#/   [how it works](https://dotenv.org/env-keys)    /
+#/--------------------------------------------------/
+DOTENV_KEY_DEVELOPMENT="dotenv://:key_e507c60efa8841d8d5bbb85bd701ee92406cf3b06506d1d80f1553c2a72791e4@dotenvx.com/vault/.env.vault?environment=development"
+DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production"
+```
+
+<Note>
+  You SHOULD commit `.env.vault` to code. It is safe and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [dotenvx hub](https://hub.dotenvx.com).
+</Note>
+
+We're ready to inject the encrypted secrets from `.env.vault` into the Docker run.
+
+## Set DOTENV_KEY
+
+Set `DOTENV_KEY` on Docker using the production key in your `.env.keys` file.
+
+<CodeGroup>
+
+```yaml {{ title: 'Node' }}
+docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 3000:3000 app
+```
+
+```yaml {{ title: 'Python' }}
+docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 5000:5000 app
+```
+
+```yaml {{ title: 'PHP' }}
+docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 8080:80 app
+```
+
+```yaml {{ title: 'Ruby' }}
+docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 4567:4567 app
+```
+
+```yaml {{ title: 'Go' }}
+docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 1323:1323 app
+```
+
+```yaml {{ title: 'Rust' }}
+docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 20629:20629 app
+```
+
+</CodeGroup>
+
+Your docker instance starts and `env` is successfully injected using the encrypted contents of `.env.vault`.
+
+<CodeGroup>
+
+```shell {{ title: 'Node' }}
+[dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+Server running on port:3000
+```
+
+```shell {{ title: 'Python' }}
+[dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+[2024-01-15 04:36:09 +0000] [15] [INFO] Starting gunicorn 21.2.0
+```
+
+```shell {{ title: 'PHP' }}
+[dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+[Mon Jan 15 05:18:12.420951 2024] [core:notice] [pid 15] AH00094: Command line: 'apache2 -D FOREGROUND'
+```
+
+```shell {{ title: 'Ruby' }}
+[dotenvx@0.10.2] injecting env (1) from encrypted .env.vault
+== Sinatra (v3.2.0) has taken the stage on 4567 for development with backup from WEBrick
+```
+
+```shell {{ title: 'Go' }}
+[dotenvx@0.10.2] injecting env (1) from encrypted .env.vault
+   ____    __
+  / __/___/ /  ___
+ / _// __/ _ \/ _ \
+/___/\__/_//_/\___/ v4.11.4
+```
+
+```shell {{ title: 'Rust' }}
+[dotenvx@0.10.2] injecting env (1) from encrypted .env.vault
+🚀 Rocket has launched from http://0.0.0.0:2062
+```
+
+</CodeGroup>
+
+For Render, do the same. Set your `DOTENV_KEY` in their environment variable manager.
+
+<ScreenshotBrowser url="/assets/docs/render-vars.png" www="render.com" />
+
+Visit your url and it says `Hello production`.
+
+<ScreenshotBrowser url="/assets/docs/hello-production.png" www="docker container" />
+
+<WellDone/>
+
+Great job! That's pretty much it. See the bonus section(s) below to go a little deeper.
+
+---
+
+## Bonus
+
+Try changing the value of `.env.production` to your name.
+
+```shell {{ title: '.env.production' }}
+# .env.production
+HELLO="Mot"
+```
+
+Re-encrypt it.
+
+```shell
+dotenvx encrypt
+```
+
+Commit `.env.vault` safely to code and re-run your Docker container.
+
+<ScreenshotBrowser url="/assets/docs/hello-mot.png" />
