@@ -37,14 +37,14 @@ export function FrameworksNodejs() {
         </div>
         <ExpressIcon className="h-9 w-9 text-[#000000] dark:invert"/>
       </div>
-      <div key="nextjs" className="flex flex-row-reverse gap-6">
+      <div key="next" className="flex flex-row-reverse gap-6">
         <div className="flex-auto">
           <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
             Next.js
           </h3>
           <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Next.js</p>
           <p className="mt-4 flex gap-x-2">
-            <Button href="/docs/frameworks/nextjs" variant="text" arrow="right">Next.js Guides</Button>
+            <Button href="/docs/frameworks/next" variant="text" arrow="right">Next.js Guides</Button>
           </p>
         </div>
         <NextIcon className="h-9 w-9 text-[#000000] dark:invert"/>
