@@ -236,6 +236,7 @@ export const navigation = [
     title: 'Platforms',
     // href: '/docs/platforms',
     links: [
+      { title: 'Digital Ocean', href: '/docs/platforms/digital-ocean' },
       { title: 'Docker', href: '/docs/platforms/docker' },
       { title: 'Fly', href: '/docs/platforms/fly' },
       { title: 'Heroku', href: '/docs/platforms/heroku' },

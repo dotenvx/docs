@@ -17,17 +17,17 @@ import { PythonIcon } from '@/components/icons/PythonIcon'
 import { RubyIcon } from '@/components/icons/RubyIcon'
 import { GoIcon } from '@/components/icons/GoIcon'
 import { RustIcon } from '@/components/icons/RustIcon'
-import { DockerIcon } from '@/components/icons/DockerIcon'
+import { DigitalOceanIcon } from '@/components/icons/DigitalOceanIcon'
 
 export const description = 
-  'Use dotenvx with Docker'
+  'Use dotenvx with Digital Ocean'
 
-<PlatformsBreadcrumb platform="Docker" icon={
+<PlatformsBreadcrumb platform="Digital Ocean" icon={
   <>
-    <DockerIcon className="h-9 w-9 text-[#2496ED]"/>
+    <DigitalOceanIcon className="h-9 w-9 text-[#0080FF]"/>
   </>
 }/>
-# Use dotenvx with Docker
+# Use dotenvx with Digital Ocean
 <GuideHeading lead={description} />
 
 <Note>
@@ -63,7 +63,11 @@ Build and run it with Docker.
 
 <ScreenshotBrowser url="/assets/docs/hello-blank.png" www="docker container" />
 
-Once built, your app will say `'Hello [blank]'` as it doesn't have a way to access the environment variable yet. Let's do that next.
+Once deployed, your app will say `'Hello [blank]'` as it doesn't have a way to access the environment variable yet. Let's do that next.
+
+<Note>
+  Digital Ocean has multiple ways to deploy your code – from [old school droplets](https://docs.digitalocean.com/products/droplets/getting-started/quickstart/), to [Kube](https://docs.digitalocean.com/products/kubernetes/getting-started/quickstart/), to their [app platform](https://docs.digitalocean.com/products/app-platform/getting-started/quickstart/). It is too much for us to document here, so please refer to their documentation. This guide will assume you are using `Docker` with Digital Ocean (most common) and give examples in that context.
+</Note>
 
 ## Run dotenvx
 
@@ -217,6 +221,10 @@ Server running on port:3000
 ```
 
 </CodeGroup>
+
+For Digital Ocean, do the same. Set your `DOTENV_KEY` on their environment variable manager.
+
+<ScreenshotBrowser url="/assets/docs/digitalocean-vars.png" www="digitalocean.com" />
 
 Visit your url and it says `Hello production`.
 
