@@ -6,14 +6,15 @@ import { Heading } from '@/components/Heading'
 import { FileTextIcon } from '@/components/icons/FileTextIcon'
 import { SafeIcon } from '@/components/icons/SafeIcon'
 import { KeyIcon } from '@/components/icons/KeyIcon'
+import { ShieldLockIcon } from '@/components/icons/ShieldLockIcon'
 import { PersonIcon } from '@/components/icons/PersonIcon'
 
 const concepts = [
   {
-    href: '/docs/security/env',
-    name: '.env file',
+    href: '/docs/env-file',
+    name: '.env',
     description:
-      'Learn about the .env file and how it secures your secrets for local development.',
+      'The .env file separates your secrets from code.',
     icon: FileTextIcon,
     pattern: {
       y: 16,
@@ -24,10 +25,10 @@ const concepts = [
     },
   },
   {
-    href: '/docs/security/env-vault',
-    name: '.env.vault file',
+    href: '/docs/env-vault-file',
+    name: '.env.vault',
     description:
-      'Learn about the .env.vault file – how it is generated, how it securely holds secrets, and you can deploy more safely than alternative solutions with it.',
+      'The .env.vault file is an encrypted version of your .env file.',
     icon: SafeIcon,
     pattern: {
       y: -6,
@@ -38,24 +39,24 @@ const concepts = [
     },
   },
   {
-    href: '/docs/security/env-me',
-    name: '.env.me credential',
+    href: '/docs/env-keys-file',
+    name: '.env.keys',
     description:
-      'Learn about the message model and how to create, retrieve, update, delete, and list messages.',
-    icon: PersonIcon,
+      'The .env.keys file holds environment DOTENV_KEYs.',
+    icon: ShieldLockIcon,
     pattern: {
-      y: 32,
+      y: -6,
       squares: [
-        [0, 2],
-        [1, 4],
+        [-1, 2],
+        [1, 3],
       ],
     },
   },
   {
-    href: '/docs/security/dotenv-key',
+    href: '/docs/dotenv-key',
     name: 'DOTENV_KEY',
     description:
-      'Learn about the DOTENV_KEY and how it decrypts the .env.vault to inject your secrets just-in-time to your application.',
+      'Decrypts the encrypted .env.vault file.',
     icon: KeyIcon,
     pattern: {
       y: 22,

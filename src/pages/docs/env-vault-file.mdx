@@ -1,0 +1,58 @@
+export const description = 
+  'The .env.vault file is an encrypted version of your .env file.'
+
+##### [dotenvx](/docs)
+# .env.vault
+
+The .env.vault is an encrypted version of your .env file. Here is what it looks like.
+
+```ini {{ title: '.env.vault' }}
+#/-------------------.env.vault---------------------/
+#/         cloud-agnostic vaulting standard         /
+#/  [how it works](https://dotenvx.com/env-vault)   /
+#/--------------------------------------------------/
+# development
+DOTENV_VAULT_DEVELOPMENT="V4NYVn0Pow6Uf2ez2mbHEzTrYURloHL6VDAFRLqnQBppA/OmHI5x5AXoxCMVor7wOg=="
+# production
+DOTENV_VAULT_PRODUCTION="YZkhtbh1IlzBgIamAAsG5nzGPfH6p8Zbuj9egXoziviVu/eYIyNjJWtIYyhiW/vHhFbqbsvo5+P9b27OC6ZC7qU="
+```
+
+Some quick takeaways:
+
+1. It uses the [`.env`](/docs/env-file) format
+2. It uses [`AES-256-GCM`](https://www.reddit.com/r/cryptography/comments/13kl9ds/how_much_longer_do_you_think_aes_will_last/) encryption
+2. `DOTENV_VAULT_DEVELOPMENT` contains encrypted contents of `.env`
+3. `DOTENV_VAULT_PRODUCTION` contains encrypted contents of `.env.production`
+
+## Generating
+
+It's generated with [`dotenvx encrypt`](/docs/quickstart/encryption). Create your `.env` files like you usually do.
+
+```ini {{ title: '.env' }}
+# .env
+HELLO="World"
+```
+```ini {{ title: '.env.production' }}
+# .env.production
+HELLO="production"
+```
+
+and then run `dotenvx encrypt`.
+
+```sh
+$ dotenvx encrypt
+```
+```ini {{ title: '.env.vault' }}
+#/-------------------.env.vault---------------------/
+#/         cloud-agnostic vaulting standard         /
+#/  [how it works](https://dotenvx.com/env-vault)   /
+#/--------------------------------------------------/
+# development
+DOTENV_VAULT_DEVELOPMENT="V4NYVn0Pow6Uf2ez2mbHEzTrYURloHL6VDAFRLqnQBppA/OmHI5x5AXoxCMVor7wOg=="
+# production
+DOTENV_VAULT_PRODUCTION="YZkhtbh1IlzBgIamAAsG5nzGPfH6p8Zbuj9egXoziviVu/eYIyNjJWtIYyhiW/vHhFbqbsvo5+P9b27OC6ZC7qU="
+```
+
+## History
+
+The `.env.vault` came out of development work on [dotenv-vault](https://github.com/dotenv-org/dotenv-vault) – around early 2023.
