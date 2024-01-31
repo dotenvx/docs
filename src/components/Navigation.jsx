@@ -261,6 +261,12 @@ export const navigation = [
     ]
   },
   {
+    title: 'Monorepos',
+    links: [
+      { title: 'Turborepo', href: '/docs/monorepos/turborepo' },
+    ]
+  },
+  {
     title: 'More Features',
     links: [
       { title: 'Genexample', href: '/docs/features/genexample' },
