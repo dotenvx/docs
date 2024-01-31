@@ -15,6 +15,7 @@ import { Frameworks } from '@/components/Frameworks'
 import { Platforms } from '@/components/Platforms'
 import { Cis } from '@/components/Cis'
 import { PackageManagers } from '@/components/PackageManagers'
+import { Monorepos } from '@/components/Monorepos'
 import { Concepts } from '@/components/Concepts'
 
 export const description =
@@ -27,6 +28,7 @@ export const sections = [
   { title: 'Platforms', id: 'platforms' },
   { title: 'CI/CD', id: 'cis' },
   { title: 'Package Managers', id: 'package-managers' },
+  { title: 'Monorepos', id: 'monorepos' },
   { title: 'Concepts', id: 'concepts' },
 ]
 
@@ -102,4 +104,5 @@ docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
 </div>
 
 <PackageManagers/>
+<Monorepos/>
 <Concepts/>
