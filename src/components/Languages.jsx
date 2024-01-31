@@ -21,7 +21,7 @@ export function Languages() {
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
               Node.js
             </h3>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with Node.js</p>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Node.js</p>
             <p className="mt-1"><Button href="/docs/languages/nodejs" variant="text" arrow="right">Node.js Guides</Button></p>
           </div>
           <NodeIcon className="h-9 w-9 text-[#339933]"/>
@@ -31,7 +31,7 @@ export function Languages() {
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
               Python
             </h3>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with Python</p>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Python</p>
             <p className="mt-1"><Button href="/docs/languages/python" variant="text" arrow="right">Python Guides</Button></p>
           </div>
           <PythonIcon className="h-9 w-9 text-[#3776AB]"/>
@@ -41,7 +41,7 @@ export function Languages() {
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
               Ruby
             </h3>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with Ruby</p>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Ruby</p>
             <p className="mt-1"><Button href="/docs/languages/ruby" variant="text" arrow="right">Ruby Guides</Button></p>
           </div>
           <RubyIcon className="h-9 w-9 text-[#CC342D]"/>
@@ -51,7 +51,7 @@ export function Languages() {
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
               Go
             </h3>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with Go</p>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Go</p>
             <p className="mt-1"><Button href="/docs/languages/go" variant="text" arrow="right">Go Guides</Button></p>
           </div>
           <GoIcon className="h-10 w-10 text-[#00ADD8]"/>
@@ -61,7 +61,7 @@ export function Languages() {
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
               PHP
             </h3>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with PHP</p>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with PHP</p>
             <p className="mt-1"><Button href="/docs/languages/php" variant="text" arrow="right">PHP Guides</Button></p>
           </div>
           <PhpIcon className="h-10 w-10 text-[#777BB4]"/>
@@ -71,7 +71,7 @@ export function Languages() {
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
               Rust
             </h3>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with Rust</p>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Rust</p>
             <p className="mt-1"><Button href="/docs/languages/rust" variant="text" arrow="right">Rust Guides</Button></p>
           </div>
           <RustIcon className="h-10 w-10 text-[#000000] dark:invert"/>
