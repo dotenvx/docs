@@ -4,4 +4,47 @@ export const description =
 ##### [dotenvx](/docs)
 # DOTENV_KEY
 
-docs coming soon
+`DOTENV_KEY` is used to decrypt an environment inside your `.env.vault` file.
+
+If a `DOTENV_KEY` is set on your server and a `.env.vault` exists in your code, `dotenvx run` will attempt to decrypt your `.env.vault` file and inject its secrets just in time.
+
+For example:
+
+```
+DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production dotenv run -- yourcommand
+```
+
+## Spec
+
+A `DOTENV_KEY` uses the tried and true uri format. This trusted yet flexible format can grow as dotenvx grows.
+
+```js
+$ node
+new URL('dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production')
+URL {
+  href: 'dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production',
+  origin: 'null',
+  protocol: 'dotenv:',
+  username: '',
+  password: 'key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e',
+  host: 'dotenvx.com',
+  hostname: 'dotenvx.com',
+  port: '',
+  pathname: '/vault/.env.vault',
+  search: '?environment=production',
+  searchParams: URLSearchParams { 'environment' => 'production' },
+  hash: ''
+}
+```
+
+Required:
+
+* **protocol**: `dotenv:` (good practice to communicate this as a `DOTENV_KEY`)
+* **password**: `key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e` (last 64 bytes are used to decrypt `DOTENV_VAULT_environment` in your `.env.vault` file. this way we can support other generators in the future like your own `yourowngenerator_64bytes..`)
+* **host**: `dotenvx.com` (can be anything at this time. dotenvx.com is used to communicate that this key was generated with [dotenvx](https://dotenvx.com))
+* **params.environment**: `production` (specifies which `DOTENV_VAULT_environment` to decrypt from your `.env.vault` file)
+
+Optional/Not-in-use:
+
+* **username**: `` (not in use at this time)
+* **pathname**: `/vault/.env.vault` (can be anything at this time. in the future, might be used to combine multiple vaults)
