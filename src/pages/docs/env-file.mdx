@@ -57,6 +57,58 @@ This way your secrets – like your Stripe API key – are not commited to your
 
 By separating your secrets from your code (your `.env` file is not commited to source control), you improve your security posture. If your code leaks, your secrets (like your Stripe API key) are less likely to be at risk.
 
+## Variable Names
+
+For the sake of portability (and sanity), environment variable names must consist solely of letters, digits, and the underscore ( `_` ) and must not begin with a digit. In regex-speak, the names must match the following pattern:
+
+```ini
+[a-zA-Z_]+[a-zA-Z0-9_]*
+```
+
+#### Example variable names
+
+```ini
+DATABASE_URL  # ok
+foobar        # ok
+NO-WORK       # <-- invalid !!!
+ÜBER          # <-- invalid !!!
+2MUCH         # <-- invalid !!!
+```
+
+<small>
+*[credit: dotenvy](https://hexdocs.pm/dotenvy/dotenv-file-format.html#variable-names)*
+</small>
+
+## Values
+
+Values are to the right of the equals sign. They may be quoted. Using single quotes will prevent variables from being interpolated.
+
+```
+SIMPLE=xyz123
+INTERPOLATED="Multiple\nLines"
+NON_INTERPOLATED='raw text without variable interpolation'
+MULTILINE = `long text here,
+e.g. a private SSH key`
+```
+
+<small>
+*[credit: dotenvy](https://hexdocs.pm/dotenvy/dotenv-file-format.html#variable-names)*
+</small>
+
+## Comments
+
+The hash-tag `#` symbol denotes a comment when on its own line or when it follows a quoted value. It is not treated as a comment when it appears within quotes.
+
+```
+# This is a comment
+SECRET_KEY=YOURSECRETKEYGOESHERE # also a comment
+SECRET_HASH="something-with-a-hash-#-this-is-not-a-comment"
+```
+
+<small>
+*[credit: dotenvy](https://hexdocs.pm/dotenvy/dotenv-file-format.html#variable-names)*
+</small>
+
 ## History
 
 The `.env` file format was [introduced by Heroku in 2012](https://12factor.net/config) and popularized by the [dotenv node](https://www.npmjs.com/package/dotenv) and [dotenv ruby](https://github.com/bkeepers/dotenv) libraries in 2013.
