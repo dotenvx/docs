@@ -109,6 +109,34 @@ SECRET_HASH="something-with-a-hash-#-this-is-not-a-comment"
 *[credit: dotenvy](https://hexdocs.pm/dotenvy/dotenv-file-format.html#variable-names)*
 </small>
 
+## Syntax
+
+The following syntax rules apply to environment files:
+
+* Lines beginning with `#` are processed as comments and ignored.
+* Blank lines are ignored.
+* Unquoted and double-quoted (`"`) values have interpolation applied.
+* Each line represents a key-value pair. Values can optionally be quoted.
+  * `VAR=VAL` -> `VAL`
+  * `VAR="VAL"` -> `VAL`
+  * `VAR='VAL'` -> `VAL`
+* Inline comments for unquoted values must be preceded with a space.
+  * `VAR=VAL # comment` -> `VAL`
+  * `VAR=VAL# not a comment` -> `VAL# not a comment`
+* Inline comments for quoted values must follow the closing quote.
+  * `VAR="VAL # not a comment"` -> `VAL # not a comment`
+  * `VAR="VAL" # comment` -> `VAL`
+* Single-quoted (') values are used literally.
+  * `VAR='$OTHER'` -> `$OTHER`
+  * `VAR='${OTHER}'` -> `${OTHER}`
+* Quotes can be escaped with \.
+  * `VAR='Let\'s go!'` -> `Let's go!`
+  * `VAR="{\"hello\": \"json\"}"` -> `{"hello": "json"}`
+* Common shell escape sequences including `\n`, `\r`, `\t`, and `\\` are supported in double-quoted values.
+  * `VAR="some\tvalue"` -> `some value`
+  * `VAR='some\tvalue'` -> `some\tvalue`
+  * `VAR=some\tvalue` -> `some\tvalue`
+
 ## History
 
 The `.env` file format was [introduced by Heroku in 2012](https://12factor.net/config) and popularized by the [dotenv node](https://www.npmjs.com/package/dotenv) and [dotenv ruby](https://github.com/bkeepers/dotenv) libraries in 2013.
