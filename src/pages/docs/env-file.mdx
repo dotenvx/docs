@@ -137,6 +137,16 @@ The following syntax rules apply to environment files:
   * `VAR='some\tvalue'` -> `some\tvalue`
   * `VAR=some\tvalue` -> `some\tvalue`
 
+## Interpolation
+
+Interpolation (substitution) is supported in environment files. Interpolation is applied for unquoted and double-quoted values. Both braced (`${VAR}`) and unbraced (`$VAR`) expressions are supported.
+
+* Direct substitution
+  * `${VAR}` -> value of `VAR`
+* Default value
+  * `${VAR:-default}` -> value of `VAR` if set and non-empty, otherwise `default`
+  * `${VAR-default}` -> value of `VAR` if set, otherwise `default`
+
 ## History
 
 The `.env` file format was [introduced by Heroku in 2012](https://12factor.net/config) and popularized by the [dotenv node](https://www.npmjs.com/package/dotenv) and [dotenv ruby](https://github.com/bkeepers/dotenv) libraries in 2013.
