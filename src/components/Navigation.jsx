@@ -263,6 +263,7 @@ export const navigation = [
   {
     title: 'Monorepos',
     links: [
+      { title: 'Nx', href: '/docs/monorepos/nx' },
       { title: 'Turborepo', href: '/docs/monorepos/turborepo' },
     ]
   },

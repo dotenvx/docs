@@ -1,5 +1,5 @@
 import WellDone from '@/pages/partials/wellDone.mdx'
-import { TurborepoIcon } from '@/components/icons/TurborepoIcon'
+import { NxIcon } from '@/components/icons/NxIcon'
 import { MonoreposBreadcrumb } from '@/components/MonoreposBreadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
@@ -10,18 +10,18 @@ import { NextIcon } from '@/components/icons/NextIcon'
 import { RemixIcon } from '@/components/icons/RemixIcon'
 
 export const description =
-  'Use dotenvx with Turborepo'
+  'Use dotenvx with Nx'
 
-<MonoreposBreadcrumb manager="Turborepo" icon={
+<MonoreposBreadcrumb manager="Nx" icon={
   <>
-    <TurborepoIcon className="h-9 w-9 text-[#EF4444]"/>
+    <NxIcon className="h-9 w-9 text-[#143055] dark:text-[#ffffff]"/>
   </>
 } />
-# Use dotenvx with Turborepo
+# Use dotenvx with Nx
 <GuideHeading lead={description} />
 
 <Note>
-  Find <a href="https://github.com/dotenvx/examples/tree/main/monorepos/turborepo">code examples for this guide</a> on GitHub.
+  Find <a href="https://github.com/dotenvx/examples/tree/main/monorepos/nx">code examples for this guide</a> on GitHub.
 </Note>
 
 ## Initial setup
@@ -29,7 +29,7 @@ export const description =
 Create a new monorepo.
 
 ```bash
-npx create-turbo@latest
+ npx create-nx-workspace --preset=express
 ```
 
 This will create a handful of files and a couple workspaces (apps).
@@ -38,84 +38,66 @@ This will create a handful of files and a couple workspaces (apps).
 $ ls -1
 README.md
 apps/
+jest.config.ts
+jest.preset.js
 node_modules/
+nx.json
 package-lock.json
 package.json
-packages/
-turbo.json
+tsconfig.base.json
 ```
 
-Edit `apps/web/app/page.tsx` to include `process.env.HELLO` – to say 'Hello World'.
+Edit `apps/app/src/main.ts` to include `process.env.HELLO` – to say 'Hello World'.
 
-```js {{ title: 'apps/web/app/page.tsx' }}
-export default function Page() {
-  return (
-    <>
-      Hello {process.env.HELLO}
-    </>
-  );
-}
+```js {{ title: 'apps/app/src/main.ts' }}
+import express from 'express';
+import * as path from 'path';
+
+const app = express();
+
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+
+app.get('/', (req, res) => {
+  res.send({ message: `Hello ${process.env.HELLO}` });
+});
+
+const port = process.env.PORT || 3333;
+const server = app.listen(port, () => {
+  console.log(`Listening at http://localhost:${port}/`);
+});
+server.on('error', console.error);
 ```
-
-Declare the environment variable in `turbo.json`.
-
-```json {{ title: 'turbo.json' }}
-{
-  ..
-  "globalEnv": [
-    "HELLO"
-  ]
-}
-```
-
-<Note>
-  If you prefer to set an environment variable on a workspace only and not globally across your turborepo, you can do that with [the pipeline env key](https://vercel.com/docs/concepts/monorepos/turborepo#handling-environment-variables).
-</Note>
 
 ## Run dotenvx
 
-Install [`dotenvx`](https://github.com/dotenvx/dotenvx).
+Install [`dotenvx`](https://github.com/dotenvx/dotenvx) to your cli.
 
 ```bash
-npm install @dotenvx/dotenvx --save
+brew install dotenvx/brew/dotenvx
 ```
+see [other installation options](/docs/install)
 
-Create a `.env` file in the root of your project.
+Create a `.env` file under your app - for example, `apps/app`
 
 ```ini {{ title: '.env' }}
-# .env
+# apps/app/.env
 HELLO="World"
 ```
 
-Adjust your `package.json` scripts to inject your env using `dotenvx`.
+Run your `nx serve` command using `dotenvx`.
 
-```json {{ title: "package.json" }}
+```bash
+$ dotenvx run --env-file=apps/app/.env -- npx nx serve app
+
+[dotenvx@0.15.4] injecting env (1) from apps/app/.env
+
+> nx run app:serve:development
 ...
-"scripts": {
-  "dotenv": "dotenvx",
-  "build": "dotenvx run -- turbo build",
-  "dev": "dotenvx run -- turbo dev",
-  "lint": "dotenvx run -- turbo lint",
-  "format": "prettier --write \"**/*.{ts,tsx,md}\""
-},
 ```
 
-<Note>
-  See more about [using environment variables with turborepo](https://turbo.build/repo/docs/handbook/environment-variables).
-</Note>
+Visit [localhost:3333](http://locahost:3333).
 
-Try running it locally.
-
-```
-$ npm run dev
-[dotenvx@0.14.1] injecting env (1) from .env
-docs:dev: - ready started server on 0.0.0.0:3001, url: http://localhost:3001
-web:dev: - ready started server on 0.0.0.0:3002, url: http://localhost:3002
-```
-
-Visit [localhost:3002](http://locahost:3002).
-
-<ScreenshotBrowser url="/assets/docs/hello-world.png" www="localhost:3002" />
+<ScreenshotBrowser url="/assets/docs/hello-world.png" www="localhost:3333" />
 
 Your app will say `Hello World`. The values from your `.env` file were successfully injected into your env.
 
@@ -124,21 +106,19 @@ Your app will say `Hello World`. The values from your `.env` file were successfu
 Create a `.env.production` file in the root of your project.
 
 ```shell {{ title: '.env.production' }}
-# .env.production
+# apps/app/.env.production
 HELLO="production"
 ```
 
-Modify your `package.json` scripts to use the `.env.production` file.
+Modify your `dotenvx run` command to use the `.env.production` file.
 
-```json {{ title: "package.json" }}
+```bash
+$ dotenvx run --env-file=apps/app/.env.production -- npx nx serve app
+
+[dotenvx@0.15.4] injecting env (1) from apps/app/.env.production
+
+> nx run app:serve:development
 ...
-"scripts": {
-  "dotenv": "dotenvx",
-  "build": "dotenvx run --env-file=.env.production -- turbo build",
-  "dev": "dotenvx run --env-file=.env.production -- turbo dev",
-  "lint": "dotenvx run --env-file=.env.production -- turbo lint",
-  "format": "prettier --write \"**/*.{ts,tsx,md}\""
-},
 ```
 
 <ScreenshotBrowser url="/assets/docs/hello-production.png" www="localhost:3002" />
