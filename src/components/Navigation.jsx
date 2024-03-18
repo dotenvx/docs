@@ -261,6 +261,12 @@ export const navigation = [
     ]
   },
   {
+    title: 'Process Managers',
+    links: [
+      { title: 'pm2', href: '/docs/process-managers/pm2' },
+    ]
+  },
+  {
     title: 'Monorepos',
     links: [
       { title: 'Turborepo', href: '/docs/monorepos/turborepo' },
