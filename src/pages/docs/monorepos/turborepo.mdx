@@ -65,7 +65,7 @@ Declare the `apps/web` environment variable in `turbo.json` by adding a `web#bui
     ...
     "web#build": {
       "dependsOn": [
-        "^build",
+        "^build"
       ],
       "env": [
         "HELLO"
@@ -96,7 +96,7 @@ Adjust your `apps/web/package.json` scripts to inject your env using `dotenvx`.
 ```json {{ title: "apps/web/package.json" }}
 ...
 "scripts": {
-  "dotenv": "dotenvx",
+  "dotenvx": "dotenvx",
   "build": "dotenvx run -- turbo build",
   "dev": "dotenvx run -- turbo dev",
   "lint": "dotenvx run -- turbo lint",
@@ -137,7 +137,7 @@ Modify your `apps/web/package.json` scripts to use the `.env.production` file.
 ```json {{ title: "apps/web/package.json" }}
 ...
 "scripts": {
-  "dotenv": "dotenvx",
+  "dotenvx": "dotenvx",
   "build": "dotenvx run --env-file=.env.production -- turbo build",
   "dev": "dotenvx run --env-file=.env.production -- turbo dev",
   "lint": "dotenvx run --env-file=.env.production -- turbo lint",
