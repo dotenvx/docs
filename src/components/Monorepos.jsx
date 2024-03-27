@@ -1,5 +1,6 @@
 import { Heading } from '@/components/Heading'
 import { Button } from '@/components/Button'
+import { NxIcon } from '@/components/icons/NxIcon'
 import { TurborepoIcon } from '@/components/icons/TurborepoIcon'
 
 export function Monorepos() {
@@ -9,6 +10,16 @@ export function Monorepos() {
         Monorepos
       </Heading>
       <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+        <div key="nx" className="flex flex-row-reverse gap-6">
+          <div className="flex-auto">
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+              Nx
+            </h3>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Nx</p>
+            <p className="mt-4"><Button href="/docs/monorepos/nx" variant="text" arrow="right">Nx Guide</Button></p>
+          </div>
+          <NxIcon className="h-9 w-9 text-[#143055] dark:text-[#ffffff]"/>
+        </div>
         <div key="turborepo" className="flex flex-row-reverse gap-6">
           <div className="flex-auto">
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
