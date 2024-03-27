@@ -57,42 +57,46 @@ export default function Page() {
 }
 ```
 
-Declare the environment variable in `turbo.json`.
+Declare the `apps/web` environment variable in `turbo.json` by adding a `web#build` configuration under the `pipeline` configuration key.
 
 ```json {{ title: 'turbo.json' }}
-{
-  ..
-  "globalEnv": [
-    "HELLO"
-  ]
-}
+  ...
+  "pipeline": {
+    ...
+    "web#build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "env": [
+        "HELLO"
+      ]
+    },
+    ...
 ```
-
-<Note>
-  If you prefer to set an environment variable on a workspace only and not globally across your turborepo, you can do that with [the pipeline env key](https://vercel.com/docs/concepts/monorepos/turborepo#handling-environment-variables).
-</Note>
 
 ## Run dotenvx
 
-Install [`dotenvx`](https://github.com/dotenvx/dotenvx).
+Install [`dotenvx`](https://github.com/dotenvx/dotenvx) under `apps/web`
 
 ```bash
+cd apps/web
 npm install @dotenvx/dotenvx --save
+cd ../..
 ```
 
-Create a `.env` file in the root of your project.
+Create a `.env` file under `apps/web`.
 
-```ini {{ title: '.env' }}
-# .env
+```ini {{ title: 'apps/web/.env' }}
+# apps/web/.env
 HELLO="World"
 ```
 
-Adjust your `package.json` scripts to inject your env using `dotenvx`.
+Adjust your `apps/web/package.json` scripts to inject your env using `dotenvx`.
 
-```json {{ title: "package.json" }}
+```json {{ title: "apps/web/package.json" }}
 ...
 "scripts": {
-  "dotenv": "dotenvx",
+  "dotenvx": "dotenvx",
   "build": "dotenvx run -- turbo build",
   "dev": "dotenvx run -- turbo dev",
   "lint": "dotenvx run -- turbo lint",
@@ -108,32 +112,32 @@ Try running it locally.
 
 ```
 $ npm run dev
-[dotenvx@0.14.1] injecting env (1) from .env
+web:dev: [dotenvx@0.27.1] injecting env (1) from .env
 docs:dev: - ready started server on 0.0.0.0:3001, url: http://localhost:3001
 web:dev: - ready started server on 0.0.0.0:3002, url: http://localhost:3002
 ```
 
 Visit [localhost:3002](http://locahost:3002).
 
-<ScreenshotBrowser url="/assets/docs/hello-blank.png" www="localhost:3002" />
+<ScreenshotBrowser url="/assets/docs/hello-world.png" www="localhost:3002" />
 
 Your app will say `Hello World`. The values from your `.env` file were successfully injected into your env.
 
 ## Add production environment
 
-Create a `.env.production` file in the root of your project.
+Create a `.env.production` file under `apps/web`.
 
-```shell {{ title: '.env.production' }}
-# .env.production
+```shell {{ title: 'apps/web/.env.production' }}
+# apps/web/.env.production
 HELLO="production"
 ```
 
-Modify your `package.json` scripts to use the `.env.production` file.
+Modify your `apps/web/package.json` scripts to use the `.env.production` file.
 
-```json {{ title: "package.json" }}
+```json {{ title: "apps/web/package.json" }}
 ...
 "scripts": {
-  "dotenv": "dotenvx",
+  "dotenvx": "dotenvx",
   "build": "dotenvx run --env-file=.env.production -- turbo build",
   "dev": "dotenvx run --env-file=.env.production -- turbo dev",
   "lint": "dotenvx run --env-file=.env.production -- turbo lint",
@@ -147,15 +151,20 @@ Your app will say `Hello production`, simulating production. Solid. Let's encryp
 
 ## Encrypt secrets
 
-Use `dotenvx` to encrypt your secrets.
+Use `dotenvx` to encrypt your `apps/web` secrets.
 
 ```shell
-dotenvx encrypt
+dotenvx encrypt apps/web
 ```
+
+> Also run `dotenvx gitignore` to make sure your `.env.keys` file is gitignored
+> ```shell
+> dotenvx gitnore
+> ```
 
 This generates a `.env.vault` and `.env.keys` file.
 
-```bash {{ title: ".env.vault" }}
+```bash {{ title: "apps/web/.env.vault" }}
 #/-------------------.env.vault---------------------/
 #/         cloud-agnostic vaulting standard         /
 #/   [how it works](https://dotenv.org/env-vault)   /
@@ -170,7 +179,7 @@ DOTENV_VAULT_PRODUCTION="YZkhtbh1IlzBgIamAAsG5nzGPfH6p8Zbuj9egXoziviVu/eYIyNjJWt
 
 The `.env.vault` file contains encrypted ([AES-256-GCM](https://www.reddit.com/r/cryptography/comments/13kl9ds/how_much_longer_do_you_think_aes_will_last/)) versions of your secrets, and the `.env.keys` file contains the decryption keys.
 
-```bash {{ title: ".env.keys" }}
+```bash {{ title: "apps/web/.env.keys" }}
 #/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
 #/   DOTENV_KEYs. DO NOT commit to source control   /
 #/   [how it works](https://dotenv.org/env-keys)    /
@@ -196,7 +205,7 @@ DOTENV_KEY='dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd85
 Your script starts and `env` is successfully injected using the encrypted contents of `.env.vault`.
 
 ```bash
-[dotenvx@0.14.1] injecting env (1) from encrypted .env.vault
+web:dev: [dotenvx@0.27.1] injecting env (1) from encrypted .env.vault
 docs:dev: - ready started server on 0.0.0.0:3001, url: http://localhost:3001
 web:dev: - ready started server on 0.0.0.0:3002, url: http://localhost:3002
 ```
@@ -223,10 +232,9 @@ HELLO="Mot"
 Re-encrypt it.
 
 ```shell
-dotenvx encrypt
+dotenvx encrypt apps/web
 ```
 
-Commit `.env.vault` safely to code and re-run your Docker container.
+Commit `.env.vault` safely to code and re-run `npm run dev`
 
 <ScreenshotBrowser url="/assets/docs/hello-mot.png" />
-
