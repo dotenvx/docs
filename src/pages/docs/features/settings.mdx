@@ -1,0 +1,27 @@
+import { Logo } from '@/components/Logo'
+import { FeaturesBreadcrumb } from '@/components/FeaturesBreadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print current dotenvx settings'
+
+<FeaturesBreadcrumb feature="Scan" icon={
+  <>
+    <Logo className="w-10 h-10" />
+  </>
+} />
+# Settings
+<GuideHeading lead={description} />
+
+## Usage
+
+Run `dotenvx settings`.
+
+```bash
+$ dotenvx settings --pretty-print
+{
+  "DOTENVX_SETTINGS_FILEPATH": "/Users/user/Library/Preferences/dotenvx/.env",
+  "DOTENVX_HOSTNAME": "https://hub.dotenvx.com",
+  "DOTENVX_LATEST_VERSION_LAST_CHECKED": "1712528133048"
+}
+```
