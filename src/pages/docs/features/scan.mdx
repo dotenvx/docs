@@ -1,0 +1,30 @@
+import { Logo } from '@/components/Logo'
+import { FeaturesBreadcrumb } from '@/components/FeaturesBreadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Scan for leaked secrets in your code.'
+
+<FeaturesBreadcrumb feature="Scan" icon={
+  <>
+    <Logo className="w-10 h-10" />
+  </>
+} />
+# Scan for secrets
+<GuideHeading lead={description} />
+
+## Installation
+
+```bash
+dotenvx scan
+```
+
+Uses [gitleaks](https://gitleaks.io) under the hood to scan for secrets in your code.
+
+## Usage
+
+Simply run `dotenvx scan`.
+
+```bash
+dotenvx scan
+```

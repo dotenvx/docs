@@ -276,10 +276,14 @@ export const navigation = [
   {
     title: 'More Features',
     links: [
-      { title: 'Genexample', href: '/docs/features/genexample' },
-      { title: 'Gitignore', href: '/docs/features/gitignore' },
-      { title: 'Prebuild', href: '/docs/features/prebuild' },
-      { title: 'Precommit', href: '/docs/features/precommit' },
+      { title: 'genexample', href: '/docs/features/genexample' },
+      { title: 'gitignore', href: '/docs/features/gitignore' },
+      { title: 'prebuild', href: '/docs/features/prebuild' },
+      { title: 'precommit', href: '/docs/features/precommit' },
+      { title: 'scan', href: '/docs/features/scan' },
+      { title: 'get', href: '/docs/features/get' },
+      { title: 'ls', href: '/docs/features/ls' },
+      { title: 'settings', href: '/docs/features/settings' },
     ]
   },
 ]
