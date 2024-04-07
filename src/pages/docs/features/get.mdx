@@ -1,0 +1,77 @@
+import { Logo } from '@/components/Logo'
+import { FeaturesBreadcrumb } from '@/components/FeaturesBreadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Get a single environment variable value.'
+
+<FeaturesBreadcrumb feature="Scan" icon={
+  <>
+    <Logo className="w-10 h-10" />
+  </>
+} />
+# Get single environment variable
+<GuideHeading lead={description} />
+
+## Installation
+
+```bash
+dotenvx get HELLO
+```
+
+Returns a single environment variable. Unlike run, it doesn't inject anything. It just returns the value.
+
+## Usage
+
+Given you have a `.env` file like this:
+
+```ini
+# .env
+HELLO="World"
+GOODNIGHT="Sleep well my love."
+```
+
+Simply run `dotenvx get HELLO`.
+
+```bash
+$ dotenvx get HELLO
+World
+```
+
+### Get a different variable
+
+Or get `GOODNIGHT`.
+
+```bash
+$ dotenvx get GOODNIGHT
+Sleep well my love.
+```
+
+### Pass optional flags
+
+You can pass all the same options to `get` that you can pass to `run`. This way you can do string evaluation, expansion, different filepaths, `.env.vault` injection, and more.
+
+```bash
+$ dotenvx get HELLO --env="HELLO=first" --env-file=.env --env="HELLO=last" --overload
+last
+```
+
+To see a list of all options available:
+
+```
+$ dotenvx get --help
+```
+
+### Return json
+
+And lastly, you can return all keys and values as a json response if you prefer. Just omit the argument and optionally pass `--pretty-print`.
+
+```bash
+$ dotenvx get --pretty-print
+{
+  "HELLO": "World",
+  "GOODNIGHT": "Sleep well my love."
+}
+```
+
+Handy!
