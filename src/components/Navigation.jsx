@@ -282,6 +282,7 @@ export const navigation = [
       { title: 'precommit', href: '/docs/features/precommit' },
       { title: 'scan', href: '/docs/features/scan' },
       { title: 'get', href: '/docs/features/get' },
+      { title: 'set', href: '/docs/features/set' },
       { title: 'ls', href: '/docs/features/ls' },
       { title: 'settings', href: '/docs/features/settings' },
     ]
