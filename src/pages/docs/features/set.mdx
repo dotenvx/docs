@@ -1,0 +1,73 @@
+import { Logo } from '@/components/Logo'
+import { FeaturesBreadcrumb } from '@/components/FeaturesBreadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Set a single environment variable value.'
+
+<FeaturesBreadcrumb feature="Set" icon={
+  <>
+    <Logo className="w-10 h-10" />
+  </>
+} />
+# Set single environment variable
+<GuideHeading lead={description} />
+
+## Installation
+
+```bash
+dotenvx set HELLO World
+```
+
+Sets a single environment variable for your `.env` file.
+
+## Usage
+
+Given you have a `.env` file like this:
+
+```ini
+# .env
+HELLO="World"
+```
+
+Simply run `dotenvx set HELLO Universe`.
+
+```bash
+$ dotenvx set HELLO Universe
+set HELLO (.env)
+```
+
+Check your `.env` file and it will now be set as `HELLO="Universe"`
+
+```ini
+HELLO="Universe"
+```
+
+### Set a different file.
+
+Or set `.env.production`.
+
+```ini
+# .env.production
+HELLO="Server"
+```
+
+```bash
+$ dotenvx set HELLO production -f .env.production
+set HELLO (.env.production)
+```
+
+The result will be:
+
+```ini
+# .env.production
+HELLO="production"
+```
+
+To see a list of all options available:
+
+```
+$ dotenvx get --help
+```
+
+That's it!
