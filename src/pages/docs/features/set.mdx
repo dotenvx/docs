@@ -13,7 +13,7 @@ export const description =
 # Set single environment variable
 <GuideHeading lead={description} />
 
-## Installation
+## Quick Usage
 
 ```bash
 dotenvx set HELLO World
@@ -49,11 +49,11 @@ Or set `.env.production`.
 
 ```ini
 # .env.production
-HELLO="Server"
+HELLO="production"
 ```
 
 ```bash
-$ dotenvx set HELLO production -f .env.production
+$ dotenvx set HELLO Universe -f .env.production
 set HELLO (.env.production)
 ```
 
@@ -61,7 +61,14 @@ The result will be:
 
 ```ini
 # .env.production
-HELLO="production"
+HELLO="Universe"
+```
+
+### Set multiple files at the same time.
+
+```bash
+$ dotenvx set HELLO Universe -f .env -f .env.production
+set HELLO (.env, .env.production)
 ```
 
 To see a list of all options available:
