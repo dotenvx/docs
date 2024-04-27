@@ -284,6 +284,7 @@ export const navigation = [
       { title: 'get', href: '/docs/features/get' },
       { title: 'set', href: '/docs/features/set' },
       { title: 'ls', href: '/docs/features/ls' },
+      { title: 'status', href: '/docs/features/status' },
       { title: 'settings', href: '/docs/features/settings' },
     ]
   },

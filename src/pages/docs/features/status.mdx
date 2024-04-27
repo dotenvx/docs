@@ -1,0 +1,26 @@
+import { Logo } from '@/components/Logo'
+import { FeaturesBreadcrumb } from '@/components/FeaturesBreadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Compare unencrypted .env files to your encrypted .env.vault file'
+
+<FeaturesBreadcrumb feature="Status" icon={
+  <>
+    <Logo className="w-10 h-10" />
+  </>
+} />
+# Status
+<GuideHeading lead={description} />
+
+## Usage
+
+Run `dotenvx status`.
+
+```bash
+$ dotenvx status
+changes (.env)
+
+    HELLO="WorldDevelopment"
+
+```
