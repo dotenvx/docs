@@ -98,7 +98,8 @@ Run it with `dotenvx run --`.
 
 ```bash {{ title: "Node" }}
 $ dotenvx run -- node index.js
-[dotenvx][warn] ENOENT: no such file or directory, open '/path/to/.env'
+[dotenvx@0.38.0] missing .env file (.env)
+[dotenvx@0.38.0] injecting env (0)
 Server running on port:3000
 # http://localhost:3000
 # Hello undefined
@@ -106,7 +107,8 @@ Server running on port:3000
 
 ```bash {{ title: "Python" }}
 $ dotenvx run -- flask --app index run
-[dotenvx][warn] ENOENT: no such file or directory, open '/path/to/.env'
+[dotenvx@0.38.0] missing .env file (.env)
+[dotenvx@0.38.0] injecting env (0)
 Running on http://127.0.0.1:5000
 # http://127.0.0.1:5000
 # Hello None
@@ -114,14 +116,16 @@ Running on http://127.0.0.1:5000
 
 ```bash {{ title: "PHP" }}
 $ dotenvx run -- php index.php
-[dotenvx][warn] ENOENT: no such file or directory, open '/path/to/.env'
+[dotenvx@0.38.0] missing .env file (.env)
+[dotenvx@0.38.0] injecting env (0)
 PHP Warning:  Undefined array key "HELLO"
 # Hello
 ```
 
 ```bash {{ title: "Ruby" }}
 $ dotenvx run -- ruby index.rb
-[dotenvx][warn] ENOENT: no such file or directory, open '/path/to/.env'
+[dotenvx@0.38.0] missing .env file (.env)
+[dotenvx@0.38.0] injecting env (0)
 Listening on http://127.0.0.1:4567
 # http://127.0.0.1:4567
 # Hello
@@ -129,7 +133,8 @@ Listening on http://127.0.0.1:4567
 
 ```bash {{ title: "Go" }}
 $ dotenvx run -- go run main.go
-[dotenvx][warn] ENOENT: no such file or directory, open '/path/to/.env'
+[dotenvx@0.38.0] missing .env file (.env)
+[dotenvx@0.38.0] injecting env (0)
 http server started on [::]:1323
 # http://localhost:1323
 # Hello
@@ -137,12 +142,12 @@ http server started on [::]:1323
 
 ```bash {{ title: "Rust" }}
 $ dotenvx run -- cargo run
-[dotenvx][warn] ENOENT: no such file or directory, open '/path/to/.env'
+[dotenvx@0.38.0] missing .env file (.env)
+[dotenvx@0.38.0] injecting env (0)
 Rocket has launched from http://127.0.0.1:8000
 # http://127.0.0.1:8000
 # Hello
 ```
-
 
 </CodeGroup>
 
@@ -161,7 +166,7 @@ Run it again.
 
 ```bash {{ title: "Node" }}
 $ dotenvx run -- node index.js
-[dotenvx][info] loading env (1) from .env
+[dotenvx@0.38.0] injecting env (1) from .env
 Server running on port:3000
 # http://localhost:3000
 # Hello undefined
@@ -169,7 +174,7 @@ Server running on port:3000
 
 ```bash {{ title: "Python" }}
 $ dotenvx run -- flask --app index run
-[dotenvx][info] loading env (1) from .env
+[dotenvx@0.38.0] injecting env (1) from .env
 Running on http://127.0.0.1:5000
 # http://127.0.0.1:5000
 # Hello None
@@ -177,14 +182,14 @@ Running on http://127.0.0.1:5000
 
 ```bash {{ title: "PHP" }}
 $ dotenvx run -- php index.php
-[dotenvx][info] loading env (1) from .env
+[dotenvx@0.38.0] injecting env (1) from .env
 PHP Warning:  Undefined array key "HELLO"
 # Hello
 ```
 
 ```bash {{ title: "Ruby" }}
 $ dotenvx run -- ruby index.rb
-[dotenvx][info] loading env (1) from .env
+[dotenvx@0.38.0] injecting env (1) from .env
 Listening on http://127.0.0.1:4567
 # http://127.0.0.1:4567
 # Hello
@@ -192,7 +197,7 @@ Listening on http://127.0.0.1:4567
 
 ```bash {{ title: "Go" }}
 $ dotenvx run -- go run main.go
-[dotenvx][info] loading env (1) from .env
+[dotenvx@0.38.0] injecting env (1) from .env
 http server started on [::]:1323
 # http://localhost:1323
 # Hello
@@ -200,7 +205,7 @@ http server started on [::]:1323
 
 ```bash {{ title: "Rust" }}
 $ dotenvx run -- cargo run
-[dotenvx][info] loading env (1) from .env
+[dotenvx@0.38.0] injecting env (1) from .env
 Rocket has launched from http://127.0.0.1:8000
 # http://127.0.0.1:8000
 # Hello
@@ -215,60 +220,60 @@ Hrm, still not saying `Hello  World`. Pass the `--debug` flag to to see what's g
 
 ```bash {{ title: "Node" }}
 $ dotenvx run --debug -- node index.js
-[dotenvx][verbose] laoding env from /path/to/.env
-[dotenvx][debug] reading env from /path/to/.env
-[dotenvx][debug] parsing env from /path/to/.env
-[dotenvx][debug] {"JELLO":"World"}
+loading env from .env (.env)
+{"JELLO":"World"}
+JELLO set
+JELLO set to World
 
 # Oops, HELLO not JELLO ^^
 ```
 
 ```bash {{ title: "Python" }}
 $ dotenvx run --debug -- flask --app index run
-[dotenvx][verbose] loading env from /path/to/.env
-[dotenvx][debug] reading env from /path/to/.env
-[dotenvx][debug] parsing env from /path/to/.env
-[dotenvx][debug] {"JELLO":"World"}
+loading env from .env (.env)
+{"JELLO":"World"}
+JELLO set
+JELLO set to World
 
 # Oops, HELLO not JELLO ^^
 ```
 
 ```bash {{ title: "PHP" }}
 $ dotenvx run --debug -- php index.php
-[dotenvx][verbose] loading env from /path/to/.env
-[dotenvx][debug] reading env from /path/to/.env
-[dotenvx][debug] parsing env from /path/to/.env
-[dotenvx][debug] {"JELLO":"World"}
+loading env from .env (.env)
+{"JELLO":"World"}
+JELLO set
+JELLO set to World
 
 # Oops, HELLO not JELLO ^^
 ```
 
 ```bash {{ title: "Ruby" }}
 $ dotenvx run --debug -- ruby index.rb
-[dotenvx][verbose] loading env from /path/to/.env
-[dotenvx][debug] reading env from /path/to/.env
-[dotenvx][debug] parsing env from /path/to/.env
-[dotenvx][debug] {"JELLO":"World"}
+loading env from .env (.env)
+{"JELLO":"World"}
+JELLO set
+JELLO set to World
 
 # Oops, HELLO not JELLO ^^
 ```
 
 ```bash {{ title: "Go" }}
 $ dotenvx run --debug -- go run main.go
-[dotenvx][verbose] loading env from /path/to/.env
-[dotenvx][debug] reading env from /path/to/.env
-[dotenvx][debug] parsing env from /path/to/.env
-[dotenvx][debug] {"JELLO":"World"}
+loading env from .env (.env)
+{"JELLO":"World"}
+JELLO set
+JELLO set to World
 
 # Oops, HELLO not JELLO ^^
 ```
 
 ```bash {{ title: "Rust" }}
 $ dotenvx run --debug -- cargo run
-[dotenvx][verbose] loading env from /path/to/.env
-[dotenvx][debug] reading env from /path/to/.env
-[dotenvx][debug] parsing env from /path/to/.env
-[dotenvx][debug] {"JELLO":"World"}
+loading env from .env (.env)
+{"JELLO":"World"}
+JELLO set
+JELLO set to World
 
 # Oops, HELLO not JELLO ^^
 ```
@@ -290,7 +295,7 @@ Run it one last time.
 
 ```bash {{ title: "Node" }}
 $ dotenvx run -- node index.js
-[dotenvx][info] loading env (1) from .env
+[dotenvx@0.38.0] injecting env (1) from .env
 Server running on port:3000
 # http://localhost:3000
 # Hello World
@@ -298,7 +303,7 @@ Server running on port:3000
 
 ```bash {{ title: "Python" }}
 $ dotenvx run -- flask --app index run
-[dotenvx][info] loading env (1) from .env
+[dotenvx@0.38.0] injecting env (1) from .env
 Running on http://127.0.0.1:5000
 # http://127.0.0.1:5000
 # Hello World
@@ -306,13 +311,13 @@ Running on http://127.0.0.1:5000
 
 ```bash {{ title: "PHP" }}
 $ dotenvx run -- php index.php
-[dotenvx][info] loading env (1) from .env
+[dotenvx@0.38.0] injecting env (1) from .env
 # Hello World
 ```
 
 ```bash {{ title: "Ruby" }}
 $ dotenvx run -- ruby index.rb
-[dotenvx][info] loading env (1) from .env
+[dotenvx@0.38.0] injecting env (1) from .env
 Listening on http://127.0.0.1:4567
 # http://127.0.0.1:4567
 # Hello World
@@ -320,7 +325,7 @@ Listening on http://127.0.0.1:4567
 
 ```bash {{ title: "Go" }}
 $ dotenvx run -- go run main.go
-[dotenvx][info] loading env (1) from .env
+[dotenvx@0.38.0] injecting env (1) from .env
 http server started on [::]:1323
 # http://localhost:1323
 # Hello World
@@ -328,7 +333,7 @@ http server started on [::]:1323
 
 ```bash {{ title: "Rust" }}
 $ dotenvx run -- cargo run
-[dotenvx][info] loading env (1) from .env
+[dotenvx@0.38.0] injecting env (1) from .env
 Rocket has launched from http://127.0.0.1:8000
 # http://127.0.0.1:8000
 # Hello World
@@ -339,4 +344,98 @@ Rocket has launched from http://127.0.0.1:8000
 ![](/assets/docs/quickstart/hello-world.png)
 
 🎉 It worked!
+
+## Add Encryption
+
+Add encryption to your `.env` files with a single command. Pass the `--encrypt` flag.
+
+```bash {{ title: "dotenvx set --encrypt" }}
+$ dotenvx set HELLO World --encrypt
+set HELLO with encryption (.env)
+```
+
+Look at your `.env` file.
+
+```ini {{ title: ".env" }}
+#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
+#/            public-key encryption for .env files          /
+#/       [how it works](https://dotenvx.com/encryption)     /
+#/----------------------------------------------------------/
+DOTENV_PUBLIC_KEY="03c13bb105c307db64cc4b433987f12694bf79231487f44459f63fe70905494913"
+
+# .env
+HELLO="encrypted:BGmkvtg+DtseC3xyeJ4ITAqxWWFsFEBxTABZNJjPoMrVVJjkeevmUK719kxqKdlNrsClsvHK2Qs1yfHXNJM6Q6d8QJ/MIRoC0GLlJQkvHVJbf/931FoAVYNit6ahNyCgOt3Y3y6s"
+```
+
+It's encrypted! Run your code again with `dotenvx run --`.
+
+<CodeGroup>
+
+```bash {{ title: "Node" }}
+$ dotenvx run -- node index.js
+[dotenvx@0.38.0] injecting env (2) from .env
+Server running on port:3000
+# http://localhost:3000
+# Hello World
+```
+
+```bash {{ title: "Python" }}
+$ dotenvx run -- flask --app index run
+[dotenvx@0.38.0] injecting env (2) from .env
+Running on http://127.0.0.1:5000
+# http://127.0.0.1:5000
+# Hello World
+```
+
+```bash {{ title: "PHP" }}
+$ dotenvx run -- php index.php
+[dotenvx@0.38.0] injecting env (2) from .env
+# Hello World
+```
+
+```bash {{ title: "Ruby" }}
+$ dotenvx run -- ruby index.rb
+[dotenvx@0.38.0] injecting env (2) from .env
+Listening on http://127.0.0.1:4567
+# http://127.0.0.1:4567
+# Hello World
+```
+
+```bash {{ title: "Go" }}
+$ dotenvx run -- go run main.go
+[dotenvx@0.38.0] injecting env (2) from .env
+http server started on [::]:1323
+# http://localhost:1323
+# Hello World
+```
+
+```bash {{ title: "Rust" }}
+$ dotenvx run -- cargo run
+[dotenvx@0.38.0] injecting env (2) from .env
+Rocket has launched from http://127.0.0.1:8000
+# http://127.0.0.1:8000
+# Hello World
+```
+
+</CodeGroup>
+
+![](/assets/docs/quickstart/hello-world.png)
+
+🎉 It worked, again! But how?
+
+Look at your `.env.keys` file. It contains the private decryption key.
+
+```ini {{ title: ".env.keys" }}
+#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
+#/ private decryption keys. DO NOT commit to source control /
+#/     [how it works](https://dotenvx.com/encryption)       /
+#/----------------------------------------------------------/
+
+# .env
+DOTENV_PRIVATE_KEY="ece16b6649d3f3e3a60eb97384484902d65afc85083f3bb5162b0a35b78171fa"
+```
+
+The `run` command uses it to decrypt any encrypted values and inject them at runtime. Under the hood it uses the same public-key cryptography as [Bitcoin](https://en.bitcoin.it/wiki/Secp256k1).
+
+This is a huge security improvement for `.env` files.
 
