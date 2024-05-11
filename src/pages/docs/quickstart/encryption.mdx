@@ -2,65 +2,76 @@ import { QuickstartsBreadcrumb } from '@/components/QuickstartsBreadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Encrypt your secrets to an encrypted `.env.vault` and then load them securely (and just-in-time) to production, staging, or ci'
+  'Add encryption to your `.env` files with a single command. Pass the `--encrypt` flag.'
 
 <QuickstartsBreadcrumb quickstart="Encryption" icon={
   <>
     ⚡️
   </>
 } />
-# Encrypt Secrets
+# Encryption
 <GuideHeading lead={description} />
 
-## Encrypt
-
-Run `dotenvx encrypt` to encrypt your `.env.*` file(s) to `.env.vault`.
-
-```bash {{ title: "dotenvx encrypt" }}
-$ echo "HELLO=World" > .env
-$ echo "HELLO=production" > .env.production
+```bash {{ title: "dotenvx set --encrypt" }}
+$ touch .env
 $ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
-$ dotenvx encrypt
-[dotenvx][info] encrypted to .env.vault (.env,.env.production)
-[dotenvx][info] keys added to .env.keys (DOTENV_KEY_DEVELOPMENT,DOTENV_KEY_PRODUCTION)
-```
-```ini {{ title: '.env.vault' }}
-#/-------------------.env.vault---------------------/
-#/         cloud-agnostic vaulting standard         /
-#/   [how it works](https://dotenv.org/env-vault)   /
-#/--------------------------------------------------/
-
-# development
-DOTENV_VAULT_DEVELOPMENT="V4NYVn0Pow6Uf2ez2mbHEzTrYURloHL6VDAFRLqnQBppA/OmHI5x5AXoxCMVor7wOg=="
-
-# production
-DOTENV_VAULT_PRODUCTION="YZkhtbh1IlzBgIamAAsG5nzGPfH6p8Zbuj9egXoziviVu/eYIyNjJWtIYyhiW/vHhFbqbsvo5+P9b27OC6ZC7qU="
+$ dotenvx set HELLO World --encrypt
 ```
 
-## DOTENV_KEY
+Your `.env` file will now look something like this.
 
-Locate your `DOTENV_KEY` in .env.keys
+
+```ini {{ title: '.env' }}
+#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
+#/            public-key encryption for .env files          /
+#/       [how it works](https://dotenvx.com/encryption)     /
+#/----------------------------------------------------------/
+DOTENV_PUBLIC_KEY="037cfbfc90234cfdab7eb54050566293789efaa1a35dc420749662db400dc9c4b2"
+
+# .env
+HELLO="encrypted:BAZb6wDPFaFeFzq8Ut48oiNFSPtYvJmv4AwVDFVcNKiIcGxrxuRIFGWxZ3xVjxOgOo6w65bWFTpAfbatSz52+VvwDYZ3nFUO828nzovH5ZhsIoxPuPb7K0ZphmNynR7Hxci4a+fB"
+```
+
+The public encryption key `DOTENV_PUBLIC_KEY` is placed at the top of your `.env` file. This allows anyone on your team to encrypt secrets.
+
+The private decryption key `DOTENV_PRIVATE_KEY` is placed in your `.env.keys` file. Only those holding this key can decrypt secrets.
+
+## DOTENV_PRIVATE_KEY
+
+Locate your `DOTENV_PRIVATE_KEY` in .env.keys
 
 ```bash {{ title: "cat .env.keys" }}
 $ cat .env.keys
 ```
 ```ini {{ title: '.env.keys' }}
-#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
-#/   DOTENV_KEYs. DO NOT commit to source control   /
-#/   [how it works](https://dotenv.org/env-keys)    /
-#/--------------------------------------------------/
-DOTENV_KEY_DEVELOPMENT="dotenv://:key_e507c60efa8841d8d5bbb85bd701ee92406cf3b06506d1d80f1553c2a72791e4@dotenvx.com/vault/.env.vault?environment=development"
-DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production"
+#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
+#/ private decryption keys. DO NOT commit to source control /
+#/     [how it works](https://dotenvx.com/encryption)       /
+#/----------------------------------------------------------/
+
+# .env
+DOTENV_PRIVATE_KEY="81dac4d2c42e67a2c6542d3b943a4674a05c4be5e7e5a40a689be7a3bd49a07e"
 ```
 
 ## Run
 
-Prepend `DOTENV_KEY` in front of `dotenvx run --` to trigger decrypting your .env.vault. This injects your encrypted envs just in time.
+#### Development
 
-```bash {{ title: "DOTENV_KEY={key} dotenvx run -- command" }}
-$ DOTENV_KEY='dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production' dotenvx run -- node index.js
-[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
+In development the `dotenvx run` command reads from your `.env.keys` file to decrypt and inject your secrets at runtime.
+
+```bash {{ title: "development" }}
+$ dotenvx run -- node index.js
+[dotenvx@0.38.0] injecting env (2) from .env
+Hello World
+```
+
+In production, do NOT include your `.env.keys` file. Instead, set your `DOTENV_PRIVATE_KEY` ahead of your `dotenvx run` command and it will smartly run the associated `.env` file - decrypting and injecting your secrets at runtime.
+
+```bash {{ title: "production" }}
+$ dotenvx set HELLO production --encrypt -f .env.production
+$ DOTENV_PRIVATE_KEY_PRODUCTION="4a650a4159790e2341a388ebcd7526036fd33cc6240667c7cd940cde7b11cfaf" dotenvx run -- node index.js
+[dotenvx@0.38.0] injecting env (2) from .env.production
 Hello production
 > :-D
 ```

@@ -25,24 +25,10 @@ const concepts = [
     },
   },
   {
-    href: '/docs/env-vault-file',
-    name: '.env.vault',
-    description:
-      'The .env.vault file is an encrypted version of your .env file.',
-    icon: SafeIcon,
-    pattern: {
-      y: -6,
-      squares: [
-        [-1, 2],
-        [1, 3],
-      ],
-    },
-  },
-  {
     href: '/docs/env-keys-file',
     name: '.env.keys',
     description:
-      'The .env.keys file holds environment DOTENV_KEYs.',
+      'The .env.keys file holds your private decryption keys.',
     icon: ShieldLockIcon,
     pattern: {
       y: -6,
@@ -50,17 +36,6 @@ const concepts = [
         [-1, 2],
         [1, 3],
       ],
-    },
-  },
-  {
-    href: '/docs/dotenv-key',
-    name: 'DOTENV_KEY',
-    description:
-      'Decrypts the encrypted .env.vault file.',
-    icon: KeyIcon,
-    pattern: {
-      y: 22,
-      squares: [[0, 1]],
     },
   },
 ]

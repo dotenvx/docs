@@ -2,7 +2,7 @@ import { QuickstartsBreadcrumb } from '@/components/QuickstartsBreadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Run any environment locally. Create a `.env.ENVIRONMENT` file and use `--env-file` to load it. It\'s straightforward, yet flexible.'
+  'Run any environment locally. Create a `.env.ENVIRONMENT` file and use `-f` to load it. It\'s straightforward, yet flexible.'
 
 <QuickstartsBreadcrumb quickstart="Environments" icon={
   <>
@@ -20,7 +20,7 @@ export const description =
 $ echo "HELLO=production" > .env.production 
 $ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
-$ dotenvx run --env-file=.env.production -- node index.js
+$ dotenvx run -f=.env.production -- node index.js
 Hello production
 > ^^
 ```
@@ -31,18 +31,18 @@ Hello production
 
 <CodeGroup>
 
-```bash {{ title: '--env-file (multiple)' }}
+```bash {{ title: '-f (multiple)' }}
 $ echo "HELLO=local" > .env.local
 $ echo "HELLO=World" > .env
 $ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
-$ dotenvx run --env-file=.env.local --env-file=.env -- node index.js
+$ dotenvx run -f=.env.local -f=.env -- node index.js
 Hello local
 ```
 
 </CodeGroup>
 
-The order matters. The first `--env-file` will 'win' for an environment variable. You can use `--overload` if you prefer the last to 'win'.
+The order matters. The first `-f` will 'win' for an environment variable. You can use `--overload` if you prefer the last to 'win'.
 
 ## --overload
 
@@ -51,7 +51,7 @@ $ echo "HELLO=local" > .env.local
 $ echo "HELLO=World" > .env
 $ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
-$ dotenvx run --env-file=.env.local --env-file=.env --overload -- node index.js
+$ dotenvx run -f=.env.local -f=.env --overload -- node index.js
 Hello World
 ```
 
@@ -63,7 +63,7 @@ Keep in mind that `--overload` will also overload any environment variables alre
 $ echo "HELLO=production" > .env.production
 $ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
-$ dotenvx run --env-file=.env.production --verbose -- node index.js
+$ dotenvx run -f=.env.production --verbose -- node index.js
 [dotenvx][verbose] loading env from /path/to/.env.production
 [dotenvx][verbose] HELLO set
 [dotenvx][info] loading env (1) from .env.production
@@ -78,7 +78,7 @@ If you also want to see the secret value being set, use `--debug`.
 $ echo "HELLO=production" > .env.production
 $ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
-$ dotenvx run --env-file=.env.production --debug -- node index.js
+$ dotenvx run -f=.env.production --debug -- node index.js
 [dotenvx][debug] configuring options
 [dotenvx][debug] {"envFile":[".env.production"]}
 [dotenvx][verbose] loading env from /path/to/.env.production

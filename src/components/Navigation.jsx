@@ -200,10 +200,9 @@ export const navigation = [
   {
     title: 'Quickstarts',
     links: [
-      { title: 'Run', href: '/docs/quickstart/run' },
-      { title: 'Environments', href: '/docs/quickstart/environments' },
+      { title: 'Run Anywhere', href: '/docs/quickstart/run' },
+      { title: 'Multiple Environments', href: '/docs/quickstart/environments' },
       { title: 'Encryption', href: '/docs/quickstart/encryption' },
-      { title: 'Hub', href: '/docs/quickstart/hub' },
     ]
   },
   {
