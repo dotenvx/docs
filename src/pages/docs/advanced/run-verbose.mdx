@@ -1,0 +1,20 @@
+export const description =
+  'Set log level to `verbose`.'
+
+##### [Advanced](/docs/advanced)
+# run --verbose
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=production" > .env.production
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run -f .env.production --verbose -- node index.js
+loading env from .env.production (/path/to/.env.production)
+HELLO set
+[dotenvx] injecting env (1) from .env.production
+Hello production
+```
+
+[log levels](https://github.com/winstonjs/winston?tab=readme-ov-file#logging)

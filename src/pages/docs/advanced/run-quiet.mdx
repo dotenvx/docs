@@ -1,0 +1,17 @@
+export const description =
+  'Use `--quiet` to suppress all output (except errors).'
+
+##### [Advanced](/docs/advanced)
+# run --quiet
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=production" > .env.production
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run -f .env.production --quiet -- node index.js
+Hello production
+```
+
+[log levels](https://github.com/winstonjs/winston?tab=readme-ov-file#logging)

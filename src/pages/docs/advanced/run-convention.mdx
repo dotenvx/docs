@@ -1,0 +1,21 @@
+export const description =
+  'Load envs using the Next.js convention.'
+
+##### [Advanced](/docs/advanced)
+# run --convention=nextjs
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=development local" > .env.development.local
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+$ echo "HELLO=env" > .env
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run --convention=nextjs -- node index.js
+[dotenvx] injecting env (1) from .env.development.local, .env.local, .env.development, .env
+Hello development local
+```
+
+[Next.js env load order](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#environment-variable-load-order)

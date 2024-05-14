@@ -189,14 +189,12 @@ function NavigationGroup({ group, className }) {
 
 export const navigation = [
   {
-    title: 'Basics',
-    href: '/docs/quickstart',
+    title: 'Documentation',
+    href: '/docs',
     links: [
       { title: 'Install', href: '/docs/install' },
-      { title: 'Quickstart', href: '/docs/quickstart' },
-      { title: 'Run Anywhere', href: '/docs/quickstart/run' },
-      { title: 'Multiple Environments', href: '/docs/quickstart/environments' },
-      { title: 'Encryption', href: '/docs/quickstart/encryption' },
+      { title: 'Basics', href: '/docs/quickstart' },
+      { title: 'Advanced', href: '/docs/advanced' },
     ]
   },
   {
