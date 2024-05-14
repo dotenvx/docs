@@ -198,85 +198,10 @@ export const navigation = [
     ]
   },
   {
-    title: 'Languages',
-    // href: '/docs/platforms',
+    title: 'Guides',
+    href: '/docs/guides',
     links: [
-      { title: 'Node.js', href: '/docs/languages/nodejs' },
-      { title: 'Python', href: '/docs/languages/python' },
-      { title: 'PHP', href: '/docs/languages/php' },
-      { title: 'Ruby', href: '/docs/languages/ruby' },
-      { title: 'Go', href: '/docs/languages/go' },
-      { title: 'Rust', href: '/docs/languages/rust' },
-    ]
-  },
-  {
-    title: 'Frameworks',
-    // href: '/docs/platforms',
-    links: [
-      { title: 'Astro', href: '/docs/frameworks/astro' },
-      { title: 'Express', href: '/docs/frameworks/express' },
-      { title: 'Next', href: '/docs/frameworks/next' },
-      { title: 'Remix', href: '/docs/frameworks/remix' },
-      { title: 'Flask', href: '/docs/frameworks/flask' },
-      { title: 'Sinatra', href: '/docs/frameworks/sinatra' },
-      { title: 'Echo', href: '/docs/frameworks/echo' },
-      { title: 'Rocket', href: '/docs/frameworks/rocket' },
-    ]
-  },
-  {
-    title: 'Platforms',
-    // href: '/docs/platforms',
-    links: [
-      { title: 'Digital Ocean', href: '/docs/platforms/digital-ocean' },
-      { title: 'Docker', href: '/docs/platforms/docker' },
-      { title: 'Fly', href: '/docs/platforms/fly' },
-      { title: 'Heroku', href: '/docs/platforms/heroku' },
-      { title: 'Netlify', href: '/docs/platforms/netlify' },
-      { title: 'Railway', href: '/docs/platforms/railway' },
-      { title: 'Render', href: '/docs/platforms/render' },
-      { title: 'Vercel', href: '/docs/platforms/vercel' },
-    ]
-  },
-  {
-    title: 'CI/CDs',
-    // href: '/docs/platforms',
-    links: [
-      { title: 'GitHub Actions', href: '/docs/cis/github-actions' },
-    ]
-  },
-  {
-    title: 'Package Managers',
-    links: [
-      { title: 'npm', href: '/docs/package-managers/npm' },
-      { title: 'pnpm', href: '/docs/package-managers/pnpm' },
-    ]
-  },
-  {
-    title: 'Process Managers',
-    links: [
-      { title: 'pm2', href: '/docs/process-managers/pm2' },
-    ]
-  },
-  {
-    title: 'Monorepos',
-    links: [
-      { title: 'Nx', href: '/docs/monorepos/nx' },
-      { title: 'Turborepo', href: '/docs/monorepos/turborepo' },
-    ]
-  },
-  {
-    title: 'More Features',
-    links: [
-      { title: 'genexample', href: '/docs/features/genexample' },
-      { title: 'gitignore', href: '/docs/features/gitignore' },
-      { title: 'prebuild', href: '/docs/features/prebuild' },
-      { title: 'precommit', href: '/docs/features/precommit' },
-      { title: 'scan', href: '/docs/features/scan' },
-      { title: 'get', href: '/docs/features/get' },
-      { title: 'set', href: '/docs/features/set' },
-      { title: 'ls', href: '/docs/features/ls' },
-      { title: 'status', href: '/docs/features/status' },
-      { title: 'settings', href: '/docs/features/settings' },
+      { title: 'Guides', href: '/docs/guides' },
     ]
   },
 ]
