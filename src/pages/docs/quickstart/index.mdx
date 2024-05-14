@@ -15,415 +15,305 @@ export const description =
   'Manage secrets with dotenvx'
 
 ##### [dotenvx](/docs)
-# Quickstart ⚡️
+# Quickstart
 
-Manage secrets with `dotenvx`. {{ className: 'lead' }} 
+The fastest way to use `dotenvx` anywhere, across multiple environments, and with encryption. {{ className: 'lead' }} 
 
-<div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10">
-  <NodeIcon className="h-9 w-9 text-[#339933]"/>
-  <PythonIcon className="h-9 w-9 text-[#3776AB]"/>
-  <RubyIcon className="h-9 w-9 text-[#CC342D]"/>
-  <GoIcon className="h-10 w-10 text-[#00ADD8]"/>
-  <PhpIcon className="h-10 w-10 text-[#777BB4]"/>
-  <RustIcon className="h-10 w-10 text-[#000000] dark:invert"/>
-</div>
+## Install
 
-## Setup
-
-Install `dotenvx`.
+> Install `dotenvx` where you need it.
 
 <InstallCodeGroup />
 
-Install the necessary web server libraries in the language of your choice.
+See [other ways to install](/docs/install), like Windows executables, standalone GitHub releases, and more.
 
-<InstallLibariesCodeGroup/>
+## Run Anywhere
 
-Create a simple *Hello World* program.
-
-<HelloWorldCodeGroup/>
-
-Run it.
+> Run it with `dotenvx run -- yourcommand`.
 
 <CodeGroup>
 
-```bash {{ title: "Node" }}
+```bash {{ title: 'Node' }}
+$ echo "HELLO=World" > .env
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
 $ node index.js
-Server running on port:3000
-# http://localhost:3000
-# Hello undefined
-```
+Hello undefined
 
-```bash {{ title: "Python" }}
-$ flask --app index run
-Running on http://127.0.0.1:5000
-# http://127.0.0.1:5000
-# Hello None
-```
-
-```bash {{ title: "PHP" }}
-$ php index.php
-PHP Warning:  Undefined array key "HELLO"
-# Hello
-```
-
-```bash {{ title: "Ruby" }}
-$ ruby index.rb
-Listening on http://127.0.0.1:4567
-# http://127.0.0.1:4567
-# Hello
-```
-
-```bash {{ title: "Go" }}
-$ go run main.go
-http server started on [::]:1323
-# http://localhost:1323
-# Hello
-```
-
-```bash {{ title: "Rust" }}
-$ cargo run
-Rocket has launched from http://127.0.0.1:8000
-# http://127.0.0.1:8000
-# Hello
-```
-
-
-</CodeGroup>
-
-## Run Command
-
-Run it with `dotenvx run --`.
-
-<CodeGroup>
-
-```bash {{ title: "Node" }}
 $ dotenvx run -- node index.js
-[dotenvx@0.38.0] missing .env file (.env)
-[dotenvx@0.38.0] injecting env (0)
-Server running on port:3000
-# http://localhost:3000
-# Hello undefined
+Hello World
 ```
 
-```bash {{ title: "Python" }}
-$ dotenvx run -- flask --app index run
-[dotenvx@0.38.0] missing .env file (.env)
-[dotenvx@0.38.0] injecting env (0)
-Running on http://127.0.0.1:5000
-# http://127.0.0.1:5000
-# Hello None
+```bash {{ title: 'Deno' }}
+$ echo "HELLO=World" > .env
+$ echo "console.log('Hello ' + Deno.env.get('HELLO'))" > index.ts
+
+$ deno run --allow-env index.ts
+Hello undefined
+
+$ dotenvx run -- deno run --allow-env index.ts
+Hello World
 ```
 
-```bash {{ title: "PHP" }}
+```bash {{ title: 'Bun' }}
+$ echo "HELLO=Test" > .env.test
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ bun index.js
+Hello undefined
+
+$ dotenvx run -f .env.test -- bun index.js
+Hello Test
+```
+
+```bash {{ title: 'Python' }}
+$ echo "HELLO=World" > .env 
+$ echo 'import os;print("Hello " + os.getenv("HELLO", ""))' > index.py
+
+$ dotenvx run -- python3 index.py
+Hello World
+```
+
+```bash {{ title: 'PHP' }}
+$ echo "HELLO=World" > .env 
+$ echo '<?php echo "Hello {$_SERVER["HELLO"]}\n";' > index.php
+
 $ dotenvx run -- php index.php
-[dotenvx@0.38.0] missing .env file (.env)
-[dotenvx@0.38.0] injecting env (0)
-PHP Warning:  Undefined array key "HELLO"
-# Hello
+Hello World
 ```
 
-```bash {{ title: "Ruby" }}
+```bash {{ title: 'Ruby' }}
+$ echo "HELLO=World" > .env 
+$ echo 'puts "Hello #{ENV["HELLO"]}"' > index.rb
+
 $ dotenvx run -- ruby index.rb
-[dotenvx@0.38.0] missing .env file (.env)
-[dotenvx@0.38.0] injecting env (0)
-Listening on http://127.0.0.1:4567
-# http://127.0.0.1:4567
-# Hello
+Hello World
 ```
 
-```bash {{ title: "Go" }}
+```bash {{ title: 'Go' }}
+$ echo "HELLO=World" > .env 
+$ echo 'package main; import ("fmt"; "os"); func main() { fmt.Printf("Hello %s\n", os.Getenv("HELLO")) }' > main.go
+
 $ dotenvx run -- go run main.go
-[dotenvx@0.38.0] missing .env file (.env)
-[dotenvx@0.38.0] injecting env (0)
-http server started on [::]:1323
-# http://localhost:1323
-# Hello
+Hello World
 ```
 
-```bash {{ title: "Rust" }}
+```bash {{ title: 'Rust' }}
+$ echo "HELLO=World" > .env 
+$ echo 'fn main() {let hello = std::env::var("HELLO").unwrap_or("".to_string());println!("Hello {hello}");}' > src/main.rs
+
 $ dotenvx run -- cargo run
-[dotenvx@0.38.0] missing .env file (.env)
-[dotenvx@0.38.0] injecting env (0)
-Rocket has launched from http://127.0.0.1:8000
-# http://127.0.0.1:8000
-# Hello
+Hello World
+```
+
+```bash {{ title: 'Java' }}
+$ echo "HELLO=World" > .env 
+$ echo 'public class Index { public static void main(String[] args) { System.out.println("Hello " + System.getenv("HELLO")); } }' > index.java
+
+$ dotenvx run -- java index.java
+Hello World
+```
+
+```bash {{ title: '.NET' }}
+$ dotnet new console -n HelloWorld -o HelloWorld
+$ cd HelloWorld
+$ echo "HELLO=World" > .env 
+$ echo 'Console.WriteLine($"Hello {Environment.GetEnvironmentVariable("HELLO")}");' > Program.cs
+
+$ dotenvx run -- dotnet run
+Hello World
+```
+
+```bash {{ title: 'Bash' }}
+$ echo "HELLO=World" > .env
+
+$ dotenvx run --quiet -- sh -c 'echo Hello $HELLO'
+Hello World
 ```
 
 </CodeGroup>
 
-`dotenvx` is more helpful than [dotenv](https://github.com/motdotla/dotenv). It warns you of a missing `.env` file.
+## Multiple Environments
 
-Create the `.env` file.
-
-```ini
-# .env
-JELLO="World"
-```
-
-Run it again.
+> Create a `.env.production` file and use `-f` to load it. It's straightforward, yet flexible.
 
 <CodeGroup>
 
-```bash {{ title: "Node" }}
-$ dotenvx run -- node index.js
-[dotenvx@0.38.0] injecting env (1) from .env
-Server running on port:3000
-# http://localhost:3000
-# Hello undefined
+```bash {{ title: 'Node' }}
+$ echo "HELLO=production" > .env.production
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run -f .env.production -- node index.js
+Hello production
 ```
 
-```bash {{ title: "Python" }}
-$ dotenvx run -- flask --app index run
-[dotenvx@0.38.0] injecting env (1) from .env
-Running on http://127.0.0.1:5000
-# http://127.0.0.1:5000
-# Hello None
+```bash {{ title: 'Deno' }}
+$ echo "HELLO=production" > .env.production
+$ echo "console.log('Hello ' + Deno.env.get('HELLO'))" > index.ts
+
+$ dotenvx run -f .env.production -- deno run --allow-env index.ts
+Hello production
 ```
 
-```bash {{ title: "PHP" }}
-$ dotenvx run -- php index.php
-[dotenvx@0.38.0] injecting env (1) from .env
-PHP Warning:  Undefined array key "HELLO"
-# Hello
+```bash {{ title: 'Bun' }}
+$ echo "HELLO=production" > .env.production
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run -f .env.production -- bun index.js
+Hello production
 ```
 
-```bash {{ title: "Ruby" }}
-$ dotenvx run -- ruby index.rb
-[dotenvx@0.38.0] injecting env (1) from .env
-Listening on http://127.0.0.1:4567
-# http://127.0.0.1:4567
-# Hello
+```bash {{ title: 'Python' }}
+$ echo "HELLO=production" > .env.production
+$ echo 'import os;print("Hello " + os.getenv("HELLO", ""))' > index.py
+
+$ dotenvx run -f .env.production -- python3 index.py
+Hello production
 ```
 
-```bash {{ title: "Go" }}
-$ dotenvx run -- go run main.go
-[dotenvx@0.38.0] injecting env (1) from .env
-http server started on [::]:1323
-# http://localhost:1323
-# Hello
+```bash {{ title: 'PHP' }}
+$ echo "HELLO=production" > .env.production
+$ echo '<?php echo "Hello {$_SERVER["HELLO"]}\n";' > index.php
+
+$ dotenvx run -f .env.production -- php index.php
+Hello production
 ```
 
-```bash {{ title: "Rust" }}
-$ dotenvx run -- cargo run
-[dotenvx@0.38.0] injecting env (1) from .env
-Rocket has launched from http://127.0.0.1:8000
-# http://127.0.0.1:8000
-# Hello
+```bash {{ title: 'Ruby' }}
+$ echo "HELLO=production" > .env.production
+$ echo 'puts "Hello #{ENV["HELLO"]}"' > index.rb
+
+$ dotenvx run -f .env.production -- ruby index.rb
+Hello production
 ```
 
+```bash {{ title: 'Go' }}
+$ echo "HELLO=production" > .env.production
+$ echo 'package main; import ("fmt"; "os"); func main() { fmt.Printf("Hello %s\n", os.Getenv("HELLO")) }' > main.go
 
-</CodeGroup>
-
-Hrm, still not saying `Hello  World`. Pass the `--debug` flag to to see what's going wrong.
-
-<CodeGroup>
-
-```bash {{ title: "Node" }}
-$ dotenvx run --debug -- node index.js
-loading env from .env (.env)
-{"JELLO":"World"}
-JELLO set
-JELLO set to World
-
-# Oops, HELLO not JELLO ^^
+$ dotenvx run -f .env.production -- go run main.go
+Hello production
 ```
 
-```bash {{ title: "Python" }}
-$ dotenvx run --debug -- flask --app index run
-loading env from .env (.env)
-{"JELLO":"World"}
-JELLO set
-JELLO set to World
+```bash {{ title: 'Rust' }}
+$ echo "HELLO=production" > .env.production
+$ echo 'fn main() {let hello = std::env::var("HELLO").unwrap_or("".to_string());println!("Hello {hello}");}' > src/main.rs
 
-# Oops, HELLO not JELLO ^^
+$ dotenvx run -f .env.production -- cargo run
+Hello production
 ```
 
-```bash {{ title: "PHP" }}
-$ dotenvx run --debug -- php index.php
-loading env from .env (.env)
-{"JELLO":"World"}
-JELLO set
-JELLO set to World
+```bash {{ title: 'Java' }}
+$ echo "HELLO=production" > .env.production
+$ echo 'public class Index { public static void main(String[] args) { System.out.println("Hello " + System.getenv("HELLO")); } }' > index.java
 
-# Oops, HELLO not JELLO ^^
+$ dotenvx run -f .env.production -- java index.java
+Hello production
 ```
 
-```bash {{ title: "Ruby" }}
-$ dotenvx run --debug -- ruby index.rb
-loading env from .env (.env)
-{"JELLO":"World"}
-JELLO set
-JELLO set to World
+```bash {{ title: '.NET' }}
+$ dotnet new console -n HelloWorld -o HelloWorld
+$ cd HelloWorld
+$ echo "HELLO=production" > .env.production
+$ echo 'Console.WriteLine($"Hello {Environment.GetEnvironmentVariable("HELLO")}");' > Program.cs
 
-# Oops, HELLO not JELLO ^^
+$ dotenvx run -f .env.production -- dotnet run
+Hello production
 ```
 
-```bash {{ title: "Go" }}
-$ dotenvx run --debug -- go run main.go
-loading env from .env (.env)
-{"JELLO":"World"}
-JELLO set
-JELLO set to World
+```bash {{ title: 'Bash' }}
+$ echo "HELLO=production" > .env.production
 
-# Oops, HELLO not JELLO ^^
-```
-
-```bash {{ title: "Rust" }}
-$ dotenvx run --debug -- cargo run
-loading env from .env (.env)
-{"JELLO":"World"}
-JELLO set
-JELLO set to World
-
-# Oops, HELLO not JELLO ^^
+$ dotenvx run --quiet -f .env.production -- sh -c 'echo Hello $HELLO'
+Hello production
 ```
 
 </CodeGroup>
-
-It's easier to debug with `dotenvx` than [dotenv](https://github.com/motdotla/dotenv).
-
-Fix your `.env` file.
-
-```ini
-# .env
-HELLO="World"
-```
-
-Run it one last time.
-
-<CodeGroup>
-
-```bash {{ title: "Node" }}
-$ dotenvx run -- node index.js
-[dotenvx@0.38.0] injecting env (1) from .env
-Server running on port:3000
-# http://localhost:3000
-# Hello World
-```
-
-```bash {{ title: "Python" }}
-$ dotenvx run -- flask --app index run
-[dotenvx@0.38.0] injecting env (1) from .env
-Running on http://127.0.0.1:5000
-# http://127.0.0.1:5000
-# Hello World
-```
-
-```bash {{ title: "PHP" }}
-$ dotenvx run -- php index.php
-[dotenvx@0.38.0] injecting env (1) from .env
-# Hello World
-```
-
-```bash {{ title: "Ruby" }}
-$ dotenvx run -- ruby index.rb
-[dotenvx@0.38.0] injecting env (1) from .env
-Listening on http://127.0.0.1:4567
-# http://127.0.0.1:4567
-# Hello World
-```
-
-```bash {{ title: "Go" }}
-$ dotenvx run -- go run main.go
-[dotenvx@0.38.0] injecting env (1) from .env
-http server started on [::]:1323
-# http://localhost:1323
-# Hello World
-```
-
-```bash {{ title: "Rust" }}
-$ dotenvx run -- cargo run
-[dotenvx@0.38.0] injecting env (1) from .env
-Rocket has launched from http://127.0.0.1:8000
-# http://127.0.0.1:8000
-# Hello World
-```
-
-</CodeGroup>
-
-![](/assets/docs/quickstart/hello-world.png)
-
-🎉 It worked!
 
 ## Add Encryption
 
-Add encryption to your `.env` files with a single command. Pass the `--encrypt` flag.
+> Add encryption to your `.env*` files with a single command. Pass the `--encrypt` flag.
 
-```bash {{ title: "dotenvx set --encrypt" }}
-$ dotenvx set HELLO World --encrypt
-set HELLO with encryption (.env)
+```bash {{ title: "Add encryption" }}
+$ dotenvx set HELLO "production (encrypted)" -f .env.production --encrypt
+set HELLO with encryption (.env.production)
 ```
 
-Look at your `.env` file.
+You encrypted `HELLO`.
 
-```ini {{ title: ".env" }}
+```ini {{ title: ".env.production" }}
 #/-------------------[DOTENV_PUBLIC_KEY]--------------------/
 #/            public-key encryption for .env files          /
 #/       [how it works](https://dotenvx.com/encryption)     /
 #/----------------------------------------------------------/
-DOTENV_PUBLIC_KEY="03c13bb105c307db64cc4b433987f12694bf79231487f44459f63fe70905494913"
+DOTENV_PUBLIC_KEY_PRODUCTION="038759c073282f2efa6c5ffea8f66ad9cf0de7a855df8db242771f44d7472b63cb"
 
-# .env
-HELLO="encrypted:BGmkvtg+DtseC3xyeJ4ITAqxWWFsFEBxTABZNJjPoMrVVJjkeevmUK719kxqKdlNrsClsvHK2Qs1yfHXNJM6Q6d8QJ/MIRoC0GLlJQkvHVJbf/931FoAVYNit6ahNyCgOt3Y3y6s"
+# .env.production
+HELLO="encrypted:BGMyAFNH6UjetjWsYHUkbndQosw/barJwdynj9wXQmlucqsM2TxCAxCwXNKQfbA8axd2TCcUJaWVltrhcUZdtDo87caC7aN2G9D7m3/vQVpcCffdYeaKtlrGyGB9IHJzKOrXH3jEheKQBPLv1L6foObYREAeRzw="
 ```
 
-It's encrypted! Run your code again with `dotenvx run --`.
+Run your code again.
 
 <CodeGroup>
 
-```bash {{ title: "Node" }}
-$ dotenvx run -- node index.js
-[dotenvx@0.38.0] injecting env (2) from .env
-Server running on port:3000
-# http://localhost:3000
-# Hello World
+```bash {{ title: 'Node' }}
+$ dotenvx run -f .env.production -- node index.js
+Hello production (encrypted)
 ```
 
-```bash {{ title: "Python" }}
-$ dotenvx run -- flask --app index run
-[dotenvx@0.38.0] injecting env (2) from .env
-Running on http://127.0.0.1:5000
-# http://127.0.0.1:5000
-# Hello World
+```bash {{ title: 'Deno' }}
+$ dotenvx run -f .env.production -- deno run --allow-env index.ts
+Hello production (encrypted)
 ```
 
-```bash {{ title: "PHP" }}
-$ dotenvx run -- php index.php
-[dotenvx@0.38.0] injecting env (2) from .env
-# Hello World
+```bash {{ title: 'Bun' }}
+$ dotenvx run -f .env.production -- bun index.js
+Hello production (encrypted)
 ```
 
-```bash {{ title: "Ruby" }}
-$ dotenvx run -- ruby index.rb
-[dotenvx@0.38.0] injecting env (2) from .env
-Listening on http://127.0.0.1:4567
-# http://127.0.0.1:4567
-# Hello World
+```bash {{ title: 'Python' }}
+$ dotenvx run -f .env.production -- python3 index.py
+Hello production (encrypted)
 ```
 
-```bash {{ title: "Go" }}
-$ dotenvx run -- go run main.go
-[dotenvx@0.38.0] injecting env (2) from .env
-http server started on [::]:1323
-# http://localhost:1323
-# Hello World
+```bash {{ title: 'PHP' }}
+$ dotenvx run -f .env.production -- php index.php
+Hello production (encrypted)
 ```
 
-```bash {{ title: "Rust" }}
-$ dotenvx run -- cargo run
-[dotenvx@0.38.0] injecting env (2) from .env
-Rocket has launched from http://127.0.0.1:8000
-# http://127.0.0.1:8000
-# Hello World
+```bash {{ title: 'Ruby' }}
+$ dotenvx run -f .env.production -- ruby index.rb
+Hello production (encrypted)
+```
+
+```bash {{ title: 'Go' }}
+$ dotenvx run -f .env.production -- go run main.go
+Hello production (encrypted)
+```
+
+```bash {{ title: 'Rust' }}
+$ dotenvx run -f .env.production -- cargo run
+Hello production (encrypted)
+```
+
+```bash {{ title: 'Java' }}
+$ dotenvx run -f .env.production -- java index.java
+Hello production (encrypted)
+```
+
+```bash {{ title: '.NET' }}
+$ dotenvx run -f .env.production -- dotnet run
+Hello production (encrypted)
+```
+
+```bash {{ title: 'Bash' }}
+$ dotenvx run --quiet -f .env.production -- sh -c 'echo Hello $HELLO'
+Hello production (encrypted)
 ```
 
 </CodeGroup>
 
-![](/assets/docs/quickstart/hello-world.png)
-
-🎉 It worked, again! But how?
-
-Look at your `.env.keys` file. It contains the private decryption key.
+It worked, again - this time with encryption. How? Look at your `.env.keys` file. It contains the private decryption key.
 
 ```ini {{ title: ".env.keys" }}
 #/------------------!DOTENV_PRIVATE_KEYS!-------------------/
@@ -431,11 +321,78 @@ Look at your `.env.keys` file. It contains the private decryption key.
 #/     [how it works](https://dotenvx.com/encryption)       /
 #/----------------------------------------------------------/
 
-# .env
-DOTENV_PRIVATE_KEY="ece16b6649d3f3e3a60eb97384484902d65afc85083f3bb5162b0a35b78171fa"
+# .env.production
+DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2"
 ```
 
-The `run` command uses it to decrypt any encrypted values and inject them at runtime. Under the hood it uses the same public-key cryptography as [Bitcoin](https://en.bitcoin.it/wiki/Secp256k1).
 
-This is a huge security improvement for `.env` files.
+Alternatively, preface `dotenvx run --` with `DOTENV_PRIVATE_KEY_PRODUCTION`.
 
+<CodeGroup>
+
+```bash {{ title: 'Node' }}
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- node index.js
+Hello production (encrypted)
+```
+
+```bash {{ title: 'Deno' }}
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- deno run --allow-env index.ts
+Hello production (encrypted)
+```
+
+```bash {{ title: 'Bun' }}
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- bun index.js
+Hello production (encrypted)
+```
+
+```bash {{ title: 'Python' }}
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- python3 index.py
+Hello production (encrypted)
+```
+
+```bash {{ title: 'PHP' }}
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- php index.php
+Hello production (encrypted)
+```
+
+```bash {{ title: 'Ruby' }}
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- ruby index.rb
+Hello production (encrypted)
+```
+
+```bash {{ title: 'Go' }}
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- go run main.go
+Hello production (encrypted)
+```
+
+```bash {{ title: 'Rust' }}
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- cargo run
+Hello production (encrypted)
+```
+
+```bash {{ title: 'Java' }}
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- java index.java
+Hello production (encrypted)
+```
+
+```bash {{ title: '.NET' }}
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- dotnet run
+Hello production (encrypted)
+```
+
+```bash {{ title: 'Bash' }}
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run --quiet -- sh -c 'echo Hello $HELLO'
+Hello production (encrypted)
+```
+
+</CodeGroup>
+
+`dotenvx run` is smart enough to introspect from either the `DOTENV_PRIVATE_KEY_PRODUCTION` environment variable or from the `.env.keys` file.
+
+We recommend using the `.env.keys` when simulating production on your local machine. On your production server set the single `DOTENV_PRIVATE_KEY_PRODUCTION` value and all future deployments of your `.env.production` will be decrypted at runtime.
+
+Do NOT commit your `.env.keys` file to code, but it is safe (and recommended) to commit your encrypted `.env.production` file to code.
+
+Under the hood, this is all implemented using the same public-key cryptography as [Bitcoin](https://en.bitcoin.it/wiki/Secp256k1). 
+
+Enjoy safer `.env` files! 🎉

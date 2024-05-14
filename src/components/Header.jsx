@@ -64,8 +64,8 @@ export const Header = forwardRef(function Header({ className }, ref) {
         <Link href="/" aria-label="Home">
           <Logo className="w-10 h-10" />
         </Link>
-        <Link href="/docs" aria-label="dotenvx/docs" className="text-center rounded-full px-4 py-2.5 text-sm font-semibold text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 active:bg-zinc-300 dark:active:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-200 ease-in duration-150">
-          dotenvx/docs
+        <Link href="/docs" aria-label="Documentation" className="text-center rounded-full px-4 py-2.5 text-sm font-semibold text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 active:bg-zinc-300 dark:active:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-200 ease-in duration-150">
+          Documentation
         </Link>
       </div>
       <div className="flex items-center gap-5">
