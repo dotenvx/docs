@@ -72,7 +72,7 @@ jobs:
         node-version: 16
     - run: node build.js
       env:
-        DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
+        DOTENV_PRIVATE_KEY_CI: ${{ secrets.DOTENV_PRIVATE_KEY_CI }}
 ```
 
 ```yaml {{ title: 'Python' }}
@@ -89,7 +89,7 @@ jobs:
         python-version: '3.11'
     - run: python build.py
       env:
-        DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
+        DOTENV_PRIVATE_KEY_CI: ${{ secrets.DOTENV_PRIVATE_KEY_CI }}
 ```
 
 </CodeGroup>
@@ -120,7 +120,7 @@ jobs:
     - run: curl -fsS https://dotenvx.sh/ | sh
     - run: dotenvx run -- node build.js
       env:
-        DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
+        DOTENV_PRIVATE_KEY_CI: ${{ secrets.DOTENV_PRIVATE_KEY_CI }}
 ```
 
 ```yaml {{ title: 'Python' }}
@@ -138,14 +138,14 @@ jobs:
     - run: curl -fsS https://dotenvx.sh/ | sh
     - run: dotenvx run -- python build.py
       env:
-        DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
+        DOTENV_PRIVATE_KEY_CI: ${{ secrets.DOTENV_PRIVATE_KEY_CI }}
 ```
 
 </CodeGroup>
 
 <ScreenshotBrowser url='/assets/docs/github-actions-hello-missing-env-file.png' www='github actions build' />
 
-The logs tell us `missing .env file`. This is expected, as we don't want to commit `.env` to code. It also tells us, for ci, that we should set `DOTENV_KEY`. That is what we want to do. Let's do that next by first adding our `.env.ci` environment.
+The logs tell us `missing .env.ci file`. Let's fix that by adding our `.env.ci` environment file.
 
 ## Add ci environment
 
@@ -156,45 +156,49 @@ Create a `.env.ci` file in the root of your project.
 HELLO="ci/cd"
 ```
 
-## Encrypt secrets
+## Encrypt .env.ci
 
 Use `dotenvx` to encrypt your secrets.
 
 ```shell
-dotenvx encrypt
+dotenvx set HELLO "ci/cd" -f .env.ci --encrypt
 ```
 
-This generates a `.env.vault` and `.env.keys` file.
+```bash {{ title: ".env.ci" }}
+#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
+#/            public-key encryption for .env files          /
+#/       [how it works](https://dotenvx.com/encryption)     /
+#/----------------------------------------------------------/
+DOTENV_PUBLIC_KEY_CI="02ca21124a34a8d815aa5ae885b005b826b57bf61bb7d062252a7e587af1fa8f7e"
 
-```bash {{ title: ".env.vault" }}
-#/-------------------.env.vault---------------------/
-#/         cloud-agnostic vaulting standard         /
-#/   [how it works](https://dotenv.org/env-vault)   /
-#/--------------------------------------------------/
-
-# ci
-DOTENV_VAULT_CI="Fzz16lWV2m2m15DEhsMKSQUtPDYceiUGI+1xAUjZ+FpXde0h9fWM/jlITUR7mll9BwVzag=="
+# .env.ci
+HELLO="encrypted:BIXMqncHW+tzAEoVjLsSdmrQMmC4ov6KlWjCtPzx+g/ZCv3xpG44f6SJB5goKjEygqEnyivYJ6152L9LsON0ymsG5w056+AstlmhIyfMPbAKidaYA9UVQAzGmpBZqru7QBTt3tkM"
 ```
 
-The `.env.vault` file contains encrypted ([AES-256-GCM](https://www.reddit.com/r/cryptography/comments/13kl9ds/how_much_longer_do_you_think_aes_will_last/)) versions of your secrets, and the `.env.keys` file contains the decryption keys.
+Your `.env.keys` file contains the decryption key.
 
 ```bash {{ title: ".env.keys" }}
-#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
-#/   DOTENV_KEYs. DO NOT commit to source control   /
-#/   [how it works](https://dotenv.org/env-keys)    /
-#/--------------------------------------------------/
-DOTENV_KEY_CI="dotenv://:key_a78ddf83e06fc4cfd357f7ebb68bc59f20a64b5b6bc607c82e16635df26cf9bf@dotenvx.com/vault/.env.vault?environment=ci"
+#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
+#/ private decryption keys. DO NOT commit to source control /
+#/     [how it works](https://dotenvx.com/encryption)       /
+#/----------------------------------------------------------/
+
+# .env.ci
+DOTENV_PRIVATE_KEY_CI="d4d2e22102c58f741cdddacaf69a1a64751fc014aafb90de0f1e7e6cb4d08330"
 ```
 
 <Note>
-  You SHOULD commit `.env.vault` to code. It is safe and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [dotenvx hub](https://hub.dotenvx.com).
+  DO NOT commit `.env.keys` to code – keep it somewhere safe like 1Password.
 </Note>
 
-We're ready to set `DOTENV_KEY` on GitHub actions.
+Lastly, commit your `.env.ci` to code as it is now encrypted, safe, and recommended to do so.
 
-## Set DOTENV_KEY
 
-Set `DOTENV_KEY` on GitHub Actions using the ci key in your `.env.keys` file.
+We're ready to set `DOTENV_PRIVATE_KEY_CI` on GitHub actions.
+
+## Set DOTENV_PRIVATE_KEY_CI
+
+Set `DOTENV_PRIVATE_KEY_CI` on GitHub Actions using the ci key in your `.env.keys` file.
 
 <ScreenshotBrowser url="/assets/docs/github-actions-config-vars.png" www="www.github.com" />
 
@@ -202,9 +206,9 @@ Set `DOTENV_KEY` on GitHub Actions using the ci key in your `.env.keys` file.
 
 Commit those changes safely to code and rerun the build.
 
-That's it! On rerun, your `.env.vault` file will be decrypted and its CI secrets injected as environment variables – just in time. Your build script will say `Hello ci/cd`.
+That's it! On rerun, your `.env.ci` file will be decrypted and its CI secrets injected as environment variables – just in time. Your build script will say `Hello ci/cd`.
 
-You'll know things worked correctly when you see `injecting env (1) from encrypted .env.vault` in your logs.
+You'll know things worked correctly when you see `injecting env (2) from .env.ci` in your logs.
 
 <ScreenshotBrowser url='/assets/docs/github-actions-logs-vault.png' www='github actions build' />
 
