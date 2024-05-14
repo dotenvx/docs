@@ -17,15 +17,11 @@ export const description =
 ##### [dotenvx](/docs)
 # Quickstart
 
-The fastest way to use `dotenvx` anywhere, across multiple environments, and with encryption. {{ className: 'lead' }} 
+Learn how to use `dotenvx` in just a few minutes. {{ className: 'lead' }} 
 
-## Install
-
-> Install `dotenvx` where you need it.
-
-<InstallCodeGroup />
-
-See [other ways to install](/docs/install), like Windows executables, standalone GitHub releases, and more.
+- run anywhere (cross-platform)
+- multiple environments
+- encrypted envs
 
 ## Run Anywhere
 
@@ -131,6 +127,13 @@ $ dotenvx run --quiet -- sh -c 'echo Hello $HELLO'
 Hello World
 ```
 
+```bash {{ title: 'Frameworks' }}
+$ dotenvx run -- next dev
+$ dotenvx run -- npm start
+$ dotenvx run -- bin/rails s
+$ dotenvx run -- php artisan serve
+```
+
 </CodeGroup>
 
 ## Multiple Environments
@@ -228,6 +231,15 @@ $ dotenvx run --quiet -f .env.production -- sh -c 'echo Hello $HELLO'
 Hello production
 ```
 
+```bash {{ title: 'Frameworks' }}
+$ echo "HELLO=production" > .env.production
+
+$ dotenvx run -f .env.production -- next dev
+$ dotenvx run -f .env.production -- npm start
+$ dotenvx run -f .env.production -- bin/rails s
+$ dotenvx run -f .env.production -- php artisan serve
+```
+
 </CodeGroup>
 
 ## Add Encryption
@@ -311,6 +323,14 @@ $ dotenvx run --quiet -f .env.production -- sh -c 'echo Hello $HELLO'
 Hello production (encrypted)
 ```
 
+```bash {{ title: 'Frameworks' }}
+$ dotenvx run -f .env.production -- next dev
+$ dotenvx run -f .env.production -- npm start
+$ dotenvx run -f .env.production -- bin/rails s
+$ dotenvx run -f .env.production -- php artisan serve
+```
+
+
 </CodeGroup>
 
 It worked, again - this time with encryption. How? Look at your `.env.keys` file. It contains the private decryption key.
@@ -383,6 +403,13 @@ Hello production (encrypted)
 ```bash {{ title: 'Bash' }}
 $ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run --quiet -- sh -c 'echo Hello $HELLO'
 Hello production (encrypted)
+```
+
+```bash {{ title: 'Frameworks' }}
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- next dev
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- npm start
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- bin/rails s
+$ DOTENV_PRIVATE_KEY_PRODUCTION="bd7c50b352ce23973ec9db355d70212305a0baaade92f0165f02915b213bfbe2" dotenvx run -- php artisan serve
 ```
 
 </CodeGroup>
