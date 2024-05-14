@@ -198,10 +198,13 @@ export const navigation = [
     ]
   },
   {
-    title: 'Guides',
+    title: 'Resources',
     href: '/docs/guides',
     links: [
       { title: 'Guides', href: '/docs/guides' },
+      { title: '.env', href: '/docs/env-file' },
+      { title: '.env.keys', href: '/docs/env-keys-file' },
+      { title: 'Deprecated', href: '/docs/deprecated' },
     ]
   },
 ]

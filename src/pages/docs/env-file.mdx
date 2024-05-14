@@ -1,18 +1,20 @@
 export const description = 
   'The .env file separates your secrets from code.'
 
-##### [dotenvx](/docs)
+##### [Documentation](/docs)
 # .env
 
-The `.env` file separates your secrets from code. Here is what it looks like.
+<p className="lead">{description}</p>
+
+## Format
+
+`.env` files use a simple format – key/values separated by an equal sign.
 
 ```ini {{ title: '.env' }}
 # .env
 STRIPE_API_KEY=scr_12345
 TWILIO_API_KEY=abcd1234
 ```
-
-It's a simple format – key/value separated by an equal sign. You can additionally include comments.
 
 Then it is loaded into your application code using `process.env`.
 
@@ -53,19 +55,17 @@ fn main() {
 
 </CodeGroup>
 
-This way your secrets – like your Stripe API key – are not commited to your code.
+It's a convenient and widely adopted format for separating your secrets and config from your code.
 
-By separating your secrets from your code (your `.env` file is not commited to source control), you improve your security posture. If your code leaks, your secrets (like your Stripe API key) are less likely to be at risk.
+## Keys
 
-## Variable Names
-
-For the sake of portability (and sanity), environment variable names must consist solely of letters, digits, and the underscore ( `_` ) and must not begin with a digit. In regex-speak, the names must match the following pattern:
+For the sake of portability (and sanity), environment variable names (keys) must consist solely of letters, digits, and the underscore ( `_` ) and must not begin with a digit. In regex-speak, the names must match the following pattern:
 
 ```ini
 [a-zA-Z_]+[a-zA-Z0-9_]*
 ```
 
-#### Example variable names
+#### Example keys
 
 ```ini
 DATABASE_URL  # ok
@@ -89,20 +89,6 @@ INTERPOLATED="Multiple\nLines"
 NON_INTERPOLATED='raw text without variable interpolation'
 MULTILINE = `long text here,
 e.g. a private SSH key`
-```
-
-<small>
-*[credit: dotenvy](https://hexdocs.pm/dotenvy/dotenv-file-format.html#variable-names)*
-</small>
-
-## Comments
-
-The hash-tag `#` symbol denotes a comment when on its own line or when it follows a quoted value. It is not treated as a comment when it appears within quotes.
-
-```
-# This is a comment
-SECRET_KEY=YOURSECRETKEYGOESHERE # also a comment
-SECRET_HASH="something-with-a-hash-#-this-is-not-a-comment"
 ```
 
 <small>
@@ -137,6 +123,20 @@ The following syntax rules apply to environment files:
   * `VAR='some\tvalue'` -> `some\tvalue`
   * `VAR=some\tvalue` -> `some\tvalue`
 
+## Comments
+
+The hash-tag `#` symbol denotes a comment when on its own line or when it follows a quoted value. It is not treated as a comment when it appears within quotes.
+
+```
+# This is a comment
+SECRET_KEY=YOURSECRETKEYGOESHERE # also a comment
+SECRET_HASH="something-with-a-hash-#-this-is-not-a-comment"
+```
+
+<small>
+*[credit: dotenvy](https://hexdocs.pm/dotenvy/dotenv-file-format.html#variable-names)*
+</small>
+
 ## Interpolation
 
 Interpolation (substitution) is supported in environment files. Interpolation is applied for unquoted and double-quoted values. Both braced (`${VAR}`) and unbraced (`$VAR`) expressions are supported.
@@ -146,6 +146,30 @@ Interpolation (substitution) is supported in environment files. Interpolation is
 * Default value
   * `${VAR:-default}` -> value of `VAR` if set and non-empty, otherwise `default`
   * `${VAR-default}` -> value of `VAR` if set, otherwise `default`
+
+## Encryption
+
+`.env` files can be extended to support encryption. Preface each value with `encrypted:` followed by a [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) encrypted string.
+
+```ini {{ title: '.env' }}
+#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
+#/            public-key encryption for .env files          /
+#/       [how it works](https://dotenvx.com/encryption)     /
+#/----------------------------------------------------------/
+DOTENV_PUBLIC_KEY="03f98bf6e00bce6fdb933bc47738d671dffb75a916fa8c89854bdfa3483902632f"
+
+# .env
+HELLO="encrypted:BCV9qZmblsUm77IxgrEqY9t67qDVWQZg6jpogQhBWa9SaOCtvheEQ5/eUfPCigQ7KB6vN//6vFE+2+orG7LmUorWhe1JapWct6Dz58IY6mXi+ONs51F7TSed6R/T9e+lDBWYH04p"
+```
+
+Additionally, include the `DOTENV_PUBLIC_KEY` inside the `.env` file and commit `.env` to code. It's now encrypted, safe, and recommended to do so.
+
+Use `dotenvx` to auto-generate this format extension.
+
+```sh
+$ dotenvx set HELLO World --encrypt
+set HELLO with encryption (.env)
+```
 
 ## History
 
@@ -157,3 +181,5 @@ The `.env` file format was [introduced by Heroku in 2012](https://12factor.net/c
 > [The Twelve-Factor App](https://12factor.net/config)
 
 Other languages, frameworks, platforms, and infra tools like Docker followed soon after – implementing environment variable support. Today, it has become an industry standard.
+
+Encryption support was introduced [May of 2024](https://github.com/dotenvx/dotenvx/issues/189).

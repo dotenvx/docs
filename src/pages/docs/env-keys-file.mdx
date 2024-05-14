@@ -1,38 +1,47 @@
 export const description = 
-  'The .env.keys file contains holds environment DOTENV_KEYs'
+  '`.env.keys` holds your private decryption keys.'
 
-##### [dotenvx](/docs)
+##### [Documentation](/docs)
 # .env.keys
 
-`.env.keys` holds your environment decryption DOTENV_KEYs. Here is what it looks like.
+<p className="lead">{description}</p>
+
+## Format
 
 ```ini {{ title: '.env.keys' }}
-#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
-#/   DOTENV_KEYs. DO NOT commit to source control   /
-#/   [how it works](https://dotenv.org/env-keys)    /
-#/--------------------------------------------------/
-DOTENV_KEY_DEVELOPMENT="dotenv://:key_e507c60efa8841d8d5bbb85bd701ee92406cf3b06506d1d80f1553c2a72791e4@dotenvx.com/vault/.env.vault?environment=development"
-DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production"
+#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
+#/ private decryption keys. DO NOT commit to source control /
+#/     [how it works](https://dotenvx.com/encryption)       /
+#/----------------------------------------------------------/
+
+# .env
+DOTENV_PRIVATE_KEY="ccc387ba193a315cbcd1ad7d8d007e6124763894554418e7c90b7dbcd7edca23"
+
+# .env.production
+DOTENV_PRIVATE_KEY_PRODUCTION="d4d2e22102c58f741cdddacaf69a1a64751fc014aafb90de0f1e7e6cb4d08330"
 ```
 
 Some quick takeaways:
 
 1. It uses the [`.env`](/docs/env-file) format
-2. `DOTENV_KEY_DEVELOPMENT` contains the decryption key to `DOTENV_VAULT_DEVELOPMENT` in [`.env.vault`](/docs/env-vault-file)
-3. `DOTENV_KEY_PRODUCTION` contains the decryption key to `DOTENV_VAULT_PRODUCTION` in [`.env.vault`](/docs/env-vault-file)
+2. `DOTENV_PRIVATE_KEY` contains the decryption key for `.env`
+3. `DOTENV_PRIVATE_KEY_PRODUCTION` contains the decryption key for `.env.production`
+
+## Encryption
+
+[`secp256k1`](https://en.bitcoin.it/wiki/Secp256k1) is the public-key encryption algorithm used to generate the public/private key pair.
 
 ## Generating
 
-It's auto-generated when running [`dotenvx encrypt`](/docs/quickstart/encryption).
+It's auto-generated when running [`dotenvx set KEY value --encrypt`](/docs/advanced/set-key-value-encrypt).
 
 ```sh
-$ dotenvx encrypt
-✔ encrypted to .env.vault (.env)
-✔ key added to .env.keys (DOTENV_KEY_DEVELOPMENT)
+$ dotenvx set HELLO World --encrypt
+set HELLO with encryption (.env)
 ```
 
-Do not commit `.env.keys` to source code. Keep them somewhere safe like 1Password or [dotenvx hub](https://hub.dotenvx.com).
+Do not commit `.env.keys` to source code. Keep them somewhere safe like 1Password.
 
 ## History
 
-The `.env.keys` file came out of development work on [dotenv-vault](https://github.com/dotenv-org/dotenv-vault) – around early 2023.
+The `.env.keys` file originally came out of development work on [dotenv-vault](https://github.com/dotenv-org/dotenv-vault) in early 2023. It's current format came out about during [an effort in May 2024](https://github.com/dotenvx/dotenvx/issues/189) to support encryption without the ability to decrypt.
