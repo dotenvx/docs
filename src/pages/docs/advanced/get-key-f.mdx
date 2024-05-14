@@ -1,0 +1,15 @@
+export const description =
+  'Return a single environment variable\'s value from a specific .env file.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx get KEY -f
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+$ echo "HELLO=production" > .env.production
+
+$ dotenvx get HELLO -f .env.production
+production
+```

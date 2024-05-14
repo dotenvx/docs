@@ -1,0 +1,19 @@
+export const description =
+  'Generate a .env.example file from your current .env file contents.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx genexample
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+
+$ dotenvx genexample
+✔ updated .env.example (1)
+```
+
+```ini {{ title: ".env.example" }}
+# .env.example
+HELLO=""
+```

@@ -1,0 +1,21 @@
+export const description =
+  'Print all .env files in a tree structure.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx ls
+
+<p className="lead">{description}</p>
+
+```sh
+$ touch .env
+$ touch .env.production
+$ mkdir -p apps/backend
+$ touch apps/backend/.env
+
+$ dotenvx ls
+├─ .env.production
+├─ .env
+└─ apps
+   └─ backend
+      └─ .env
+```

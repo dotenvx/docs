@@ -1,0 +1,21 @@
+export const description =
+  'Glob .env filenames matching a wildcard.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx ls -f
+
+<p className="lead">{description}</p>
+
+```sh
+$ touch .env
+$ touch .env.production
+$ mkdir -p apps/backend
+$ touch apps/backend/.env
+$ touch apps/backend/.env.prod
+
+$ dotenvx ls -f **/.env.prod*
+├─ .env.production
+└─ apps
+   └─ backend
+      └─ .env.prod
+```

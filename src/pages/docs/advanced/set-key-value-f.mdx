@@ -1,0 +1,14 @@
+export const description =
+  'Set an (encrypted) key/value for another .env file.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx set KEY value -f
+
+<p className="lead">{description}</p>
+
+```sh
+$ touch .env.production
+
+$ dotenvx set HELLO production --encrypt -f .env.production
+set HELLO with encryption (.env.production)
+```

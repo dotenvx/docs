@@ -1,0 +1,14 @@
+export const description =
+  'Return preset machine envs as well.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx get --all
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+
+$ dotenvx get --all
+{"PWD":"/some/file/path","USER":"username","LIBRARY_PATH":"/usr/local/lib", ..., "HELLO":"World"}
+```

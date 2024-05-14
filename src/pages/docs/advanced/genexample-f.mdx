@@ -1,0 +1,21 @@
+export const description =
+  'Pass multiple .env files to generate your .env.example file from the combination of their contents.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx genexample -f
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+$ echo "DB_HOST=example.com" > .env.production
+
+$ dotenvx genexample -f .env -f .env.production
+✔ updated .env.example (2)
+```
+
+```ini {{ title: ".env.example" }}
+# .env.example
+HELLO=""
+DB_HOST=""
+```

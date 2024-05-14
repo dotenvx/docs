@@ -1,0 +1,15 @@
+export const description =
+  'Return a single environment variable\'s value where each found value is overloaded.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx get KEY --overload
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+$ echo "HELLO=production" > .env.production
+
+$ dotenvx get HELLO -f .env.production --env HELLO=String -f .env --overload
+World
+```
