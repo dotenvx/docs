@@ -1,0 +1,12 @@
+export const description =
+  'Prevent your shell from expanding inline `$VARIABLES` before dotenvx has a chance to inject them. Use a subshell.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx run - Shell Expansion
+
+<p className="lead">{description}</p>
+
+```sh
+$ dotenvx run --env="HELLO=World" -- sh -c 'echo Hello $HELLO'
+Hello World
+```
