@@ -113,31 +113,13 @@ Your app will say `Hello production`, simulating production. Solid. Let's encryp
 
 ## Encrypt production
 
-Use `dotenvx` to encrypt your `.env.production` file.
-
 ```sh
 dotenvx set HELLO production -f .env.production --encrypt
 ```
 
-This generates a `.env.keys` file containing your production decryption key.
+Your `.env.production` file is now encrypted, and you have a `.env.keys` file.
 
-```bash {{ title: ".env.keys" }}
-#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
-#/ private decryption keys. DO NOT commit to source control /
-#/     [how it works](https://dotenvx.com/encryption)       /
-#/----------------------------------------------------------/
-
-# .env.production
-DOTENV_PRIVATE_KEY_PRODUCTION="3c54363a4a678042d298660e2038df68aaa4a9383048d913d0e6db15e137020d"
-```
-
-<Note>
-  DO NOT commit `.env.keys` to code – keep it somewhere safe like 1Password.
-</Note>
-
-Your `.env.production` file is now encrypted and contains the production encryption key.
-
-```
+```ini {{ title: '.env.production' }}
 #/-------------------[DOTENV_PUBLIC_KEY]--------------------/
 #/            public-key encryption for .env files          /
 #/       [how it works](https://dotenvx.com/encryption)     /
@@ -148,8 +130,18 @@ DOTENV_PUBLIC_KEY_PRODUCTION="0354d5293e40f78b8b44d6b5ded92719ef99d119a79093d6ba
 HELLO="encrypted:BGo+chylmSbkHeDsn9gPy5LYvYUUpTstaUr8hDU0lgp4ssyH2MXav43ww+B3WNaYLZQpJdJdJ2F8qLbV4vDolF42ETQFu/xxhKA2/MRxiC/Vd1s/DMDjm9RSHOCQ5YHywLrUY9UySesbn58="
 ```
 
+```ini {{ title: ".env.keys" }}
+#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
+#/ private decryption keys. DO NOT commit to source control /
+#/     [how it works](https://dotenvx.com/encryption)       /
+#/----------------------------------------------------------/
+
+# .env.production
+DOTENV_PRIVATE_KEY_PRODUCTION="3c54363a4a678042d298660e2038df68aaa4a9383048d913d0e6db15e137020d"
+```
+
 <Note>
-  You SHOULD commit your `.env.production` to code. It's now encrypted, safe, and recommended to do so.
+  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password.
 </Note>
 
 We're ready to inject the encrypted `.env.production` secrets into Docker run.
