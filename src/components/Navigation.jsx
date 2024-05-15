@@ -195,13 +195,12 @@ export const navigation = [
       { title: 'Install', href: '/docs/install' },
       { title: 'Basics', href: '/docs/quickstart' },
       { title: 'Advanced', href: '/docs/advanced' },
+      { title: 'Guides', href: '/docs/guides' },
     ]
   },
   {
     title: 'Resources',
-    href: '/docs/guides',
     links: [
-      { title: 'Guides', href: '/docs/guides' },
       { title: '.env', href: '/docs/env-file' },
       { title: '.env.keys', href: '/docs/env-keys-file' },
       { title: 'Deprecated', href: '/docs/deprecated' },
