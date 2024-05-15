@@ -1,0 +1,26 @@
+export const description =
+  'Decrypt your encrypted `.env` and `.env.production` files by setting `DOTENV_PRIVATE_KEY` and `DOTENV_PRIVATE_KEY_PRODUCTION` before dotenvx run.'
+
+##### [Advanced](/docs/advanced)
+# DOTENV_PRIVATE_KEY=key DOTENV_PRIVATE_KEY_PRODUCTION=key dotenvx run
+
+<p className="lead">{description}</p>
+
+```sh
+$ touch .env
+$ touch .env.production
+$ dotenvx set HELLO encrypted --encrypt
+$ dotenvx set HELLO "production encrypted" -f .env.production --encrypt
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+# check .env.keys for your privateKeys
+$ DOTENV_PRIVATE_KEY="122...0b8" DOTENV_PRIVATE_KEY_PRODUCTION="122...0b8" dotenvx run -- node index.js
+[dotenvx] injecting env (3) from .env, .env.production
+Hello encrypted
+
+$ DOTENV_PRIVATE_KEY_PRODUCTION="122...0b8" DOTENV_PRIVATE_KEY="122...0b8" dotenvx run -- node index.js
+[dotenvx] injecting env (3) from .env.production, .env
+Hello production encrypted
+```
+
+Compose any encrypted files you want this way. As long as a `DOTENV_PRIVATE_KEY_${environment}` is set, the values from `.env.${environment}` will be decrypted at runtime.

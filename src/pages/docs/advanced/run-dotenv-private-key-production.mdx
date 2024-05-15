@@ -1,0 +1,22 @@
+export const description =
+  'Decrypt your encrypted `.env.production` by setting `DOTENV_PRIVATE_KEY_PRODUCTION` before dotenvx run.'
+
+##### [Advanced](/docs/advanced)
+# DOTENV_PRIVATE_KEY_PRODUCTION=key dotenvx run
+
+<p className="lead">{description}</p>
+
+```sh
+$ touch .env.production
+$ dotenvx set HELLO "production encrypted" -f .env.production --encrypt
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+# check .env.keys for your privateKey
+$ DOTENV_PRIVATE_KEY_PRODUCTION="122...0b8" dotenvx run -- node index.js
+[dotenvx] injecting env (2) from .env.production
+Hello production encrypted
+```
+
+Alternatively, this can be already set on your server or cloud provider.
+
+Note the `DOTENV_PRIVATE_KEY_PRODUCTION` ends with `_PRODUCTION`. This instructs dotenvx run to load the `.env.production` file.

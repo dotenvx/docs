@@ -1,0 +1,22 @@
+export const description =
+  'Decrypt your encrypted `.env.ci` by setting `DOTENV_PRIVATE_KEY_CI` before dotenvx run.'
+
+##### [Advanced](/docs/advanced)
+# DOTENV_PRIVATE_KEY_CI=key dotenvx run
+
+<p className="lead">{description}</p>
+
+```sh
+$ touch .env.ci
+$ dotenvx set HELLO "ci encrypted" -f .env.production --encrypt
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+# check .env.keys for your privateKey
+$ DOTENV_PRIVATE_KEY_CI="122...0b8" dotenvx run -- node index.js
+[dotenvx] injecting env (2) from .env.ci
+Hello ci encrypted
+```
+
+Alternatively, this can be already set on your server or ci runner.
+
+Note the `DOTENV_PRIVATE_KEY_CI` ends with `_CI`. This instructs dotenvx run to load the `.env.ci` file. See the pattern?

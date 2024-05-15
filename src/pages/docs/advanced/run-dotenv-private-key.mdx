@@ -1,0 +1,18 @@
+export const description =
+  'Decrypt your encrypted `.env` by setting `DOTENV_PRIVATE_KEY` before dotenvx run.'
+
+##### [Advanced](/docs/advanced)
+# DOTENV_PRIVATE_KEY=key dotenvx run
+
+<p className="lead">{description}</p>
+
+```sh
+$ touch .env
+$ dotenvx set HELLO encrypted --encrypt
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+# check your .env.keys files for your privateKey
+$ DOTENV_PRIVATE_KEY="122...0b8" dotenvx run -- node index.js
+[dotenvx] injecting env (2) from .env
+Hello encrypted
+```
