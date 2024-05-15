@@ -195,7 +195,22 @@ export const navigation = [
       { title: 'Install', href: '/docs/install' },
       { title: 'Basics', href: '/docs/quickstart' },
       { title: 'Advanced', href: '/docs/advanced' },
-      { title: 'Guides', href: '/docs/guides' },
+    ]
+  },
+  {
+    title: 'Guides',
+    href: '/docs/guides',
+    links: [
+      { title: 'Digital Ocean', href: '/docs/platforms/digital-ocean' },
+      { title: 'Docker', href: '/docs/platforms/docker' },
+      { title: 'Fly', href: '/docs/platforms/fly' },
+      { title: 'GitHub Actions', href: '/docs/cis/github-actions' },
+      { title: 'Heroku', href: '/docs/platforms/heroku' },
+      { title: 'Netlify', href: '/docs/platforms/netlify' },
+      { title: 'NPM', href: '/docs/package-managers/npm' },
+      { title: 'Render', href: '/docs/platforms/render' },
+      { title: 'Vercel', href: '/docs/platforms/vercel' },
+      { title: 'More', href: '/docs/guides' },
     ]
   },
   {
