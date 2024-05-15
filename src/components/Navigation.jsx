@@ -209,6 +209,7 @@ export const navigation = [
       { title: 'Netlify', href: '/docs/platforms/netlify' },
       { title: 'NPM', href: '/docs/package-managers/npm' },
       { title: 'Render', href: '/docs/platforms/render' },
+      { title: 'Railway', href: '/docs/platforms/railway' },
       { title: 'Vercel', href: '/docs/platforms/vercel' },
       { title: 'More', href: '/docs/guides' },
     ]
