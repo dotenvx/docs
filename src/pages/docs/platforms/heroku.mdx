@@ -66,85 +66,7 @@ Once deployed, your app will say `'Hello [blank]'` as it doesn't have a way to a
 
 ## Run dotenvx
 
-Install [`dotenvx`](https://github.com/dotenvx/dotenvx).
-
-<InstallCodeGroup />
-
-Create a `.env` file in the root of your project.
-
-```shell {{ title: '.env' }}
-# .env
-HELLO="World"
-```
-
-Inject your env using `dotenvx`.
-
-<DotenvxRunLocalCodeGroup/>
-
-<ScreenshotBrowser url="/assets/docs/hello-world.png" www="localhost:$PORT" />
-
-Your app will say `Hello World`. The values from your `.env` file were successfully injected into your env. That covers local development. Let's solve for production next.
-
-## Add production environment
-
-Create a `.env.production` file in the root of your project.
-
-```shell {{ title: '.env.production' }}
-# .env.production
-HELLO="production"
-```
-
-Use `dotenvx` to load your `.env.production` file.
-
-<DotenvxRunProductionLocalCodeGroup/>
-
-<ScreenshotBrowser url="/assets/docs/hello-production.png" www="localhost:$PORT" />
-
-Your app will say `Hello production`, simulating production. Solid. Let's encrypt your secrets next.
-
-## Encrypt secrets
-
-Use `dotenvx` to encrypt your secrets.
-
-```shell
-dotenvx encrypt
-```
-
-This generates a `.env.vault` and `.env.keys` file.
-
-```bash {{ title: ".env.vault" }}
-#/-------------------.env.vault---------------------/
-#/         cloud-agnostic vaulting standard         /
-#/   [how it works](https://dotenv.org/env-vault)   /
-#/--------------------------------------------------/
-
-# development
-DOTENV_VAULT_DEVELOPMENT="V4NYVn0Pow6Uf2ez2mbHEzTrYURloHL6VDAFRLqnQBppA/OmHI5x5AXoxCMVor7wOg=="
-
-# production
-DOTENV_VAULT_PRODUCTION="YZkhtbh1IlzBgIamAAsG5nzGPfH6p8Zbuj9egXoziviVu/eYIyNjJWtIYyhiW/vHhFbqbsvo5+P9b27OC6ZC7qU="
-```
-
-The `.env.vault` file contains encrypted ([AES-256-GCM](https://www.reddit.com/r/cryptography/comments/13kl9ds/how_much_longer_do_you_think_aes_will_last/)) versions of your secrets, and the `.env.keys` file contains the decryption keys.
-
-```bash {{ title: ".env.keys" }}
-#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
-#/   DOTENV_KEYs. DO NOT commit to source control   /
-#/   [how it works](https://dotenv.org/env-keys)    /
-#/--------------------------------------------------/
-DOTENV_KEY_DEVELOPMENT="dotenv://:key_e507c60efa8841d8d5bbb85bd701ee92406cf3b06506d1d80f1553c2a72791e4@dotenvx.com/vault/.env.vault?environment=development"
-DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production"
-```
-
-<Note>
-  You SHOULD commit `.env.vault` to code. It is safe and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [dotenvx hub](https://hub.dotenvx.com).
-</Note>
-
-We're ready to add `dotenvx` to Heroku.
-
-## Add dotenvx buildpack
-
-Install the [dotenvx buildpack](https://github.com/dotenvx/heroku-buildpack-dotenvx).
+Install [`dotenvx`](https://github.com/dotenvx/dotenvx) via the [dotenvx buildpack](https://github.com/dotenvx/heroku-buildpack-dotenvx).
 
 ```
 heroku buildpacks:add https://github.com/dotenvx/heroku-buildpack-dotenvx
@@ -186,108 +108,96 @@ web: ROCKET_ADDRESS=0.0.0.0 ROCKET_PORT=20629 dotenvx run -- ./target/release/yo
 
 </CodeGroup>
 
-Redeploy to Heroku.
+## Add production environment
 
+Create `.env.production` in the root of your project.
+
+```ini
+# .env.production
+HELLO="production"
 ```
+
+## Encrypt production
+
+```shell
+dotenvx set HELLO production --encrypt -f .env.production
+```
+
+Your `.env.production` file is now encrypted, and you have a `.env.keys` file.
+
+```ini {{ title: ".env.production" }}
+#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
+#/            public-key encryption for .env files          /
+#/       [how it works](https://dotenvx.com/encryption)     /
+#/----------------------------------------------------------/
+DOTENV_PUBLIC_KEY_PRODUCTION="025a54defaeff32caa2bbe60537b88b5b89716eade6df08418d7a68f5c4f742be6"
+
+# .env.production
+HELLO="encrypted:BD+uttK9iBuXnfx6HukDK06IGk0pQARwivtxM+ZiePvhRxHyQL3UD0sf0ayLw/P5Y/BED//zRiTlUf6nENuu7QhNJ24g3uADfrDfhvYi/MOHjmfKyRiu+yOxSw6e+c0yRNukS+n8SxONnec="
+```
+
+```ini {{ title: ".env.keys" }}
+#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
+#/ private decryption keys. DO NOT commit to source control /
+#/     [how it works](https://dotenvx.com/encryption)       /
+#/----------------------------------------------------------/
+
+# .env.production
+DOTENV_PRIVATE_KEY_PRODUCTION="424d0ea072eb17c6bee9b4b42ff6333513cf128ea3d5d60ccf79246ca7c3f786"
+```
+
+<Note>
+  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password.
+</Note>
+
+We're ready to inject the encrypted `.env.production` secrets into the app on boot.
+
+## Set DOTENV_PRIVATE_KEY_PRODUCTION
+
+Set `DOTENV_PRIVATE_KEY_PRODUCTION` on Heroku using the production key in your `.env.keys` file. We'll use the Heroku cli, but you can also use their dashboard.
+
+```sh
+heroku config:set DOTENV_PRIVATE_KEY_PRODUCTION='424d0ea072eb17c6bee9b4b42ff6333513cf128ea3d5d60ccf79246ca7c3f786'
+```
+
+Redeploy.
+
+```sh
 git push heroku
 ```
 
-<CodeGroup>
-
-```shell {{ title: 'Node' }}
-$ heroku logs --tail
-heroku[web.1]: Starting process with command `dotenvx run -- node index.js`
-app[web.1]: [dotenvx@0.9.0] missing .env file (/app/.env)
-app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
-app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
-```
-
-```shell {{ title: 'Python' }}
-$ heroku logs --tail
-heroku[web.1]: Starting process with command `dotenvx run -- gunicorn --workers 4 --bind 0.0.0.0:${PORT} wsgi:app`
-app[web.1]: [dotenvx@0.10.1] missing .env file (/app/.env)
-app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
-app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
-```
-
-```shell {{ title: 'PHP' }}
-$ heroku logs --tail
-heroku[web.1]: Starting process with command `dotenvx run -- heroku-php-apache2`
-app[web.1]: [dotenvx@0.10.1] missing .env file (/app/.env)
-app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- heroku-php-apache2]
-app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
-```
-
-```shell {{ title: 'Ruby' }}
-$ heroku logs --tail
-heroku[web.1]: Starting process with command `dotenvx run -- ruby index.rb`
-app[web.1]: [dotenvx@0.10.1] missing .env file (/app/.env)
-app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
-app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
-```
-
-```shell {{ title: 'Go' }}
-$ heroku logs --tail
-heroku[web.1]: Starting process with command `dotenvx run -- app`
-app[web.1]: [dotenvx@0.10.1] missing .env file (/app/.env)
-app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
-app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
-```
-
-```shell {{ title: 'Rust' }}
-$ heroku logs --tail
-heroku[web.1]: Starting process with command `ROCKET_ADDRESS=0.0.0.0 ROCKET_PORT=20629 dotenvx run -- ./target/release/your-app`
-app[web.1]: [dotenvx@0.10.1] missing .env file (/app/.env)
-app[web.1]: ? in development: add one with [echo "HELLO=World" > .env] and re-run [dotenvx run -- node index.js]
-app[web.1]: ? for production: set [DOTENV_KEY] on your server and re-deploy
-```
-
-</CodeGroup>
-
-The logs tell us `missing .env file`. This is expected, as we don't want to commit `.env` to code. It also tells us, for production, that we should set `DOTENV_KEY`. That is what we want to do. Let's do that next.
-
-## Set DOTENV_KEY
-
-Set `DOTENV_KEY` on Heroku using the production key in your `.env.keys` file.
-
-```shell
-heroku config:set DOTENV_KEY='dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production'
-```
-
-<ScreenshotBrowser url="/assets/docs/heroku-config-vars.png" www="www.heroku.com" />
-
-Your app restarts and `env` is successfully injected using the encrypted contents of `.env.vault`.
+Your app restarts and `env` is successfully injected using the encrypted contents of `.env.production`.
 
 <CodeGroup>
 
 ```shell {{ title: 'Node' }}
 heroku[web.1]: Starting process with command `dotenvx run -- node index.js`
-app[web.1]: [dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+app[web.1]: [dotenvx@0.38.0] injecting env (2) from .env.production
 app[web.1]: Server running on port:7521/
 ```
 
 ```shell {{ title: 'Python' }}
 heroku[web.1]: Starting process with command `dotenvx run -- gunicorn --workers 4 --bind 0.0.0.0:${PORT} wsgi:app`
-app[web.1]: [dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+app[web.1]: [dotenvx@0.38.0] injecting env (2) from .env.production
 app[web.1]: [INFO] Starting gunicorn 21.2.0
 ```
 
 ```shell {{ title: 'PHP' }}
 $ heroku logs --tail
 heroku[web.1]: Starting process with command `dotenvx run -- heroku-php-apache2`
-app[web.1]: [dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+app[web.1]: [dotenvx@0.38.0] injecting env (2) from .env.production
 app[web.1]: Starting php-fpm with 4 workers...
 ```
 
 ```shell {{ title: 'Ruby' }}
 heroku[web.1]: Starting process with command `dotenvx run -- ruby index.rb`
-app[web.1]: [dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+app[web.1]: [dotenvx@0.38.0] injecting env (2) from .env.production
 app[web.1]: == Sinatra (v3.2.0) has taken the stage on 20576 for production with backup from WEBrick
 ```
 
 ```shell {{ title: 'Go' }}
 heroku[web.1]: Starting process with command `dotenvx run -- app`
-app[web.1]: [dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+app[web.1]: [dotenvx@0.38.0] injecting env (2) from .env.production
 app[web.1]:
 app[web.1]: ____    __
 app[web.1]: / __/___/ /  ___
@@ -297,7 +207,7 @@ app[web.1]: /___/\__/_//_/\___/ v4.11.4
 
 ```shell {{ title: 'Rust' }}
 heroku[web.1]: Starting process with command `ROCKET_ADDRESS=0.0.0.0 ROCKET_PORT=20629 dotenvx run -- ./target/release/your-app`
-app[web.1]: [dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+app[web.1]: [dotenvx@0.38.0] injecting env (2) from .env.production
 app[web.1]: Rocket has launched from http://0.0.0.0:8930
 ```
 
@@ -317,22 +227,10 @@ Great job! That's pretty much it. See the bonus section(s) below to go a little 
 
 Try changing the value of `.env.production` to your name.
 
-```shell {{ title: '.env.production' }}
-# .env.production
-HELLO="Mot"
+```sh
+npm run dotenvx -- set HELLO Mot --encrypt
 ```
 
-Re-encrypt it.
-
-```shell
-dotenvx encrypt
-```
-
-Commit `.env.vault` safely to code and redeploy.
-
-```shell
-git commit -am "update production secret"
-git push heroku
-```
+Commit `.env.production` safely to code and redeploy.
 
 <ScreenshotBrowser url="/assets/docs/hello-mot.png" />
