@@ -57,6 +57,13 @@ Create a `Dockerfile`.
 
 <DockerfileCodeGroup/>
 
+Create `.dockerignore`.
+
+```ini {{ title: '.dockerignore' }}
+# .dockerignore
+.env.keys
+```
+
 Build and run it with Docker.
 
 <DockerRunCodeGroup/>
@@ -75,140 +82,108 @@ Install [`dotenvx`](https://github.com/dotenvx/dotenvx) to your Dockerfile and p
 
 <DockerfileDotenvxCodeGroup/>
 
-Create a `.env` file in the root of your project.
-
-```shell {{ title: '.env' }}
-# .env
-HELLO="World"
-```
-
-Build and run it with Docker.
-
-<DockerRunCodeGroup/>
-
-<ScreenshotBrowser url="/assets/docs/hello-world.png" www="localhost:$PORT" />
-
-Your app will say `Hello World`. The values from your `.env` file were successfully injected into your env. That covers local development. Let's solve for production next.
-
 ## Add production environment
 
 Create a `.env.production` file in the root of your project.
 
-```shell {{ title: '.env.production' }}
+```shell
 # .env.production
 HELLO="production"
 ```
 
-Use `dotenvx` to load your `.env.production` file by updating your Dockerfile `CMD`.
+## Encrypt production
 
-<DockerDotenvxRunProductionLocalCodeGroup/>
-
-Build and run it with Docker.
-
-<DockerRunCodeGroup/>
-
-<ScreenshotBrowser url="/assets/docs/hello-production.png" www="localhost:$PORT" />
-
-Your app will say `Hello production`, simulating production. Solid. Let's encrypt your secrets next.
-
-## Encrypt secrets
-
-Use `dotenvx` to encrypt your secrets.
-
-```shell
-dotenvx encrypt
+```sh
+dotenvx set HELLO production -f .env.production --encrypt
 ```
 
-This generates a `.env.vault` and `.env.keys` file.
+Your `.env.production` file is now encrypted, and you have a `.env.keys` file.
 
-```bash {{ title: ".env.vault" }}
-#/-------------------.env.vault---------------------/
-#/         cloud-agnostic vaulting standard         /
-#/   [how it works](https://dotenv.org/env-vault)   /
-#/--------------------------------------------------/
+```ini {{ title: '.env.production' }}
+#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
+#/            public-key encryption for .env files          /
+#/       [how it works](https://dotenvx.com/encryption)     /
+#/----------------------------------------------------------/
+DOTENV_PUBLIC_KEY_PRODUCTION="0354d5293e40f78b8b44d6b5ded92719ef99d119a79093d6babd0ef9e80a9a7667"
 
-# development
-DOTENV_VAULT_DEVELOPMENT="V4NYVn0Pow6Uf2ez2mbHEzTrYURloHL6VDAFRLqnQBppA/OmHI5x5AXoxCMVor7wOg=="
-
-# production
-DOTENV_VAULT_PRODUCTION="YZkhtbh1IlzBgIamAAsG5nzGPfH6p8Zbuj9egXoziviVu/eYIyNjJWtIYyhiW/vHhFbqbsvo5+P9b27OC6ZC7qU="
+# .env.production
+HELLO="encrypted:BGo+chylmSbkHeDsn9gPy5LYvYUUpTstaUr8hDU0lgp4ssyH2MXav43ww+B3WNaYLZQpJdJdJ2F8qLbV4vDolF42ETQFu/xxhKA2/MRxiC/Vd1s/DMDjm9RSHOCQ5YHywLrUY9UySesbn58="
 ```
 
-The `.env.vault` file contains encrypted ([AES-256-GCM](https://www.reddit.com/r/cryptography/comments/13kl9ds/how_much_longer_do_you_think_aes_will_last/)) versions of your secrets, and the `.env.keys` file contains the decryption keys.
+```ini {{ title: ".env.keys" }}
+#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
+#/ private decryption keys. DO NOT commit to source control /
+#/     [how it works](https://dotenvx.com/encryption)       /
+#/----------------------------------------------------------/
 
-```bash {{ title: ".env.keys" }}
-#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
-#/   DOTENV_KEYs. DO NOT commit to source control   /
-#/   [how it works](https://dotenv.org/env-keys)    /
-#/--------------------------------------------------/
-DOTENV_KEY_DEVELOPMENT="dotenv://:key_e507c60efa8841d8d5bbb85bd701ee92406cf3b06506d1d80f1553c2a72791e4@dotenvx.com/vault/.env.vault?environment=development"
-DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production"
+# .env.production
+DOTENV_PRIVATE_KEY_PRODUCTION="3c54363a4a678042d298660e2038df68aaa4a9383048d913d0e6db15e137020d"
 ```
 
 <Note>
-  You SHOULD commit `.env.vault` to code. It is safe and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [dotenvx hub](https://hub.dotenvx.com).
+  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password.
 </Note>
 
-We're ready to inject the encrypted secrets from `.env.vault` into the Docker run.
+We're ready to inject the encrypted `.env.production` secrets into Docker run.
 
-## Set DOTENV_KEY
+## Set decryption key
 
-Set `DOTENV_KEY` on Docker using the production key in your `.env.keys` file.
+Set `DOTENV_PRIVATE_KEY_PRODUCTION` on Docker using the production key in your `.env.keys` file.
 
 <CodeGroup>
 
 ```yaml {{ title: 'Node' }}
-docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 3000:3000 app
+docker build -t app . && docker run -e "DOTENV_PRIVATE_KEY_PRODUCTION=3c54363a4a678042d298660e2038df68aaa4a9383048d913d0e6db15e137020d" -it --init --rm -p 3000:3000 app
 ```
 
 ```yaml {{ title: 'Python' }}
-docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 5000:5000 app
+docker build -t app . && docker run -e "DOTENV_PRIVATE_KEY_PRODUCTION=3c54363a4a678042d298660e2038df68aaa4a9383048d913d0e6db15e137020d" -it --init --rm -p 5000:5000 app
 ```
 
 ```yaml {{ title: 'PHP' }}
-docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 8080:80 app
+docker build -t app . && docker run -e "DOTENV_PRIVATE_KEY_PRODUCTION=3c54363a4a678042d298660e2038df68aaa4a9383048d913d0e6db15e137020d" -it --init --rm -p 8080:80 app
 ```
 
 ```yaml {{ title: 'Ruby' }}
-docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 4567:4567 app
+docker build -t app . && docker run -e "DOTENV_PRIVATE_KEY_PRODUCTION=3c54363a4a678042d298660e2038df68aaa4a9383048d913d0e6db15e137020d" -it --init --rm -p 4567:4567 app
 ```
 
 ```yaml {{ title: 'Go' }}
-docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 1323:1323 app
+docker build -t app . && docker run -e "DOTENV_PRIVATE_KEY_PRODUCTION=3c54363a4a678042d298660e2038df68aaa4a9383048d913d0e6db15e137020d" -it --init --rm -p 1323:1323 app
 ```
 
 ```yaml {{ title: 'Rust' }}
-docker build -t app . && docker run -e "DOTENV_KEY=dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production" -it --init --rm -p 20629:20629 app
+docker build -t app . && docker run -e "DOTENV_PRIVATE_KEY_PRODUCTION=3c54363a4a678042d298660e2038df68aaa4a9383048d913d0e6db15e137020d" -it --init --rm -p 20629:20629 app
 ```
 
 </CodeGroup>
 
-Your docker instance starts and `env` is successfully injected using the encrypted contents of `.env.vault`.
+Your docker instance starts and `env` is successfully injected using the encrypted contents of `.env.production`.
 
 <CodeGroup>
 
 ```shell {{ title: 'Node' }}
-[dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+[dotenvx@0.38.0] injecting env (2) from .env.production
 Server running on port:3000
 ```
 
 ```shell {{ title: 'Python' }}
-[dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+[dotenvx@0.38.0] injecting env (2) from .env.production
 [2024-01-15 04:36:09 +0000] [15] [INFO] Starting gunicorn 21.2.0
 ```
 
 ```shell {{ title: 'PHP' }}
-[dotenvx@0.10.1] injecting env (1) from encrypted .env.vault
+[dotenvx@0.38.0] injecting env (2) from .env.production
 [Mon Jan 15 05:18:12.420951 2024] [core:notice] [pid 15] AH00094: Command line: 'apache2 -D FOREGROUND'
 ```
 
 ```shell {{ title: 'Ruby' }}
-[dotenvx@0.10.2] injecting env (1) from encrypted .env.vault
+[dotenvx@0.38.0] injecting env (2) from .env.production
 == Sinatra (v3.2.0) has taken the stage on 4567 for development with backup from WEBrick
 ```
 
 ```shell {{ title: 'Go' }}
-[dotenvx@0.10.2] injecting env (1) from encrypted .env.vault
+[dotenvx@0.38.0] injecting env (2) from .env.production
    ____    __
   / __/___/ /  ___
  / _// __/ _ \/ _ \
@@ -216,13 +191,13 @@ Server running on port:3000
 ```
 
 ```shell {{ title: 'Rust' }}
-[dotenvx@0.10.2] injecting env (1) from encrypted .env.vault
+[dotenvx@0.38.0] injecting env (2) from .env.production
 🚀 Rocket has launched from http://0.0.0.0:2062
 ```
 
 </CodeGroup>
 
-For Digital Ocean, do the same. Set your `DOTENV_KEY` on their environment variable manager.
+For Digital Ocean, do the same. Set your `DOTENV_PRIVATE_KEY_PRODUCTION` in the environment variable manager.
 
 <ScreenshotBrowser url="/assets/docs/digitalocean-vars.png" www="digitalocean.com" />
 
@@ -240,17 +215,10 @@ Great job! That's pretty much it. See the bonus section(s) below to go a little 
 
 Try changing the value of `.env.production` to your name.
 
-```shell {{ title: '.env.production' }}
-# .env.production
-HELLO="Mot"
+```sh
+dotenvx set HELLO Mot --encrypt
 ```
 
-Re-encrypt it.
-
-```shell
-dotenvx encrypt
-```
-
-Commit `.env.vault` safely to code and re-run your Docker container.
+Commit `.env.production` safely to code and re-run your Docker container.
 
 <ScreenshotBrowser url="/assets/docs/hello-mot.png" />
