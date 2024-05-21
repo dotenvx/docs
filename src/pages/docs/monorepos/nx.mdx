@@ -32,7 +32,7 @@ Create a new monorepo.
 npx create-nx-workspace --preset=express
 ```
 
-This will create a handful of files and a couple workspaces (apps).
+If prompted for a workspace, type `app`. This will create a handful of files and a couple workspaces (apps).
 
 ```bash
 $ ls -1
@@ -70,12 +70,11 @@ server.on('error', console.error);
 
 ## Run dotenvx
 
-Install [`dotenvx`](https://github.com/dotenvx/dotenvx).
+Install [`dotenvx`](https://github.com/dotenvx/dotenvx) via [brew](/docs/install#brew), [npm](/docs/install#npm), or [other options](/docs/install). Here I'm using brew.
 
 ```bash
 brew install dotenvx/brew/dotenvx
 ```
-see [other installation options](/docs/install)
 
 Create a `.env` file under `apps/app`.
 
@@ -95,7 +94,7 @@ $ dotenvx run --env-file=apps/app/.env -- npx nx serve app
 ...
 ```
 
-Visit [localhost:3333](http://locahost:3333).
+Visit [localhost:3333](http://localhost:3333).
 
 <ScreenshotBrowser url="/assets/docs/hello-world.png" www="localhost:3333" />
 
@@ -110,83 +109,55 @@ Create a `.env.production` file under `apps/app`.
 HELLO="production"
 ```
 
-Modify your `dotenvx run` command to use the `.env.production` file.
-
-```bash
-$ dotenvx run --env-file=apps/app/.env.production -- npx nx serve app
-
-[dotenvx@0.15.4] injecting env (1) from apps/app/.env.production
-
-> nx run app:serve:development
-...
-```
-
-<ScreenshotBrowser url="/assets/docs/hello-production.png" www="localhost:3333" />
-
-Your app will say `Hello production`, simulating production. Solid. Let's encrypt your secrets next.
-
-## Encrypt secrets
-
-Use `dotenvx` to encrypt your `apps/app` secrets.
+## Encrypt production
 
 ```shell
-dotenvx encrypt apps/app
+dotenvx set HELLO production --encrypt -f apps/app/.env.production
 ```
 
-> Also run `dotenvx gitignore` to make sure your `.env.keys` file is gitignored
-> ```shell
-> dotenvx gitnore
-> ```
+Your `.env.production` file is now encrypted, and you have a `.env.keys` file.
 
-This generates a `.env.vault` and `.env.keys` file.
+```ini {{ title: "apps/app/.env.production" }}
+#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
+#/            public-key encryption for .env files          /
+#/       [how it works](https://dotenvx.com/encryption)     /
+#/----------------------------------------------------------/
+DOTENV_PUBLIC_KEY_PRODUCTION="025a54defaeff32caa2bbe60537b88b5b89716eade6df08418d7a68f5c4f742be6"
 
-```bash {{ title: ".env.vault" }}
-#/-------------------.env.vault---------------------/
-#/         cloud-agnostic vaulting standard         /
-#/   [how it works](https://dotenv.org/env-vault)   /
-#/--------------------------------------------------/
-
-# development
-DOTENV_VAULT_DEVELOPMENT="V4NYVn0Pow6Uf2ez2mbHEzTrYURloHL6VDAFRLqnQBppA/OmHI5x5AXoxCMVor7wOg=="
-
-# production
-DOTENV_VAULT_PRODUCTION="YZkhtbh1IlzBgIamAAsG5nzGPfH6p8Zbuj9egXoziviVu/eYIyNjJWtIYyhiW/vHhFbqbsvo5+P9b27OC6ZC7qU="
+# .env.production
+HELLO="encrypted:BD+uttK9iBuXnfx6HukDK06IGk0pQARwivtxM+ZiePvhRxHyQL3UD0sf0ayLw/P5Y/BED//zRiTlUf6nENuu7QhNJ24g3uADfrDfhvYi/MOHjmfKyRiu+yOxSw6e+c0yRNukS+n8SxONnec="
 ```
 
-The `.env.vault` file contains encrypted ([AES-256-GCM](https://www.reddit.com/r/cryptography/comments/13kl9ds/how_much_longer_do_you_think_aes_will_last/)) versions of your secrets, and the `.env.keys` file contains the decryption keys.
+```ini {{ title: "apps/app/.env.keys" }}
+#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
+#/ private decryption keys. DO NOT commit to source control /
+#/     [how it works](https://dotenvx.com/encryption)       /
+#/----------------------------------------------------------/
 
-```bash {{ title: ".env.keys" }}
-#/!!!!!!!!!!!!!!!!!!!.env.keys!!!!!!!!!!!!!!!!!!!!!!/
-#/   DOTENV_KEYs. DO NOT commit to source control   /
-#/   [how it works](https://dotenv.org/env-keys)    /
-#/--------------------------------------------------/
-DOTENV_KEY_DEVELOPMENT="dotenv://:key_e507c60efa8841d8d5bbb85bd701ee92406cf3b06506d1d80f1553c2a72791e4@dotenvx.com/vault/.env.vault?environment=development"
-DOTENV_KEY_PRODUCTION="dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production"
+# .env.production
+DOTENV_PRIVATE_KEY_PRODUCTION="424d0ea072eb17c6bee9b4b42ff6333513cf128ea3d5d60ccf79246ca7c3f786"
 ```
 
 <Note>
-  You SHOULD commit `.env.vault` to code. It is safe and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [dotenvx hub](https://hub.dotenvx.com).
+  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password.
 </Note>
 
-We're ready to simulate production by using the `DOTENV_KEY`.
+We're ready to inject the encrypted `.env.production` secrets into the app on boot.
 
-## Set DOTENV_KEY
+## Set decryption key
 
-Set `DOTENV_KEY` using the production key in your `.env.keys` file.
+Set `DOTENV_PRIVATE_KEY_PRODUCTION` using the production key in your `apps/app/.env.keys` file.
 
 ```bash
-DOTENV_KEY='dotenv://:key_10283719af6a30ef49050048617f4fea10c23a38021fbebeb9fd858caa01852e@dotenvx.com/vault/.env.vault?environment=production' npx nx serve app
+DOTENV_PRIVATE_KEY_PRODUCTION="424d0ea072eb17c6bee9b4b42ff6333513cf128ea3d5d60ccf79246ca7c3f786" dotenvx run -f apps/app/.env.production -- npx nx serve app
 ```
 
-Your script starts and `env` is successfully injected using the encrypted contents of `.env.vault`.
+Your script starts and `env` is successfully injected using the encrypted contents of `.env.production`.
 
 ```bash
-[dotenv@16.3.2][INFO] Loading env from encrypted .env.vault
+[dotenvx@0.43.1] injecting env (2) from apps/app/.env.production
 Listening at http://localhost:3333/
 ```
-<Note>
-  You will also see a noisy output like `[dotenv@16.3.2][WARN] You set DOTENV_KEY but you are missing a .env.vault...`. You can safely ignore these. It is a result of how nx traverses `.env*` files using [`dotenvx`](https://github.com/motdotla/dotenv).
-</Note>
 
 Visit your url and it says `Hello production`.
 
@@ -202,18 +173,10 @@ Great job! That's pretty much it. See the bonus section(s) below to go a little 
 
 Try changing the value of `.env.production` to your name.
 
-```shell {{ title: 'apps/app/.env.production' }}
-# apps/app/.env.production
-HELLO="Mot"
+```sh
+npm run dotenvx -- set HELLO Mot --encrypt
 ```
 
-Re-encrypt it.
-
-```shell
-dotenvx encrypt apps/app
-```
-
-Commit `.env.vault` safely to code and re-serve the app.
+Commit `.env.production` safely to code and redeploy.
 
 <ScreenshotBrowser url="/assets/docs/hello-mot.png" />
-
