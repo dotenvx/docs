@@ -208,8 +208,10 @@ export const navigation = [
       { title: 'Heroku', href: '/docs/platforms/heroku' },
       { title: 'Netlify', href: '/docs/platforms/netlify' },
       { title: 'NPM', href: '/docs/package-managers/npm' },
+      { title: 'Nx', href: '/docs/monorepos/nx' },
       { title: 'Render', href: '/docs/platforms/render' },
       { title: 'Railway', href: '/docs/platforms/railway' },
+      { title: 'Turborepo', href: '/docs/monorepos/turborepo' },
       { title: 'Vercel', href: '/docs/platforms/vercel' },
       { title: 'More', href: '/docs/guides' },
     ]
