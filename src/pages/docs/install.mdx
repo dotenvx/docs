@@ -17,7 +17,7 @@ brew install dotenvx/brew/dotenvx
 ```
 
 ```bash {{ title: "Curl" }}
-curl -fsS https://dotenvx.sh/install.sh | sh
+curl -sfS https://dotenvx.sh/install.sh | sh
 ```
 
 ```bash {{ title: "Docker" }}
@@ -68,7 +68,7 @@ Find the [dotenvx brew tap here](https://github.com/dotenvx/homebrew-brew).
 After brew our install.sh script is easiest. With curl:
 
 ```bash
-curl -fsS https://dotenvx.sh/install.sh | sh
+curl -sfS https://dotenvx.sh/install.sh | sh
 ```
 
 Or with wget:
@@ -93,7 +93,7 @@ Or in any image:
 ```
 FROM node:latest
 RUN echo "HELLO=World" > .env && echo "console.log('Hello ' + process.env.HELLO)" > index.js
-RUN curl -fsS https://dotenvx.sh/install.sh | sh
+RUN curl -sfS https://dotenvx.sh/install.sh | sh
 CMD ["dotenvx", "run", "--", "echo", "Hello $HELLO"]
 ```
 
@@ -139,7 +139,7 @@ web: dotenvx run -- node index.js
 
 ```sh
 # download it to `./dotenvx`
-curl -fsS --proto '=https' https://dotenvx.sh/$(uname)/$(uname -m).tgz | tar xz
+curl -sfS --proto '=https' https://dotenvx.sh/$(uname)/$(uname -m).tgz | tar xz
 
 # install it to `/usr/local/bin/dotenvx`
 sudo install -m 755 dotenvx /usr/local/bin
@@ -152,7 +152,7 @@ Download a specific version:
 
 ```sh
 # download version 0.6.9
-curl -fsS --proto '=https' "https://dotenvx.sh/$(uname)/$(uname -m).tgz?version=v0.6.9" | tar xz
+curl -sfS --proto '=https' "https://dotenvx.sh/$(uname)/$(uname -m).tgz?version=v0.6.9" | tar xz
 
 # check the version
 ./dotenvx --version

@@ -6,7 +6,7 @@ FROM node:20
 WORKDIR /app
 
 # Install dotenvx
-RUN curl -fsS https://dotenvx.sh/install.sh | sh
+RUN curl -sfS https://dotenvx.sh/install.sh | sh
 
 COPY package*.json ./
 RUN npm install
@@ -23,7 +23,7 @@ FROM python:3.8
 WORKDIR /app
 
 # Install dotenvx
-RUN curl -fsS https://dotenvx.sh/install.sh | sh
+RUN curl -sfS https://dotenvx.sh/install.sh | sh
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
@@ -42,7 +42,7 @@ FROM php:8.0-apache
 WORKDIR /var/www/html
 
 # Install dotenvx
-RUN curl -fsS https://dotenvx.sh/install.sh | sh
+RUN curl -sfS https://dotenvx.sh/install.sh | sh
 
 RUN echo 'PassEnv HELLO' > /etc/apache2/conf-available/passenv.conf
 RUN a2enconf passenv
@@ -59,7 +59,7 @@ FROM ruby:3.2
 WORKDIR /app
 
 # Install dotenvx
-RUN curl -fsS https://dotenvx.sh/install.sh | sh
+RUN curl -sfS https://dotenvx.sh/install.sh | sh
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
@@ -84,7 +84,7 @@ WORKDIR /root/
 
 # Install dotenvx
 RUN apk --no-cache add curl
-RUN curl -fsS https://dotenvx.sh/install.sh | sh
+RUN curl -sfS https://dotenvx.sh/install.sh | sh
 COPY --from=builder /app/.env* ./
 
 COPY --from=builder /app/main .
@@ -101,7 +101,7 @@ RUN rustup default nightly
 WORKDIR /app
 
 # Install dotenvx
-RUN curl -fsS https://dotenvx.sh/install.sh | sh
+RUN curl -sfS https://dotenvx.sh/install.sh | sh
 
 COPY . .
 ENV ROCKET_ADDRESS=0.0.0.0
