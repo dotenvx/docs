@@ -17,7 +17,7 @@ brew install dotenvx/brew/dotenvx
 ```
 
 ```bash {{ title: "Curl" }}
-curl -fsS https://dotenvx.sh/ | sh
+curl -fsS https://dotenvx.sh/install.sh | sh
 ```
 
 ```bash {{ title: "Docker" }}
@@ -65,19 +65,19 @@ Find the [dotenvx brew tap here](https://github.com/dotenvx/homebrew-brew).
 
 ## Shell
 
-After brew our installer is easiest. With curl:
+After brew our install.sh script is easiest. With curl:
 
 ```bash
-curl -fsS https://dotenvx.sh/ | sh
+curl -fsS https://dotenvx.sh/install.sh | sh
 ```
 
 Or with wget:
 
 ```bash
-wget -qO- https://dotenvx.sh/ | sh
+wget -qO- https://dotenvx.sh/install.sh | sh
 ```
 
-Read the [installer.sh script here](https://github.com/dotenvx/dotenvx.sh/blob/main/installer.sh).
+Read the [install.sh script here](https://github.com/dotenvx/dotenvx.sh/blob/main/install.sh).
 
 ## Docker
 
@@ -93,7 +93,7 @@ Or in any image:
 ```
 FROM node:latest
 RUN echo "HELLO=World" > .env && echo "console.log('Hello ' + process.env.HELLO)" > index.js
-RUN curl -fsS https://dotenvx.sh/ | sh
+RUN curl -fsS https://dotenvx.sh/install.sh | sh
 CMD ["dotenvx", "run", "--", "echo", "Hello $HELLO"]
 ```
 
