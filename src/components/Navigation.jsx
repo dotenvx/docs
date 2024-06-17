@@ -222,6 +222,7 @@ export const navigation = [
       { title: '.env', href: '/docs/env-file' },
       { title: '.env.keys', href: '/docs/env-keys-file' },
       { title: 'Deprecated', href: '/docs/deprecated' },
+      { title: 'Stats', href: '/docs/stats' },
     ]
   },
 ]
