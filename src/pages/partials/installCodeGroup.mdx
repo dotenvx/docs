@@ -1,26 +1,28 @@
 <CodeGroup>
 
+```bash {{ title: "Npm" }}
+npm install @dotenvx/dotenvx --save
+npx dotenvx help
+```
+
 ```bash {{ title: "Brew" }}
-# install with Homebrew and then use the dotenvx command
 brew install dotenvx/brew/dotenvx
 dotenvx help
 ```
 
 ```bash {{ title: "Curl" }}
-# download it directly as a standalone binary
-curl -sfS https://dotenvx.sh/install.sh | sh
-dotenvx help
-```
-
-```bash {{ title: "Npm" }}
-# install globally with npm
-npm install @dotenvx/dotenvx -g
+curl -sfS https://dotenvx.sh | sh
 dotenvx help
 ```
 
 ```bash {{ title: "Docker" }}
-# use Docker if you prefer
-docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
+docker run -it --rm -v $(pwd):/app dotenv/dotenvx help
+```
+
+```bash {{ title: "GitHub Releases" }}
+curl -L -o dotenvx.tar.gz "https://github.com/dotenvx/dotenvx/releases/latest/download/dotenvx-$(uname -s)-$(uname -m).tar.gz"
+tar -xzf dotenvx.tar.gz
+./dotenvx help
 ```
 
 ```bash {{ title: "Windows" }}

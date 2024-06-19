@@ -14,24 +14,28 @@ npm install @dotenvx/dotenvx --save
 
 ```bash {{ title: "Brew" }}
 brew install dotenvx/brew/dotenvx
+dotenvx help
 ```
 
 ```bash {{ title: "Curl" }}
-curl -sfS https://dotenvx.sh/install.sh | sh
+curl -sfS https://dotenvx.sh | sh
+dotenvx help
 ```
 
 ```bash {{ title: "Docker" }}
-docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
+docker run -it --rm -v $(pwd):/app dotenv/dotenvx help
+```
+
+```bash {{ title: "GitHub Releases" }}
+curl -L -o dotenvx.tar.gz "https://github.com/dotenvx/dotenvx/releases/latest/download/dotenvx-$(uname -s)-$(uname -m).tar.gz"
+tar -xzf dotenvx.tar.gz
+./dotenvx help
 ```
 
 ```bash {{ title: "Windows" }}
 # download the appropriate installer for your Windows installation
 32-bit installer: https://github.com/dotenvx/dotenvx/releases
 64-bit installer: https://github.com/dotenvx/dotenvx/releases
-```
-
-```bash {{ title: "GitHub Releases" }}
-https://github.com/dotenvx/dotenvx/releases
 ```
 
 </CodeGroup>
@@ -68,13 +72,13 @@ Find the [dotenvx brew tap here](https://github.com/dotenvx/homebrew-brew).
 After brew our install.sh script is easiest. With curl:
 
 ```bash
-curl -sfS https://dotenvx.sh/install.sh | sh
+curl -sfS https://dotenvx.sh | sh
 ```
 
 Or with wget:
 
 ```bash
-wget -qO- https://dotenvx.sh/install.sh | sh
+wget -qO- https://dotenvx.sh | sh
 ```
 
 Read the [install.sh script here](https://github.com/dotenvx/dotenvx.sh/blob/main/install.sh).
@@ -97,6 +101,20 @@ RUN curl -sfS https://dotenvx.sh/install.sh | sh
 CMD ["dotenvx", "run", "--", "echo", "Hello $HELLO"]
 ```
 
+## GitHub Releases
+
+You can also download straight from [GitHub Releases](https://github.com/dotenvx/dotenvx/releases).
+
+```bash
+curl -L -o dotenvx.tar.gz "https://github.com/dotenvx/dotenvx/releases/latest/download/dotenvx-$(uname -s)-$(uname -m).tar.gz"
+tar -xzf dotenvx.tar.gz
+./dotenvx help
+```
+
+<Note>
+  If you download manually you'll need to move the binary somewhere in your PATH.
+</Note>
+
 ## Windows
 
 Download [the windows executable](https://github.com/dotenvx/dotenvx/releases) directly from the [releases page](https://github.com/dotenvx/dotenvx/releases).
@@ -107,14 +125,6 @@ Download [the windows executable](https://github.com/dotenvx/dotenvx/releases) d
 ](https://github.com/dotenvx/releases/raw/main/latest/dotenvx-windows-x86_64.zip)
 
 (unzip to extract `dotenvx.exe`)
-
-## GitHub Releases
-
-You can also download straight from [GitHub Releases](https://github.com/dotenvx/dotenvx/releases).
-
-<Note>
-  If you download manually you'll need to move the binary somewhere in your PATH.
-</Note>
 
 ## Other
 
