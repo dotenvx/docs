@@ -9,8 +9,8 @@ export const description =
 ```sh
 $ touch .env
 $ touch .env.production
-$ dotenvx set HELLO encrypted --encrypt
-$ dotenvx set HELLO "production encrypted" -f .env.production --encrypt
+$ dotenvx set HELLO encrypted
+$ dotenvx set HELLO "production encrypted" -f .env.production
 $ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 # check .env.keys for your privateKeys

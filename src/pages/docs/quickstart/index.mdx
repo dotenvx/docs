@@ -244,10 +244,10 @@ $ dotenvx run -f .env.production -- php artisan serve
 
 ## Add Encryption
 
-> Add encryption to your `.env*` files with a single command. Pass the `--encrypt` flag.
+> Add encryption to your `.env*` files with a single command. Run `dotenvx encrypt` or `dotenvx set HELLO value`.
 
 ```bash {{ title: "Add encryption" }}
-$ dotenvx set HELLO "production (encrypted)" -f .env.production --encrypt
+$ dotenvx set HELLO "production (encrypted)" -f .env.production
 set HELLO with encryption (.env.production)
 ```
 

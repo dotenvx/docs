@@ -2,7 +2,7 @@ import { QuickstartsBreadcrumb } from '@/components/QuickstartsBreadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Add encryption to your `.env` files with a single command. Pass the `--encrypt` flag.'
+  'Add encryption to your `.env` files with a single command. Use `dotenvx encrypt`.'
 
 <QuickstartsBreadcrumb quickstart="Encryption" icon={
   <>
@@ -12,11 +12,11 @@ export const description =
 # Encryption
 <GuideHeading lead={description} />
 
-```bash {{ title: "dotenvx set --encrypt" }}
+```bash {{ title: "dotenvx encrypt" }}
 $ touch .env
 $ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
-$ dotenvx set HELLO World --encrypt
+$ dotenvx encrypt
 ```
 
 Your `.env` file will now look something like this.
@@ -67,7 +67,7 @@ Hello World
 In production, do NOT include your `.env.keys` file. Instead, set your `DOTENV_PRIVATE_KEY` ahead of your `dotenvx run` command and it will smartly run the associated `.env` file - decrypting and injecting your secrets at runtime.
 
 ```bash {{ title: "production" }}
-$ dotenvx set HELLO production --encrypt -f .env.production
+$ dotenvx set HELLO production -f .env.production
 $ DOTENV_PRIVATE_KEY_PRODUCTION="4a650a4159790e2341a388ebcd7526036fd33cc6240667c7cd940cde7b11cfaf" dotenvx run -- node index.js
 [dotenvx@0.38.0] injecting env (2) from .env.production
 Hello production

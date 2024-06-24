@@ -130,7 +130,7 @@ HELLO="production"
 ## Encrypt production
 
 ```shell
-dotenvx set HELLO production --encrypt -f apps/web/.env.production
+dotenvx encrypt -f apps/web/.env.production
 ```
 
 Your `.env.production` file is now encrypted, and you have a `.env.keys` file.
@@ -193,7 +193,7 @@ Great job! That's pretty much it. See the bonus section(s) below to go a little 
 Try changing the value of `.env.production` to your name.
 
 ```sh
-npm run dotenvx -- set HELLO Mot --encrypt
+npm run dotenvx set HELLO Mot
 ```
 
 Commit `.env.production` safely to code and redeploy.

@@ -94,7 +94,7 @@ HELLO="production"
 ## Encrypt production
 
 ```sh
-dotenvx set HELLO production -f .env.production --encrypt
+dotenvx encrypt -f .env.production
 ```
 
 Your `.env.production` file is now encrypted, and you have a `.env.keys` file.
@@ -216,7 +216,7 @@ Great job! That's pretty much it. See the bonus section(s) below to go a little 
 Try changing the value of `.env.production` to your name.
 
 ```sh
-dotenvx set HELLO Mot --encrypt
+dotenvx set HELLO Mot
 ```
 
 Commit `.env.production` safely to code and re-run your Docker container.

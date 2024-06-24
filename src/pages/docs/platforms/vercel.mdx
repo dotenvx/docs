@@ -172,11 +172,11 @@ PUBLIC_HELLO="production"
 <CodeGroup>
 
 ```shell {{ title: 'Next' }}
-npm run dotenvx -- set HELLO production --encrypt -f .env.production
+npm run dotenvx -- set HELLO production -f .env.production
 ```
 
 ```shell {{ title: 'Astro' }}
-npm run dotenvx -- set PUBLIC_HELLO production --encrypt -f .env.production
+npm run dotenvx -- set PUBLIC_HELLO production -f .env.production
 ```
 
 </CodeGroup>
@@ -319,7 +319,7 @@ Great job! That's pretty much it. See the bonus section(s) below to go a little 
 Try changing the value of `.env.production` to your name.
 
 ```sh
-npm run dotenvx -- set HELLO Mot --encrypt
+npm run dotenvx -- set HELLO Mot
 ```
 
 Commit `.env.production` safely to code and redeploy.
