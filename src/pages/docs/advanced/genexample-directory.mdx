@@ -2,7 +2,7 @@ export const description =
   'Generate a .env.example file inside the specified directory. Useful for monorepos.'
 
 ##### [Advanced](/docs/advanced)
-# dotenvx genexample directory
+# dotenvx ext genexample directory
 
 <p className="lead">{description}</p>
 
@@ -11,7 +11,7 @@ $ echo "HELLO=World" > .env
 $ mkdir -p apps/backend
 $ echo "HELLO=Backend" > apps/backend/.env
 
-$ dotenvx genexample apps/backend
+$ dotenvx ext genexample apps/backend
 ✔ updated .env.example (1)
 ```
 
