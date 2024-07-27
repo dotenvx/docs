@@ -49,7 +49,7 @@ export function Platforms(props) {
               Fly
             </h3>
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Fly</p>
-            <p className="mt-4"><Button href="/docs/platforms/fly" variant="text" arrow="right">Heroku Guide</Button></p>
+            <p className="mt-4"><Button href="/docs/platforms/fly" variant="text" arrow="right">Fly Guide</Button></p>
           </div>
           <FlyIcon className="h-9 w-9 text-[#7B3BE2]"/>
         </div>
@@ -109,7 +109,7 @@ export function Platforms(props) {
               Render
             </h3>
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Render</p>
-            <p className="mt-4"><Button href="/docs/platforms/render" variant="text" arrow="right">Railway Guide</Button></p>
+            <p className="mt-4"><Button href="/docs/platforms/render" variant="text" arrow="right">Render Guide</Button></p>
           </div>
           <RenderIcon className="h-9 w-9 text-[#46E3B7]"/>
         </div>
