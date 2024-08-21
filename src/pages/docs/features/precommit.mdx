@@ -16,14 +16,14 @@ export const description =
 ## Installation
 
 ```bash
-dotenvx precommit --install
+dotenvx ext precommit --install
 ```
 
 This installs a shell script to `.git/hooks/pre-commit`.
 
 ## Usage
 
-If you have installed the precommit hook with `dotenvx precommit --install`, simply attempt to commit a `.env` file to code.
+If you have installed the precommit hook with `dotenvx ext precommit --install`, simply attempt to commit a `.env` file to code.
 
 ```bash
 touch .env
@@ -40,5 +40,5 @@ The dotenvx precommit hook tries to give you next steps wherever possible.
 If you prefer not to install it as a hook you can run it manually. This can be useful for `ci`.
 
 ```bash
-dotenvx precommit
+dotenvx ext precommit
 ```
