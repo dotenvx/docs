@@ -16,7 +16,7 @@ export const description =
 ## Installation
 
 ```bash
-dotenvx ls
+dotenvx ext ls
 ```
 
 Lists out all .env* files in the folder and subfolders and prints them as a tree.
@@ -39,7 +39,7 @@ apps/
 It will output the following:
 
 ```bash
-$ dotenvx ls
+$ dotenvx ext ls
 ├─ .env
 ├─ frontend
 │  ├─ .env.vault
@@ -54,7 +54,7 @@ $ dotenvx ls
 Optionally, you can filter by specific filename(s):
 
 ```bash
-$ dotenvx ls --env-file .env.vault
+$ dotenvx ext ls --env-file .env.vault
 ├─ frontend
 │  └─ .env.vault
 └─ backend
@@ -64,7 +64,7 @@ $ dotenvx ls --env-file .env.vault
 Or, use a wildcard:
 
 ```bash
-$ dotenvx ls --env-file .env.prod*
+$ dotenvx ext ls --env-file .env.prod*
 └─ frontend
    └─ .env.production
 ```
