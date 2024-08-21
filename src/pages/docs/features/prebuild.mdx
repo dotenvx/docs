@@ -22,16 +22,16 @@ RUN curl -sfS https://dotenvx.sh/install.sh | sh
 
 ...
 
-RUN dotenvx prebuild
+RUN dotenvx ext prebuild
 CMD ["dotenvx", "run", "--", "node", "index.js"]
 ```
 
-We recommend placing it (dotenvx prebuild) on the last line or second to last line of your Dockerfile.
+We recommend placing it (dotenvx ext prebuild) on the last line or second to last line of your Dockerfile.
 
 ## Manual Usage
 
 If you prefer not to add it to your Dockerfile you can manually run it before building your docker image.
 
 ```bash
-dotenvx prebuild
+dotenvx ext prebuild
 ```
