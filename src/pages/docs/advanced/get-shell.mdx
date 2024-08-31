@@ -1,0 +1,15 @@
+export const description =
+  'Return a shell formatted response of all key/value pairs in a .env file.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx get --format shell
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World\n" > .env
+$ echo "KEY=value" >> .env
+
+$ dotenvx get --format shell
+HELLO="World" KEY="value"
+```
