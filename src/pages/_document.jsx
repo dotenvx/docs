@@ -61,7 +61,7 @@ export default function Document() {
         <NextScript />
         {process.env.NODE_ENV === 'production' && (
           <Script
-            src="https://dotenv-umami-fd0ec6de187e.herokuapp.com/script.js"
+            src="https://1.dotenvx.com/script.js"
             data-website-id="5c4c9a9b-ba1c-4bae-a734-3a1fe609c5a5"
             strategy="lazyOnload"
           />
