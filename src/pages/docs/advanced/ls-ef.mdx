@@ -2,7 +2,7 @@ export const description =
   'Glob .env filenames excluding a wildcard.'
 
 ##### [Advanced](/docs/advanced)
-# dotenvx ext ls -ef
+# dotenvx ls -ef
 
 <p className="lead">{description}</p>
 
@@ -13,7 +13,7 @@ $ mkdir -p apps/backend
 $ touch apps/backend/.env
 $ touch apps/backend/.env.prod
 
-$ dotenvx ext ls -ef '**/.env.prod*'
+$ dotenvx ls -ef '**/.env.prod*'
 ├─ .env
 └─ apps
    └─ backend
