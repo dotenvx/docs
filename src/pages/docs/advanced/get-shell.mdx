@@ -17,11 +17,16 @@ HELLO=World KEY=value
 This can be useful when combined with `env` on the command line.
 
 ```sh
-$ env $(dotenvx get format --shell) your-command
+$ echo "console.log('Hello ' + process.env.KEY + ' ' + process.env.HELLO)" > index.js
+$ env $(dotenvx get --format=shell) node index.js
+Hello value World
 ```
 
 or with `export`.
 
 ```sh
-$ export $(dotenvx get format --shell) your-command
+$ echo "console.log('Hello ' + process.env.KEY + ' ' + process.env.HELLO)" > index.js
+$ export $(dotenvx get --format=shell)
+$ node index.js
+Hello value World
 ```
