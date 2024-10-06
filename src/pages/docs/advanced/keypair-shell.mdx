@@ -1,0 +1,15 @@
+export const description =
+  'Print a shell formatted reponse of public/private keys.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx keypair --format shell
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+$ dotenx encrypt
+
+$ dotenvx keypair --format shell
+DOTENV_PUBLIC_KEY=<publicKey> DOTENV_PRIVATE_KEY=<privateKey>
+```

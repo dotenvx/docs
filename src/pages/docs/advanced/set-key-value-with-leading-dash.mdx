@@ -1,0 +1,16 @@
+export const description =
+  'Set a value containing a leading dash.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx set KEY -- "- + * ÷"
+
+<p className="lead">{description}</p>
+
+If your value starts with a dash (`-`), then place two dashes instructing the cli that there are no more flag arguments.
+
+```sh
+$ touch .env.ci
+
+$ dotenvx set HELLO -f .env.ci -- "- + * ÷"
+set HELLO with encryption (.env.ci)
+```

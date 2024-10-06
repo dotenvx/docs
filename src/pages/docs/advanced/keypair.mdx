@@ -1,0 +1,15 @@
+export const description =
+  'Print public/private keys for .env file.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx keypair
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+$ dotenvx encrypt
+
+$ dotenvx keypair
+{"DOTENV_PUBLIC_KEY":"<publicKey>","DOTENV_PRIVATE_KEY":"<privateKey>"}
+```
