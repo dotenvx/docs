@@ -115,11 +115,9 @@ The following syntax rules apply to environment files:
 * Single-quoted (') values are used literally.
   * `VAR='$OTHER'` -> `$OTHER`
   * `VAR='${OTHER}'` -> `${OTHER}`
-* Quotes can be escaped with `\`.
+* Quotes can be escaped with \.
   * `VAR='Let\'s go!'` -> `Let's go!`
   * `VAR="{\"hello\": \"json\"}"` -> `{"hello": "json"}`
-* Dollar signs can be escaped with `\` (otherwise they will be [interpolated](#interpolation)).
-  * `VAR='\$one\$two'` -> `$one$two`
 * Common shell escape sequences including `\n`, `\r`, `\t`, and `\\` are supported in double-quoted values.
   * `VAR="some\tvalue"` -> `some value`
   * `VAR='some\tvalue'` -> `some\tvalue`
