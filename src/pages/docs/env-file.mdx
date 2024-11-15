@@ -139,9 +139,9 @@ SECRET_HASH="something-with-a-hash-#-this-is-not-a-comment"
 
 ## Interpolation
 
-Interpolation (substitution) is supported in environment files. Interpolation is applied for unquoted and double-quoted values. Both braced (`${VAR}`) and unbraced (`$VAR`) expressions are supported.
+Interpolation (also known as variable expansion) is supported in environment files. Interpolation is applied for unquoted and double-quoted values. Both braced (`${VAR}`) and unbraced (`$VAR`) expressions are supported.
 
-* Direct substitution
+* Direct interpolation
   * `${VAR}` -> value of `VAR`
 * Default value
   * `${VAR:-default}` -> value of `VAR` if set and non-empty, otherwise `default`
@@ -149,6 +149,17 @@ Interpolation (substitution) is supported in environment files. Interpolation is
 * Alternative value
   * `${VAR:-alternate}` -> value of `alternate` if `VAR` is set and non-empty, otherwise empty `''`
   * `${VAR-alternate}` -> value of `alternate` if `VAR` is set and non-empty, otherwise empty `''`
+
+## Command Substitution 
+
+Add the output of a command to one of your variables in your .env file. Command substitution is applied for unquoted and double-quoted values.
+
+* Direct substitution
+  * `$(whoami)` -> value of `$ whoami`
+
+```ini {{ title: '.env' }}
+DATABASE_URL="postgres://$(whoami)@localhost/my_database"
+```
 
 ## Encryption
 
