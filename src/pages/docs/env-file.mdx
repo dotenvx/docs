@@ -146,6 +146,9 @@ Interpolation (substitution) is supported in environment files. Interpolation is
 * Default value
   * `${VAR:-default}` -> value of `VAR` if set and non-empty, otherwise `default`
   * `${VAR-default}` -> value of `VAR` if set, otherwise `default`
+* Alternative value
+  * `${VAR:-alternate}` -> value of `alternate` if `VAR` is set and non-empty, otherwise empty `''`
+  * `${VAR-alternate}` -> value of `alternate` if `VAR` is set and non-empty, otherwise empty `''`
 
 ## Encryption
 
