@@ -213,8 +213,11 @@ function SmallPrint() {
         &copy; Copyright {new Date().getFullYear()}. All rights reserved.
       </p>
       <div className="flex gap-4">
-        <Link href="/llms.txt">
+        <Link href="/llms.txt" className="text-xs text-zinc-500">
           llms.txt
+        </Link>
+        <Link href="/llms-full.txt" className="text-xs text-zinc-500 mr-2">
+          llms-full.txt
         </Link>
         <SocialLink href="https://x.com/dotenvx" icon={XIcon}>
           Follow us on X
