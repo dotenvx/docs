@@ -14,6 +14,7 @@ import { Languages } from '@/components/Languages'
 import { Frameworks } from '@/components/Frameworks'
 import { Platforms } from '@/components/Platforms'
 import { Cis } from '@/components/Cis'
+import { BackgroundJobs } from '@/components/BackgroundJobs'
 import { PackageManagers } from '@/components/PackageManagers'
 import { ProcessManagers } from '@/components/ProcessManagers'
 import { Monorepos } from '@/components/Monorepos'
@@ -28,6 +29,7 @@ export const sections = [
   { title: 'Frameworks', id: 'frameworks' },
   { title: 'Platforms', id: 'platforms' },
   { title: 'CI/CD', id: 'cis' },
+  { title: 'Background Jobs', id: 'background-jobs' },
   { title: 'Package Managers', id: 'package-managers' },
   { title: 'Process Managers', id: 'process-managers' },
   { title: 'Monorepos', id: 'monorepos' },
@@ -103,6 +105,7 @@ winget install dotenvx
   </div>
 </div>
 
+<BackgroundJobs/>
 <PackageManagers/>
 <ProcessManagers/>
 <Monorepos/>

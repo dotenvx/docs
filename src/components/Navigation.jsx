@@ -211,6 +211,7 @@ export const navigation = [
       { title: 'Nx', href: '/docs/monorepos/nx' },
       { title: 'Render', href: '/docs/platforms/render' },
       { title: 'Railway', href: '/docs/platforms/railway' },
+      { title: 'Trigger', href: '/docs/background-jobs/triggerdotdev' },
       { title: 'Turborepo', href: '/docs/monorepos/turborepo' },
       { title: 'Vercel', href: '/docs/platforms/vercel' },
       { title: 'More', href: '/docs/guides' },
