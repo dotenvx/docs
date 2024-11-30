@@ -17,7 +17,7 @@ export function BackgroundJobs() {
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with trigger.dev</p>
             <p className="mt-4"><Button href="/docs/background-jobs/triggerdotdev" variant="text" arrow="right">Trigger.dev Guide</Button></p>
           </div>
-          <TriggerdotdevIcon className="w-10 h-10 text-[#AFFD6D]" />
+          <TriggerdotdevIcon className="w-10 h-10 text-[#000000] dark:text-[#AFFD6D]" />
         </div>
       </div>
     </div>
