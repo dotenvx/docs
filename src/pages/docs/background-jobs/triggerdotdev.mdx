@@ -1,19 +1,19 @@
-import { TriggerdotdevIcon } from '@/components/icons/TriggerdotdevIcon'
-import { BackgroundJobsBreadcrumb } from '@/components/BackgroundJobsBreadcrumb'
-import { GuideHeading } from '@/components/GuideHeading'
-import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
 import WellDone from '@/pages/partials/wellDone.mdx'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import { GuideHeading } from '@/components/GuideHeading'
+import { BackgroundJobsBreadcrumb } from '@/components/BackgroundJobsBreadcrumb'
 
+import { TriggerdotdevIcon } from '@/components/icons/TriggerdotdevIcon'
 import { NodeIcon } from '@/components/icons/NodeIcon'
 
 export const description =
   'Use dotenvx with Trigger.dev'
 
-<BackgroundJobsBreadcrumb icon={
+<BackgroundJobsBreadcrumb platform="Trigger.dev" icon={
   <>
     <TriggerdotdevIcon className="w-10 h-10 text-[#AFFD6D]" />
   </>
-} />
+}/>
 # Trigger.dev
 <GuideHeading lead={description} />
 
