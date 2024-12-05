@@ -1,0 +1,12 @@
+export const description =
+  'Exit with code 1 if any errors are encountered - like a missing key, missing .env file, or decryption failure.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx get KEY --strict
+
+<p className="lead">{description}</p>
+
+```sh
+$ dotenvx get DOES_NOT_EXIST --strict
+[MISSING_KEY] missing DOES_NOT_EXIST key
+```
