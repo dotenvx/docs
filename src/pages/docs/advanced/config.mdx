@@ -1,0 +1,27 @@
+export const description =
+  'Use directly in node.js code.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx.config()
+
+<p className="lead">{description}</p>
+
+```ini
+# .env
+HELLO="World"
+```
+
+```js
+// index.js
+require('@dotenvx/dotenvx').config()
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+```sh
+$ node index.js
+[dotenvx@1.28.0] injecting env (1) from .env
+Hello World
+```
+
+It defaults to looking for a `.env` file.

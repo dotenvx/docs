@@ -1,0 +1,20 @@
+export const description =
+  'Parse a .env string directly in node.js code.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx.parse(src)
+
+<p className="lead">{description}</p>
+
+```js
+// index.js
+const dotenvx = require('@dotenvx/dotenvx')
+const src = 'HELLO=World'
+const parsed = dotenvx.parse(src)
+console.log(`Hello ${parsed.HELLO}`)
+```
+
+```sh
+$ node index.js
+Hello World
+```
