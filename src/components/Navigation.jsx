@@ -218,12 +218,20 @@ export const navigation = [
     ]
   },
   {
+    title: 'Mods',
+    links: [
+      { title: 'Chrome Extension (soon)', href: 'https://github.com/dotenvx/dotenvx-browser-extension' },
+      { title: 'Heroku Buildpack', href: 'https://github.com/dotenvx/heroku-buildpack-dotenvx' },
+      { title: 'llms.txt', href: '/llms.txt' },
+      { title: 'llms-full.txt', href: '/llms-full.txt' },
+      { title: 'VSCode Extension (soon)', href: 'https://github.com/dotenvx/dotenvx-vscode' },
+    ]
+  },
+  {
     title: 'Resources',
     links: [
       { title: '.env', href: '/docs/env-file' },
       { title: '.env.keys', href: '/docs/env-keys-file' },
-      { title: 'llms.txt', href: '/llms.txt' },
-      { title: 'llms-full.txt', href: '/llms-full.txt' },
       { title: 'Deprecated', href: '/docs/deprecated' },
       { title: 'Stats', href: '/docs/stats' },
     ]
