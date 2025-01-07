@@ -1,0 +1,17 @@
+export const description =
+  'Use envKeysFile to customize the path to your .env.keys file. This is useful with monorepos.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx.config(envKeysFile: '../../.env.keys')
+
+<p className="lead">{description}</p>
+
+```ini
+# .env
+HELLO="World"
+```
+
+```js
+// index.js
+require('@dotenvx/dotenvx').config({envKeysFile: '../../.env.keys'})
+```

@@ -1,0 +1,13 @@
+export const description =
+  'Programatically set an environment variable.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx.set(KEY, value)
+
+<p className="lead">{description}</p>
+
+```js
+// index.js
+const dotenvx = require('@dotenvx/dotenvx')
+dotenvx.set('HELLO', 'World', { path: '.env' })
+```
