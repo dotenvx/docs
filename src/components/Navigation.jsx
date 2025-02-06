@@ -220,11 +220,11 @@ export const navigation = [
   {
     title: 'Mods',
     links: [
-      { title: 'Chrome Extension (soon)', href: 'https://github.com/dotenvx/dotenvx-browser-extension' },
+      { title: 'Chrome Extension (new)', href: 'https://dotenvx.com/chrome-extension' },
       { title: 'Heroku Buildpack', href: 'https://github.com/dotenvx/heroku-buildpack-dotenvx' },
       { title: 'llms.txt', href: '/llms.txt' },
       { title: 'llms-full.txt', href: '/llms-full.txt' },
-      { title: 'VSCode Extension (soon)', href: 'https://github.com/dotenvx/dotenvx-vscode' },
+      { title: 'VSCode Extension (new)', href: 'https://dotenvx.com/vscode-extension' },
     ]
   },
   {
