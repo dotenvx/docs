@@ -2,7 +2,7 @@ export const description =
   'Override existing env variables. These can be variables already on your machine or variables loaded as files consecutively. The last variable seen will \'win\'.'
 
 ##### [Advanced](/docs/advanced)
-# dotenvx run --env HELLO=String
+# dotenvx run --overload
 
 <p className="lead">{description}</p>
 
@@ -15,3 +15,5 @@ $ dotenvx run -f .env.local -f .env --overload -- node index.js
 [dotenvx] injecting env (1) from .env.local, .env
 Hello World
 ```
+
+Note that with `--overload` subsequent files DO override pre-existing variables defined in previous files.
