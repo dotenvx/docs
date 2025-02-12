@@ -195,6 +195,7 @@ export const navigation = [
       { title: 'Install', href: '/docs/install' },
       { title: 'Basics', href: '/docs/quickstart' },
       { title: 'Advanced', href: '/docs/advanced' },
+      { title: 'Whitepaper ↗', href: '/dotenvx.pdf' },
     ]
   },
   {
@@ -220,11 +221,11 @@ export const navigation = [
   {
     title: 'Mods',
     links: [
-      { title: 'Chrome Extension (new)', href: 'https://dotenvx.com/chrome-extension' },
-      { title: 'Heroku Buildpack', href: 'https://github.com/dotenvx/heroku-buildpack-dotenvx' },
-      { title: 'llms.txt', href: '/llms.txt' },
-      { title: 'llms-full.txt', href: '/llms-full.txt' },
-      { title: 'VSCode Extension (new)', href: 'https://dotenvx.com/vscode-extension' },
+      { title: 'Chrome ↗', href: 'https://dotenvx.com/chrome-extension' },
+      { title: 'Heroku ↗', href: 'https://github.com/dotenvx/heroku-buildpack-dotenvx' },
+      { title: 'VSCode ↗', href: 'https://dotenvx.com/vscode-extension' },
+      { title: 'llms-full.txt ↗', href: '/llms-full.txt' },
+      { title: 'llms.txt ↗', href: '/llms.txt' },
     ]
   },
   {
@@ -232,8 +233,8 @@ export const navigation = [
     links: [
       { title: '.env', href: '/docs/env-file' },
       { title: '.env.keys', href: '/docs/env-keys-file' },
+      { title: 'Statistics', href: '/docs/stats' },
       { title: 'Deprecated', href: '/docs/deprecated' },
-      { title: 'Stats', href: '/docs/stats' },
     ]
   },
 ]
