@@ -1,0 +1,24 @@
+export const description =
+  'Rotate the contents of an encrypted .env file and send to stdout.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx rotate --stdout
+
+<p className="lead">{description}</p>
+
+```sh
+$ dotenvx rotate --stdout
+#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
+#/            public-key encryption for .env files          /
+#/       [how it works](https://dotenvx.com/encryption)     /
+#/----------------------------------------------------------/
+DOTENV_PUBLIC_KEY="034af93e93708b994c10f236c96ef88e47291066946cce2e8d98c9e02c741ced45"
+# .env
+HELLO="encrypted:12345"
+```
+
+or send to a file:
+
+```sh
+$ dotenvx rotate --stdout > somefile.txt
+```

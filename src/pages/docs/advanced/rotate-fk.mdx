@@ -1,0 +1,17 @@
+export const description =
+  'Specify path to .env.keys for rotation. This is useful with monorepos.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx rotate -fk
+
+<p className="lead">{description}</p>
+
+```sh
+$ mkdir -p apps/app1
+$ echo "HELLO=World" > apps/app1/.env
+
+$ dotenvx encrypt -fk .env.keys -f apps/app1/.env
+✔ encrypted (apps/app1/.env)
+$ dotenvx rotate -fk .env.keys -f apps/app1/.env
+✔ rotated (apps/app1/.env)
+```

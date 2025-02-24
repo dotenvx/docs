@@ -1,0 +1,15 @@
+export const description =
+  'Rotate public/private keys for .env file and re-encrypt all encrypted values.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx rotate
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+$ dotenvx encrypt
+✔ encrypted (.env)
+$ dotenvx rotate
+✔ rotated (.env)
+```

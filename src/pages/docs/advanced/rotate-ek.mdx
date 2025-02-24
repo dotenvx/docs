@@ -1,0 +1,25 @@
+export const description =
+  'Rotate the encrypted contents inside an encrypted .env file except for an exluded key.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx rotate -ek
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World\nHOLA=Mundo" > .env
+$ dotenvx encrypt
+✔ encrypted (.env)
+$ dotenvx rotate -ek HOLA
+✔ rotated (.env)
+```
+
+Even specify a glob pattern.
+
+```sh
+$ echo "HELLO=World\nHOLA=Mundo" > .env
+$ dotenvx encrypt
+✔ encrypted (.env)
+$ dotenvx rotate -ek "HO*"
+✔ rotated (.env)
+```
