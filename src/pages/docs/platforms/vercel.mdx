@@ -98,6 +98,7 @@ Add `.gitignore` file.
 
 ```ini {{ title: '.gitignore' }}
 # gitignore
+!.env.production
 .env.keys
 ```
 
@@ -127,7 +128,7 @@ Install [`dotenvx`](https://github.com/dotenvx/dotenvx).
 npm install @dotenvx/dotenvx --save
 ```
 
-Swap `process.env` for `dotenvx.get` in your code.
+For Next.js, swap `process.env` for `dotenvx.get`. For Astro, you can leave things using `import.meta.env`.
 
 <CodeGroup>
 
@@ -160,7 +161,7 @@ export default function Page() {
 
 </CodeGroup>
 
-Add `dotenvx` to your scripts for good measure.
+Add `dotenvx` to your scripts.
 
 <CodeGroup>
 
