@@ -1,0 +1,17 @@
+export const description =
+  'Programatically get an environment variable at access/runtime.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx.get(KEY)
+
+<p className="lead">{description}</p>
+
+```js
+// index.js
+const dotenvx = require('@dotenvx/dotenvx')
+const decryptedValue = dotenvx.get('HELLO')
+
+console.log(decryptedValue)
+```
+
+This is known as *Decryption at Access* and is written about in [the whitepaper](https://dotenvx.com/dotenvx.pdf).
