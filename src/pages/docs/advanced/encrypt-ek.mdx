@@ -1,0 +1,23 @@
+export const description =
+  'Specify the key(s) to NOT encrypt by passing --exclude-key.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx encrypt -ek
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World\nHELLO2=Universe" > .env
+
+$ dotenvx encrypt -ek HELLO
+✔ encrypted (.env)
+```
+
+Even specify a glob pattern.
+
+```sh
+$ echo "HELLO=World\nHOLA=Mundo" > .env
+
+$ dotenvx encrypt -ek "HO*"
+✔ encrypted (.env)
+```

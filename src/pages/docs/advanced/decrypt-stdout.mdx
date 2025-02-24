@@ -1,0 +1,24 @@
+export const description =
+  'Decrypt the contents of an encrypted .env file and send to stdout.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx decrypt --stdout
+
+<p className="lead">{description}</p>
+
+```sh
+$ dotenvx decrypt --stdout
+#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
+#/            public-key encryption for .env files          /
+#/       [how it works](https://dotenvx.com/encryption)     /
+#/----------------------------------------------------------/
+DOTENV_PUBLIC_KEY="034af93e93708b994c10f236c96ef88e47291066946cce2e8d98c9e02c741ced45"
+# .env
+HELLO="World"
+```
+
+or send to a file:
+
+```sh
+$ dotenvx decrypt --stdout > somefile.txt
+```

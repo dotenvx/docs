@@ -1,0 +1,25 @@
+export const description =
+  'Decrypt the contents inside an encrypted .env file except for an exluded key.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx decrypt -ek
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World\nHOLA=Mundo" > .env
+$ dotenvx encrypt
+✔ encrypted (.env)
+$ dotenvx decrypt -ek HOLA
+✔ decrypted (.env)
+```
+
+Even specify a glob pattern.
+
+```sh
+$ echo "HELLO=World\nHOLA=Mundo" > .env
+$ dotenvx encrypt
+✔ encrypted (.env)
+$ dotenvx decrypt -ek "HO*"
+✔ encrypted (.env)
+```

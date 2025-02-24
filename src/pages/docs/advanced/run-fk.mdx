@@ -1,0 +1,15 @@
+export const description =
+  'Specify path to .env.keys. This is useful with monorepos.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx run -fk
+
+<p className="lead">{description}</p>
+
+```sh
+$ mkdir -p apps/app1
+$ touch apps/app1/.env
+$ dotenvx set HELLO world -fk .env.keys -f apps/app1/.env
+
+$ dotenvx run -fk .env.keys -f apps/app1/.env -- yourcommand
+```

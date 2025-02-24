@@ -1,0 +1,17 @@
+export const description =
+  'Specify path to .env.keys. This is useful with monorepos.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx decrypt -fk
+
+<p className="lead">{description}</p>
+
+```sh
+$ mkdir -p apps/app1
+$ echo "HELLO=World" > apps/app1/.env
+
+$ dotenvx encrypt -fk .env.keys -f apps/app1/.env
+✔ encrypted (apps/app1/.env)
+$ dotenvx decrypt -fk .env.keys -f apps/app1/.env
+✔ decrypted (apps/app1/.env)
+```
