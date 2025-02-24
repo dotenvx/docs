@@ -3,7 +3,6 @@ import ProcfileCodeGroup from '@/pages/partials/procfileCodeGroup.mdx'
 import InstallCodeGroup from '@/pages/partials/installCodeGroup.mdx'
 import InstallLibrariesCodeGroup from '@/pages/partials/installLibrariesCodeGroup.mdx'
 import HelloWorldCodeGroup from '@/pages/partials/helloWorldCodeGroup.mdx'
-import HerokuCreateCodeGroup from '@/pages/partials/herokuCreateCodeGroup.mdx'
 import DotenvxRunLocalCodeGroup from '@/pages/partials/dotenvxRunLocalCodeGroup.mdx'
 import DotenvxRunProductionLocalCodeGroup from '@/pages/partials/dotenvxRunProductionLocalCodeGroup.mdx'
 import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
@@ -95,6 +94,13 @@ Add `.vercelignore` file.
 .env.keys
 ```
 
+Add `.gitignore` file.
+
+```ini {{ title: '.gitignore' }}
+# gitignore
+.env.keys
+```
+
 Commit to code and deploy to Vercel.
 
 <CodeGroup>
@@ -121,7 +127,40 @@ Install [`dotenvx`](https://github.com/dotenvx/dotenvx).
 npm install @dotenvx/dotenvx --save
 ```
 
-Preload scripts with dotenvx. This will inject environment variables ahead of any build, start, or dev commands.
+Swap `process.env` for `dotenvx.get` in your code.
+
+<CodeGroup>
+
+```js {{ title: 'Next' }}
+// app/page.tsx
+import * as dotenvx from '@dotenvx/dotenvx';
+export default function Page() {
+  return <h1>Hello {dotenvx.get('HELLO')}</h1>;
+}
+```
+
+```js {{ title: 'Astro' }}
+---
+// src/pages/index.astro
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro</title>
+    </head>
+    <body>
+        <h1>Hello {import.meta.env.PUBLIC_HELLO}</h1>
+    </body>
+</html>
+```
+
+</CodeGroup>
+
+Add `dotenvx` to your scripts for good measure.
 
 <CodeGroup>
 
@@ -260,6 +299,10 @@ npx vercel@latest env add DOTENV_PRIVATE_KEY_PRODUCTION
 ```
 
 </CodeGroup>
+
+Or set it in the Vercel UI.
+
+<ScreenshotBrowser url="/assets/docs/vercel-vars.png" www="vercel.com" />
 
 Redeploy.
 
