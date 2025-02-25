@@ -52,10 +52,10 @@ export const sections = [
 
 <CodeGroup>
 
-```bash {{ title: "Brew" }}
-# install with Homebrew and then use the dotenvx command
-brew install dotenvx/brew/dotenvx
-dotenvx help
+```bash {{ title: "Npm" }}
+# install it with npm
+npm install @dotenvx/dotenvx --save
+npx dotenvx help
 ```
 
 ```bash {{ title: "Curl" }}
@@ -64,9 +64,9 @@ curl -sfS https://dotenvx.sh/install.sh | sh
 dotenvx help
 ```
 
-```bash {{ title: "Npm" }}
-# install globally with npm
-npm install @dotenvx/dotenvx -g
+```bash {{ title: "Brew" }}
+# install with Homebrew and then use the dotenvx command
+brew install dotenvx/brew/dotenvx
 dotenvx help
 ```
 
@@ -76,6 +76,7 @@ docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
 ```
 
 ```bash {{ title: "Windows" }}
+# install on windows
 winget install dotenvx
 ```
 
