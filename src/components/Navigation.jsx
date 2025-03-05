@@ -229,6 +229,14 @@ export const navigation = [
     ]
   },
   {
+    title: 'Pro',
+    links: [
+      { title: 'Sign up', href: '/docs/pro/signup' },
+      { title: 'Log in', href: '/docs/pro/login' },
+      { title: 'Log out', href: '/docs/pro/logout' },
+    ]
+  },
+  {
     title: 'Resources',
     links: [
       { title: '.env', href: '/docs/env-file' },
