@@ -3,20 +3,45 @@ import { GuideHeading } from '@/components/GuideHeading'
 import { ProBreadcrumb } from '@/components/ProBreadcrumb'
 
 import { DotenvxProIcon } from '@/components/icons/DotenvxProIcon'
+import InstallProCodeGroup from '@/pages/partials/installProCodeGroup.mdx'
 
 export const description = 
-  'Log out of dotenvx pro'
+  'Log out of dotenvx pro.'
 
 <ProBreadcrumb title="Log out" icon={
   <>
     <DotenvxProIcon className="h-9 w-9 text-[#0080FF]"/>
   </>
 }/>
-# Log out
+# Log out 
 <GuideHeading lead={description} />
 
-<Note>
-  Pro is beta software–but it's going to be great! It's under active development as is documentation for it.
-</Note>
+## CLI 📟
 
-*Documentation coming soon.*
+**Log out**–from the cli.
+
+```bash
+$ dotenvx pro logout
+✔ logged out [motdotla] from this device and revoked token [dxo_5ZrwRXV…]
+⮕ next visit [https://pro.dotenvx.com/settings/devices] to view your devices
+```
+
+Optionally, you can view the revoked device from the web ui.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/4c2e3c53-914a-4cdb-9a0a-ea8fbeab64ca' www='pro.dotenvx.com' width='md:w-4/6' />
+
+That's it. Thanks for using dotenvx pro. 🏆
+
+## Web 🖥️
+
+Logging out from the web is a separate process.
+
+**Click log out** under your profile picture at the top right (or go directly to [pro.dotenvx.com/logout](https://pro.dotenvx.com/logout)).
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/adede8f9-79cc-4ced-b693-93ef19298e8d' www='pro.dotenvx.com' width='md:w-4/6' />
+
+You will be logged out.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/4577670f-d11e-42e6-abcc-affc64922c16' www='pro.dotenvx.com' width='md:w-4/6' />
+
+That's it. Thanks for using dotenvx pro. 🏆

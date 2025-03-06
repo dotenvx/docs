@@ -230,6 +230,7 @@ export const navigation = [
   },
   {
     title: 'Pro',
+    href: '/docs/pro',
     links: [
       { title: 'Sign up', href: '/docs/pro/signup' },
       { title: 'Log in', href: '/docs/pro/login' },
