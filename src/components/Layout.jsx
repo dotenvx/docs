@@ -21,8 +21,8 @@ export function Layout({ children, sections = [] }) {
               <Link href="/" aria-label="Home">
                 <Logo className="w-10 h-10 mr-3" />
               </Link>
-              <Link href="/" aria-label="Home" className="text-center rounded-full px-2 py-2.5 text-sm font-semibold text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 active:bg-zinc-300 dark:active:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-200 ease-in duration-150">
-                &larr; back home
+              <Link href="/docs" aria-label="Documentation" className="text-center rounded-full px-2 py-2.5 text-sm font-semibold text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 active:bg-zinc-300 dark:active:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-200 ease-in duration-150 mr-1">
+                Documentation
               </Link>
             </div>
             <Header className="border-t border-yellow-300 dark:rounded-t-lg"/>
