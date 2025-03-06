@@ -223,6 +223,7 @@ export const navigation = [
     href: '/docs/pro',
     links: [
       { title: 'Sign up', href: '/docs/pro/signup' },
+      { title: 'New organization', href: '/docs/pro/new-organization' },
       { title: 'Log in', href: '/docs/pro/login' },
       { title: 'Log out', href: '/docs/pro/logout' },
     ]
