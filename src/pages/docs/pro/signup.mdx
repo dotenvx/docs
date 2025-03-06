@@ -3,9 +3,10 @@ import { GuideHeading } from '@/components/GuideHeading'
 import { ProBreadcrumb } from '@/components/ProBreadcrumb'
 
 import { DotenvxProIcon } from '@/components/icons/DotenvxProIcon'
+import InstallProCodeGroup from '@/pages/partials/installProCodeGroup.mdx'
 
 export const description = 
-  'Sign up for dotenvx pro'
+  'Sign up for dotenvx pro.'
 
 <ProBreadcrumb title="Sign up" icon={
   <>
@@ -15,22 +16,77 @@ export const description =
 # Sign up
 <GuideHeading lead={description} />
 
-Sign up using the CLI or UI
-
 ## CLI 📟
 
-## UI 🖥️
+**Install** [dotenvx pro](https://github.com/dotenvx/dotenvx-pro).
 
-1. Go to [pro.dotenvx.com/signup](https://pro.dotenvx.com/signup)
-2. Click **Sign up with GitHub**
-3. Click **Authorize dotenvx** on GitHub
+<InstallProCodeGroup />
 
-[1]
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/21c9a2f7-46a8-41ba-9191-a502c8aae855' www='pro.dotenvx.com' />
+**Then log in**–creating your account.
 
-[2]
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/2e985644-4ee7-4335-ab0a-e4ca662f134a' www='github.com' />
+<CodeGroup>
 
-[3]
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/fb1198fb-91f8-4c9b-a27c-81fa8db1cb64' www='pro.dotenvx.com' />
+```bash {{ title: "Npm" }}
+$ npx dotenvx pro login
+press Enter to open [https://pro.dotenvx.com/login/device] and enter code [D9C1-03BC]... (Y/n)
+⠹ waiting on browser authorization
+✔ logged in [username] to this device and activated token [dxo_6kjPifI…]
+⮕ next run [dotenvx pro sync]
+```
 
+```bash {{ title: "Curl" }}
+$ dotenvx pro login
+press Enter to open [https://pro.dotenvx.com/login/device] and enter code [D9C1-03BC]... (Y/n)
+⠹ waiting on browser authorization
+✔ logged in [username] to this device and activated token [dxo_6kjPifI…]
+⮕ next run [dotenvx pro sync]
+```
+
+```bash {{ title: "Brew" }}
+$ dotenvx pro login
+press Enter to open [https://pro.dotenvx.com/login/device] and enter code [D9C1-03BC]... (Y/n)
+⠹ waiting on browser authorization
+✔ logged in [username] to this device and activated token [dxo_6kjPifI…]
+⮕ next run [dotenvx pro sync]
+
+```
+
+```bash {{ title: "GitHub Releases" }}
+$ ./dotenvx-pro login
+press Enter to open [https://pro.dotenvx.com/login/device] and enter code [D9C1-03BC]... (Y/n)
+⠹ waiting on browser authorization
+✔ logged in [username] to this device and activated token [dxo_6kjPifI…]
+⮕ next run [dotenvx pro sync]
+```
+
+```bash {{ title: "Windows" }}
+# coming soon
+```
+
+</CodeGroup>
+
+Follow the prompts to **connect your device.**
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/5369b5d4-5c2b-4bc6-94f2-97f55d2ca194' www='pro.dotenvx.com' width='md:w-4/6' />
+
+That's it. Welcome to dotenvx pro! 🏆
+
+<Note>
+  This flow generates a dotenvx oauth token, a `dxo_*`–allowing secure cli access to pro.
+</Note>
+
+## Web 🖥️
+
+Alternatively, sign up from the web. Go to [pro.dotenvx.com/signup](https://pro.dotenvx.com/signup).
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/21c9a2f7-46a8-41ba-9191-a502c8aae855' www='pro.dotenvx.com' width='md:w-4/6' />
+
+Click **Sign up with GitHub** to enter GitHub's OAuth flow.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/58ce2673-d33f-4ace-9696-33ecde6e4093' www='github.com' width='md:w-4/6' />
+
+Click **Authorize dotenvx** on GitHub.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/887d0b38-8fbe-426d-9665-60e2c5b76bd2' www='pro.dotenvx.com' width='md:w-4/6' />
+
+That's it. Welcome to dotenvx pro! 🏆
