@@ -219,6 +219,15 @@ export const navigation = [
     ]
   },
   {
+    title: 'Pro',
+    href: '/docs/pro',
+    links: [
+      { title: 'Sign up', href: '/docs/pro/signup' },
+      { title: 'Log in', href: '/docs/pro/login' },
+      { title: 'Log out', href: '/docs/pro/logout' },
+    ]
+  },
+  {
     title: 'Mods',
     links: [
       { title: 'Chrome ↗', href: 'https://dotenvx.com/chrome-extension' },
@@ -226,15 +235,6 @@ export const navigation = [
       { title: 'VSCode ↗', href: 'https://dotenvx.com/vscode-extension' },
       { title: 'llms-full.txt ↗', href: '/llms-full.txt' },
       { title: 'llms.txt ↗', href: '/llms.txt' },
-    ]
-  },
-  {
-    title: 'Pro',
-    href: '/docs/pro',
-    links: [
-      { title: 'Sign up', href: '/docs/pro/signup' },
-      { title: 'Log in', href: '/docs/pro/login' },
-      { title: 'Log out', href: '/docs/pro/logout' },
     ]
   },
   {
