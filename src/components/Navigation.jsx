@@ -195,6 +195,7 @@ export const navigation = [
       { title: 'Install', href: '/docs/install' },
       { title: 'Basics', href: '/docs/quickstart' },
       { title: 'Advanced', href: '/docs/advanced' },
+      { title: 'Pro 🏆', href: '/docs/pro' },
       { title: 'Whitepaper ↗', href: '/dotenvx.pdf' },
     ]
   },
@@ -219,11 +220,12 @@ export const navigation = [
     ]
   },
   {
-    title: 'Pro',
+    title: 'Pro Guides',
     href: '/docs/pro',
     links: [
       { title: 'Sign up', href: '/docs/pro/signup' },
       { title: 'New organization', href: '/docs/pro/new-organization' },
+      { title: 'New project', href: '/docs/pro/new-project' },
       { title: 'Log in', href: '/docs/pro/login' },
       { title: 'Log out', href: '/docs/pro/logout' },
     ]

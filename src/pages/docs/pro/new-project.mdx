@@ -1,0 +1,148 @@
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import { GuideHeading } from '@/components/GuideHeading'
+import { ProBreadcrumb } from '@/components/ProBreadcrumb'
+
+import { DotenvxProIcon } from '@/components/icons/DotenvxProIcon'
+import InstallProCodeGroup from '@/pages/partials/installProCodeGroup.mdx'
+
+export const description = 
+  'Create a project on dotenvx pro.'
+
+<ProBreadcrumb title="New project" icon={
+  <>
+    <DotenvxProIcon className="h-9 w-9 text-[#0080FF]"/>
+  </>
+}/>
+# New project
+<GuideHeading lead={description} />
+
+## CLI 📟
+
+Create (or use) a repository with `.env` file.
+
+```bash
+$ mkdir projectx
+$ echo "HELLO=World" > .env
+```
+
+Encrypt it.
+
+```
+$ dotenvx encrypt
+✔ encrypted (.env)
+```
+
+Add `.env.keys` to `.gitignore`.
+
+```
+$ git init .
+$ echo ".env.keys" >> .gitignore
+$ git add .
+$ git commit -am "initial commit"
+$ git remote add origin git@github.com:motdotla/projectx.git
+$ git push -u origin main
+```
+
+Now on GitHub, your project should have one (or more) encrypted `.env` file(s).
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/d4aafd89-036e-45b5-b00f-edd238c1e8ca' www='github.com' width='md:w-4/6' />
+
+Push `.env.keys`–creating your project on dotenvx.
+
+```
+$ dotenvx pro push
+✔ pushed (.env)
+```
+
+<Note>
+You might have to run `$ dotenvx pro sync` first–so that the cli has knowledge of your organization.
+</Note>
+
+View the project.
+
+```
+$ dotenvx pro open
+press Enter to open [https://pro.dotenvx.com/gh/motdotla/projectx]... (Y/n)
+✔ opened [motdotla/projectx]
+```
+
+It opens your web browser.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/ee70b7ee-6e7f-4aca-9e0f-2c4143e4c483' www='pro.dotenvx.com' width='md:w-4/6' />
+
+Click **.env.keys**–to view the contents of your `.env.keys` file. 
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/41108f87-acc5-484b-ad69-fd982bc0ce00' www='pro.dotenvx.com' width='md:w-4/6' />
+
+<Note>
+  Important to note, the `DOTENV_PRIVATE_KEY` is now encrypted. This is an additional security feature native to dotenvx pro. *It is encrypted with your organization's public key.*
+</Note>
+
+Next, check your source code–the `.env.keys` file has been deleted locally.
+
+```
+$ ls -1A
+.env
+.git/
+.gitignore
+```
+
+This is by design! Your project's keys are now **fully managed by dotenvx pro**. 🏆
+
+Want to view it? You still can with the `pro keypairs` command.
+
+```
+$ dotenvx pro keypairs --pp
+{
+  "DOTENV_PUBLIC_KEY": "03cde813f7888ad1bf9e23f3f36e1f6ce23a63e8d0a024d6ecdfdba2fd4918659e",
+  "DOTENV_PRIVATE_KEY": "e38b906d2992e1c80054c934501221ff679473577214c5b78c73b89b178147c1"
+}
+```
+
+Curious where these are stored? You can check with `pro settings`
+
+---
+
+In your cli, run the **settings orgnew** command.
+
+```bash
+$ dotenvx pro settings orgnew
+```
+
+Follow the prompts to **create your organization**. For example, I am creating my [motdotla](https://github.com/motdotla) account in the screenshot below.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/52909ed6-6ee5-4b3a-9e2e-b535674326ac' www='pro.dotenvx.com' width='md:w-4/6' />
+
+<Note>
+  It must be an organization (or account) **you control** on GitHub.
+</Note>
+
+On the next screen, it will show **created successfully** with your organization listed.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/45105b51-2c56-4e1b-96a2-5c85ad8c84ed' www='pro.dotenvx.com' width='md:w-4/6' />
+
+Click through to **view your organization**.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/e20d97dc-c6fb-4d73-85aa-f78b9098e014' www='pro.dotenvx.com' width='md:w-4/6' />
+
+Nice nice. You're ready to add a project next.
+
+<hr/>
+
+## Web 🖥️
+
+Alternatively, create an organization from the web ui. Go to [pro.dotenvx.com](https://pro.dotenvx.com).
+
+**Click create** next to the GitHub org you wish to create. For example, in the screenshot below, I am creating [dotenvx](https://github.com/dotenvx). Meta 😎😅.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/f6a70182-1b9d-4770-98b5-4cad0209b6b5' www='pro.dotenvx.com' width='md:w-4/6' />
+
+Confirm things look good and **click Next**.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/29ba3d49-b345-4be4-8da2-62d46ad17a8a' www='github.com' width='md:w-4/6' />
+
+That's it. It's **created successfully**.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/0d04f8b6-af21-4711-b977-d5efbc5f47c0' www='pro.dotenvx.com' width='md:w-4/6' />
+
+You're ready to add a project next.
