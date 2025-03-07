@@ -16,7 +16,7 @@ export const description =
 # New project
 <GuideHeading lead={description} />
 
-## CLI 📟
+## On GitHub
 
 Create (or use) a repository with `.env` file.
 
@@ -46,6 +46,8 @@ $ git push -u origin main
 Now on GitHub, your project should have one (or more) encrypted `.env` file(s).
 
 <ScreenshotBrowser url='https://github.com/user-attachments/assets/d4aafd89-036e-45b5-b00f-edd238c1e8ca' www='github.com' width='md:w-4/6' />
+
+## On Pro
 
 Push `.env.keys`–creating your project on dotenvx.
 
@@ -78,6 +80,8 @@ Click **.env.keys**–to view the contents of your `.env.keys` file.
   Important to note, the `DOTENV_PRIVATE_KEY` is now encrypted. This is an additional security feature native to dotenvx pro. *It is encrypted with your organization's public key.*
 </Note>
 
+## Private Key
+
 Next, check your source code–the `.env.keys` file has been deleted locally.
 
 ```
@@ -89,60 +93,51 @@ $ ls -1A
 
 This is by design! Your project's keys are now **fully managed by dotenvx pro**. 🏆
 
-Want to view it? You still can with the `pro keypairs` command.
+To view the private key, use the [`pro keypair` command](/docs/pro/advanced/keypair).
 
-```
-$ dotenvx pro keypairs --pp
+```sh
+$ dotenvx pro keypair --pp
 {
   "DOTENV_PUBLIC_KEY": "03cde813f7888ad1bf9e23f3f36e1f6ce23a63e8d0a024d6ecdfdba2fd4918659e",
   "DOTENV_PRIVATE_KEY": "e38b906d2992e1c80054c934501221ff679473577214c5b78c73b89b178147c1"
 }
 ```
 
-Curious where these are stored? You can check with `pro settings`
+## Run/Get
+
+Inject (and get) your values with dotenvx like you always have. `dotenvx pro` piggy backs on the `dotenvx run/get` commands.
+
+```sh
+$ dotenvx pro get -pp
+{
+  "DOTENV_PUBLIC_KEY": "03cde813f7888ad1bf9e23f3f36e1f6ce23a63e8d0a024d6ecdfdba2fd4918659e",
+  "HELLO": "World"
+}
+```
+
+## Conclusion
+
+Using `dotenvx pro` you've:
+
+1. Removed the risk of keeping `.env.keys` locally
+2. Added encryption to your private keys
+3. Converted your private keys to **fully managed**
+
+All in just a couple commands. I'd say that's Professional. 🏆
+
+Next let's add a teammate–so they can seamlessly make use of the private key.
 
 ---
 
-In your cli, run the **settings orgnew** command.
+## Bonus
 
-```bash
-$ dotenvx pro settings orgnew
+Where are these stored? They are encrypted and stored locally, using zero-knowledge architecture. You can check the encrypted contents tree with `pro settings storetree`.
+
+```sh
+$ dotenvx pro settings storetree
+├─ .env
+└─ pro.dotenvx.com
+   ├─ user-1-organization-1.json
+   ├─ user-1-private-key.json
+   └─ user-1.json
 ```
-
-Follow the prompts to **create your organization**. For example, I am creating my [motdotla](https://github.com/motdotla) account in the screenshot below.
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/52909ed6-6ee5-4b3a-9e2e-b535674326ac' www='pro.dotenvx.com' width='md:w-4/6' />
-
-<Note>
-  It must be an organization (or account) **you control** on GitHub.
-</Note>
-
-On the next screen, it will show **created successfully** with your organization listed.
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/45105b51-2c56-4e1b-96a2-5c85ad8c84ed' www='pro.dotenvx.com' width='md:w-4/6' />
-
-Click through to **view your organization**.
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/e20d97dc-c6fb-4d73-85aa-f78b9098e014' www='pro.dotenvx.com' width='md:w-4/6' />
-
-Nice nice. You're ready to add a project next.
-
-<hr/>
-
-## Web 🖥️
-
-Alternatively, create an organization from the web ui. Go to [pro.dotenvx.com](https://pro.dotenvx.com).
-
-**Click create** next to the GitHub org you wish to create. For example, in the screenshot below, I am creating [dotenvx](https://github.com/dotenvx). Meta 😎😅.
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/f6a70182-1b9d-4770-98b5-4cad0209b6b5' www='pro.dotenvx.com' width='md:w-4/6' />
-
-Confirm things look good and **click Next**.
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/29ba3d49-b345-4be4-8da2-62d46ad17a8a' www='github.com' width='md:w-4/6' />
-
-That's it. It's **created successfully**.
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/0d04f8b6-af21-4711-b977-d5efbc5f47c0' www='pro.dotenvx.com' width='md:w-4/6' />
-
-You're ready to add a project next.
