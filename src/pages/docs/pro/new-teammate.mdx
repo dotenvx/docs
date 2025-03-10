@@ -1,0 +1,119 @@
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import { GuideHeading } from '@/components/GuideHeading'
+import { ProBreadcrumb } from '@/components/ProBreadcrumb'
+
+import { DotenvxProIcon } from '@/components/icons/DotenvxProIcon'
+import InstallProCodeGroup from '@/pages/partials/installProCodeGroup.mdx'
+
+export const description = 
+  'Add a teammate on dotenvx pro.'
+
+<ProBreadcrumb title="New teammate" icon={
+  <>
+    <DotenvxProIcon className="h-9 w-9 text-[#0080FF]"/>
+  </>
+}/>
+# New teammate
+<GuideHeading lead={description} />
+
+## Sending the invitation
+
+Navigate to [your organization on Pro](https://pro.dotenvx.com). At left, click *Team*.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/b7d282e2-9735-48d4-89aa-1657d78cd80f' www='pro.dotenvx.com' width='md:w-4/6' />
+
+Click *Invite Member*.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/5ef57ec8-4211-4b20-a0ad-6577cbf62510' www='pro.dotenvx.com' width='md:w-4/6' />
+
+Type the user's email address.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/9a7ad8f3-49f2-428a-a4f2-82539c304e09' www='pro.dotenvx.com' width='md:w-4/6' />
+
+<Note>
+  If the user already has a Pro account, you will see their username autocomplete. If not, that's ok, enter their email address. They will receive the invitation.
+</Note>
+
+On the next page, give them a role and click *Send invitation*.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/403036cb-b311-4583-be53-f55856da1f51' www='pro.dotenvx.com' width='md:w-4/6' />
+
+They will be listed under invitations. You can cancel the invitation at any time.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/745fb9ab-4805-4583-be14-470fca99c92d' www='pro.dotenvx.com' width='md:w-4/6' />
+
+Tell your teammate to check their email.
+
+## Accepting the invitation
+
+Your teammate will receive an email invitation to join your organization.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/96000d35-1939-421b-8b51-ba0a0a7c424f' www='apple mail' width='md:w-4/6' />
+
+Clicking 'Join @organization', takes them to a login screen.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/9be6aa33-b46e-4c71-8144-b54298273a60' www='pro.dotenvx.com' width='md:w-4/6' />
+
+One final prompt–to accept the invitation.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/aca65fe2-3518-4c43-9398-a5e1e1caf845' www='pro.dotenvx.com' width='md:w-4/6' />
+
+Nice! They are now a member of your organization! But notice the *sync required*.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/c75ffd8b-968b-4bc3-a3f2-8f669b092c8e' www='pro.dotenvx.com' width='md:w-4/6' />
+
+Pro uses zero-knowledge encryption with what are essentially public/private keypairs to pass around data securely without Pro's servers' ever knowing the real values.
+
+When the user run `dotenvx pro sync` it will generate their user public/private keypair to make this zero-knowledge encryption possible. The private key will never leave their machine.
+
+## Running sync
+
+Clicking through, they will receive additional instructions to run `dotenvx pro sync`.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/8c38b119-569c-4b88-90e8-b3ce3cdbcc87' www='pro.dotenvx.com' width='md:w-4/6' />
+
+Clicking *see more details* brings them to their account page with full instructions.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/8046026b-f4f7-47eb-b863-fa7d42aa9af2' www='pro.dotenvx.com' width='md:w-4/6' />
+
+Your teammate runs `dotenvx pro sync`:
+
+```bash
+$ curl -sfS https://dotenvx.sh/pro | sh
+$ dotenvx pro sync
+✔ [motdotenv] logged in
+✔ [motdotenv] encrypted
+⚠ [motdotenv] emergency kit recommended. Generate it with [dotenvx pro settings emergencykit --unmask].
+✖ missing private key for organization [motdotla]. Ask your teammate to run [dotenvx pro sync] and then try again.
+```
+
+Then you must run `dotenvx pro sync`–to securely encrypt the organization private key with their public key. 
+
+<Note>
+  **💡 Zero-Knowledge Encryption.** Most secrets managers hold your private keys—Pro does not. Each user encrypts and syncs the organization private key using teammate's public key, ensuring individual access. This means each teammate must run `dotenvx pro sync` separately, adding a step but keeping your secrets truly zero-knowledge—even our servers can't access them. [Learn more.](https://en.wikipedia.org/wiki/Zero-knowledge_proof)
+</Note>
+
+Finally, they run `dotenvx pro sync` a second time to complete the organization sync.
+
+```
+$ dotenvx pro sync
+✔ [motdotenv] logged in
+✔ [motdotenv] encrypted
+⚠ [motdotenv] emergency kit recommended. Generate it with [dotenvx pro settings emergencykit --unmask].
+✔ [@motdotla] encrypted
+✔ [@motdotla] team (2)
+✔ [@motdotla] logged in
+```
+
+Great! Your new teammate can now sync projects!
+
+---
+
+## Bonus
+
+The organization private key is an implementation detail that dotenvx pro obfuscates away for you. But if you do want to see the value, that is available via `dotenvx pro settings orgprivatekey --unmask`.
+
+```sh
+$ dotenvx pro settings orgprivatekey --unmask
+322c004271ac6ad1b548df3f316ff4e8f08e17e0b15f459db64f3f3b48b0efb7
+```

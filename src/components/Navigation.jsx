@@ -226,6 +226,7 @@ export const navigation = [
       { title: 'Sign up', href: '/docs/pro/signup' },
       { title: 'New organization', href: '/docs/pro/new-organization' },
       { title: 'New project', href: '/docs/pro/new-project' },
+      { title: 'New teammate', href: '/docs/pro/new-teammate' },
       { title: 'Log in', href: '/docs/pro/login' },
       { title: 'Log out', href: '/docs/pro/logout' },
     ]
