@@ -1,0 +1,18 @@
+export const description =
+  'Return a single environment variable\'s value using the dotenv-flow convention'
+
+##### [Advanced](/docs/advanced)
+# dotenvx get KEY --convention=flow
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=development local" > .env.development.local
+$ echo "HELLO=development" > .env.development
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=env" > .env
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx get HELLO --convention=flow
+development local
+```

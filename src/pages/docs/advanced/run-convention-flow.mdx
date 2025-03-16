@@ -1,0 +1,21 @@
+export const description =
+  'Load envs using the dotenv-flow convention.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx run --convention=flow
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=development local" > .env.development.local
+$ echo "HELLO=development" > .env.development
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=env" > .env
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run --convention=flow -- node index.js
+[dotenvx] injecting env (1) from .env.development.local, .env.development, .env.local, .env
+Hello development local
+```
+
+[dotenv-flow env load order](https://www.npmjs.com/package/dotenv-flow)
