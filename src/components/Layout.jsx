@@ -19,10 +19,10 @@ export function Layout({ children, sections = [] }) {
           <div className="contents border-t border-yellow-300 lg:pointer-events-auto lg:block lg:w-72 lg:overflow-y-auto lg:border-r lg:border-zinc-900/10 lg:px-5 lg:pb-8 lg:pt-2 lg:dark:border-white/10 xl:w-80">
             <div className="hidden lg:flex lg:items-center">
               <Link href="/" aria-label="Home">
-                <Logo className="w-10 h-10 mr-5" />
+                <Logo className="w-10 h-10 mr-3" />
               </Link>
               <Link href="/docs" aria-label="Documentation" className="text-blue-500 hover:text-zinc-950 dark:text-blue-400 dark:hover:text-zinc-50 underline font-bold tracking-tight text-sm">
-                Docs
+                Documentation
               </Link>
             </div>
             <Header className="border-t border-yellow-300 dark:rounded-t-lg"/>
