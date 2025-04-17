@@ -1,0 +1,23 @@
+export const description =
+  'Unlike other dotenv libraries, dotenvx attempts to unblock you with contextual help.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx run - Contextual Help
+
+<p className="lead">{description}</p>
+
+For example, when missing a custom .env file:
+
+```sh
+$ dotenvx run -f .env.missing -- echo $HELLO
+[MISSING_ENV_FILE] missing .env.missing file (/Users/scottmotte/Code/dotenvx/playground/apr-16/.env.missing)
+[MISSING_ENV_FILE] https://github.com/dotenvx/dotenvx/issues/484 and re-run [dotenvx run -- echo]
+```
+
+or when missing a KEY:
+
+```sh
+$ echo "HELLO=World" > .env
+$ dotenvx get GOODBYE
+[MISSING_KEY] missing GOODBYE key
+```
