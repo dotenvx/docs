@@ -1,0 +1,19 @@
+export const description =
+  'Prevent .env files from being built into your docker containers for a specified directory. Useful for monorepos.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx ext prebuild directory
+
+<p className="lead">{description}</p>
+
+Add it to your Dockerfile.
+
+```sh
+# Dockerfile
+RUN curl -fsS https://dotenvx.sh | sh
+
+...
+
+RUN dotenvx ext prebuild apps/backend
+CMD ["dotenvx", "run", "--", "node", "apps/backend/index.js"]
+```
