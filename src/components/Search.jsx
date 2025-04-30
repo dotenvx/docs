@@ -165,6 +165,11 @@ function SearchResult({
           ))}
         </div>
       )}
+      {result.pageUrl && (
+        <div className="mt-1 truncate text-xs text-zinc-400 dark:text-zinc-500">
+          {result.pageUrl}
+        </div>
+      )}
     </li>
   )
 }
