@@ -98,12 +98,19 @@ export default function (nextConfig = {}) {
 
               for (let { url, sections } of data) {
                 for (let [title, hash, content] of sections) {
+                  let finalUrl = url
+                  if (finalUrl.endsWith('/index')) {
+                    finalUrl = finalUrl.replace('/index', '')
+                  }
+                  if (hash) {
+                    finalUrl += '#' + hash
+                  }
                   sectionIndex.add({
-                    url: url + (hash ? ('#' + hash) : ''),
+                    url: finalUrl,
                     title,
                     content: [title, ...content].join('\\n'),
                     pageTitle: hash ? sections[0][0] : undefined,
-                    pageUrl: url,
+                    pageUrl: finalUrl,
                   })
                 }
               }
