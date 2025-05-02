@@ -1,0 +1,166 @@
+import WellDone from '@/pages/partials/wellDone.mdx'
+import InstallCodeGroup from '@/pages/partials/installCodeGroup.mdx'
+import InstallLibrariesCodeGroup from '@/pages/partials/installLibrariesCodeGroup.mdx'
+import HelloWorldCodeGroup from '@/pages/partials/helloWorldCodeGroup.mdx'
+import DotenvxRunLocalCodeGroup from '@/pages/partials/dotenvxRunLocalCodeGroup.mdx'
+import DotenvxRunProductionLocalCodeGroup from '@/pages/partials/dotenvxRunProductionLocalCodeGroup.mdx'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import { GuideHeading } from '@/components/GuideHeading'
+import { PlatformsBreadcrumb } from '@/components/PlatformsBreadcrumb'
+
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { PythonIcon } from '@/components/icons/PythonIcon'
+import { AwsLambdaIcon } from '@/components/icons/AwsLambdaIcon'
+
+export const description = 
+  'Use dotenvx with AWS Lambda'
+
+<PlatformsBreadcrumb platform="AWS Lambda" icon={
+  <>
+    <AwsLambdaIcon className="h-9 w-9 text-[#FF9900]"/>
+  </>
+}/>
+# Use dotenvx with AWS Lambda
+<GuideHeading lead={description} />
+
+<Note>
+  Find <a href="https://github.com/dotenvx/examples/tree/main/platforms/aws-lambda">code examples for this guide</a> on GitHub.
+</Note>
+
+<div className="not-prose grid grid-flow-col auto-cols-max gap-x-6 gap-y-10">
+  <NodeIcon className="h-9 w-9 text-[#339933]"/>
+  <PythonIcon className="h-9 w-9 text-[#3776AB]"/>
+</div>
+
+## Initial setup
+
+Create the lambda handler in the language of your choice.
+
+
+<CodeGroup>
+
+```js {{ title: 'Node' }}
+// index.js
+exports.handler = async (event) => {
+  return {
+    statusCode: 200,
+    body: 'Hello World'
+  }
+}
+```
+
+```python {{ title: 'Python' }}
+# lambda_function.py
+def lambda_handler(event, context):
+    return {
+        'statusCode': 200,
+        'body': 'Hello World'
+    }
+```
+
+</CodeGroup>
+
+## Add dotenvx
+
+Install dotenvx into the lambda.
+
+<CodeGroup>
+
+```ini {{ title: 'Node' }}
+$ npm install @dotenvx/dotenvx --save
+```
+
+```python {{ title: 'Python' }}
+$ echo 'python-dotenvx' > requirements.txt
+$ pip install -r requirements.txt --target .
+$ PYTHONPATH=. bin/dotenvx-postinstall --os linux --arch x86_64
+```
+
+</CodeGroup>
+
+Add it to your lambda handler and place `HELLO` env in the body.
+
+<CodeGroup>
+
+```js {{ title: 'Node' }}
+// index.js
+require('@dotenvx/dotenvx').config()
+
+exports.handler = async (event) => {
+  return {
+    statusCode: 200,
+    body: `Hello ${process.env.HELLO}`
+  }
+}
+```
+
+```python {{ title: 'Python' }}
+# lambda_function.py
+import os
+from dotenvx import load_dotenvx
+
+load_dotenvx()
+
+def lambda_handler(event, context):
+    return {
+        'statusCode': 200,
+        'body': f'Hello {os.getenv("HELLO", "missing")}'
+    }
+```
+
+</CodeGroup>
+
+## Add .env file
+
+Add your `.env` file.
+
+```
+# .env
+HELLO="World"
+```
+
+And encrypt it.
+
+```
+$ dotenvx encrypt
+```
+
+## Zip It Up
+
+Zip everything up – making sure to ignore `.env.keys`.
+
+```
+zip -r function.zip . -x ".env.keys"
+```
+
+## Upload to AWS Lambda
+
+[Create a function](https://us-west-1.console.aws.amazon.com/lambda/home?region=us-west-1#/create/function), select your runtime, and select `x86_64`.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/3e1156bb-869b-4e3a-bd15-0b9d144a9bbf' www='aws.amazon.com' />
+
+On the next page, choose **Upload from .zip File**. And upload the `function.zip` you created earlier.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/42a71b28-1c7c-44b5-a4ad-03be7e5fe1fb' www='aws.amazon.com' />
+
+Click **Test** and you will see `Hello encrypted:1234` in the body response.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/ebb3d2a5-0980-4a71-8e7d-6ef8a211c5c0' www='aws.amazon.com' />
+
+## Set DOTENV_PRIVATE_KEY
+
+Lastly, set the `DOTENV_PRIVATE_KEY` to decrypt your value at runtime. Click **Add environment variables**.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/a4591d9a-b596-4942-a4e5-ff3fcb49d100' www='aws.amazon.com' />
+
+Set `DOTENV_PRIVATE_KEY` and its value from your `.env.keys` file.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/f95ed722-2d7d-4af2-8008-e097dfaa790b' www='aws.amazon.com' />
+
+After saving that, click **Test** and this time you will see `Hello World` in the body response.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/e8ed9afb-1b94-412e-88c8-9bb5501326a3' www='aws.amazon.com' />
+
+<WellDone/>
+
+That's it! Distributing your lambdas is now much safer - as they only contain encrypted values.

@@ -2,6 +2,7 @@ import { Button } from '@/components/Button'
 import { Heading } from '@/components/Heading'
 
 import { AwsIcon } from '@/components/icons/AwsIcon'
+import { AwsLambdaIcon } from '@/components/icons/AwsLambdaIcon'
 import { Cloud66Icon } from '@/components/icons/Cloud66Icon'
 import { DigitalOceanIcon } from '@/components/icons/DigitalOceanIcon'
 import { DockerIcon } from '@/components/icons/DockerIcon'
@@ -23,6 +24,16 @@ export function Platforms(props) {
         Platforms
       </Heading>
       <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+        <div key="aws-lambda" className="flex flex-row-reverse gap-6">
+          <div className="flex-auto">
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+              AWS Lambda
+            </h3>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with AWS Lambda</p>
+            <p className="mt-4"><Button href="/docs/platforms/aws-lambda" variant="text" arrow="right">AWS Lambda Guide</Button></p>
+          </div>
+          <AwsLambdaIcon className="h-9 w-9 text-[#FF9900]"/>
+        </div>
         <div key="digital-ocean" className="flex flex-row-reverse gap-6">
           <div className="flex-auto">
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
@@ -78,21 +89,6 @@ export function Platforms(props) {
           <>
           </>
         )}
-        {props.includeNode ? (
-          <div key="vercel" className="flex flex-row-reverse gap-6">
-            <div className="flex-auto">
-              <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
-                Vercel
-              </h3>
-              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Vercel</p>
-              <p className="mt-4"><Button href="/docs/platforms/vercel" variant="text" arrow="right">Vercel Guide</Button></p>
-            </div>
-            <VercelIcon className="h-9 w-9 text-[#000000] dark:invert"/>
-          </div>
-        ) : (
-          <>
-          </>
-        )}
         <div key="railway" className="flex flex-row-reverse gap-6">
           <div className="flex-auto">
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
@@ -113,6 +109,21 @@ export function Platforms(props) {
           </div>
           <RenderIcon className="h-9 w-9 text-[#46E3B7]"/>
         </div>
+        {props.includeNode ? (
+          <div key="vercel" className="flex flex-row-reverse gap-6">
+            <div className="flex-auto">
+              <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+                Vercel
+              </h3>
+              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Vercel</p>
+              <p className="mt-4"><Button href="/docs/platforms/vercel" variant="text" arrow="right">Vercel Guide</Button></p>
+            </div>
+            <VercelIcon className="h-9 w-9 text-[#000000] dark:invert"/>
+          </div>
+        ) : (
+          <>
+          </>
+        )}
       </div>
     </div>
   )
