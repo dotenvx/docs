@@ -9,3 +9,130 @@ export const description =
 Install `dotenvx pro` where you need it. {{ className: 'lead' }}
 
 <InstallProCodeGroup />
+
+## Npm
+
+`dotenvx pro` is made with javascript – so you can use it just like you use `dotenv` – as a drop-in replacement.
+
+```bash
+npm install @dotenvx/dotenvx-pro --save
+```
+```js
+// index.js
+require('@dotenvx/dotenvx-pro').config()
+// or import '@dotenvx/dotenvx-pro/config' if you're using esm
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+## Brew
+
+Installing with [brew](https://brew.sh) is the most straight forward global install:
+
+```bash
+# install with Homebrew and then use the dotenvx command
+brew install dotenvx/brew/dotenvx-pro
+```
+
+Find the [dotenvx brew tap here](https://github.com/dotenvx/homebrew-brew).
+
+## Shell
+
+After brew our install.sh script is easiest. With curl:
+
+```bash
+curl -sfS https://dotenvx.sh/pro | sh
+```
+
+Or with wget:
+
+```bash
+wget -qO- https://dotenvx.sh/pro | sh
+```
+
+Read the [install.sh script here](https://github.com/dotenvx/dotenvx.sh/blob/main/install.sh).
+
+## GitHub Releases
+
+You can also download straight from [GitHub Releases](https://github.com/dotenvx/dotenvx-pro/releases).
+
+```bash
+curl -L -o dotenvx-pro.tar.gz "https://github.com/dotenvx/dotenvx-pro/releases/latest/download/dotenvx-pro-$(uname -s)-$(uname -m).tar.gz"
+tar -xzf dotenvx-pro.tar.gz
+./dotenvx-pro help
+```
+
+<Note>
+  If you download manually you'll need to move the binary somewhere in your PATH.
+</Note>
+
+## Windows
+
+Download [the windows executable](https://github.com/dotenvx/dotenvx-pro/releases) directly from the [releases page](https://github.com/dotenvx/dotenvx-pro/releases).
+
+> * [dotenvx-pro-windows-amd64.zip
+](https://github.com/dotenvx-pro/releases/raw/main/latest/dotenvx-pro-windows-amd64.zip)
+> * [dotenvx-pro-windows-x86_64.zip
+](https://github.com/dotenvx/releases/raw/main/latest/dotenvx-pro-windows-x86_64.zip)
+
+(unzip to extract `dotenvx-pro.exe`)
+
+### Standalone
+
+`dotenvx-pro` is a standalone binary, so (if you want) you can just download it directly:
+
+```sh
+# download it to `./dotenvx-pro`
+curl -sfS --proto '=https' https://dotenvx.sh/pro/$(uname)/$(uname -m).tgz | tar xz
+
+# install it to `/usr/local/bin/dotenvx-pro`
+sudo install -m 755 dotenvx-pro /usr/local/bin
+
+# check it works
+dotenvx-pro help
+```
+
+Download a specific version:
+
+```sh
+# download version 0.6.9
+curl -sfS --proto '=https' "https://dotenvx.sh/pro/$(uname)/$(uname -m).tgz?version=v0.6.9" | tar xz
+
+# check the version
+./dotenvx-pro --version
+```
+
+### Npm local
+
+Use dotenvx locally as a cli in your node project.
+
+```sh
+npm i @dotenvx/dotenvx-pro --save
+```
+```json
+{
+  "scripts": {
+    "start": "./node_modules/.bin/dotenvx-pro run -- node index.js"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx-pro": "^0.6.0"
+  }
+}
+```
+
+### Npm global
+
+You can also install globally using npm's `--global` flag.
+
+```bash
+npm install @dotenvx/dotenvx-pro --global
+dotenvx-pro help
+```
+
+### Npx
+
+Or prefer to run as needed, uses `npx`.
+
+```bash
+npx @dotenvx/dotenvx-pro help
+```
