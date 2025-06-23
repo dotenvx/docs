@@ -1,0 +1,24 @@
+export const description =
+  'Suppress all output (except errors).'
+
+##### [Advanced](/docs/advanced)
+# dotenvx.config(quiet: true)
+
+<p className="lead">{description}</p>
+
+```ini
+# .env
+HELLO="World"
+```
+
+```js
+// index.js
+require('@dotenvx/dotenvx').config({path: ['.env.missing', '.env'], quiet: true})
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+```sh
+$ node index.js
+Error: [MISSING_ENV_FILE] missing .env.missing file (/path/to/.env.missing)
+```
