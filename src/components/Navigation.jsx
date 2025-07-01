@@ -195,8 +195,7 @@ export const navigation = [
       { title: 'Install', href: '/docs/install' },
       { title: 'Basics', href: '/docs/quickstart' },
       { title: 'Advanced', href: '/docs/advanced' },
-      { title: 'Whitepaper ↗', href: '/dotenvx.pdf' },
-      { title: 'Pro', href: '/docs/pro' },
+      { title: 'Whitepaper ↗', href: '/dotenvx.pdf' }
     ]
   },
   {
@@ -217,15 +216,6 @@ export const navigation = [
       { title: 'Turborepo', href: '/docs/monorepos/turborepo' },
       { title: 'Vercel', href: '/docs/platforms/vercel' },
       { title: 'More', href: '/docs/guides' },
-    ]
-  },
-  {
-    title: 'Pro 🏆',
-    href: '/docs/pro',
-    links: [
-      { title: 'Install', href: '/docs/pro/install' },
-      { title: 'Basics', href: '/docs/pro/quickstart' },
-      { title: 'Advanced', href: '/docs/pro/advanced' },
     ]
   },
   {
