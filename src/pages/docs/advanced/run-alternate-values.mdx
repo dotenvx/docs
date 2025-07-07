@@ -1,0 +1,36 @@
+export const description =
+  'Use alternate values when environment variables are set and non-empty.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx run - Alternate Values
+
+<p className="lead">{description}</p>
+
+```ini
+# .env
+NODE_ENV=production
+
+# Alternate value syntax: use alternate if set and non-empty, otherwise empty
+DEBUG_MODE=${NODE_ENV:+false}
+LOG_LEVEL=${NODE_ENV:+error}
+
+# Alternative syntax (no colon): use alternate if set, otherwise empty
+CACHE_ENABLED=${NODE_ENV+true}
+```
+
+```js
+// index.js
+console.log('NODE_ENV', process.env.NODE_ENV)
+console.log('DEBUG_MODE', process.env.DEBUG_MODE)
+console.log('LOG_LEVEL', process.env.LOG_LEVEL)
+console.log('CACHE_ENABLED', process.env.CACHE_ENABLED)
+```
+
+```sh
+$ dotenvx run --debug -- node index.js
+[dotenvx@1.X.X] injecting env (4) from .env
+NODE_ENV production
+DEBUG_MODE false
+LOG_LEVEL error
+CACHE_ENABLED true
+```

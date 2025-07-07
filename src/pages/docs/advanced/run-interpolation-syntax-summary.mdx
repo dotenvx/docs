@@ -1,0 +1,40 @@
+export const description =
+  'Complete reference for variable interpolation patterns supported by dotenvx.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx run - Interpolation Syntax Summary (Variable Expansion, Default/Alternate Values)
+
+<p className="lead">{description}</p>
+
+```ini
+# .env
+DEFINED_VAR=hello
+EMPTY_VAR=
+# UNDEFINED_VAR is not set
+
+# Default value syntax - use variable if set/non-empty, otherwise use default
+TEST1=${DEFINED_VAR:-fallback}     # Result: "hello"
+TEST2=${EMPTY_VAR:-fallback}       # Result: "fallback"
+TEST3=${UNDEFINED_VAR:-fallback}   # Result: "fallback"
+
+# Default value syntax (no colon) - use variable if set, otherwise use default
+TEST4=${DEFINED_VAR-fallback}      # Result: "hello"
+TEST5=${EMPTY_VAR-fallback}        # Result: "" (empty, but set)
+TEST6=${UNDEFINED_VAR-fallback}    # Result: "fallback"
+
+# Alternate value syntax - use alternate if variable is set/non-empty, otherwise empty
+TEST7=${DEFINED_VAR:+alternate}    # Result: "alternate"
+TEST8=${EMPTY_VAR:+alternate}      # Result: "" (empty)
+TEST9=${UNDEFINED_VAR:+alternate}  # Result: "" (empty)
+
+# Alternate value syntax (no colon) - use alternate if variable is set, otherwise empty
+TEST10=${DEFINED_VAR+alternate}    # Result: "alternate"
+TEST11=${EMPTY_VAR+alternate}      # Result: "alternate" (empty but set)
+TEST12=${UNDEFINED_VAR+alternate}  # Result: "" (empty)
+```
+
+**Key differences:**
+- `:-` vs `-`: The colon makes empty values trigger the fallback
+- `:+` vs `+`: The colon makes empty values not trigger the alternate
+- Default syntax (`-`): Use variable value or fallback
+- Alternate syntax (`+`): Use alternate value or empty string
