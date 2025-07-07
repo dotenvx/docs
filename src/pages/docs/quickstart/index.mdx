@@ -242,6 +242,226 @@ $ dotenvx run -f .env.production -- php artisan serve
 
 </CodeGroup>
 
+You can combine multiple environments too – for instance a `.env.local` file.
+
+<CodeGroup>
+
+```bash {{ title: 'Node' }}
+$ echo "HELLO=local" > .env.local
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run -f .env.local -f .env -- node index.js
+Hello local
+```
+
+```bash {{ title: 'Deno' }}
+$ echo "HELLO=local" > .env.local
+$ echo "console.log('Hello ' + Deno.env.get('HELLO'))" > index.ts
+
+$ dotenvx run -f .env.local -f .env -- deno run --allow-env index.ts
+Hello local
+```
+
+```bash {{ title: 'Bun' }}
+$ echo "HELLO=local" > .env.local
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run -f .env.local -f .env -- bun index.js
+Hello local
+```
+
+```bash {{ title: 'Python' }}
+$ echo "HELLO=local" > .env.local
+$ echo 'import os;print("Hello " + os.getenv("HELLO", ""))' > index.py
+
+$ dotenvx run -f .env.local -f .env -- python3 index.py
+Hello local
+```
+
+```bash {{ title: 'PHP' }}
+$ echo "HELLO=local" > .env.local
+$ echo '<?php echo "Hello {$_SERVER["HELLO"]}\n";' > index.php
+
+$ dotenvx run -f .env.local -f .env -- php index.php
+Hello local
+```
+
+```bash {{ title: 'Ruby' }}
+$ echo "HELLO=local" > .env.local
+$ echo 'puts "Hello #{ENV["HELLO"]}"' > index.rb
+
+$ dotenvx run -f .env.local -f .env -- ruby index.rb
+Hello local
+```
+
+```bash {{ title: 'Go' }}
+$ echo "HELLO=local" > .env.local
+$ echo 'package main; import ("fmt"; "os"); func main() { fmt.Printf("Hello %s\n", os.Getenv("HELLO")) }' > main.go
+
+$ dotenvx run -f .env.local -f .env -- go run main.go
+Hello local
+```
+
+```bash {{ title: 'Rust' }}
+$ echo "HELLO=local" > .env.local
+$ echo 'fn main() {let hello = std::env::var("HELLO").unwrap_or("".to_string());println!("Hello {hello}");}' > src/main.rs
+
+$ dotenvx run -f .env.local -f .env -- cargo run
+Hello local
+```
+
+```bash {{ title: 'Java' }}
+$ echo "HELLO=local" > .env.local
+$ echo 'public class Index { public static void main(String[] args) { System.out.println("Hello " + System.getenv("HELLO")); } }' > index.java
+
+$ dotenvx run -f .env.local -f .env -- java index.java
+Hello local
+```
+
+```bash {{ title: '.NET' }}
+$ dotnet new console -n HelloWorld -o HelloWorld
+$ cd HelloWorld
+$ echo "HELLO=local" > .env.local
+$ echo 'Console.WriteLine($"Hello {Environment.GetEnvironmentVariable("HELLO")}");' > Program.cs
+
+$ dotenvx run -f .env.local -f .env -- dotnet run
+Hello local
+```
+
+```bash {{ title: 'Bash' }}
+$ echo "HELLO=local" > .env.local
+
+$ dotenvx run --quiet -f .env.local -f .env -- sh -c 'echo Hello $HELLO'
+Hello local
+```
+
+```bash {{ title: 'Frameworks' }}
+$ echo "HELLO=local" > .env.local
+
+$ dotenvx run -f .env.local -f .env -- next dev
+$ dotenvx run -f .env.local -f .env -- npm start
+$ dotenvx run -f .env.local -f .env -- bin/rails s
+$ dotenvx run -f .env.local -f .env -- php artisan serve
+```
+
+</CodeGroup>
+
+Or use built-in conventions like [NextJS' convention](/docs/advanced/run-convention-nextjs).
+
+<CodeGroup>
+
+```bash {{ title: 'Node' }}
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run --convention=nextjs -- node index.js
+Hello local
+```
+
+```bash {{ title: 'Deno' }}
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+$ echo "console.log('Hello ' + Deno.env.get('HELLO'))" > index.ts
+
+$ dotenvx run --convention=nextjs -- deno run --allow-env index.ts
+Hello local
+```
+
+```bash {{ title: 'Bun' }}
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run --convention=nextjs -- bun index.js
+Hello local
+```
+
+```bash {{ title: 'Python' }}
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+$ echo 'import os;print("Hello " + os.getenv("HELLO", ""))' > index.py
+
+$ dotenvx run --convention=nextjs -- python3 index.py
+Hello local
+```
+
+```bash {{ title: 'PHP' }}
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+$ echo '<?php echo "Hello {$_SERVER["HELLO"]}\n";' > index.php
+
+$ dotenvx run --convention=nextjs -- php index.php
+Hello local
+```
+
+```bash {{ title: 'Ruby' }}
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+$ echo 'puts "Hello #{ENV["HELLO"]}"' > index.rb
+
+$ dotenvx run --convention=nextjs -- ruby index.rb
+Hello local
+```
+
+```bash {{ title: 'Go' }}
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+$ echo 'package main; import ("fmt"; "os"); func main() { fmt.Printf("Hello %s\n", os.Getenv("HELLO")) }' > main.go
+
+$ dotenvx run --convention=nextjs -- go run main.go
+Hello local
+```
+
+```bash {{ title: 'Rust' }}
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+$ echo 'fn main() {let hello = std::env::var("HELLO").unwrap_or("".to_string());println!("Hello {hello}");}' > src/main.rs
+
+$ dotenvx run --convention=nextjs -- cargo run
+Hello local
+```
+
+```bash {{ title: 'Java' }}
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+$ echo 'public class Index { public static void main(String[] args) { System.out.println("Hello " + System.getenv("HELLO")); } }' > index.java
+
+$ dotenvx run --convention=nextjs -- java index.java
+Hello local
+```
+
+```bash {{ title: '.NET' }}
+$ dotnet new console -n HelloWorld -o HelloWorld
+$ cd HelloWorld
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+$ echo 'Console.WriteLine($"Hello {Environment.GetEnvironmentVariable("HELLO")}");' > Program.cs
+
+$ dotenvx run --convention=nextjs -- dotnet run
+Hello local
+```
+
+```bash {{ title: 'Bash' }}
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+
+$ dotenvx run --convention=nextjs --quiet -f .env.local -f .env -- sh -c 'echo Hello $HELLO'
+Hello local
+```
+
+```bash {{ title: 'Frameworks' }}
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=development" > .env.development
+
+$ dotenvx run --convention=nextjs -- next dev
+$ dotenvx run --convention=nextjs -- npm start
+$ dotenvx run --convention=nextjs -- bin/rails s
+$ dotenvx run --convention=nextjs -- php artisan serve
+```
+
+</CodeGroup>
+
 ## Add Encryption
 
 > Add encryption to your `.env*` files with a single command. Run `dotenvx encrypt` or `dotenvx set HELLO value`.
