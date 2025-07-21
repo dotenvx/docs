@@ -1,0 +1,111 @@
+import InstallRadarCodeGroup from '@/pages/partials/installRadarCodeGroup.mdx'
+
+export const description =
+  'Other ways to install `dotenvx-radar`'
+
+##### [Radar 📡](/docs/radar)
+# Install
+
+Install `dotenvx-radar` where you need it. {{ className: 'lead' }}
+
+<InstallRadarCodeGroup />
+
+## Npm
+
+`dotenvx-radar` is made with javascript – so you can use it just like you use `dotenv` – as a drop-in replacement.
+
+```bash
+npm install @dotenvx/dotenvx-radar --save
+```
+```js
+// index.js
+require('@dotenvx/dotenvx').config()
+// or import '@dotenvx/dotenvx/config' if you're using esm
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+```bash
+$ node index.js
+[dotenvx@1.48.2] 📡 radar: on
+[dotenvx@1.48.2] injecting env (1) from .env
+Hello World
+```
+
+## Curl
+
+Our install.sh script is easiest. With curl:
+
+```bash
+curl -sfS https://dotenvx.sh/radar | sh
+```
+
+Or with wget:
+
+```bash
+wget -qO- https://dotenvx.sh/radar | sh
+```
+
+Read the [install.sh script here](https://dotenvx.sh/radar).
+
+## Other
+
+### Standalone
+
+`dotenvx-radar` is a standalone binary, so (if you want) you can just download it directly:
+
+```sh
+# download it to `./dotenvx-radar`
+curl -sfS --proto '=https' https://dotenvx.sh/radar/$(uname)/$(uname -m).tgz | tar xz
+
+# install it to `/usr/local/bin/dotenvx-radar`
+sudo install -m 755 dotenvx-radar /usr/local/bin
+
+# check it works
+dotenvx-radar help
+```
+
+Download a specific version:
+
+```sh
+# download version 0.6.9
+curl -sfS --proto '=https' "https://dotenvx.sh/radar/$(uname)/$(uname -m).tgz?version=v0.6.9" | tar xz
+
+# check the version
+./dotenvx-radar --version
+```
+
+### Npm local
+
+Use dotenvx-radar locally in your node project.
+
+```sh
+npm i @dotenvx/dotenvx-radar --save
+```
+```json
+{
+  "scripts": {
+    "start": "./node_modules/.bin/dotenvx run -- node index.js"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.0.0",
+    "@dotenvx/dotenvx-radar": "^0.14.1"
+  }
+}
+```
+
+### Npm global
+
+You can also install globally using npm's `--global` flag.
+
+```bash
+npm install @dotenvx/dotenvx-radar --global
+dotenvx-radar help
+```
+
+### Npx
+
+Or prefer to run as needed, uses `npx`.
+
+```bash
+npx @dotenvx/dotenvx-radar help
+```

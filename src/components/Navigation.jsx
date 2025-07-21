@@ -195,7 +195,8 @@ export const navigation = [
       { title: 'Install', href: '/docs/install' },
       { title: 'Basics', href: '/docs/quickstart' },
       { title: 'Advanced', href: '/docs/advanced' },
-      { title: 'Whitepaper ↗', href: '/dotenvx.pdf' }
+      { title: 'Whitepaper ↗', href: '/dotenvx.pdf' },
+      { title: 'Radar', href: '/docs/radar' }
     ]
   },
   {
@@ -216,6 +217,15 @@ export const navigation = [
       { title: 'Turborepo', href: '/docs/monorepos/turborepo' },
       { title: 'Vercel', href: '/docs/platforms/vercel' },
       { title: 'More', href: '/docs/guides' },
+    ]
+  },
+  {
+    title: 'Radar 📡',
+    href: '/docs/radar',
+    links: [
+      { title: 'Buy', href: '/docs/radar/buy' },
+      { title: 'Install', href: '/docs/radar/install' },
+      { title: 'Basics', href: '/docs/radar/quickstart' },
     ]
   },
   {
