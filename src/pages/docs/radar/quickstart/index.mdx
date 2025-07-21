@@ -1,16 +1,5 @@
-import { Video } from '@/components/Video'
-import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
-import InstallCodeGroup from '@/pages/partials/installCodeGroup.mdx'
-import InstallLibariesCodeGroup from '@/pages/partials/installLibrariesCodeGroup.mdx'
-import HelloWorldCodeGroup from '@/pages/partials/helloWorldCodeGroup.mdx'
-
-import { GoIcon } from '@/components/icons/GoIcon'
-import { NodeIcon } from '@/components/icons/NodeIcon'
-import { PhpIcon } from '@/components/icons/PhpIcon'
-import { PythonIcon } from '@/components/icons/PythonIcon'
-import { RubyIcon } from '@/components/icons/RubyIcon'
-import { RustIcon } from '@/components/icons/RustIcon'
 import { StripeButton } from '@/components/StripeButton'
+import InstallRadarCodeGroup from '@/pages/partials/installRadarCodeGroup.mdx'
 
 export const description =
   'Observe, version, and back up your environment variables at runtime.'
@@ -26,4 +15,75 @@ export const description =
   </div>
 </div>
 
-> Coming soon
+- Install radar
+- Log in
+- Run dotenvx
+
+## Install Radar
+
+> Install Radar.
+
+<InstallRadarCodeGroup />
+
+## Log In
+
+> Log in to Radar – creating your account.
+
+<CodeGroup>
+
+```bash {{ title: "Npm" }}
+npx dotenvx-radar login
+✔ logged in [username]
+```
+
+```bash {{ title: "Curl" }}
+dotenvx-radar login
+✔ logged in [username]
+```
+
+</CodeGroup>
+
+## Run Dotenvx
+
+> Run Dotenvx with Radar installed.
+
+Given your app – or an example app like the following:
+
+<CodeGroup>
+
+```bash {{ title: "Npm" }}
+// index.js
+require('@dotenvx/dotenvx').config()
+// or import '@dotenvx/dotenvx/config' // for esm
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+```bash {{ title: "Curl" }}
+// index.js
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+</CodeGroup>
+
+Run dotenvx like this:
+
+<CodeGroup>
+
+```bash {{ title: "Npm" }}
+$ node index.js
+[dotenvx@1.0.0] 📡 radar active
+[dotenvx@1.0.0] injecting env (1) from .env
+Hello World
+```
+
+```bash {{ title: "Curl" }}
+$ dotenvx run -- node index.js
+[dotenvx@1.0.0] 📡 radar active
+[dotenvx@1.0.0] injecting env (1) from .env
+Hello World
+```
+
+</CodeGroup>
+
+That's it! Your environment variables are auto-observed and backed up by [Radar](https://dotenvx.com/radar).
