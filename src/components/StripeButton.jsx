@@ -13,7 +13,7 @@ export function StripeButton() {
 
   return (
     <stripe-buy-button
-      buy-button-id="buy_btn_1RnMKKFxNzl4s0PqnNw8giDp"
+      buy-button-id="buy_btn_1RoW7nFxNzl4s0PqtK7prXuw"
       publishable-key="pk_live_51PAyvwFxNzl4s0PqjqzJypaxvKdMEaYePMGfUMppCnkqR6ZfHJ4KkWNPIzhbAukRRhiEHNjGcHwoNKevn2ay79V100Q2xNXwPl"
     />
   )
