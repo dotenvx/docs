@@ -1,27 +1,27 @@
 <CodeGroup>
 
 ```bash {{ title: "Node" }}
-dotenvx run --env-file=.env.production -- node index.js
+dotenvx run -f .env.production -- node index.js
 ```
 
 ```bash {{ title: "Python" }}
-dotenvx run --env-file=.env.production -- flask --app index run
+dotenvx run -f .env.production -- flask --app index run
 ```
 
 ```bash {{ title: "PHP" }}
-dotenvx run --env-file=.env.production -- php index.php
+dotenvx run -f .env.production -- php index.php
 ```
 
 ```bash {{ title: "Ruby" }}
-dotenvx run --env-file=.env.production -- ruby index.rb
+dotenvx run -f .env.production -- ruby index.rb
 ```
 
 ```bash {{ title: "Go" }}
-dotenvx run --env-file=.env.production -- go run main.go
+dotenvx run -f .env.production -- go run main.go
 ```
 
 ```bash {{ title: "Rust" }}
-dotenvx run --env-file=.env.production -- cargo run
+dotenvx run -f .env.production -- cargo run
 ```
 
 </CodeGroup>

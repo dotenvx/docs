@@ -80,7 +80,7 @@ Then, in your `package.json`, modify your start script.
     "start": "dotenvx run -- pm2-runtime start ecosystem.config.js --env production"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "^0.26.0",
+    "@dotenvx/dotenvx": "^1.48.4",
     "pm2": "^5.3.0"
   }
 }
@@ -117,7 +117,7 @@ Modify your start script to load your `.env.production` file.
 ```json {{ title: "package.json" }}
 {
   "scripts": {
-    "start": "dotenvx run --env-file=.env.production -- pm2-runtime start ecosystem.config.js --env production"
+    "start": "dotenvx run -f .env.production -- pm2-runtime start ecosystem.config.js --env production"
   },
   ...
 }
