@@ -147,8 +147,8 @@ Interpolation (also known as variable expansion) is supported in environment fil
   * `${VAR:-default}` -> value of `VAR` if set and non-empty, otherwise `default`
   * `${VAR-default}` -> value of `VAR` if set, otherwise `default`
 * Alternative value
-  * `${VAR:-alternate}` -> value of `alternate` if `VAR` is set and non-empty, otherwise empty `''`
-  * `${VAR-alternate}` -> value of `alternate` if `VAR` is set and non-empty, otherwise empty `''`
+  * `${VAR:+alternate}` -> value of `alternate` if `VAR` is set and non-empty, otherwise empty `''`
+  * `${VAR+alternate}` -> value of `alternate` if `VAR` is set and non-empty, otherwise empty `''`
 
 ## Command Substitution 
 
