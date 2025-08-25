@@ -1,0 +1,22 @@
+export const description =
+  'Use DOTENV_ENV to control dotenv-flow\'s environment.'
+
+##### [Advanced](/docs/advanced)
+# DOTENV_ENV=production dotenvx run --convention=flow
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=production local" > .env.production.local
+$ echo "HELLO=production" > .env.production
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=env" > .env
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ DOTENV_ENV=production dotenvx run --convention=flow -- node index.js 
+[dotenvx@1.X.X] injecting env (1) from .env.production.local, .env.production, .env.local, .env
+Hello production local
+```
+
+While dotenvx's implementation of [dotenv-flow](https://www.npmjs.com/package/dotenv-flow) supports `NODE_ENV`, it also introduces `DOTENV_ENV`. We recommend using `DOTENV_ENV` over `NODE_ENV` – as dotenvx works everywhere, not just node. [see code](https://github.com/dotenvx/dotenvx/blob/2f35b84a9a3101ec4d2c6cf850fd3659375f7105/src/lib/helpers/conventions.js#L2)
+
