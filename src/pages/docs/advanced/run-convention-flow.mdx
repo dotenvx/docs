@@ -13,9 +13,17 @@ $ echo "HELLO=local" > .env.local
 $ echo "HELLO=env" > .env
 $ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
-$ dotenvx run --convention=flow -- node index.js
-[dotenvx] injecting env (1) from .env.development.local, .env.development, .env.local, .env
+$ NODE_ENV=development dotenvx run --convention=flow -- node index.js 
+[dotenvx@1.X.X] injecting env (1) from .env.development.local, .env.development, .env.local, .env
 Hello development local
 ```
 
 [dotenv-flow env load order](https://www.npmjs.com/package/dotenv-flow)
+
+Further, we recommend using `DOTENV_ENV` over `NODE_ENV` – as dotenvx works everywhere, not just node.
+
+```sh
+$ DOTENV_ENV=development dotenvx run --convention=flow -- node index.js
+[dotenvx@1.X.X] injecting env (1) from .env.development.local, .env.development, .env.local, .env
+Hello development local
+```
