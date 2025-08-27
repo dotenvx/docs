@@ -216,6 +216,7 @@ export const navigation = [
       { title: 'Trigger', href: '/docs/background-jobs/triggerdotdev' },
       { title: 'Turborepo', href: '/docs/monorepos/turborepo' },
       { title: 'Vercel', href: '/docs/platforms/vercel' },
+      { title: 'Cloudflare', href: '/docs/platforms/cloudflare' },
       { title: 'More', href: '/docs/guides' },
     ]
   },

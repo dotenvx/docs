@@ -1,0 +1,108 @@
+import WellDone from '@/pages/partials/wellDone.mdx'
+import { GuideHeading } from '@/components/GuideHeading'
+import { PlatformsBreadcrumb } from '@/components/PlatformsBreadcrumb'
+import { CloudflareIcon } from '@/components/icons/CloudflareIcon'
+
+export const description =
+  'Use dotenvx with Cloudflare Workers & Pages'
+
+<PlatformsBreadcrumb platform="Fly" icon={
+  <>
+    <CloudflareIcon className="h-9 w-9 text-[#7B3BE2]"/>
+  </>
+}/>
+# Use dotenvx with Cloudflare Workers & Pages
+<GuideHeading lead={description} />
+
+## Initial setup
+
+Select **Build System v3** (bun) and install dependencies:
+
+```bash
+# Install dotenvx and wrangler
+bun install @dotenvx/dotenvx wrangler --save
+```
+
+## Cloudflare Workers
+
+Add dotenvx to your Worker entrypoint to load environment variables at startup:
+
+```js title="index.js"
+// Load .env variables automatically
+import '@dotenvx/dotenvx/config'
+
+export default {
+  async fetch(request) {
+    return new Response(`Hello ${process.env.HELLO}`)
+  }
+}
+```
+
+Create `wrangler.toml`:
+
+```toml
+name = "dotenvx-worker"
+main = "index.js"
+compatibility_date = "2025-08-21"
+```
+
+Add your `.env` file and encrypt it:
+
+```bash
+# .env
+HELLO="World"
+
+bunx dotenvx encrypt
+```
+
+Set the private key as a Worker secret:
+
+```bash
+wrangler secret put DOTENV_PRIVATE_KEY <your_private_key>
+```
+
+Deploy:
+
+```bash
+wrangler publish
+```
+
+## Cloudflare Pages
+
+For Pages builds, run dotenvx during the build and dev scripts. Update `package.json`:
+
+```json title="package.json"
+{
+  "scripts": {
+    "dev": "dotenvx run -- bun run dev",
+    "build": "dotenvx run -- bun run build"
+  }
+}
+```
+
+In your framework config (e.g., Next.js), expose env vars:
+
+```js title="next.config.js"
+export default {
+  env: {
+    HELLO: process.env.HELLO,
+  },
+}
+```
+
+Encrypt production `.env`:
+
+```bash
+# .env.production
+HELLO="Production"
+
+bunx dotenvx encrypt -f .env.production
+```
+
+In the Pages dashboard:
+1. Go to your project’s Settings → Environment Variables
+2. Add `DOTENV_PRIVATE_KEY` with the private key from `.env.keys`
+
+Now Pages will inject the encrypted values during build.
+
+<WellDone/>
