@@ -2,7 +2,7 @@ export const description =
   'Use convention in node.js code.'
 
 ##### [Advanced](/docs/advanced)
-# dotenvx.config({ convention: 'nextjs' })
+# dotenvx.config(convention: 'nextjs')
 
 <p className="lead">{description}</p>
 
@@ -63,40 +63,3 @@ $ NODE_ENV=development node index.js
 [dotenvx@1.28.0] injecting env (1) from .env.development.local, .env.development, .env.local, .env
 Hello development local
 ```
-
-## Flow convention with DOTENV_ENV
-
-Use `DOTENV_ENV` to specify the environment:
-
-```js
-// index.js
-require('@dotenvx/dotenvx').config({ convention: 'flow' })
-
-console.log(`Hello ${process.env.HELLO}`)
-```
-
-```sh
-$ DOTENV_ENV=development node index.js
-[dotenvx@1.28.0] injecting env (1) from .env.development.local, .env.development, .env.local, .env
-Hello development local
-```
-
-## Custom file path with convention
-
-You can also combine convention with explicit path for more control:
-
-```js
-// index.js
-require('@dotenvx/dotenvx').config({
-  convention: 'nextjs',
-  path: ['.env.custom', '.env']  // Additional custom files
-})
-
-console.log(`Hello ${process.env.HELLO}`)
-```
-
-## Notes
-
-- The environment name (`NODE_ENV` or `DOTENV_ENV`) must be set before calling `config()`, typically through the command line or system environment
-- Conventions are compatible with other options like `overload`, `strict`, and encryption features
-- File loading order follows the same rules as the corresponding CLI convention
