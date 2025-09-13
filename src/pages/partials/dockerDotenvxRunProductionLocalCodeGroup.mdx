@@ -1,27 +1,27 @@
 <CodeGroup>
 
 ```bash {{ title: "Node" }}
-CMD ["dotenvx", "run",  "-f .env.production", "--", "node", "index.js"]
+CMD ["dotenvx", "run",  "-f", ".env.production", "--", "node", "index.js"]
 ```
 
 ```bash {{ title: "Python" }}
-CMD ["dotenvx", "run",  "-f .env.production", "--", "gunicorn", "--workers", "4", "--bind", "0.0.0.0:5000", "wsgi:app"]
+CMD ["dotenvx", "run",  "-f", ".env.production", "--", "gunicorn", "--workers", "4", "--bind", "0.0.0.0:5000", "wsgi:app"]
 ```
 
 ```bash {{ title: "PHP" }}
-CMD ["dotenvx", "run", "-f .env.production", "--", "apache2-foreground"]
+CMD ["dotenvx", "run", "-f", ".env.production", "--", "apache2-foreground"]
 ```
 
 ```bash {{ title: "Ruby" }}
-CMD ["dotenvx", "run", "-f .env.production", "--", "ruby", "index.rb", "-o", "0.0.0.0"]
+CMD ["dotenvx", "run", "-f", ".env.production", "--", "ruby", "index.rb", "-o", "0.0.0.0"]
 ```
 
 ```bash {{ title: "Go" }}
-CMD ["dotenvx", "run", "-f .env.production", "--", "./main"]
+CMD ["dotenvx", "run", "-f", ".env.production", "--", "./main"]
 ```
 
 ```bash {{ title: "Rust" }}
-CMD ["dotenvx", "run", "-f .env.production", "--", "./target/release/app"]
+CMD ["dotenvx", "run", "-f", ".env.production", "--", "./target/release/app"]
 ```
 
 </CodeGroup>
