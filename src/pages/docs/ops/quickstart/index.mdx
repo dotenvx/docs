@@ -1,0 +1,84 @@
+import InstallOpsCodeGroup from '@/pages/partials/installOpsCodeGroup.mdx'
+
+export const description =
+  'Observe, version, and back up your environment variables at runtime.'
+
+##### [Ops 📡](/docs/ops)
+# Basics
+
+Learn the basics of `dotenvx-ops` in just a few minutes. {{ className: 'lead' }}
+
+<InstallOpsCodeGroup />
+
+- Install ops
+- Log in
+- Run dotenvx
+
+## Install Ops
+
+> Install Ops.
+
+<InstallOpsCodeGroup />
+
+## Log In
+
+> Log in to Ops – creating your account.
+
+<CodeGroup>
+
+```bash {{ title: "Npm" }}
+npx dotenvx-ops login
+✔ logged in [username]
+```
+
+```bash {{ title: "Curl" }}
+dotenvx-ops login
+✔ logged in [username]
+```
+
+</CodeGroup>
+
+## Run Dotenvx
+
+> Run Dotenvx with Ops installed.
+
+Given your app – or an example app like the following:
+
+<CodeGroup>
+
+```bash {{ title: "Npm" }}
+// index.js
+require('@dotenvx/dotenvx').config()
+// or import '@dotenvx/dotenvx/config' // for esm
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+```bash {{ title: "Curl" }}
+// index.js
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+</CodeGroup>
+
+Run dotenvx like this:
+
+<CodeGroup>
+
+```bash {{ title: "Npm" }}
+$ node index.js
+[dotenvx@1.0.0] 📡 radar active
+[dotenvx@1.0.0] injecting env (1) from .env
+Hello World
+```
+
+```bash {{ title: "Curl" }}
+$ dotenvx run -- node index.js
+[dotenvx@1.0.0] 📡 radar active
+[dotenvx@1.0.0] injecting env (1) from .env
+Hello World
+```
+
+</CodeGroup>
+
+That's it! Your environment variables are auto-observed and backed up by [Ops](https://dotenvx.com/ops) radar feature.
