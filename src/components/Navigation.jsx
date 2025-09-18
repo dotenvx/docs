@@ -196,7 +196,7 @@ export const navigation = [
       { title: 'Basics', href: '/docs/quickstart' },
       { title: 'Advanced', href: '/docs/advanced' },
       { title: 'Whitepaper ↗', href: '/dotenvx.pdf' },
-      { title: 'Radar', href: '/docs/radar' }
+      { title: 'Ops', href: '/docs/ops' }
     ]
   },
   {
@@ -221,12 +221,12 @@ export const navigation = [
     ]
   },
   {
-    title: 'Radar 📡',
-    href: '/docs/radar',
+    title: 'Ops',
+    href: '/docs/ops',
     links: [
-      { title: 'Buy', href: '/docs/radar/buy' },
-      { title: 'Install', href: '/docs/radar/install' },
-      { title: 'Basics', href: '/docs/radar/quickstart' },
+      { title: 'Buy', href: '/docs/ops/buy' },
+      { title: 'Install', href: '/docs/ops/install' },
+      { title: 'Basics', href: '/docs/ops/quickstart' },
     ]
   },
   {
