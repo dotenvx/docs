@@ -51,7 +51,7 @@ function Anchor({ id, inView, children }) {
           </div>
         </div>
       )}
-      {children}
+      {typeof children === 'string' ? <span>{children}</span> : children}
     </Link>
   )
 }
