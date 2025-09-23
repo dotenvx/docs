@@ -6,7 +6,7 @@ import { DotenvxProIcon } from '@/components/icons/DotenvxProIcon'
 import InstallProCodeGroup from '@/pages/partials/installProCodeGroup.mdx'
 
 export const description = 
-  'Create a project on dotenvx pro.'
+  'Create a project on dotenvx-pro.'
 
 <ProBreadcrumb title="New project" icon={
   <>
@@ -56,18 +56,18 @@ Now on GitHub, your project should have one (or more) encrypted `.env` file(s).
 Push `.env.keys`–creating your project on dotenvx.
 
 ```
-$ dotenvx pro push
+$ dotenvx-pro push
 ✔ pushed (.env)
 ```
 
 <Note>
-You might have to run `$ dotenvx pro sync` first–so that the cli has knowledge of your organization.
+You might have to run `$ dotenvx-pro sync` first–so that the cli has knowledge of your organization.
 </Note>
 
 View the project.
 
 ```
-$ dotenvx pro open
+$ dotenvx-pro open
 press Enter to open [https://pro.dotenvx.com/gh/motdotla/projectx]... (Y/n)
 ✔ opened [motdotla/projectx]
 ```
@@ -81,7 +81,7 @@ Click **.env.keys**–to view the contents of your `.env.keys` file.
 <ScreenshotBrowser url='https://github.com/user-attachments/assets/41108f87-acc5-484b-ad69-fd982bc0ce00' www='pro.dotenvx.com' width='md:w-4/6' />
 
 <Note>
-  Important to note, the `DOTENV_PRIVATE_KEY` is now encrypted. This is an additional security feature native to dotenvx pro. *It is encrypted with your organization's public key.*
+  Important to note, the `DOTENV_PRIVATE_KEY` is now encrypted. This is an additional security feature native to dotenvx-pro. *It is encrypted with your organization's public key.*
 </Note>
 
 ## Private Key
@@ -95,12 +95,12 @@ $ ls -1A
 .gitignore
 ```
 
-This is by design! Your project's keys are now **fully managed by dotenvx pro**. 🏆
+This is by design! Your project's keys are now **fully managed by dotenvx-pro**. 🏆
 
 To view the private key, use the [`pro keypair` command](/docs/pro/advanced/keypair).
 
 ```sh
-$ dotenvx pro keypair --pp
+$ dotenvx-pro keypair --pp
 {
   "DOTENV_PUBLIC_KEY": "03cde813f7888ad1bf9e23f3f36e1f6ce23a63e8d0a024d6ecdfdba2fd4918659e",
   "DOTENV_PRIVATE_KEY": "e38b906d2992e1c80054c934501221ff679473577214c5b78c73b89b178147c1"
@@ -109,10 +109,10 @@ $ dotenvx pro keypair --pp
 
 ## Run/Get
 
-Inject (and get) your values with dotenvx like you always have. `dotenvx pro` piggy backs on the `dotenvx run/get` commands.
+Inject (and get) your values with dotenvx like you always have. `dotenvx-pro` piggy backs on the `dotenvx run/get` commands.
 
 ```sh
-$ dotenvx pro get -pp
+$ dotenvx-pro get -pp
 {
   "DOTENV_PUBLIC_KEY": "03cde813f7888ad1bf9e23f3f36e1f6ce23a63e8d0a024d6ecdfdba2fd4918659e",
   "HELLO": "World"
@@ -121,7 +121,7 @@ $ dotenvx pro get -pp
 
 ## Conclusion
 
-Using `dotenvx pro` you've:
+Using `dotenvx-pro` you've:
 
 1. Removed the risk of keeping `.env.keys` locally
 2. Added encryption to your private keys
@@ -138,7 +138,7 @@ Next let's [add a teammate](/docs/pro/new-teammate)–so they can seamlessly mak
 Where are these stored? They are encrypted and stored locally, using zero-knowledge architecture. You can check the encrypted contents tree with `pro settings storetree`.
 
 ```sh
-$ dotenvx pro settings storetree
+$ dotenvx-pro settings storetree
 ├─ .env
 └─ pro.dotenvx.com
    ├─ user-1-organization-1.json

@@ -2,7 +2,7 @@ export const description =
   'Print fully managed public/private keys for chosen .env* files.'
 
 ##### [Advanced](/docs/pro#advanced)
-# dotenvx pro keypair -f
+# dotenvx-pro keypair -f
 
 <p className="lead">{description}</p>
 
@@ -10,8 +10,8 @@ export const description =
   $ echo "HELLO=Production" > .env.production
   $ dotenvx encrypt -f .env.production
 
-  $ dotenvx pro push
+  $ dotenvx-pro push
 
-  $ dotenvx pro keypair -f .env.production
+  $ dotenvx-pro keypair -f .env.production
   {"DOTENV_PUBLIC_KEY_PRODUCTION":"<publicKey>","DOTENV_PRIVATE_KEY_PRODUCTION":"<privateKey>"}
 ```
