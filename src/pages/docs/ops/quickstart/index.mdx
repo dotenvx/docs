@@ -1,3 +1,4 @@
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
 import InstallOpsCodeGroup from '@/pages/partials/installOpsCodeGroup.mdx'
 
 export const description =
@@ -8,77 +9,45 @@ export const description =
 
 Learn the basics of `dotenvx-ops` in just a few minutes. {{ className: 'lead' }}
 
-<InstallOpsCodeGroup />
+- Sync .env files
 
-- Install ops
-- Log in
-- Run dotenvx
+## Sync .env files
 
-## Install Ops
+Go to [/new/project](https://ops.dotenvx.com/new/project) and [create your project](https://ops.dotenvx.com/new/project).
 
-> Install Ops.
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/1e2be6ba-2734-40c6-9154-413ad374e097' www='ops.dotenvx.com' width='md:w-4/6' />
 
-<InstallOpsCodeGroup />
+On the next screen you'll see a copy of your `.env.x` file.
 
-## Log In
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/2ada67da-dec1-42eb-8800-930ba1bf7619' www='ops.dotenvx.com' width='md:w-4/6' />
 
-> Log in to Ops – creating your account.
+Add `.env.x` to your project's root.
 
-<CodeGroup>
+```sh
+# motdotla/your-project/.env.x
+DOTENVX_PROJECT_ID=prj_664c683dddf155a6480d524aa7a5e42d
 
-```bash {{ title: "Npm" }}
-npx dotenvx-ops login
-✔ logged in [username]
+# 1. Add this .env.x file to your project's root
+# 2. Commit it safely to code
+# 3. Sync with dotenvx-ops sync
 ```
 
-```bash {{ title: "Curl" }}
-dotenvx-ops login
-✔ logged in [username]
+> The `DOTENVX_PROJECT_ID` uniquely identifies your project and lives inside your `.env.x` file.
+
+Add a `.env` file – if you haven't already.
+
+```sh
+# .env
+HELLO=World
 ```
 
-</CodeGroup>
+Finally, run `dotenvx-ops sync`.
 
-## Run Dotenvx
-
-> Run Dotenvx with Ops installed.
-
-Given your app – or an example app like the following:
-
-<CodeGroup>
-
-```bash {{ title: "Npm" }}
-// index.js
-require('@dotenvx/dotenvx').config()
-// or import '@dotenvx/dotenvx/config' // for esm
-
-console.log(`Hello ${process.env.HELLO}`)
+```bash
+$ dotenvx-ops sync
+✔ synced [motdotla/your-project]
 ```
 
-```bash {{ title: "Curl" }}
-// index.js
-console.log(`Hello ${process.env.HELLO}`)
-```
+That's it! Your project's `.env` files have been synced.
 
-</CodeGroup>
-
-Run dotenvx like this:
-
-<CodeGroup>
-
-```bash {{ title: "Npm" }}
-$ node index.js
-[dotenvx@1.0.0] 📡 radar active
-[dotenvx@1.0.0] injecting env (1) from .env
-Hello World
-```
-
-```bash {{ title: "Curl" }}
-$ dotenvx run -- node index.js
-[dotenvx@1.0.0] 📡 radar active
-[dotenvx@1.0.0] injecting env (1) from .env
-Hello World
-```
-
-</CodeGroup>
-
-That's it! Your environment variables are auto-observed and backed up by [Ops](https://dotenvx.com/ops) radar feature.
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/b343bb41-efac-4465-b9cb-6ff5928b86b1' www='ops.dotenvx.com' width='md:w-4/6' />
