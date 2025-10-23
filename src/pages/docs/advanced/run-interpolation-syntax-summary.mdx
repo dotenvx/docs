@@ -38,3 +38,7 @@ TEST12=${UNDEFINED_VAR+alternate}  # Result: "" (empty)
 - `:+` vs `+`: The colon makes empty values not trigger the alternate
 - Default syntax (`-`): Use variable value or fallback
 - Alternate syntax (`+`): Use alternate value or empty string
+
+**Disabling Variable Expansion:**
+
+To disable variable expansion use single quotes like `PASSWORD='pa$$word@'` to get the result 'pa$$word@'.
