@@ -205,6 +205,7 @@ export const navigation = [
     links: [
       { title: 'Digital Ocean', href: '/docs/platforms/digital-ocean' },
       { title: 'Docker', href: '/docs/platforms/docker' },
+      { title: 'Docker Compose', href: '/docs/platforms/docker-compose' },
       { title: 'Fly', href: '/docs/platforms/fly' },
       { title: 'GitHub Actions', href: '/docs/cis/github-actions' },
       { title: 'Heroku', href: '/docs/platforms/heroku' },

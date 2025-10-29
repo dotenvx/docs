@@ -1,0 +1,88 @@
+<CodeGroup>
+
+```js {{ title: "Node" }}
+# docker-compose.yml
+version: "3.8"
+services:
+  web:
+    build: .
+    command: node index.js
+    ports:
+      - "3000:3000"
+    environment:
+      DOTENV_PRIVATE_KEY: ${DOTENV_PRIVATE_KEY}
+      DOTENV_PRIVATE_KEY_PRODUCTION: ${DOTENV_PRIVATE_KEY_PRODUCTION}
+```
+
+```python {{ title: "Python" }}
+# docker-compose.yml
+version: "3.8"
+services:
+  web:
+    build: .
+    command: gunicorn --bind 0.0.0.0:5000 wsgi:app
+    ports:
+      - "5000:5000"
+    environment:
+      DOTENV_PRIVATE_KEY: ${DOTENV_PRIVATE_KEY}
+      DOTENV_PRIVATE_KEY_PRODUCTION: ${DOTENV_PRIVATE_KEY_PRODUCTION}
+```
+
+```php {{ title: "PHP" }}
+# docker-compose.yml
+version: "3.8"
+services:
+  web:
+    build: .
+    command: apache2-foreground
+    ports:
+      - "80:80"
+    environment:
+      DOTENV_PRIVATE_KEY: ${DOTENV_PRIVATE_KEY}
+      DOTENV_PRIVATE_KEY_PRODUCTION: ${DOTENV_PRIVATE_KEY_PRODUCTION}
+```
+
+```ruby {{ title: "Ruby" }}
+# docker-compose.yml
+version: "3.8"
+services:
+  web:
+    build: .
+    command: ruby index.rb -o 0.0.0.0
+    ports:
+      - "4567:4567"
+    environment:
+      DOTENV_PRIVATE_KEY: ${DOTENV_PRIVATE_KEY}
+      DOTENV_PRIVATE_KEY_PRODUCTION: ${DOTENV_PRIVATE_KEY_PRODUCTION}
+```
+
+```go {{ title: "Go" }}
+# docker-compose.yml
+version: "3.8"
+services:
+  web:
+    build: .
+    command: ./main
+    ports:
+      - "1323:1323"
+    environment:
+      DOTENV_PRIVATE_KEY: ${DOTENV_PRIVATE_KEY}
+      DOTENV_PRIVATE_KEY_PRODUCTION: ${DOTENV_PRIVATE_KEY_PRODUCTION}
+```
+
+```rust {{ title: "Rust" }}
+# docker-compose.yml
+version: "3.8"
+services:
+  web:
+    build: .
+    command: ./target/release/app
+    ports:
+      - "20629:20629"
+    environment:
+      DOTENV_PRIVATE_KEY: ${DOTENV_PRIVATE_KEY}
+      DOTENV_PRIVATE_KEY_PRODUCTION: ${DOTENV_PRIVATE_KEY_PRODUCTION}
+```
+
+</CodeGroup>
+
