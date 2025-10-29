@@ -1,0 +1,27 @@
+<CodeGroup>
+
+```bash {{ title: "Node" }}
+command: dotenvx run -f .env.production -- node index.js
+```
+
+```bash {{ title: "Python" }}
+command: dotenvx run -f .env.production -- gunicorn --bind 0.0.0.0:5000 wsgi:app
+```
+
+```bash {{ title: "PHP" }}
+command: dotenvx run -f .env.production -- apache2-foreground
+```
+
+```bash {{ title: "Ruby" }}
+command: dotenvx run -f .env.production -- ruby index.rb -o 0.0.0.0
+```
+
+```bash {{ title: "Go" }}
+command: dotenvx run -f .env.production -- dotenvx run -- ./main
+```
+
+```bash {{ title: "Rust" }}
+command: dotenvx run -f .env.production -- ./target/release/app
+```
+
+</CodeGroup>

@@ -1,0 +1,72 @@
+<CodeGroup>
+
+```js {{ title: "Node" }}
+# Dockerfile
+FROM node:20
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+```
+
+```python {{ title: "Python" }}
+# Dockerfile
+FROM python:3.8
+WORKDIR /usr/src/app
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 5000
+ENV FLASK_APP=index.py
+ENV FLASK_RUN_HOST=0.0.0.0
+```
+
+```php {{ title: "PHP" }}
+# Dockerfile
+FROM php:8.0-apache
+WORKDIR /var/www/html
+RUN echo 'PassEnv HELLO' > /etc/apache2/conf-available/passenv.conf
+RUN a2enconf passenv
+COPY . .
+EXPOSE 80
+```
+
+```ruby {{ title: "Ruby" }}
+# Dockerfile
+FROM ruby:3.2
+WORKDIR /app
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+COPY . .
+EXPOSE 4567
+```
+
+```go {{ title: "Go" }}
+# Dockerfile
+FROM golang:1.18 as builder
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+FROM alpine:latest
+WORKDIR /root/
+COPY --from=builder /app/main .
+EXPOSE 1323
+```
+
+```rust {{ title: "Rust" }}
+# Dockerfile
+FROM rust:latest
+RUN rustup default nightly
+WORKDIR /app
+COPY . .
+ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_PORT=20629
+RUN cargo build --release
+EXPOSE 20629
+```
+
+</CodeGroup>
+
