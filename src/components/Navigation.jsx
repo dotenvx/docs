@@ -206,6 +206,7 @@ export const navigation = [
       { title: 'Quickstart: Run', href: '/docs/quickstart/run' },
       { title: 'Quickstart: Environments', href: '/docs/quickstart/environments' },
       { title: 'Quickstart: Encrypt', href: '/docs/quickstart/encryption' },
+      { title: 'Quickstart: Deploy', href: '/docs/quickstart/deploy' },
       { title: 'Digital Ocean', href: '/docs/platforms/digital-ocean' },
       { title: 'Docker', href: '/docs/platforms/docker' },
       { title: 'Docker Compose', href: '/docs/platforms/docker-compose' },
