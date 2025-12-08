@@ -1,0 +1,68 @@
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import InstallOpsCodeGroup from '@/pages/partials/installOpsCodeGroup.mdx'
+
+export const description =
+  'Sync .env files'
+
+##### [Ops 📡](/docs/ops)
+# Sync
+
+Sync .env files with `dotenvx-ops`. {{ className: 'lead' }} 
+
+- Create project
+- Add .env.x file
+- Run sync
+
+## Create project
+
+Go to [/new/project](https://ops.dotenvx.com/new/project) and [create your project](https://ops.dotenvx.com/new/project).
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/1e2be6ba-2734-40c6-9154-413ad374e097' www='ops.dotenvx.com' width='md:w-4/6' />
+
+On the next screen you'll see a copy of your `.env.x` file.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/2ada67da-dec1-42eb-8800-930ba1bf7619' www='ops.dotenvx.com' width='md:w-4/6' />
+
+## Add .env.x file
+
+Add your `.env.x` file to your project's root.
+
+```bash {{ title: ".env.x" }}
+# motdotla/your-project/.env.x
+DOTENVX_PROJECT_ID=prj_664c683dddf155a6480d524aa7a5e42d
+
+# 1. Add this .env.x file to your project's root
+# 2. Commit it safely to code
+# 3. Sync with dotenvx-ops sync
+```
+
+> The `DOTENVX_PROJECT_ID` uniquely identifies your project and lives inside your `.env.x` file.
+
+Also add a `.env` file – if you haven't already.
+
+```bash {{ title: ".env" }}
+# .env
+HELLO=World
+```
+
+## Run sync
+
+Finally, run `dotenvx-ops sync`.
+
+<CodeGroup>
+
+```bash {{ title: "Curl" }}
+$ dotenvx-ops sync
+✔ synced [motdotla/your-project]
+```
+
+```bash {{ title: "Npm" }}
+$ npx @dotenvx/dotenvx-ops sync
+✔ synced [motdotla/your-project]
+```
+
+</CodeGroup>
+
+That's it! Your project's `.env` files have been synced.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/b343bb41-efac-4465-b9cb-6ff5928b86b1' www='ops.dotenvx.com' width='md:w-4/6' />

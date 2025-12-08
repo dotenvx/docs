@@ -229,8 +229,10 @@ export const navigation = [
     title: 'Ops',
     href: '/docs/ops',
     links: [
-      { title: 'Buy', href: '/docs/ops/buy' },
       { title: 'Install', href: '/docs/ops/install' },
+      { title: 'Sync', href: '/docs/ops/sync' },
+      { title: 'Radar', href: '/docs/ops/radar' },
+      { title: 'Rotate', href: '/docs/ops/rotate' },
       { title: 'Basics', href: '/docs/ops/quickstart' },
     ]
   },
