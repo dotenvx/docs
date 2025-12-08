@@ -1,0 +1,53 @@
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import InstallOpsCodeGroup from '@/pages/partials/installOpsCodeGroup.mdx'
+
+export const description =
+  'Observability for environment variables.'
+
+##### [Ops 📡](/docs/ops)
+# Radar
+
+Add observability to your environment variables with `Ops Radar`. {{ className: 'lead' }}
+
+Given your app – or an example app like the following:
+
+<CodeGroup>
+
+```bash {{ title: "Curl" }}
+// index.js
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+```bash {{ title: "Npm" }}
+// index.js
+require('@dotenvx/dotenvx').config()
+// or import '@dotenvx/dotenvx/config' // for esm
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+</CodeGroup>
+
+Run dotenvx like this:
+
+<CodeGroup>
+
+```bash {{ title: "Curl" }}
+$ dotenvx run -- node index.js
+[dotenvx@1.0.0] 📡 radar active
+[dotenvx@1.0.0] injecting env (1) from .env
+Hello World
+```
+
+```bash {{ title: "Npm" }}
+$ node index.js
+[dotenvx@1.0.0] 📡 radar active
+[dotenvx@1.0.0] injecting env (1) from .env
+Hello World
+```
+
+</CodeGroup>
+
+That's it! Your environment variables are auto-observed at runtime.
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/0ba3ee43-e490-417b-8e3e-367f6a179290' www='ops.dotenvx.com' width='md:w-4/6' />
