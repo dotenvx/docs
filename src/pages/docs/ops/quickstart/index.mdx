@@ -9,137 +9,102 @@ export const description =
 
 Learn the basics of `dotenvx-ops` in just a few minutes. {{ className: 'lead' }}
 
-- Sync
-- Observe
-- Audit
+- Login
+- Project
+- Backup
 
-## Sync
+## Login
 
-> Sync .env files.
+> Log in with the cli.
+
+Instal [dotenvx-ops](https://github.com/dotenvx/dotenvx-ops).
+
+<InstallOpsCodeGroup />
+
+Then log in, from the cli.
+
+<CodeGroup>
+
+```bash {{ title: "Npm" }}
+$ npx dotenvx-ops login
+press Enter to open [https://ops.dotenvx.com/login/device] and enter code [D9C1-03BC]... (Y/n)
+⠹ waiting on browser authorization
+✔ logged in [username] to this device and activated token [dxo_6kjPifI…]
+```
+
+```bash {{ title: "Curl" }}
+$ dotenvx-ops login
+press Enter to open [https://ops.dotenvx.com/login/device] and enter code [D9C1-03BC]... (Y/n)
+⠹ waiting on browser authorization
+✔ logged in [username] to this device and activated token [dxo_6kjPifI…]
+```
+
+</CodeGroup>
+
+Follow the prompts to **connect your device.**
+
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/3f8f2751-5367-41db-9c80-eb0df380a59a' www='ops.dotenvx.com' width='md:w-4/6' />
+
+<Note>
+  This flow generates a dotenvx oauth token, a `dxo_*`, allowing secure cli access to your dotenvx account.
+</Note>
+
+Next, create your project and set up the `.env.x` file.
+
+## Project
+
+> Add `.env.x` project file.
 
 Go to [/new/project](https://ops.dotenvx.com/new/project) and [create your project](https://ops.dotenvx.com/new/project).
 
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/1e2be6ba-2734-40c6-9154-413ad374e097' www='ops.dotenvx.com' width='md:w-4/6' />
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/7ad201fa-ac49-4697-8c30-c7745b0a1bfd' www='ops.dotenvx.com' width='md:w-4/6' />
 
-On the next screen you'll see a copy of your `.env.x` file.
+On the next screen, you'll see a copy of your `.env.x` file.
 
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/2ada67da-dec1-42eb-8800-930ba1bf7619' www='ops.dotenvx.com' width='md:w-4/6' />
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/edd19344-aa8a-43fb-a1a4-52f38885b38e' www='ops.dotenvx.com' width='md:w-4/6' />
 
 Add it to your project's root.
 
 ```bash {{ title: ".env.x" }}
 # motdotla/your-project/.env.x
-DOTENVX_PROJECT_ID=prj_664c683dddf155a6480d524aa7a5e42d
+DOTENVX_PROJECT_ID=prj_a10395c83a91c3c4aeccaad7e8807ea8
 
 # 1. Add this .env.x file to your project's root
 # 2. Commit it safely to code
-# 3. Sync with dotenvx-ops sync
+# 3. Back up private key(s) with: dotenvx-ops backup
 ```
 
 > The `DOTENVX_PROJECT_ID` uniquely identifies your project and lives inside your `.env.x` file.
 
-Also add a `.env` file – if you haven't already.
+Next, you are ready to backup your private key(s).
 
-```bash {{ title: ".env" }}
-# .env
-HELLO=World
+## Backup
+
+> Back up your private key(s) from `.env.keys`.
+
+Encrypt your `.env*` file (if you haven't already).
+
+```bash {{ title: "Encrypt" }}
+$ echo "HELLO=world" > .env
+$ dotenvx encrypt
+✔ encrypted (.env)
+✔ key added to .env.keys (DOTENV_PRIVATE_KEY)
 ```
 
-Finally, run `dotenvx-ops sync`.
+And back up your private key(s) with `dotenvx-ops backup`.
 
 <CodeGroup>
 
 ```bash {{ title: "Curl" }}
-$ dotenvx-ops sync
-✔ synced [motdotla/your-project]
+$ dotenvx-ops backup
+✔ backed up [motdotla/your-project]
 ```
 
 ```bash {{ title: "Npm" }}
-$ npx @dotenvx/dotenvx-ops sync
-✔ synced [motdotla/your-project]
+$ npx @dotenvx/dotenvx-ops backup
+✔ backed up [motdotla/your-project]
 ```
 
 </CodeGroup>
 
-That's it! Your project's `.env` files have been synced.
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/b343bb41-efac-4465-b9cb-6ff5928b86b1' www='ops.dotenvx.com' width='md:w-4/6' />
-
-## Observe
-
-> Auto-observe environment variables.
-
-Given your app – or an example app like the following:
-
-<CodeGroup>
-
-```bash {{ title: "Curl" }}
-// index.js
-console.log(`Hello ${process.env.HELLO}`)
-```
-
-```bash {{ title: "Npm" }}
-// index.js
-require('@dotenvx/dotenvx').config()
-// or import '@dotenvx/dotenvx/config' // for esm
-
-console.log(`Hello ${process.env.HELLO}`)
-```
-
-</CodeGroup>
-
-Run dotenvx like this:
-
-<CodeGroup>
-
-```bash {{ title: "Curl" }}
-$ dotenvx run -- node index.js
-[dotenvx@1.0.0] 📡 radar active
-[dotenvx@1.0.0] injecting env (1) from .env
-Hello World
-```
-
-```bash {{ title: "Npm" }}
-$ node index.js
-[dotenvx@1.0.0] 📡 radar active
-[dotenvx@1.0.0] injecting env (1) from .env
-Hello World
-```
-
-</CodeGroup>
-
-That's it! Your environment variables are auto-observed at runtime.
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/0ba3ee43-e490-417b-8e3e-367f6a179290' www='ops.dotenvx.com' width='md:w-4/6' />
-
-## Audit
-
-> Audit changes.
-
-Make a change to your `.env` file's `HELLO` variable.
-
-```bash {{ title: ".env" }}
-HELLO="Darkness, my old friend"
-```
-
-Run sync.
-
-<CodeGroup>
-
-```bash {{ title: "Curl" }}
-$ dotenvx-ops sync
-✔ synced [motdotla/your-project]
-```
-
-```bash {{ title: "Npm" }}
-$ npx @dotenvx/dotenvx-ops sync
-✔ synced [motdotla/your-project]
-```
-
-</CodeGroup>
-
-In the UI, navigate to `DB` -> `HELLO` key.
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/b60b571d-850a-4bbb-b71f-a4a2bc714614' www='ops.dotenvx.com' width='md:w-4/6' />
-
-You get a complete breakdown of where, when, and for which values `HELLO` has been seen. Handy!
+That's it! Your project's private key(s) have been backed up.
