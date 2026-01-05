@@ -1,23 +1,44 @@
+import { Heading } from '@/components/Heading'
+import { Button } from '@/components/Button'
+import { HeroPatternOps } from '@/components/HeroPatternOps'
+
 export const description = 'production grade dotenvx–with operational primitives'
 
+<HeroPatternOps />
+
+
 ##### [Documentation](/docs)
-# Ops
+# Dotenvx Ops
 
-![](https://dotenvx.com/dotenvx-ops-banner.png)
+*production grade [`dotenvx`](https://github.com/dotenvx/dotenvx)*–with operational primitives. {{ className: 'lead' }}
 
-> production grade [dotenvx](https://github.com/dotenvx/dotenvx)–with operational primitives
-
-**Use dotenvx across your team, infrastructure, agents, and more.** {{ className: 'lead' }}
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/docs/ops/quickstart" arrow="right" children="Quickstart" />
+  <Button href="/docs/ops/install" variant="outline" children="Installation" />
+</div>
 
 ## Getting Started
 
-* [Install](/docs/ops/install)
-* [Sync](/docs/ops/sync)
-* [Radar](/docs/ops/radar)
-* [Rotate](/docs/ops/rotate)
+<CodeGroup>
 
-#### More
+```bash {{ title: "Npm" }}
+# install it with npm
+npm install @dotenvx/dotenvx-ops --save
+npx dotenvx-ops help
+```
 
-* [Production](/docs/ops/production)
+```bash {{ title: "Curl" }}
+# download it directly as a standalone binary
+curl -sfS https://dotenvx.sh/ops | sh
+dotenvx help
+```
 
-&nbsp;
+</CodeGroup>
+
+* back up (private keys)
+* sync
+* observe
+* rotate
+* and more
+
+![](https://dotenvx.com/dotenvx-ops-banner.png)
