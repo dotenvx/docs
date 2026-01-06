@@ -230,10 +230,8 @@ export const navigation = [
     href: '/docs/ops',
     links: [
       { title: 'Install', href: '/docs/ops/install' },
-      { title: 'Backup', href: '/docs/ops/quickstart' },
-      { title: 'Sync', href: '/docs/ops/sync' },
-      { title: 'Radar', href: '/docs/ops/radar' },
-      { title: 'Rotate', href: '/docs/ops/rotate' }
+      { title: 'Basics', href: '/docs/ops/quickstart' },
+      { title: 'Advanced', href: '/docs/ops/advanced' },
     ]
   },
   {
