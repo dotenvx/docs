@@ -10,7 +10,7 @@ export const description = 'production grade dotenvx–with operational primitiv
 ##### [Documentation](/docs)
 # Dotenvx Ops
 
-*production grade [`dotenvx`](https://github.com/dotenvx/dotenvx)*–with operational primitives. {{ className: 'lead' }}
+*production grade dotenvx*–with operational primitives. {{ className: 'lead' }}
 
 <div className="not-prose mt-6 mb-16 flex gap-3">
   <Button href="/docs/ops/quickstart" arrow="right" children="Quickstart" />
@@ -21,24 +21,20 @@ export const description = 'production grade dotenvx–with operational primitiv
 
 <CodeGroup>
 
-```bash {{ title: "Npm" }}
-# install it with npm
-npm install @dotenvx/dotenvx-ops --save
-npx dotenvx-ops help
-```
-
 ```bash {{ title: "Curl" }}
 # download it directly as a standalone binary
 curl -sfS https://dotenvx.sh/ops | sh
-dotenvx-ops help
+dotenvx-ops login
+dotenvx-ops backup
+```
+
+```bash {{ title: "Npm" }}
+# install it with npm
+npm install @dotenvx/dotenvx-ops --save
+npx dotenvx-ops login
+npx dotenvx-ops backup
 ```
 
 </CodeGroup>
-
-* back up (private keys)
-* sync
-* observe
-* rotate
-* and more
 
 ![](https://dotenvx.com/dotenvx-ops-banner.png)
