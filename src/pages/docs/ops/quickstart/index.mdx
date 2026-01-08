@@ -9,74 +9,7 @@ export const description =
 
 Learn the basics of `dotenvx-ops` in just a few minutes. {{ className: 'lead' }}
 
-- Login
-- Project
-- Backup
-
-## Login
-
-> Log in with the cli.
-
-Instal [dotenvx-ops](https://github.com/dotenvx/dotenvx-ops).
-
-<InstallOpsCodeGroup />
-
-Then log in, from the cli.
-
-<CodeGroup>
-
-```bash {{ title: "Curl" }}
-$ dotenvx-ops login
-press Enter to open [https://ops.dotenvx.com/login/device] and enter code [D9C1-03BC]... (Y/n)
-⠹ waiting on browser authorization
-✔ logged in [username] to this device and activated token [dxo_6kjPifI…]
-```
-
-```bash {{ title: "Npm" }}
-$ npx dotenvx-ops login
-press Enter to open [https://ops.dotenvx.com/login/device] and enter code [D9C1-03BC]... (Y/n)
-⠹ waiting on browser authorization
-✔ logged in [username] to this device and activated token [dxo_6kjPifI…]
-```
-
-</CodeGroup>
-
-Follow the prompts to **connect your device.**
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/bf1e0f8b-8675-4f68-9c67-a5ba4c32a15a' www='ops.dotenvx.com' width='md:w-4/6' />
-
-<Note>
-  This flow generates a dotenvx oauth token, a `dxo_*`, allowing secure cli access to your dotenvx account.
-</Note>
-
-Next, create your project and set up the `.env.x` file.
-
-## Project
-
-> Add `.env.x` project file.
-
-Go to [/new/project](https://ops.dotenvx.com/new/project) and [create your project](https://ops.dotenvx.com/new/project).
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/5ae9cdb6-75f2-4fd1-88b5-ac3eb1703c48' www='ops.dotenvx.com' width='md:w-4/6' />
-
-On the next screen, you'll see a copy of your `.env.x` file.
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/2d42b3aa-509b-458b-90fa-163f7fd4b241' www='ops.dotenvx.com' width='md:w-4/6' />
-
-Add it to your project's root.
-
-```bash {{ title: ".env.x" }}
-# motdotla/your-project/.env.x
-DOTENVX_PROJECT_ID=prj_2e7e159e613a82c4744a8b99599cc62d
-
-# 1. Add this .env.x file to your project's root
-# 2. Commit it safely to code
-# 3. Back up private key(s) with: dotenvx-ops backup
-```
-
-> The `DOTENVX_PROJECT_ID` uniquely identifies your project and lives inside your `.env.x` file.
-
-Next, you are ready to backup your private key(s).
+- back up private keys
 
 ## Backup
 
@@ -91,7 +24,7 @@ $ dotenvx encrypt
 ✔ key added to .env.keys (DOTENV_PRIVATE_KEY)
 ```
 
-And back up your private key(s) with `dotenvx-ops backup`.
+And back up your private key(s) inside `.env.keys` with `dotenvx-ops backup`.
 
 <CodeGroup>
 
