@@ -1,0 +1,13 @@
+export const description =
+  'Programmatically set a plaintext environment variable.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx.set(KEY, value, \{plain:\})
+
+<p className="lead">{description}</p>
+
+```js
+// index.js
+const dotenvx = require('@dotenvx/dotenvx')
+dotenvx.set('HELLO', 'World', { plain: true })
+```
