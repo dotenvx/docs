@@ -10,7 +10,7 @@ export const description =
 $ echo "HELLO=World\nHELLO2=Universe" > .env
 
 $ dotenvx encrypt -k HELLO2
-✔ encrypted (.env)
+◈ encrypted (.env)
 ```
 
 Even specify a glob pattern.
@@ -19,5 +19,5 @@ Even specify a glob pattern.
 $ echo "HELLO=World\nHOLA=Mundo" > .env
 
 $ dotenvx encrypt -k "HE*"
-✔ encrypted (.env)
+◈ encrypted (.env)
 ```

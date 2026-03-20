@@ -20,8 +20,7 @@ Encrypt your `.env*` file (if you haven't already).
 ```bash {{ title: "Encrypt" }}
 $ echo "HELLO=world" > .env
 $ dotenvx encrypt
-✔ encrypted (.env)
-✔ key added to .env.keys (DOTENV_PRIVATE_KEY)
+◈ encrypted (.env) + key (.env.keys)
 ```
 
 And back up your private key(s) inside `.env.keys` with `dotenvx-ops backup`.
@@ -30,12 +29,12 @@ And back up your private key(s) inside `.env.keys` with `dotenvx-ops backup`.
 
 ```bash {{ title: "Curl" }}
 $ dotenvx-ops backup
-✔ backed up [motdotla/your-project]
+◈ backed up [motdotla/your-project]
 ```
 
 ```bash {{ title: "Npm" }}
 $ npx @dotenvx/dotenvx-ops backup
-✔ backed up [motdotla/your-project]
+◈ backed up [motdotla/your-project]
 ```
 
 </CodeGroup>
