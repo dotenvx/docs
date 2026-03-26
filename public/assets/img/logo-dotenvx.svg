@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="701px" height="110px" viewBox="0 0 701 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
     <g id="Logo-Canonical" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Group-8">
             <g id="Group-9" transform="translate(0.000000, 0.100000)">
-                <rect id="Rectangle" fill="#09090B" x="0" y="0" width="107" height="107" rx="6"></rect>
-                <g id="Group-2" transform="translate(16.000000, 70.000000)" fill="#ECD53F" fill-rule="nonzero">
+                <rect id="Rectangle" fill="#ECD53F" x="0" y="0" width="107" height="107" rx="6"></rect>
+                <g id="Group-2" transform="translate(16.000000, 70.000000)" fill="#09090B" fill-rule="nonzero">
                     <polygon id="Path" points="0 16.9767604 7.49 16.9767604 7.49 24.4667604 0 24.4667604"></polygon>
                     <g id="Group" transform="translate(13.910000, 0.000000)">
                         <path d="M18.71751,24.6861104 L18.71751,20.5398604 L4.96908,20.5398604 L4.96908,13.8416604 L17.32437,13.8416604 L17.32437,9.69541037 L4.96908,9.69541037 L4.96908,4.23948037 L18.24778,4.23948037 L18.24778,0.0761103748 L0,0.0761103748 L0,24.6861104 L18.71751,24.6861104 Z M27.597975,24.6861104 L27.597975,8.63771537 L37.51955,24.6861104 L42.505215,24.6861104 L42.505215,0.0761103748 L37.888165,0.0761103748 L37.888165,16.5113104 L27.816255,0.0761103748 L22.98146,0.0761103748 L22.98146,24.6861104 L27.597975,24.6861104 Z M59.3422,24.6861104 L68.15579,0.0761103748 L62.88497,0.0761103748 L56.858195,18.2901854 L50.63026,0.0761103748 L45.241205,0.0761103748 L54.037675,24.6861104 L59.3422,24.6861104 Z" id="Shape"></path>
