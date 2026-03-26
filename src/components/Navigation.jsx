@@ -201,6 +201,15 @@ export const navigation = [
     ]
   },
   {
+    title: 'Ops ⛨',
+    href: '/docs/ops',
+    links: [
+      { title: 'Install', href: '/docs/ops/install' },
+      { title: 'Basics', href: '/docs/ops/quickstart' },
+      { title: 'Advanced', href: '/docs/ops/advanced' },
+    ]
+  },
+  {
     title: 'Guides',
     href: '/docs/guides',
     links: [
@@ -227,31 +236,17 @@ export const navigation = [
     ]
   },
   {
-    title: 'Ops ⛨',
-    href: '/docs/ops',
-    links: [
-      { title: 'Install', href: '/docs/ops/install' },
-      { title: 'Basics', href: '/docs/ops/quickstart' },
-      { title: 'Advanced', href: '/docs/ops/advanced' },
-    ]
-  },
-  {
-    title: 'Mods',
-    links: [
-      { title: 'Chrome ↗', href: 'https://dotenvx.com/chrome-extension' },
-      { title: 'Heroku ↗', href: 'https://github.com/dotenvx/heroku-buildpack-dotenvx' },
-      { title: 'VSCode ↗', href: 'https://dotenvx.com/vscode-extension' },
-      { title: 'llms-full.txt ↗', href: '/llms-full.txt' },
-      { title: 'llms.txt ↗', href: '/llms.txt' },
-    ]
-  },
-  {
     title: 'Resources',
     links: [
       { title: '.env', href: '/docs/env-file' },
       { title: '.env.keys', href: '/docs/env-keys-file' },
       { title: 'Statistics', href: '/docs/stats' },
       { title: 'Deprecated', href: '/docs/deprecated' },
+      { title: 'Chrome', href: 'https://dotenvx.com/chrome-extension' },
+      { title: 'Heroku', href: 'https://github.com/dotenvx/heroku-buildpack-dotenvx' },
+      { title: 'VSCode', href: 'https://dotenvx.com/vscode-extension' },
+      { title: 'llms-full.txt', href: '/llms-full.txt' },
+      { title: 'llms.txt', href: '/llms.txt' },
     ]
   },
 ]
