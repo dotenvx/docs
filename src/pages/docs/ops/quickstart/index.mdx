@@ -9,11 +9,25 @@ export const description =
 
 Learn the basics of `dotenvx-ops` in just a few minutes. {{ className: 'lead' }}
 
-- back up private keys
+- login
 
-## Backup
+## Log in
 
-> Back up your private key(s) from `.env.keys`.
+> Log in to harden your keys.
+
+<CodeGroup>
+
+```bash {{ title: "Curl" }}
+$ dotenvx-ops login
+◈ logged in
+```
+
+```bash {{ title: "Npm" }}
+$ npx @dotenvx/dotenvx-ops login
+◈ logged in
+```
+
+</CodeGroup>
 
 Encrypt your `.env*` file (if you haven't already).
 
@@ -23,22 +37,4 @@ $ dotenvx encrypt
 ◈ encrypted (.env) + key (.env.keys)
 ```
 
-And back up your private key(s) inside `.env.keys` with `dotenvx-ops backup`.
-
-<CodeGroup>
-
-```bash {{ title: "Curl" }}
-$ dotenvx-ops backup
-◈ backed up [motdotla/your-project]
-```
-
-```bash {{ title: "Npm" }}
-$ npx @dotenvx/dotenvx-ops backup
-◈ backed up [motdotla/your-project]
-```
-
-</CodeGroup>
-
-That's it! Your project's private key(s) have been backed up.
-
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/95ce73d1-8015-48b1-ad4a-8335ec378046' www='ops.dotenvx.com' width='md:w-4/6' />
+That's it! Your private key(s) are armored off machine.
