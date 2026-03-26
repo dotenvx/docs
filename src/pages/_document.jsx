@@ -56,7 +56,7 @@ export default function Document() {
       <Head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
       </Head>
-      <body className="bg-white antialiased dark:bg-zinc-900">
+      <body className="bg-white antialiased dark:bg-black">
         <Main />
         <NextScript />
         {process.env.NODE_ENV === 'production' && (
