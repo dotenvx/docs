@@ -78,16 +78,6 @@ export const Header = forwardRef(function Header({ className }, ref) {
           <MobileSearch />
           <ModeToggle />
         </div>
-        <a
-          href="https://github.com/dotenvx/dotenvx"
-          className="hidden md:inline-flex items-center py-4 text-xs md:text-sm font-semibold text-zinc-500 dark:text-zinc-300/90 no-underline hover:no-underline hover:text-zinc-700 dark:hover:text-zinc-100 transition-colors duration-200 whitespace-nowrap"
-        >
-          <span className="inline-flex items-center gap-0.5">
-            <span>GitHub</span>
-            <span>★</span>
-            <span>5.3k</span>
-          </span>
-        </a>
         <Link
           href="/login"
           className="hidden md:inline-flex items-center py-4 text-xs md:text-sm font-semibold text-zinc-500 dark:text-zinc-300/90 no-underline hover:no-underline hover:text-zinc-700 dark:hover:text-zinc-100 transition-colors duration-200 whitespace-nowrap"

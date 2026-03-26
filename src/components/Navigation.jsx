@@ -195,8 +195,9 @@ export const navigation = [
       { title: 'Install', href: '/docs/install' },
       { title: 'Basics', href: '/docs/quickstart' },
       { title: 'Advanced', href: '/docs/advanced' },
-      { title: 'Whitepaper ↗', href: '/dotenvx.pdf' },
-      { title: 'Ops', href: '/docs/ops' }
+      { title: 'Ops ⛨', href: '/docs/ops' },
+      { title: 'GitHub ★', href: 'https://github.com/dotenvx/dotenvx' },
+      { title: 'Whitepaper ¶', href: '/dotenvx.pdf' },
     ]
   },
   {
@@ -226,7 +227,7 @@ export const navigation = [
     ]
   },
   {
-    title: 'Ops',
+    title: 'Ops ⛨',
     href: '/docs/ops',
     links: [
       { title: 'Install', href: '/docs/ops/install' },
