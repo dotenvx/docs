@@ -23,6 +23,21 @@ Learn the basics of `dotenvx` in just a few minutes. {{ className: 'lead' }}
 - multiple environments
 - encrypted envs
 
+## Quickstart
+
+> Install and use it in code just like `dotenv`.
+
+```sh
+npm install @dotenvx/dotenvx --save
+```
+```js
+// index.js
+require('@dotenvx/dotenvx').config()
+// or import '@dotenvx/dotenvx/config' // for esm
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+
 ## Run Anywhere
 
 > Run it with `dotenvx run -- yourcommand`.
