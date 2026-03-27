@@ -193,11 +193,9 @@ export const navigation = [
     href: '/docs',
     links: [
       { title: 'Install', href: '/docs/install' },
-      { title: 'Basics', href: '/docs/quickstart' },
+      { title: 'Quickstart', href: '/docs/quickstart' },
       { title: 'Advanced', href: '/docs/advanced' },
       { title: 'Ops ⛨', href: '/docs/ops' },
-      { title: 'GitHub ★', href: 'https://github.com/dotenvx/dotenvx' },
-      { title: 'Whitepaper ¶', href: '/dotenvx.pdf' },
     ]
   },
   {
