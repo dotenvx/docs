@@ -2,13 +2,11 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import clsx from 'clsx'
-import { AnimatePresence, motion, useIsPresent } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import { Button } from '@/components/Button'
 import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
-import { useSectionStore } from '@/components/SectionProvider'
 import { Tag } from '@/components/Tag'
-import { remToPx } from '@/lib/remToPx'
 
 function useInitialValue(value, condition = true) {
   let initialValue = useRef(value).current
@@ -51,58 +49,12 @@ function NavLink({ href, tag, active, isAnchorLink = false, children }) {
   )
 }
 
-function VisibleSectionHighlight({ group, pathname }) {
-  let [sections, visibleSections] = useInitialValue(
-    [
-      useSectionStore((s) => s.sections),
-      useSectionStore((s) => s.visibleSections),
-    ],
-    useIsInsideMobileNavigation()
-  )
+function isLinkActive(link, pathname) {
+  if (link.href === pathname) {
+    return true
+  }
 
-  let isPresent = useIsPresent()
-  let firstVisibleSectionIndex = Math.max(
-    0,
-    [{ id: '_top' }, ...sections].findIndex(
-      (section) => section.id === visibleSections[0]
-    )
-  )
-  let itemHeight = remToPx(2)
-  let height = isPresent
-    ? Math.max(1, visibleSections.length) * itemHeight
-    : itemHeight
-  let top =
-    group.links.findIndex((link) => link.href === pathname) * itemHeight +
-    firstVisibleSectionIndex * itemHeight
-
-  return (
-    <motion.div
-      layout
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.2 } }}
-      exit={{ opacity: 0 }}
-      className="absolute inset-x-0 top-0 bg-zinc-800/2.5 will-change-transform dark:bg-white/2.5"
-      style={{ borderRadius: 8, height, top }}
-    />
-  )
-}
-
-function ActivePageMarker({ group, pathname }) {
-  let itemHeight = remToPx(2)
-  let offset = remToPx(0.25)
-  let activePageIndex = group.links.findIndex((link) => link.href === pathname)
-  let top = offset + activePageIndex * itemHeight
-
-  return (
-    <motion.div
-      layout
-      className="absolute left-2 h-6 w-px bg-yellow-500"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.2 } }}
-      exit={{ opacity: 0 }}
-      style={{ top }}
-    />
-  )
+  return (link.links ?? []).some((childLink) => childLink.href === pathname)
 }
 
 function NavigationGroup({ group, className }) {
@@ -110,13 +62,7 @@ function NavigationGroup({ group, className }) {
   // state, so that the state does not change during the close animation.
   // The state will still update when we re-open (re-render) the navigation.
   let isInsideMobileNavigation = useIsInsideMobileNavigation()
-  let [router, sections] = useInitialValue(
-    [useRouter(), useSectionStore((s) => s.sections)],
-    isInsideMobileNavigation
-  )
-
-  let isActiveGroup =
-    group.links.findIndex((link) => link.href === router.pathname) !== -1
+  let router = useInitialValue(useRouter(), isInsideMobileNavigation)
 
   return (
     <li className={clsx('relative mt-6', className)}>
@@ -131,28 +77,18 @@ function NavigationGroup({ group, className }) {
         )}
       </motion.h2>
       <div className="relative mt-3 pl-2">
-        <AnimatePresence initial={!isInsideMobileNavigation}>
-          {isActiveGroup && (
-            <VisibleSectionHighlight group={group} pathname={router.pathname} />
-          )}
-        </AnimatePresence>
         <motion.div
           layout
           className="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5"
         />
-        <AnimatePresence initial={false}>
-          {isActiveGroup && (
-            <ActivePageMarker group={group} pathname={router.pathname} />
-          )}
-        </AnimatePresence>
         <ul role="list" className="border-l border-transparent">
           {group.links.map((link) => (
             <motion.li key={link.href} layout="position" className="relative">
-              <NavLink href={link.href} active={link.href === router.pathname}>
+              <NavLink href={link.href} active={isLinkActive(link, router.pathname)}>
                 {link.title}
               </NavLink>
               <AnimatePresence mode="popLayout" initial={false}>
-                {link.href === router.pathname && sections.length > 0 && (
+                {isLinkActive(link, router.pathname) && (link.links?.length ?? 0) > 0 && (
                   <motion.ul
                     role="list"
                     initial={{ opacity: 0 }}
@@ -165,14 +101,14 @@ function NavigationGroup({ group, className }) {
                       transition: { duration: 0.15 },
                     }}
                   >
-                    {sections.map((section) => (
-                      <li key={section.id}>
+                    {link.links.map((childLink) => (
+                      <li key={childLink.href}>
                         <NavLink
-                          href={`${link.href}#${section.id}`}
-                          tag={section.tag}
+                          href={childLink.href}
                           isAnchorLink
+                          active={childLink.href === router.pathname}
                         >
-                          {section.title}
+                          {childLink.title}
                         </NavLink>
                       </li>
                     ))}
@@ -193,9 +129,36 @@ export const navigation = [
     href: '/docs',
     links: [
       { title: 'Install', href: '/docs/install' },
-      { title: 'Quickstart', href: '/docs/quickstart' },
+      {
+        title: 'Quickstart',
+        href: '/docs/quickstart',
+        links: [
+          { title: 'Node.js', href: '/docs/languages/nodejs' },
+          { title: 'PHP', href: '/docs/languages/php' },
+          { title: 'Ruby', href: '/docs/languages/ruby' },
+          { title: 'Python', href: '/docs/languages/python' },
+          { title: 'Go', href: '/docs/languages/go' },
+          { title: 'Rust', href: '/docs/languages/rust' },
+          { title: 'Java', href: '/docs/languages/java' },
+          { title: '.NET', href: '/docs/languages/dotnet' },
+        ],
+      },
       { title: 'Advanced', href: '/docs/advanced' },
       { title: 'Ops ⛨', href: '/docs/ops' },
+    ]
+  },
+  {
+    title: 'Quickstart',
+    href: '/docs/quickstart',
+    links: [
+      { title: 'Node.js', href: '/docs/languages/nodejs' },
+      { title: 'PHP', href: '/docs/languages/php' },
+      { title: 'Ruby', href: '/docs/languages/ruby' },
+      { title: 'Python', href: '/docs/languages/python' },
+      { title: 'Go', href: '/docs/languages/go' },
+      { title: 'Rust', href: '/docs/languages/rust' },
+      { title: 'Java', href: '/docs/languages/java' },
+      { title: '.NET', href: '/docs/languages/dotnet' },
     ]
   },
   {
