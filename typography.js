@@ -201,6 +201,16 @@ module.exports = ({ theme }) => ({
         marginTop: theme('spacing.10'),
         marginBottom: theme('spacing.2'),
       },
+      h5: {
+        color: 'var(--tw-prose-captions)',
+      },
+      'h5 a': {
+        color: 'var(--tw-prose-captions)',
+        textDecoration: 'none',
+        '&:hover': {
+          color: 'var(--tw-prose-body)',
+        },
+      },
 
       // Media
       'img, video, figure': {

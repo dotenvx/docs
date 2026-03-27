@@ -19,3 +19,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .prose h5 a {
+    color: var(--tw-prose-captions);
+    text-decoration: none;
+  }
+
+  .prose h5 a:hover {
+    color: var(--tw-prose-body);
+  }
+}

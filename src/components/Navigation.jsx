@@ -26,14 +26,20 @@ function TopLevelNavItem({ href, children }) {
   )
 }
 
-function NavLink({ href, tag, active, isAnchorLink = false, children }) {
+function NavLink({ href, tag, active, level = 0, children }) {
+  let leftPaddingClass = {
+    0: 'pl-0',
+    1: 'pl-4',
+    2: 'pl-4',
+  }[level] ?? 'pl-12'
+
   return (
     <Link
       href={href}
       aria-current={active ? 'page' : undefined}
       className={clsx(
         'flex justify-between gap-2 py-1 pr-3 text-sm transition',
-        isAnchorLink ? 'pl-7' : 'pl-4',
+        leftPaddingClass,
         active
           ? 'text-zinc-900 dark:text-white'
           : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
@@ -54,7 +60,51 @@ function isLinkActive(link, pathname) {
     return true
   }
 
-  return (link.links ?? []).some((childLink) => childLink.href === pathname)
+  return (link.links ?? []).some((childLink) => isLinkActive(childLink, pathname))
+}
+
+function NavigationLinkItem({ link, pathname, level = 0 }) {
+  let isActive = isLinkActive(link, pathname)
+
+  return (
+    <motion.li layout="position" className="relative">
+      <NavLink href={link.href} active={isActive} level={level}>
+        {link.title}
+      </NavLink>
+      <AnimatePresence mode="popLayout" initial={false}>
+        {isActive && (link.links?.length ?? 0) > 0 && (
+          <motion.ul
+            role="list"
+            className={clsx(level === 0 && 'relative')}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { delay: 0.1 },
+            }}
+            exit={{
+              opacity: 0,
+              transition: { duration: 0.15 },
+            }}
+          >
+            {level === 0 && (
+              <motion.div
+                layout
+                className="absolute inset-y-0 left-0 w-px bg-zinc-900/10 dark:bg-white/5"
+              />
+            )}
+            {link.links.map((childLink) => (
+              <NavigationLinkItem
+                key={childLink.href}
+                link={childLink}
+                pathname={pathname}
+                level={level + 1}
+              />
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </motion.li>
+  )
 }
 
 function NavigationGroup({ group, className }) {
@@ -76,46 +126,10 @@ function NavigationGroup({ group, className }) {
           <span>{group.title}</span>
         )}
       </motion.h2>
-      <div className="relative mt-3 pl-2">
-        <motion.div
-          layout
-          className="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5"
-        />
+      <div className="relative mt-3">
         <ul role="list" className="border-l border-transparent">
           {group.links.map((link) => (
-            <motion.li key={link.href} layout="position" className="relative">
-              <NavLink href={link.href} active={isLinkActive(link, router.pathname)}>
-                {link.title}
-              </NavLink>
-              <AnimatePresence mode="popLayout" initial={false}>
-                {isLinkActive(link, router.pathname) && (link.links?.length ?? 0) > 0 && (
-                  <motion.ul
-                    role="list"
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: { delay: 0.1 },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      transition: { duration: 0.15 },
-                    }}
-                  >
-                    {link.links.map((childLink) => (
-                      <li key={childLink.href}>
-                        <NavLink
-                          href={childLink.href}
-                          isAnchorLink
-                          active={childLink.href === router.pathname}
-                        >
-                          {childLink.title}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-            </motion.li>
+            <NavigationLinkItem key={link.href} link={link} pathname={router.pathname} />
           ))}
         </ul>
       </div>
@@ -128,21 +142,8 @@ export const navigation = [
     title: 'Documentation',
     href: '/docs',
     links: [
+      { title: 'Introduction', href: '/docs/introduction' },
       { title: 'Install', href: '/docs/install' },
-      {
-        title: 'Quickstart',
-        href: '/docs/quickstart',
-        links: [
-          { title: 'Node.js', href: '/docs/languages/nodejs' },
-          { title: 'PHP', href: '/docs/languages/php' },
-          { title: 'Ruby', href: '/docs/languages/ruby' },
-          { title: 'Python', href: '/docs/languages/python' },
-          { title: 'Go', href: '/docs/languages/go' },
-          { title: 'Rust', href: '/docs/languages/rust' },
-          { title: 'Java', href: '/docs/languages/java' },
-          { title: '.NET', href: '/docs/languages/dotnet' },
-        ],
-      },
       { title: 'Advanced', href: '/docs/advanced' },
       { title: 'Ops ⛨', href: '/docs/ops' },
     ]
@@ -151,14 +152,14 @@ export const navigation = [
     title: 'Quickstart',
     href: '/docs/quickstart',
     links: [
-      { title: 'Node.js', href: '/docs/languages/nodejs' },
-      { title: 'PHP', href: '/docs/languages/php' },
-      { title: 'Ruby', href: '/docs/languages/ruby' },
-      { title: 'Python', href: '/docs/languages/python' },
-      { title: 'Go', href: '/docs/languages/go' },
-      { title: 'Rust', href: '/docs/languages/rust' },
-      { title: 'Java', href: '/docs/languages/java' },
-      { title: '.NET', href: '/docs/languages/dotnet' },
+      {
+        title: 'Node.js',
+        href: '/docs/secrets-for-nodejs',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-for-nodejs' },
+          { title: 'Express', href: '/docs/secrets-for-express' },
+        ],
+      },
     ]
   },
   {
