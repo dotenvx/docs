@@ -18,7 +18,7 @@ function TopLevelNavItem({ href, children }) {
     <li className="">
       <Link
         href={href}
-        className="block py-4 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+        className="block rounded-md px-3 py-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-900/2.5 dark:text-zinc-400 dark:hover:bg-white/5"
       >
         {children}
       </Link>
@@ -26,23 +26,25 @@ function TopLevelNavItem({ href, children }) {
   )
 }
 
-function NavLink({ href, tag, active, level = 0, children }) {
+function NavLink({ href, tag, active, current, level = 0, children }) {
   let leftPaddingClass = {
-    0: 'pl-0',
-    1: 'pl-4',
-    2: 'pl-4',
-  }[level] ?? 'pl-12'
+    0: 'pl-2',
+    1: 'pl-3',
+    2: 'pl-3',
+  }[level] ?? 'pl-10'
 
   return (
     <Link
       href={href}
-      aria-current={active ? 'page' : undefined}
+      aria-current={current ? 'page' : undefined}
       className={clsx(
-        'flex justify-between gap-2 py-1 pr-3 text-sm transition',
+        'flex justify-between gap-2 rounded-md px-4 py-1 text-sm transition-colors',
         leftPaddingClass,
-        active
-          ? 'text-zinc-900 dark:text-white'
-          : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
+        current
+          ? 'bg-zinc-900/5 text-zinc-900 dark:bg-white/10 dark:text-white'
+          : active
+            ? 'text-zinc-900 dark:text-white'
+            : 'text-zinc-600 hover:bg-zinc-900/2.5 dark:text-zinc-400 dark:hover:bg-white/5'
       )}
     >
       <span className="truncate">{children}</span>
@@ -63,19 +65,28 @@ function isLinkActive(link, pathname) {
   return (link.links ?? []).some((childLink) => isLinkActive(childLink, pathname))
 }
 
+function hasDescendantWithHref(link, href) {
+  return (link.links ?? []).some(
+    (childLink) => childLink.href === href || hasDescendantWithHref(childLink, href)
+  )
+}
+
 function NavigationLinkItem({ link, pathname, level = 0 }) {
   let isActive = isLinkActive(link, pathname)
+  // Only one item should be "current" (gets the persistent bg). If a parent and
+  // child share the same href, prefer the deepest child.
+  let isCurrent = link.href === pathname && !hasDescendantWithHref(link, pathname)
 
   return (
     <motion.li layout="position" className="relative">
-      <NavLink href={link.href} active={isActive} level={level}>
+      <NavLink href={link.href} active={isActive} current={isCurrent} level={level}>
         {link.title}
       </NavLink>
       <AnimatePresence mode="popLayout" initial={false}>
         {isActive && (link.links?.length ?? 0) > 0 && (
           <motion.ul
             role="list"
-            className={clsx(level === 0 && 'relative')}
+            className={clsx('space-y-[1.5px]', level === 0 && 'relative pl-2')}
             initial={{ opacity: 0 }}
             animate={{
               opacity: 1,
@@ -118,7 +129,7 @@ function NavigationGroup({ group, className }) {
     <li className={clsx('relative mt-6', className)}>
       <motion.h2
         layout="position"
-        className="text-xs font-semibold text-zinc-900 dark:text-white"
+        className="pl-2 text-xs font-semibold text-zinc-900 dark:text-white"
       >
         {group.href ? (
           <a href={group.href}>{group.title}</a>
@@ -127,7 +138,7 @@ function NavigationGroup({ group, className }) {
         )}
       </motion.h2>
       <div className="relative mt-3">
-        <ul role="list" className="border-l border-transparent">
+        <ul role="list" className="space-y-[1.5px] border-l border-transparent">
           {group.links.map((link) => (
             <NavigationLinkItem key={link.href} link={link} pathname={router.pathname} />
           ))}
@@ -154,10 +165,10 @@ export const navigation = [
     links: [
       {
         title: 'Node.js',
-        href: '/docs/secrets-for-nodejs',
+        href: '/docs/secrets-in-nodejs',
         links: [
-          { title: 'Introduction', href: '/docs/secrets-for-nodejs' },
-          { title: 'Express', href: '/docs/secrets-for-express' },
+          { title: 'Introduction', href: '/docs/secrets-in-nodejs' },
+          { title: 'Express', href: '/docs/secrets-in-express' },
         ],
       },
     ]
