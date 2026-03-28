@@ -183,6 +183,13 @@ export const navigation = [
           { title: 'Introduction', href: '/docs/secrets-in-ruby' },
         ],
       },
+      {
+        title: 'Go',
+        href: '/docs/secrets-in-go',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-go' },
+        ],
+      },
     ]
   },
   {
