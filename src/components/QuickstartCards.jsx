@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { AstroIcon } from '@/components/icons/AstroIcon'
 import { ExpressIcon } from '@/components/icons/ExpressIcon'
 import { NodeIcon } from '@/components/icons/NodeIcon'
+import { PythonIcon } from '@/components/icons/PythonIcon'
 
 function QuickstartCard({ item }) {
   const Icon = item.icon
@@ -42,10 +43,16 @@ export function QuickstartCards({
       icon: AstroIcon,
       iconClass: 'h-5 w-5 text-[#FF5D01]',
     },
+    {
+      href: '/docs/secrets-in-python',
+      title: 'Python Quickstart',
+      icon: PythonIcon,
+      iconClass: 'h-5 w-5 text-[#3776AB]',
+    },
   ],
 }) {
   return (
-    <div className="not-prose mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+    <div className="not-prose mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
       {items.map((item) => (
         <QuickstartCard key={item.href} item={item} />
       ))}

@@ -169,6 +169,13 @@ export const navigation = [
           { title: 'Astro', href: '/docs/secrets-in-astro' },
         ],
       },
+      {
+        title: 'Python',
+        href: '/docs/secrets-in-python',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-python' },
+        ],
+      },
     ]
   },
   {
