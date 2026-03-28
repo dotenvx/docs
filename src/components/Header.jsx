@@ -86,7 +86,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
         </Link>
         <Link
           href="/docs/quickstart"
-          className="hidden md:inline-flex items-center justify-center rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-2 font-extrabold tracking-tight text-white dark:text-white no-underline hover:no-underline hover:text-zinc-950 dark:hover:text-zinc-950 transition-all duration-200 hover:bg-zinc-100 hover:shadow-[0_0_24px_rgba(236,213,63,0.18)] text-xs md:text-sm whitespace-nowrap"
+          className="hidden md:inline-flex items-center justify-center rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-1.5 font-extrabold tracking-tight text-white dark:text-white no-underline hover:no-underline hover:text-zinc-950 dark:hover:text-zinc-950 transition-all duration-200 hover:bg-zinc-100 hover:shadow-[0_0_24px_rgba(236,213,63,0.18)] text-xs md:text-sm whitespace-nowrap"
         >
           Get Started
         </Link>

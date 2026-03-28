@@ -2,13 +2,11 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import clsx from 'clsx'
-import { AnimatePresence, motion, useIsPresent } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import { Button } from '@/components/Button'
 import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
-import { useSectionStore } from '@/components/SectionProvider'
 import { Tag } from '@/components/Tag'
-import { remToPx } from '@/lib/remToPx'
 
 function useInitialValue(value, condition = true) {
   let initialValue = useRef(value).current
@@ -20,7 +18,7 @@ function TopLevelNavItem({ href, children }) {
     <li className="">
       <Link
         href={href}
-        className="block py-4 text-sm text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+        className="block rounded-md px-3 py-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-900/2.5 dark:text-zinc-400 dark:hover:bg-white/5"
       >
         {children}
       </Link>
@@ -28,17 +26,25 @@ function TopLevelNavItem({ href, children }) {
   )
 }
 
-function NavLink({ href, tag, active, isAnchorLink = false, children }) {
+function NavLink({ href, tag, active, current, level = 0, children }) {
+  let leftPaddingClass = {
+    0: 'pl-2',
+    1: 'pl-3',
+    2: 'pl-3',
+  }[level] ?? 'pl-10'
+
   return (
     <Link
       href={href}
-      aria-current={active ? 'page' : undefined}
+      aria-current={current ? 'page' : undefined}
       className={clsx(
-        'flex justify-between gap-2 py-1 pr-3 text-sm transition',
-        isAnchorLink ? 'pl-7' : 'pl-4',
-        active
-          ? 'text-zinc-900 dark:text-white'
-          : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'
+        'flex justify-between gap-2 rounded-md px-4 py-1 text-sm transition-colors',
+        leftPaddingClass,
+        current
+          ? 'bg-zinc-900/5 text-zinc-900 dark:bg-white/10 dark:text-white'
+          : active
+            ? 'text-zinc-900 dark:text-white'
+            : 'text-zinc-600 hover:bg-zinc-900/2.5 dark:text-zinc-400 dark:hover:bg-white/5'
       )}
     >
       <span className="truncate">{children}</span>
@@ -51,57 +57,64 @@ function NavLink({ href, tag, active, isAnchorLink = false, children }) {
   )
 }
 
-function VisibleSectionHighlight({ group, pathname }) {
-  let [sections, visibleSections] = useInitialValue(
-    [
-      useSectionStore((s) => s.sections),
-      useSectionStore((s) => s.visibleSections),
-    ],
-    useIsInsideMobileNavigation()
-  )
+function isLinkActive(link, pathname) {
+  if (link.href === pathname) {
+    return true
+  }
 
-  let isPresent = useIsPresent()
-  let firstVisibleSectionIndex = Math.max(
-    0,
-    [{ id: '_top' }, ...sections].findIndex(
-      (section) => section.id === visibleSections[0]
-    )
-  )
-  let itemHeight = remToPx(2)
-  let height = isPresent
-    ? Math.max(1, visibleSections.length) * itemHeight
-    : itemHeight
-  let top =
-    group.links.findIndex((link) => link.href === pathname) * itemHeight +
-    firstVisibleSectionIndex * itemHeight
+  return (link.links ?? []).some((childLink) => isLinkActive(childLink, pathname))
+}
 
-  return (
-    <motion.div
-      layout
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.2 } }}
-      exit={{ opacity: 0 }}
-      className="absolute inset-x-0 top-0 bg-zinc-800/2.5 will-change-transform dark:bg-white/2.5"
-      style={{ borderRadius: 8, height, top }}
-    />
+function hasDescendantWithHref(link, href) {
+  return (link.links ?? []).some(
+    (childLink) => childLink.href === href || hasDescendantWithHref(childLink, href)
   )
 }
 
-function ActivePageMarker({ group, pathname }) {
-  let itemHeight = remToPx(2)
-  let offset = remToPx(0.25)
-  let activePageIndex = group.links.findIndex((link) => link.href === pathname)
-  let top = offset + activePageIndex * itemHeight
+function NavigationLinkItem({ link, pathname, level = 0 }) {
+  let isActive = isLinkActive(link, pathname)
+  // Only one item should be "current" (gets the persistent bg). If a parent and
+  // child share the same href, prefer the deepest child.
+  let isCurrent = link.href === pathname && !hasDescendantWithHref(link, pathname)
 
   return (
-    <motion.div
-      layout
-      className="absolute left-2 h-6 w-px bg-yellow-500"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.2 } }}
-      exit={{ opacity: 0 }}
-      style={{ top }}
-    />
+    <motion.li layout="position" className="relative">
+      <NavLink href={link.href} active={isActive} current={isCurrent} level={level}>
+        {link.title}
+      </NavLink>
+      <AnimatePresence mode="popLayout" initial={false}>
+        {isActive && (link.links?.length ?? 0) > 0 && (
+          <motion.ul
+            role="list"
+            className={clsx('space-y-[1.5px]', level === 0 && 'relative ml-2 pl-2')}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { delay: 0.1 },
+            }}
+            exit={{
+              opacity: 0,
+              transition: { duration: 0.15 },
+            }}
+          >
+            {level === 0 && (
+              <motion.div
+                layout
+                className="absolute inset-y-0 left-0 w-px bg-zinc-900/10 dark:bg-white/5"
+              />
+            )}
+            {link.links.map((childLink) => (
+              <NavigationLinkItem
+                key={childLink.href}
+                link={childLink}
+                pathname={pathname}
+                level={level + 1}
+              />
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </motion.li>
   )
 }
 
@@ -110,19 +123,13 @@ function NavigationGroup({ group, className }) {
   // state, so that the state does not change during the close animation.
   // The state will still update when we re-open (re-render) the navigation.
   let isInsideMobileNavigation = useIsInsideMobileNavigation()
-  let [router, sections] = useInitialValue(
-    [useRouter(), useSectionStore((s) => s.sections)],
-    isInsideMobileNavigation
-  )
-
-  let isActiveGroup =
-    group.links.findIndex((link) => link.href === router.pathname) !== -1
+  let router = useInitialValue(useRouter(), isInsideMobileNavigation)
 
   return (
     <li className={clsx('relative mt-6', className)}>
       <motion.h2
         layout="position"
-        className="text-xs font-semibold text-zinc-900 dark:text-white"
+        className="pl-2 text-xs font-semibold text-zinc-900 dark:text-white"
       >
         {group.href ? (
           <a href={group.href}>{group.title}</a>
@@ -130,56 +137,10 @@ function NavigationGroup({ group, className }) {
           <span>{group.title}</span>
         )}
       </motion.h2>
-      <div className="relative mt-3 pl-2">
-        <AnimatePresence initial={!isInsideMobileNavigation}>
-          {isActiveGroup && (
-            <VisibleSectionHighlight group={group} pathname={router.pathname} />
-          )}
-        </AnimatePresence>
-        <motion.div
-          layout
-          className="absolute inset-y-0 left-2 w-px bg-zinc-900/10 dark:bg-white/5"
-        />
-        <AnimatePresence initial={false}>
-          {isActiveGroup && (
-            <ActivePageMarker group={group} pathname={router.pathname} />
-          )}
-        </AnimatePresence>
-        <ul role="list" className="border-l border-transparent">
+      <div className="relative mt-3">
+        <ul role="list" className="space-y-[1.5px] border-l border-transparent">
           {group.links.map((link) => (
-            <motion.li key={link.href} layout="position" className="relative">
-              <NavLink href={link.href} active={link.href === router.pathname}>
-                {link.title}
-              </NavLink>
-              <AnimatePresence mode="popLayout" initial={false}>
-                {link.href === router.pathname && sections.length > 0 && (
-                  <motion.ul
-                    role="list"
-                    initial={{ opacity: 0 }}
-                    animate={{
-                      opacity: 1,
-                      transition: { delay: 0.1 },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      transition: { duration: 0.15 },
-                    }}
-                  >
-                    {sections.map((section) => (
-                      <li key={section.id}>
-                        <NavLink
-                          href={`${link.href}#${section.id}`}
-                          tag={section.tag}
-                          isAnchorLink
-                        >
-                          {section.title}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </motion.ul>
-                )}
-              </AnimatePresence>
-            </motion.li>
+            <NavigationLinkItem key={link.href} link={link} pathname={router.pathname} />
           ))}
         </ul>
       </div>
@@ -192,27 +153,30 @@ export const navigation = [
     title: 'Documentation',
     href: '/docs',
     links: [
-      { title: 'Install', href: '/docs/install' },
-      { title: 'Basics', href: '/docs/quickstart' },
-      { title: 'Advanced', href: '/docs/advanced' },
-      { title: 'Ops ⛨', href: '/docs/ops' },
-      { title: 'GitHub ★', href: 'https://github.com/dotenvx/dotenvx' },
-      { title: 'Whitepaper ¶', href: '/dotenvx.pdf' },
+      { title: 'Introduction', href: '/docs/introduction' },
     ]
   },
   {
-    title: 'Ops ⛨',
-    href: '/docs/ops',
+    title: 'Quickstart',
+    href: '/docs/quickstart',
     links: [
-      { title: 'Install', href: '/docs/ops/install' },
-      { title: 'Basics', href: '/docs/ops/quickstart' },
-      { title: 'Advanced', href: '/docs/ops/advanced' },
+      {
+        title: 'Node.js',
+        href: '/docs/secrets-in-nodejs',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-nodejs' },
+          { title: 'Express', href: '/docs/secrets-in-express' },
+        ],
+      },
     ]
   },
   {
     title: 'Guides',
     href: '/docs/guides',
     links: [
+      { title: 'Install', href: '/docs/install' },
+      { title: 'Basics', href: '/docs/quickstart' },
+      { title: 'Advanced', href: '/docs/advanced' },
       { title: 'Quickstart: Run', href: '/docs/quickstart/run' },
       { title: 'Quickstart: Environments', href: '/docs/quickstart/environments' },
       { title: 'Quickstart: Encrypt', href: '/docs/quickstart/encryption' },
@@ -249,6 +213,16 @@ export const navigation = [
       { title: 'llms.txt', href: '/llms.txt' },
     ]
   },
+  {
+    title: 'Ops ⛨',
+    href: '/docs/ops',
+    links: [
+      { title: 'Install', href: '/docs/ops/install' },
+      { title: 'Basics', href: '/docs/ops/quickstart' },
+      { title: 'Advanced', href: '/docs/ops/advanced' },
+    ]
+  },
+  
 ]
 
 export function Navigation(props) {
