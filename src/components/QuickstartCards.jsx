@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { AstroIcon } from '@/components/icons/AstroIcon'
 import { ExpressIcon } from '@/components/icons/ExpressIcon'
 import { NodeIcon } from '@/components/icons/NodeIcon'
 
@@ -34,6 +35,12 @@ export function QuickstartCards({
       title: 'Express Quickstart',
       icon: ExpressIcon,
       iconClass: 'h-5 w-5 text-[#000000] dark:invert',
+    },
+    {
+      href: '/docs/secrets-in-astro',
+      title: 'Astro Quickstart',
+      icon: AstroIcon,
+      iconClass: 'h-5 w-5 text-[#FF5D01]',
     },
   ],
 }) {

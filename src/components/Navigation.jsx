@@ -166,6 +166,7 @@ export const navigation = [
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-nodejs' },
           { title: 'Express', href: '/docs/secrets-in-express' },
+          { title: 'Astro', href: '/docs/secrets-in-astro' },
         ],
       },
     ]
