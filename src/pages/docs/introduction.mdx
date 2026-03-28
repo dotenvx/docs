@@ -1,8 +1,13 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description = 'Dotenvx is the secrets CLI for developers.'
 
-##### [Documentation](/docs)
+<Breadcrumb
+  items={[
+    { label: 'Documentation', href: '/docs' },
+  ]}
+/>
 # Introduction
 
 <GuideHeading lead={description} />
@@ -11,5 +16,5 @@ export const description = 'Dotenvx is the secrets CLI for developers.'
 
 Learn how to get Dotenvx set up in your project.
 
-* [Node.js Quickstart](/docs/secrets-for-nodejs)
-* [Express Quickstart](/docs/secrets-for-express)
+* [Node.js Quickstart](/docs/secrets-in-nodejs)
+* [Express Quickstart](/docs/secrets-in-express)
