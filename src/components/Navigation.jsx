@@ -177,6 +177,13 @@ export const navigation = [
         ],
       },
       {
+        title: 'PHP',
+        href: '/docs/secrets-in-php',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-php' },
+        ],
+      },
+      {
         title: 'Ruby',
         href: '/docs/secrets-in-ruby',
         links: [
@@ -188,6 +195,62 @@ export const navigation = [
         href: '/docs/secrets-in-go',
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-go' },
+        ],
+      },
+      {
+        title: 'Rust',
+        href: '/docs/secrets-in-rust',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-rust' },
+        ],
+      },
+      {
+        title: 'Java',
+        href: '/docs/secrets-in-java',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-java' },
+        ],
+      },
+      {
+        title: 'Clojure',
+        href: '/docs/secrets-in-clojure',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-clojure' },
+        ],
+      },
+      {
+        title: 'Kotlin',
+        href: '/docs/secrets-in-kotlin',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-kotlin' },
+        ],
+      },
+      {
+        title: '.NET',
+        href: '/docs/secrets-in-dotnet',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-dotnet' },
+        ],
+      },
+      {
+        title: 'Bash',
+        href: '/docs/secrets-in-bash',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-bash' },
+        ],
+      },
+      {
+        title: 'Fish',
+        href: '/docs/secrets-in-fish',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-fish' },
+        ],
+      },
+      {
+        title: 'Cron',
+        href: '/docs/secrets-in-cron',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-cron' },
         ],
       },
     ]
