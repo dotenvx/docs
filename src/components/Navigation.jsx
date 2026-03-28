@@ -233,24 +233,12 @@ export const navigation = [
         ],
       },
       {
-        title: 'Bash',
+        title: 'Other',
         href: '/docs/secrets-in-bash',
         links: [
-          { title: 'Introduction', href: '/docs/secrets-in-bash' },
-        ],
-      },
-      {
-        title: 'Fish',
-        href: '/docs/secrets-in-fish',
-        links: [
-          { title: 'Introduction', href: '/docs/secrets-in-fish' },
-        ],
-      },
-      {
-        title: 'Cron',
-        href: '/docs/secrets-in-cron',
-        links: [
-          { title: 'Introduction', href: '/docs/secrets-in-cron' },
+          { title: 'Bash', href: '/docs/secrets-in-bash' },
+          { title: 'Fish', href: '/docs/secrets-in-fish' },
+          { title: 'Cron', href: '/docs/secrets-in-cron' },
         ],
       },
     ]
