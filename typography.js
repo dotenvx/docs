@@ -3,9 +3,9 @@ module.exports = ({ theme }) => ({
     css: {
       '--tw-prose-body': theme('colors.zinc.700'),
       '--tw-prose-headings': theme('colors.zinc.900'),
-      '--tw-prose-links': theme('colors.yellow.500'),
-      '--tw-prose-links-hover': theme('colors.yellow.600'),
-      '--tw-prose-links-underline': theme('colors.yellow.500 / 0.3'),
+      '--tw-prose-links': '#000000',
+      '--tw-prose-links-hover': '#000000',
+      '--tw-prose-links-underline': 'rgb(9 9 11 / 0.55)',
       '--tw-prose-bold': theme('colors.zinc.900'),
       '--tw-prose-counters': theme('colors.zinc.500'),
       '--tw-prose-bullets': theme('colors.zinc.300'),
@@ -21,9 +21,9 @@ module.exports = ({ theme }) => ({
 
       '--tw-prose-invert-body': theme('colors.zinc.400'),
       '--tw-prose-invert-headings': theme('colors.white'),
-      '--tw-prose-invert-links': theme('colors.yellow.400'),
-      '--tw-prose-invert-links-hover': theme('colors.yellow.500'),
-      '--tw-prose-invert-links-underline': theme('colors.yellow.500 / 0.3'),
+      '--tw-prose-invert-links': theme('colors.zinc.400'),
+      '--tw-prose-invert-links-hover': theme('colors.zinc.400'),
+      '--tw-prose-invert-links-underline': theme('colors.zinc.400 / 0.5'),
       '--tw-prose-invert-bold': theme('colors.white'),
       '--tw-prose-invert-counters': theme('colors.zinc.400'),
       '--tw-prose-invert-bullets': theme('colors.zinc.600'),
@@ -39,7 +39,7 @@ module.exports = ({ theme }) => ({
 
       // Base
       color: 'var(--tw-prose-body)',
-      fontSize: theme('fontSize.sm')[0],
+      fontSize: '0.9375rem',
       lineHeight: theme('lineHeight.7'),
 
       // Layout
@@ -56,8 +56,8 @@ module.exports = ({ theme }) => ({
 
       // Text
       p: {
-        marginTop: theme('spacing.6'),
-        marginBottom: theme('spacing.6'),
+        marginTop: theme('spacing.4'),
+        marginBottom: theme('spacing.4'),
       },
       '[class~="lead"]': {
         fontSize: theme('fontSize.base')[0],
@@ -67,8 +67,8 @@ module.exports = ({ theme }) => ({
       // Lists
       ol: {
         listStyleType: 'decimal',
-        marginTop: theme('spacing.5'),
-        marginBottom: theme('spacing.5'),
+        marginTop: theme('spacing.3'),
+        marginBottom: theme('spacing.3'),
         paddingLeft: '1.625rem',
       },
       'ol[type="A"]': {
@@ -100,39 +100,41 @@ module.exports = ({ theme }) => ({
       },
       ul: {
         listStyleType: 'disc',
-        marginTop: theme('spacing.5'),
-        marginBottom: theme('spacing.5'),
-        paddingLeft: '1.625rem',
+        marginTop: theme('spacing.3'),
+        marginBottom: theme('spacing.3'),
+        paddingLeft: '2rem',
       },
       li: {
-        marginTop: theme('spacing.2'),
-        marginBottom: theme('spacing.2'),
+        marginTop: theme('spacing.1'),
+        marginBottom: theme('spacing.1'),
       },
       ':is(ol, ul) > li': {
-        paddingLeft: theme('spacing[1.5]'),
+        paddingLeft: theme('spacing.2'),
       },
       'ol > li::marker': {
         fontWeight: '400',
         color: 'var(--tw-prose-counters)',
       },
       'ul > li::marker': {
-        color: 'var(--tw-prose-bullets)',
+        color: theme('colors.zinc.600'),
+        fontWeight: '700',
+        fontSize: '1.1em',
       },
       '> ul > li p': {
-        marginTop: theme('spacing.3'),
-        marginBottom: theme('spacing.3'),
+        marginTop: theme('spacing.1'),
+        marginBottom: theme('spacing.1'),
       },
       '> ul > li > *:first-child': {
-        marginTop: theme('spacing.5'),
+        marginTop: theme('spacing.2'),
       },
       '> ul > li > *:last-child': {
-        marginBottom: theme('spacing.5'),
+        marginBottom: theme('spacing.2'),
       },
       '> ol > li > *:first-child': {
-        marginTop: theme('spacing.5'),
+        marginTop: theme('spacing.2'),
       },
       '> ol > li > *:last-child': {
-        marginBottom: theme('spacing.5'),
+        marginBottom: theme('spacing.2'),
       },
       'ul ul, ul ol, ol ul, ol ol': {
         marginTop: theme('spacing.3'),
@@ -190,7 +192,7 @@ module.exports = ({ theme }) => ({
         fontWeight: '600',
         fontSize: theme('fontSize.lg')[0],
         ...theme('fontSize.lg')[1],
-        marginTop: theme('spacing.16'),
+        marginTop: theme('spacing.8'),
         marginBottom: theme('spacing.2'),
       },
       h3: {
@@ -288,15 +290,25 @@ module.exports = ({ theme }) => ({
       // Inline elements
       a: {
         color: 'var(--tw-prose-links)',
-        textDecoration: 'underline transparent',
-        fontWeight: '500',
-        transitionProperty: 'color, text-decoration-color',
-        transitionDuration: theme('transitionDuration.DEFAULT'),
-        transitionTimingFunction: theme('transitionTimingFunction.DEFAULT'),
+        textDecoration: 'none',
+        borderBottom: '1px solid currentColor',
+        fontWeight: '400',
         '&:hover': {
           color: 'var(--tw-prose-links-hover)',
-          textDecorationColor: 'var(--tw-prose-links-underline)',
+          borderBottomWidth: '2px',
         },
+      },
+      'a.no-underline': {
+        borderBottom: 'none',
+      },
+      'a.no-underline:hover': {
+        borderBottom: 'none',
+      },
+      'h5 a, h5 a:hover': {
+        color: 'var(--tw-prose-captions)',
+        textDecoration: 'none',
+        borderBottom: 'none',
+        fontWeight: '400',
       },
       ':is(h1, h2, h3) a': {
         fontWeight: 'inherit',

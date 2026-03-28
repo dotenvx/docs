@@ -86,7 +86,7 @@ function NavigationLinkItem({ link, pathname, level = 0 }) {
         {isActive && (link.links?.length ?? 0) > 0 && (
           <motion.ul
             role="list"
-            className={clsx('space-y-[1.5px]', level === 0 && 'relative pl-2')}
+            className={clsx('space-y-[1.5px]', level === 0 && 'relative ml-2 pl-2')}
             initial={{ opacity: 0 }}
             animate={{
               opacity: 1,
@@ -154,9 +154,6 @@ export const navigation = [
     href: '/docs',
     links: [
       { title: 'Introduction', href: '/docs/introduction' },
-      { title: 'Install', href: '/docs/install' },
-      { title: 'Advanced', href: '/docs/advanced' },
-      { title: 'Ops ⛨', href: '/docs/ops' },
     ]
   },
   {
@@ -174,18 +171,12 @@ export const navigation = [
     ]
   },
   {
-    title: 'Ops ⛨',
-    href: '/docs/ops',
-    links: [
-      { title: 'Install', href: '/docs/ops/install' },
-      { title: 'Basics', href: '/docs/ops/quickstart' },
-      { title: 'Advanced', href: '/docs/ops/advanced' },
-    ]
-  },
-  {
     title: 'Guides',
     href: '/docs/guides',
     links: [
+      { title: 'Install', href: '/docs/install' },
+      { title: 'Basics', href: '/docs/quickstart' },
+      { title: 'Advanced', href: '/docs/advanced' },
       { title: 'Quickstart: Run', href: '/docs/quickstart/run' },
       { title: 'Quickstart: Environments', href: '/docs/quickstart/environments' },
       { title: 'Quickstart: Encrypt', href: '/docs/quickstart/encryption' },
@@ -222,6 +213,16 @@ export const navigation = [
       { title: 'llms.txt', href: '/llms.txt' },
     ]
   },
+  {
+    title: 'Ops ⛨',
+    href: '/docs/ops',
+    links: [
+      { title: 'Install', href: '/docs/ops/install' },
+      { title: 'Basics', href: '/docs/ops/quickstart' },
+      { title: 'Advanced', href: '/docs/ops/advanced' },
+    ]
+  },
+  
 ]
 
 export function Navigation(props) {
