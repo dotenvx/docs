@@ -176,6 +176,13 @@ export const navigation = [
           { title: 'Introduction', href: '/docs/secrets-in-python' },
         ],
       },
+      {
+        title: 'Ruby',
+        href: '/docs/secrets-in-ruby',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-ruby' },
+        ],
+      },
     ]
   },
   {
