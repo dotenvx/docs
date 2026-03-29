@@ -210,20 +210,8 @@ export const navigation = [
         href: '/docs/secrets-in-java',
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-java' },
-        ],
-      },
-      {
-        title: 'Clojure',
-        href: '/docs/secrets-in-clojure',
-        links: [
-          { title: 'Introduction', href: '/docs/secrets-in-clojure' },
-        ],
-      },
-      {
-        title: 'Kotlin',
-        href: '/docs/secrets-in-kotlin',
-        links: [
-          { title: 'Introduction', href: '/docs/secrets-in-kotlin' },
+          { title: 'Kotlin', href: '/docs/secrets-in-kotlin' },
+          { title: 'Clojure', href: '/docs/secrets-in-clojure' },
         ],
       },
       {

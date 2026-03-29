@@ -6,6 +6,7 @@ import { Header } from '@/components/Header'
 import { Logo } from '@/components/Logo'
 import { Navigation } from '@/components/Navigation'
 import { Prose } from '@/components/Prose'
+import { Search } from '@/components/Search'
 import { SectionProvider } from '@/components/SectionProvider'
 
 export function Layout({ children, sections = [] }) {
@@ -23,6 +24,7 @@ export function Layout({ children, sections = [] }) {
               </Link>
             </div>
             <Header className="border-t border-yellow-300 dark:rounded-t-lg"/>
+            <Search className="mt-6 hidden lg:block" />
             <Navigation className="hidden lg:mt-6 lg:block" />
           </div>
         </motion.header>
