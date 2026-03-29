@@ -1,6 +1,7 @@
-import { forwardRef } from 'react'
+import { Fragment, forwardRef } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { Popover, Transition } from '@headlessui/react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 import { Button } from '@/components/Button'
@@ -73,9 +74,6 @@ export const Header = forwardRef(function Header({ className }, ref) {
         <Link href="/" aria-label="Home">
           <Logo className="h-4 w-auto" />
         </Link>
-        <Link href="/login" aria-label="Log In" className="text-center rounded-full px-4 py-2.5 text-sm font-semibold text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 active:bg-zinc-300 dark:active:bg-zinc-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-200 ease-in duration-150">
-          Log In
-        </Link>
       </div>
       <div className="flex items-center gap-5">
         <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />
@@ -83,6 +81,40 @@ export const Header = forwardRef(function Header({ className }, ref) {
           <MobileSearch />
           <ModeToggle />
         </div>
+        <Popover className="relative md:hidden">
+          <Popover.Button
+            aria-label="More"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-xl leading-none text-zinc-500 hover:bg-zinc-900/5 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-200 ease-in duration-150"
+          >
+            ⋮
+          </Popover.Button>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-100"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
+          >
+            <Popover.Panel className="absolute right-0 z-50 mt-2 w-44 origin-top-right rounded-lg bg-zinc-50 p-2 shadow-lg ring-1 ring-zinc-900/10 dark:bg-zinc-900 dark:ring-white/10">
+              <div className="flex flex-col items-center gap-1">
+                <Link
+                  href="/login"
+                  className="w-full rounded-md px-3 py-2 text-center text-sm font-semibold text-zinc-700 no-underline transition hover:bg-zinc-900/5 hover:text-zinc-950 dark:text-zinc-200 dark:hover:bg-white/5 dark:hover:text-white"
+                >
+                  Log In
+                </Link>
+                <Link
+                  href="/docs/quickstart"
+                  className="w-full rounded-md px-3 py-2 text-center text-sm font-semibold text-zinc-700 no-underline transition hover:bg-zinc-900/5 hover:text-zinc-950 dark:text-zinc-200 dark:hover:bg-white/5 dark:hover:text-white"
+                >
+                  Get Started
+                </Link>
+              </div>
+            </Popover.Panel>
+          </Transition>
+        </Popover>
         <Link
           href="/login"
           className="hidden md:inline-flex items-center py-4 text-xs md:text-sm font-semibold text-zinc-500 dark:text-zinc-300/90 no-underline hover:no-underline hover:text-zinc-700 dark:hover:text-zinc-100 transition-colors duration-200 whitespace-nowrap"

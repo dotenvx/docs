@@ -97,7 +97,7 @@ export function QuickstartCards({
   ],
 }) {
   return (
-    <div className="not-prose mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-5">
+    <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-5">
       {items.map((item) => (
         <QuickstartCard key={item.href} item={item} />
       ))}
