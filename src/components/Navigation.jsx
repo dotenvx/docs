@@ -26,7 +26,7 @@ function TopLevelNavItem({ href, children }) {
   )
 }
 
-function NavLink({ href, tag, active, current, level = 0, children }) {
+function NavLink({ href, tag, active, current, level = 0, target, rel, children }) {
   let leftPaddingClass = {
     0: 'pl-2',
     1: 'pl-3',
@@ -37,6 +37,8 @@ function NavLink({ href, tag, active, current, level = 0, children }) {
     <Link
       href={href}
       aria-current={current ? 'page' : undefined}
+      target={target}
+      rel={rel}
       className={clsx(
         'flex justify-between gap-2 rounded-md px-4 py-1 text-sm transition-colors',
         leftPaddingClass,
@@ -79,7 +81,14 @@ function NavigationLinkItem({ link, pathname, level = 0 }) {
 
   return (
     <motion.li layout="position" className="relative">
-      <NavLink href={link.href} active={isActive} current={isCurrent} level={level}>
+      <NavLink
+        href={link.href}
+        active={isActive}
+        current={isCurrent}
+        level={level}
+        target={link.target}
+        rel={link.rel}
+      >
         {link.title}
       </NavLink>
       <AnimatePresence mode="popLayout" initial={false}>
@@ -234,10 +243,10 @@ export const navigation = [
   },
   {
     title: 'Learn',
-    href: '/docs/quickstart',
+    href: '/docs/install',
     links: [
-      { title: 'Introduction', href: '/docs/quickstart' },
       { title: 'Install', href: '/docs/install' },
+      { title: 'Basics', href: '/docs/quickstart' },
       {
         title: 'Platforms',
         href: '/docs/guides',
@@ -257,7 +266,12 @@ export const navigation = [
           { title: 'More', href: '/docs/guides' },
         ],
       },
-      { title: 'Whitepaper', href: '/dotenvx.pdf' },
+      {
+        title: 'Whitepaper ↗',
+        href: '/dotenvx.pdf',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
     ]
   },
   {
