@@ -7,6 +7,7 @@ import { DotnetIcon } from '@/components/icons/DotnetIcon'
 import { ExpressIcon } from '@/components/icons/ExpressIcon'
 import { GoIcon } from '@/components/icons/GoIcon'
 import { JavaIcon } from '@/components/icons/JavaIcon'
+import { NextIcon } from '@/components/icons/NextIcon'
 import { NodeIcon } from '@/components/icons/NodeIcon'
 import { PhpIcon } from '@/components/icons/PhpIcon'
 import { PythonIcon } from '@/components/icons/PythonIcon'
@@ -50,6 +51,12 @@ export function QuickstartCards({
       title: 'Astro Quickstart',
       icon: AstroIcon,
       iconClass: 'h-5 w-5 text-[#FF5D01]',
+    },
+    {
+      href: '/docs/secrets-in-nextjs',
+      title: 'Next.js Quickstart',
+      icon: NextIcon,
+      iconClass: 'h-5 w-5 text-[#000000] dark:invert',
     },
     {
       href: '/docs/secrets-in-python',
