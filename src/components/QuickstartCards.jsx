@@ -53,16 +53,16 @@ export function QuickstartCards({
       iconClass: 'h-5 w-5 text-[#000000] dark:invert',
     },
     {
-      href: '/docs/secrets-in-php',
-      title: 'PHP Quickstart',
-      icon: PhpIcon,
-      iconClass: 'h-5 w-5 text-[#777BB4]',
-    },
-    {
       href: '/docs/secrets-in-python',
       title: 'Python Quickstart',
       icon: PythonIcon,
       iconClass: 'h-5 w-5 text-[#3776AB]',
+    },
+    {
+      href: '/docs/secrets-in-php',
+      title: 'PHP Quickstart',
+      icon: PhpIcon,
+      iconClass: 'h-5 w-5 text-[#777BB4]',
     },
     {
       href: '/docs/secrets-in-ruby',
