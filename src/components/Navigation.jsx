@@ -244,8 +244,9 @@ export const navigation = [
   },
   {
     title: 'Learn',
-    href: '/docs/install',
+    href: '/docs/learn',
     links: [
+      { title: 'Introduction', href: '/docs/learn' },
       { title: 'Install', href: '/docs/install' },
       { title: 'Basics', href: '/docs/quickstart' },
       {

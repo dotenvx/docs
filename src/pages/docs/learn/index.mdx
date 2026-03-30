@@ -1,0 +1,115 @@
+import { Heading } from '@/components/Heading'
+import { Button } from '@/components/Button'
+import { HeroPattern } from '@/components/HeroPattern'
+
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { PythonIcon } from '@/components/icons/PythonIcon'
+import { RubyIcon } from '@/components/icons/RubyIcon'
+import { GoIcon } from '@/components/icons/GoIcon'
+import { PhpIcon } from '@/components/icons/PhpIcon'
+import { RustIcon } from '@/components/icons/RustIcon'
+import { GitHubIcon } from '@/components/icons/GitHubIcon'
+
+import { Languages } from '@/components/Languages'
+import { Frameworks } from '@/components/Frameworks'
+import { Platforms } from '@/components/Platforms'
+import { Cis } from '@/components/Cis'
+import { BackgroundJobs } from '@/components/BackgroundJobs'
+import { PackageManagers } from '@/components/PackageManagers'
+import { ProcessManagers } from '@/components/ProcessManagers'
+import { Monorepos } from '@/components/Monorepos'
+import { Concepts } from '@/components/Concepts'
+
+export const description =
+  'Documentation for `dotenvx`'
+
+export const sections = [
+  { title: 'Getting Started', id: 'getting-started' },
+  { title: 'Languages', id: 'languages' },
+  { title: 'Frameworks', id: 'frameworks' },
+  { title: 'Platforms', id: 'platforms' },
+  { title: 'CI/CD', id: 'cis' },
+  { title: 'Background Jobs', id: 'background-jobs' },
+  { title: 'Package Managers', id: 'package-managers' },
+  { title: 'Process Managers', id: 'process-managers' },
+  { title: 'Monorepos', id: 'monorepos' },
+  { title: 'Concepts', id: 'concepts' },
+]
+
+<HeroPattern />
+
+##### dotenvx
+# Documentation
+
+*a secure dotenv*–from the creator of [`dotenv`](https://github.com/motdotla/dotenv). {{ className: 'lead' }}
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/docs/quickstart" arrow="right" children="Quickstart" />
+  <Button href="/docs/install" variant="outline" children="Installation" />
+</div>
+
+## Getting Started
+
+<CodeGroup>
+
+```bash {{ title: "Npm" }}
+# install it with npm
+npm install @dotenvx/dotenvx --save
+npx dotenvx help
+```
+
+```bash {{ title: "Curl" }}
+# download it directly as a standalone binary
+curl -sfS https://dotenvx.sh/install.sh | sh
+dotenvx help
+```
+
+```bash {{ title: "Brew" }}
+# install with Homebrew and then use the dotenvx command
+brew install dotenvx/brew/dotenvx
+dotenvx help
+```
+
+```bash {{ title: "Docker" }}
+# use Docker if you prefer
+docker run -it --rm -v $(pwd):/app dotenv/dotenvx run -- node index.js
+```
+
+```bash {{ title: "Windows" }}
+# install on windows
+winget install dotenvx
+```
+
+</CodeGroup>
+
+* run anywhere (cross-platform)
+* multi-environment
+* encrypted envs
+
+[Read the whitepaper](https://dotenvx.com/dotenvx.pdf)
+
+<Languages/>
+<Frameworks/>
+<Platforms includeNode="true"/>
+
+<Heading level={2} id="cis">
+  CI/CDs
+</Heading>
+<div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+  <div key="github-actions" className="flex flex-row-reverse gap-6">
+    <div className="flex-auto">
+      <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+        GitHub Actions
+      </h3>
+      <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with GitHub Actions</p>
+      <p className="mt-4"><Button href="/docs/cis/github-actions" variant="text" arrow="right">GitHub Actions Guide</Button></p>
+    </div>
+    <GitHubIcon className="h-9 w-9 text-[#181717] dark:invert"/>
+  </div>
+</div>
+
+<BackgroundJobs/>
+<PackageManagers/>
+<ProcessManagers/>
+<Monorepos/>
+<Concepts/>
