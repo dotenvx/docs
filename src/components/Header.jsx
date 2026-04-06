@@ -106,7 +106,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
                   Log In
                 </Link>
                 <Link
-                  href="/docs/quickstart"
+                  href="/signup"
                   className="w-full rounded-md px-3 py-2 text-center text-sm font-semibold text-zinc-700 no-underline transition hover:bg-zinc-900/5 hover:text-zinc-950 dark:text-zinc-200 dark:hover:bg-white/5 dark:hover:text-white"
                 >
                   Get Started
@@ -122,7 +122,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
           Log In
         </Link>
         <Link
-          href="/docs/quickstart"
+          href="/signup"
           className="hidden md:inline-flex items-center justify-center rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-1.5 font-extrabold tracking-tight text-white dark:text-white no-underline hover:no-underline hover:text-zinc-950 dark:hover:text-zinc-950 transition-all duration-200 hover:bg-zinc-100 hover:shadow-[0_0_24px_rgba(236,213,63,0.18)] text-xs md:text-sm whitespace-nowrap"
         >
           Get Started
