@@ -1,7 +1,5 @@
 import Link from 'next/link'
 
-import { cliNavigation } from '@/components/Navigation'
-
 function CliReferenceCard({ item }) {
   let glyph = '❯'
 
@@ -34,19 +32,17 @@ function CliReferenceCard({ item }) {
   )
 }
 
-function getCliCommandItems() {
-  return cliNavigation
-    .flatMap((group) => group.links ?? [])
-    .filter((link) => link.href && link.href !== '/docs/cli')
-    .filter((link) => link.href !== '/docs/cli/introduction')
-    .map((link) => ({
-      href: link.href,
-      title: link.title,
-    }))
-}
-
 export function CliReferenceCards() {
-  let items = getCliCommandItems()
+  let items = [
+    { href: '/docs/cli/run', title: 'run' },
+    { href: '/docs/cli/get', title: 'get' },
+    { href: '/docs/cli/set', title: 'set' },
+    { href: '/docs/cli/encrypt', title: 'encrypt' },
+    { href: '/docs/cli/decrypt', title: 'decrypt' },
+    { href: '/docs/cli/rotate', title: 'rotate' },
+    { href: '/docs/cli/keypair', title: 'keypair' },
+    { href: '/docs/cli/ls', title: 'ls' },
+  ]
 
   return (
     <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-3">

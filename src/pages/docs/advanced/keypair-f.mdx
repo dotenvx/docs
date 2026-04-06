@@ -1,7 +1,13 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
 export const description =
   'Print public/private keys for chosen .env* files.'
 
-##### [Advanced](/docs/advanced)
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Keypair', href: '/docs/cli/keypair' },
+  ]}
+/>
 # dotenvx keypair -f
 
 <p className="lead">{description}</p>

@@ -1,7 +1,13 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
 export const description =
   'Set a value containing a leading dash.'
 
-##### [Advanced](/docs/advanced)
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Set', href: '/docs/cli/set' },
+  ]}
+/>
 # dotenvx set KEY -- "- + * ÷"
 
 <p className="lead">{description}</p>

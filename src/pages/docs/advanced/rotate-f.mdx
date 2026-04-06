@@ -1,7 +1,13 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
 export const description =
   'Rotate public/private keys for a specified encrypted .env file and re-encrypt all encrypted values.'
 
-##### [Advanced](/docs/advanced)
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Rotate', href: '/docs/cli/rotate' },
+  ]}
+/>
 # dotenvx rotate -f
 
 <p className="lead">{description}</p>

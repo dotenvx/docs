@@ -1,21 +1,7 @@
-export const description =
-  'Print all .env files in a tree structure.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-##### [Advanced](/docs/advanced)
-# dotenvx ls
+<HeadRedirect url="/docs/cli/ls" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ touch .env
-$ touch .env.production
-$ mkdir -p apps/backend
-$ touch apps/backend/.env
-
-$ dotenvx ls
-├─ .env.production
-├─ .env
-└─ apps
-   └─ backend
-      └─ .env
-```
+<a href="/docs/cli/ls">Click here if you are not redirected.</a>

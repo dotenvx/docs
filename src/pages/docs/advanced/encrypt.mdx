@@ -1,16 +1,7 @@
-export const description =
-  'Encrypt the contents of a .env file to an encrypted .env file.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-##### [Advanced](/docs/advanced)
-# dotenvx encrypt
+<HeadRedirect url="/docs/cli/encrypt" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=World" > .env
-
-$ dotenvx encrypt
-◈ encrypted (.env) + key (.env.keys)
-⮕  next run [dotenvx ext gitignore --pattern .env.keys] to gitignore .env.keys
-⮕  next run [DOTENV_PRIVATE_KEY='122...0b8' dotenvx run -- yourcommand] to test decryption locally
-```
+<a href="/docs/cli/encrypt">Click here if you are not redirected.</a>

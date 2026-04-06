@@ -1,7 +1,13 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
 export const description =
   'Decrypt the contents inside an encrypted .env file except for an excluded key.'
 
-##### [Advanced](/docs/advanced)
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Decrypt', href: '/docs/cli/decrypt' },
+  ]}
+/>
 # dotenvx decrypt -ek
 
 <p className="lead">{description}</p>
