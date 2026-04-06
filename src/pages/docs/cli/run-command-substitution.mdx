@@ -1,0 +1,29 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Add the output of a command to one of your variables in your .env file.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Run', href: '/docs/cli/run' },
+  ]}
+/>
+# dotenvx run - Command Substitution
+
+<p className="lead">{description}</p>
+
+```ini
+# .env
+DATABASE_URL="postgres://$(whoami)@localhost/my_database"
+```
+
+```js
+// index.js
+console.log('DATABASE_URL', process.env.DATABASE_URL)
+```
+
+```sh
+$ dotenvx run --debug -- node index.js
+[dotenvx] injecting env (1) from .env
+DATABASE_URL postgres://yourusername@localhost/my_database
+```

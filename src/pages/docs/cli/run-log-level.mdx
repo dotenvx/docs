@@ -1,0 +1,25 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Set `--log-level` to whatever you wish.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Run', href: '/docs/cli/run' },
+  ]}
+/>
+# dotenvx run --log-level
+
+<p className="lead">{description}</p>
+
+For example, to supress warnings (risky), set log level to `error`.
+
+```sh
+$ echo "HELLO=production" > .env.production
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run -f .env.production --log-level=error -- node index.js
+Hello production
+```
+
+Available log levels are `error, warn, info, verbose, debug, silly` ([source](https://github.com/winstonjs/winston?tab=readme-ov-file#logging))

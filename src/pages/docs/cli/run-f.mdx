@@ -1,0 +1,25 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Compose multiple .env files for environment variables loading, as you need.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Run', href: '/docs/cli/run' },
+  ]}
+/>
+# dotenvx run -f
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=local" > .env.local
+$ echo "HELLO=World" > .env
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run -f .env.local -f .env -- node index.js
+[dotenvx] injecting env (1) from .env.local, .env
+Hello local
+```
+
+Note subsequent files do NOT override pre-existing variables defined in previous files or env. This follows historic principle. For example, above local wins – from the first file.

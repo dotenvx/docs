@@ -1,0 +1,22 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Set environment variables as a simple KEY=value string pair.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Run', href: '/docs/cli/run' },
+  ]}
+/>
+# dotenvx run --env HELLO=String
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+
+$ dotenvx run --env HELLO=String -f .env -- node index.js
+[dotenvx] injecting env (1) from .env, and --env flag
+Hello String
+```
