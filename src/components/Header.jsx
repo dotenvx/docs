@@ -64,7 +64,7 @@ export const Header = forwardRef(function Header({ className }, ref) {
           <TopLevelNavItem href="/docs">
             <span>▦ Documentation</span>
           </TopLevelNavItem>
-          <TopLevelNavItem href="/docs/advanced">
+          <TopLevelNavItem href="/docs/cli">
             <span>❯ CLI Reference</span>
           </TopLevelNavItem>
         </ul>

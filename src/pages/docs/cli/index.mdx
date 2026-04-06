@@ -1,7 +1,22 @@
-import { HeadRedirect } from '@/components/HeadRedirect'
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { CliReferenceCards } from '@/components/CliReferenceCards'
+import { GuideHeading } from '@/components/GuideHeading'
+import { HeroPattern } from '@/components/HeroPattern'
 
-<HeadRedirect url="/docs/cli/introduction"/>
+export const description = 'Browse CLI reference commands.'
 
-# Redirecting
+<HeroPattern />
 
-<a href="/docs/cli/introduction">Click here if you are not redirected.</a>
+<Breadcrumb
+  items={[
+    { label: 'Documentation', href: '/docs' },
+    { label: 'CLI Reference', href: '/docs/cli' },
+  ]}
+/>
+# CLI Reference
+
+<GuideHeading lead={description} />
+
+## Commands
+
+<CliReferenceCards />
