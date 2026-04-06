@@ -157,7 +157,7 @@ function NavigationGroup({ group, className }) {
   )
 }
 
-export const navigation = [
+export const defaultNavigation = [
   {
     title: 'Documentation',
     href: '/docs',
@@ -302,11 +302,47 @@ export const navigation = [
   
 ]
 
+export const cliNavigation = [
+  {
+    title: 'CLI Reference',
+    href: '/docs/cli',
+    links: [
+      { title: 'Introduction', href: '/docs/cli/introduction' },
+    ],
+  },
+  {
+    title: 'Commands',
+    links: [
+      { title: 'run', href: '/docs/cli/run' },
+      { title: 'get', href: '/docs/cli/get' },
+      { title: 'set', href: '/docs/cli/set' },
+      { title: 'encrypt', href: '/docs/cli/encrypt' },
+      { title: 'decrypt', href: '/docs/cli/decrypt' },
+      { title: 'rotate', href: '/docs/cli/rotate' },
+      { title: 'keypair', href: '/docs/cli/keypair' },
+    ],
+  },
+]
+
+export const navigation = defaultNavigation
+
+function getNavigationForPath(pathname) {
+  if (pathname.startsWith('/docs/cli')) {
+    return cliNavigation
+  }
+
+  return defaultNavigation
+}
+
 export function Navigation(props) {
+  let isInsideMobileNavigation = useIsInsideMobileNavigation()
+  let router = useInitialValue(useRouter(), isInsideMobileNavigation)
+  let currentNavigation = getNavigationForPath(router.pathname)
+
   return (
     <nav {...props}>
       <ul role="list">
-        {navigation.map((group, groupIndex) => (
+        {currentNavigation.map((group, groupIndex) => (
           <NavigationGroup
             key={group.title}
             href={group.href}
