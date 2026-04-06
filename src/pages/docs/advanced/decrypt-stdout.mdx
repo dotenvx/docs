@@ -1,30 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Decrypt the contents of an encrypted .env file and send to stdout.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Decrypt', href: '/docs/cli/decrypt' },
-  ]}
-/>
-# dotenvx decrypt --stdout
+<HeadRedirect url="/docs/cli/decrypt-stdout" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ dotenvx decrypt --stdout
-#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
-#/            public-key encryption for .env files          /
-#/       [how it works](https://dotenvx.com/encryption)     /
-#/----------------------------------------------------------/
-DOTENV_PUBLIC_KEY="034af93e93708b994c10f236c96ef88e47291066946cce2e8d98c9e02c741ced45"
-# .env
-HELLO="World"
-```
-
-or send to a file:
-
-```sh
-$ dotenvx decrypt --stdout > somefile.txt
-```
+<a href="/docs/cli/decrypt-stdout">Click here if you are not redirected.</a>

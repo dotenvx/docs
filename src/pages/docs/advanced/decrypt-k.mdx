@@ -1,31 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Decrypt the contents of a specified key inside an encrypted .env file.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Decrypt', href: '/docs/cli/decrypt' },
-  ]}
-/>
-# dotenvx decrypt -k
+<HeadRedirect url="/docs/cli/decrypt-k" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=World\nHOLA=Mundo" > .env
-$ dotenvx encrypt
-◈ encrypted (.env)
-$ dotenvx decrypt -k HELLO
-◇ decrypted (.env)
-```
-
-Even specify a glob pattern.
-
-```sh
-$ echo "HELLO=World\nHOLA=Mundo" > .env
-$ dotenvx encrypt
-◈ encrypted (.env)
-$ dotenvx decrypt -k "HE*"
-◇ decrypted (.env)
-```
+<a href="/docs/cli/decrypt-k">Click here if you are not redirected.</a>

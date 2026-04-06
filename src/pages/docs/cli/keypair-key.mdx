@@ -1,0 +1,21 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Print specific keypair for .env file.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Keypair', href: '/docs/cli/keypair' },
+  ]}
+/>
+# dotenvx keypair KEY
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+$ dotenvx encrypt
+
+$ dotenvx keypair DOTENV_PRIVATE_KEY
+<privateKey>
+```

@@ -1,23 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Specify path to .env.keys. This is useful with monorepos.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Decrypt', href: '/docs/cli/decrypt' },
-  ]}
-/>
-# dotenvx decrypt -fk
+<HeadRedirect url="/docs/cli/decrypt-fk" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ mkdir -p apps/app1
-$ echo "HELLO=World" > apps/app1/.env
-
-$ dotenvx encrypt -fk .env.keys -f apps/app1/.env
-◈ encrypted (apps/app1/.env)
-$ dotenvx decrypt -fk .env.keys -f apps/app1/.env
-◇ decrypted (apps/app1/.env)
-```
+<a href="/docs/cli/decrypt-fk">Click here if you are not redirected.</a>

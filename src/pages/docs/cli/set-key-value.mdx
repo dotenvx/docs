@@ -1,0 +1,22 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Set a single key/value.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Set', href: '/docs/cli/set' },
+  ]}
+/>
+# dotenvx set KEY value
+
+<p className="lead">{description}</p>
+
+```sh
+$ touch .env
+
+$ dotenvx set HELLO World
+set HELLO with encryption (.env)
+```
+
+* encryption defaults to on

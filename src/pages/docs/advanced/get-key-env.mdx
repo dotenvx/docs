@@ -1,18 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Return a single environment variable\'s value from a --env string.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Get', href: '/docs/cli/get' },
-  ]}
-/>
-# dotenvx get KEY --env
+<HeadRedirect url="/docs/cli/get-key-env" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ dotenvx get HELLO --env HELLO=String -f .env.production
-String
-```
+<a href="/docs/cli/get-key-env">Click here if you are not redirected.</a>

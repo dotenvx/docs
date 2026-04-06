@@ -1,0 +1,20 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Return a single environment variable\'s value.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Get', href: '/docs/cli/get' },
+  ]}
+/>
+# dotenvx get KEY
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+
+$ dotenvx get HELLO
+World
+```

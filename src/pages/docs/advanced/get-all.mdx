@@ -1,20 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Return preset machine envs as well.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Get', href: '/docs/cli/get' },
-  ]}
-/>
-# dotenvx get --all
+<HeadRedirect url="/docs/cli/get-all" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=World" > .env
-
-$ dotenvx get --all
-{"PWD":"/some/file/path","USER":"username","LIBRARY_PATH":"/usr/local/lib", ..., "HELLO":"World"}
-```
+<a href="/docs/cli/get-all">Click here if you are not redirected.</a>

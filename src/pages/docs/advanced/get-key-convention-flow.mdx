@@ -1,24 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Return a single environment variable\'s value using the dotenv-flow convention'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Get', href: '/docs/cli/get' },
-  ]}
-/>
-# dotenvx get KEY --convention=flow
+<HeadRedirect url="/docs/cli/get-key-convention-flow" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=development local" > .env.development.local
-$ echo "HELLO=development" > .env.development
-$ echo "HELLO=local" > .env.local
-$ echo "HELLO=env" > .env
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-$ dotenvx get HELLO --convention=flow
-development local
-```
+<a href="/docs/cli/get-key-convention-flow">Click here if you are not redirected.</a>

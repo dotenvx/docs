@@ -1,0 +1,27 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Glob .env filenames excluding a wildcard.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Ls', href: '/docs/cli/ls' },
+  ]}
+/>
+# dotenvx ls -ef
+
+<p className="lead">{description}</p>
+
+```sh
+$ touch .env
+$ touch .env.production
+$ mkdir -p apps/backend
+$ touch apps/backend/.env
+$ touch apps/backend/.env.prod
+
+$ dotenvx ls -ef '**/.env.prod*'
+├─ .env
+└─ apps
+   └─ backend
+      └─ .env
+```

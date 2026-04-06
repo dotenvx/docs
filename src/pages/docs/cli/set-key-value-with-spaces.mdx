@@ -1,0 +1,20 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Set a value containing spaces.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Set', href: '/docs/cli/set' },
+  ]}
+/>
+# dotenvx set KEY "value with spaces"
+
+<p className="lead">{description}</p>
+
+```sh
+$ touch .env.ci
+
+$ dotenvx set HELLO "my ci" -f .env.ci
+set HELLO with encryption (.env.ci)
+```

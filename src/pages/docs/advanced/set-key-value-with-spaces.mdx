@@ -1,20 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Set a value containing spaces.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Set', href: '/docs/cli/set' },
-  ]}
-/>
-# dotenvx set KEY "value with spaces"
+<HeadRedirect url="/docs/cli/set-key-value-with-spaces" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ touch .env.ci
-
-$ dotenvx set HELLO "my ci" -f .env.ci
-set HELLO with encryption (.env.ci)
-```
+<a href="/docs/cli/set-key-value-with-spaces">Click here if you are not redirected.</a>

@@ -1,38 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Return a shell formatted response of all key/value pairs in a .env file.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Get', href: '/docs/cli/get' },
-  ]}
-/>
-# dotenvx get --format shell
+<HeadRedirect url="/docs/cli/get-shell" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=World" > .env
-$ echo "KEY=value" >> .env
-
-$ dotenvx get --format shell
-HELLO=World KEY=value
-```
-
-This can be useful when combined with `env` on the command line.
-
-```sh
-$ echo "console.log('Hello ' + process.env.KEY + ' ' + process.env.HELLO)" > index.js
-$ env $(dotenvx get --format=shell) node index.js
-Hello value World
-```
-
-or with `export`.
-
-```sh
-$ echo "console.log('Hello ' + process.env.KEY + ' ' + process.env.HELLO)" > index.js
-$ export $(dotenvx get --format=shell)
-$ node index.js
-Hello value World
-```
+<a href="/docs/cli/get-shell">Click here if you are not redirected.</a>

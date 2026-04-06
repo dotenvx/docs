@@ -1,0 +1,31 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Decrypt the contents inside an encrypted .env file except for an excluded key.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Decrypt', href: '/docs/cli/decrypt' },
+  ]}
+/>
+# dotenvx decrypt -ek
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World\nHOLA=Mundo" > .env
+$ dotenvx encrypt
+◈ encrypted (.env)
+$ dotenvx decrypt -ek HOLA
+◇ decrypted (.env)
+```
+
+Even specify a glob pattern.
+
+```sh
+$ echo "HELLO=World\nHOLA=Mundo" > .env
+$ dotenvx encrypt
+◈ encrypted (.env)
+$ dotenvx decrypt -ek "HO*"
+◇ decrypted (.env)
+```

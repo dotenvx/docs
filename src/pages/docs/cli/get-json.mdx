@@ -1,0 +1,20 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Return a json response of all key/value pairs in a .env file.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Get', href: '/docs/cli/get' },
+  ]}
+/>
+# dotenvx get
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+
+$ dotenvx get
+{"HELLO":"World"}
+```

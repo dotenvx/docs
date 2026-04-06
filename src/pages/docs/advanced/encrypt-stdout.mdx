@@ -1,32 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Encrypt the contents of a .env file and send to stdout.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Encrypt', href: '/docs/cli/encrypt' },
-  ]}
-/>
-# dotenvx encrypt --stdout
+<HeadRedirect url="/docs/cli/encrypt-stdout" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=World" > .env
-$ dotenvx encrypt --stdout
-#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
-#/            public-key encryption for .env files          /
-#/       [how it works](https://dotenvx.com/encryption)     /
-#/----------------------------------------------------------/
-DOTENV_PUBLIC_KEY="034af93e93708b994c10f236c96ef88e47291066946cce2e8d98c9e02c741ced45"
-# .env
-HELLO="encrypted:BDqDBibm4wsYqMpCjTQ6BsDHmMadg9K3dAt+Z9HPMfLEIRVz50hmLXPXRuDBXaJi/LwWYEVUNiq0HISrslzQPaoyS8Lotg3gFWJTsNCdOWnqpjF2xNUX2RQiP05kAbEXM6MWVjDr"
-```
-
-or send to a file:
-
-```sh
-$ echo "HELLO=World" > .env
-$ dotenvx encrypt --stdout > somefile.txt
-```
+<a href="/docs/cli/encrypt-stdout">Click here if you are not redirected.</a>

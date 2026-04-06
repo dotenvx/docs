@@ -1,0 +1,22 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Specify path to .env.keys. This is useful for printing public/private keys for monorepos.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Keypair', href: '/docs/cli/keypair' },
+  ]}
+/>
+# dotenvx keypair -fk
+
+<p className="lead">{description}</p>
+
+```sh
+$ mkdir -p apps/app1
+$ echo "HELLO=World" > apps/app1/.env
+$ dotenvx encrypt -fk .env.keys -f apps/app1/.env
+
+$ dotenvx keypair -fk .env.keys -f apps/app1/.env
+{"DOTENV_PUBLIC_KEY":"<publicKey>","DOTENV_PRIVATE_KEY":"<privateKey>"}
+```

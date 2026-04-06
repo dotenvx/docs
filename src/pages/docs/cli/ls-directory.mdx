@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Print all .env files inside a specified path to a directory.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Ls', href: '/docs/cli/ls' },
+  ]}
+/>
+# dotenvx ls directory
+
+<p className="lead">{description}</p>
+
+```sh
+$ touch .env
+$ touch .env.production
+$ mkdir -p apps/backend
+$ touch apps/backend/.env
+
+$ dotenvx ls apps/backend
+└─ .env
+```

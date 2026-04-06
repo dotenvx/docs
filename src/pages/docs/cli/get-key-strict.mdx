@@ -1,0 +1,18 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Exit with code 1 if any errors are encountered - like a missing key, missing .env file, or decryption failure.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Get', href: '/docs/cli/get' },
+  ]}
+/>
+# dotenvx get KEY --strict
+
+<p className="lead">{description}</p>
+
+```sh
+$ dotenvx get DOES_NOT_EXIST --strict
+[MISSING_KEY] missing key (DOES_NOT_EXIST)
+```

@@ -1,0 +1,26 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Make the output more readable - pretty print it.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Get', href: '/docs/cli/get' },
+  ]}
+/>
+# dotenvx get --all --pretty-print
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+
+$ dotenvx get --all --pretty-print
+{
+  "PWD": "/some/filepath",
+  "USER": "username",
+  "LIBRARY_PATH": "/usr/local/lib",
+  ...,
+  "HELLO": "World"
+}
+```

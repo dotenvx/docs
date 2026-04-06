@@ -1,23 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Encrypt the contents of a specified .env file to an encrypted .env file.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Encrypt', href: '/docs/cli/encrypt' },
-  ]}
-/>
-# dotenvx encrypt -f
+<HeadRedirect url="/docs/cli/encrypt-f" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=World" > .env
-$ echo "HELLO=Production" > .env.production
-
-$ dotenvx encrypt -f .env.production
-◈ encrypted (.env.production) + key (.env.keys)
-⮕  next run [dotenvx ext gitignore --pattern .env.keys] to gitignore .env.keys
-⮕  next run [DOTENV_PRIVATE_KEY='bff...bc4' dotenvx run -- yourcommand] to test decryption locally
-```
+<a href="/docs/cli/encrypt-f">Click here if you are not redirected.</a>
