@@ -324,11 +324,25 @@ export const cliNavigation = [
   },
 ]
 
+export const sdkNavigation = [
+  {
+    title: 'SDK Reference',
+    href: '/docs/sdk',
+    links: [
+      { title: 'Introduction', href: '/docs/sdk/introduction' },
+    ],
+  },
+]
+
 export const navigation = defaultNavigation
 
 function getNavigationForPath(pathname) {
   if (pathname.startsWith('/docs/cli')) {
     return cliNavigation
+  }
+
+  if (pathname.startsWith('/docs/sdk')) {
+    return sdkNavigation
   }
 
   return defaultNavigation

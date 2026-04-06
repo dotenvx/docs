@@ -1,11 +1,15 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { CliReferenceCards } from '@/components/CliReferenceCards'
 import { GuideHeading } from '@/components/GuideHeading'
+import { HeroPattern } from '@/components/HeroPattern'
 
-export const description =
-  'Become a dotenvx power user.'
+export const description = 'Browse CLI reference commands.'
+
+<HeroPattern />
 
 <Breadcrumb
   items={[
+    { label: 'Documentation', href: '/docs' },
     { label: 'CLI Reference', href: '/docs/cli' },
   ]}
 />
@@ -13,3 +17,7 @@ export const description =
 # Introduction
 
 <GuideHeading lead={description} />
+
+## Commands
+
+<CliReferenceCards />
