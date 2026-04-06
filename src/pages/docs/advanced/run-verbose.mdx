@@ -1,26 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Set log level to `verbose`.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Run', href: '/docs/cli/run' },
-  ]}
-/>
-# dotenvx run --verbose
+<HeadRedirect url="/docs/cli/run-verbose" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=production" > .env.production
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-$ dotenvx run -f .env.production --verbose -- node index.js
-loading env from .env.production (/path/to/.env.production)
-HELLO set
-[dotenvx] injecting env (1) from .env.production
-Hello production
-```
-
-[log levels](https://github.com/winstonjs/winston?tab=readme-ov-file#logging)
+<a href="/docs/cli/run-verbose">Click here if you are not redirected.</a>

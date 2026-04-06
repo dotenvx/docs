@@ -1,35 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Load envs using the dotenv-flow convention.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Run', href: '/docs/cli/run' },
-  ]}
-/>
-# dotenvx run --convention=flow
+<HeadRedirect url="/docs/cli/run-convention-flow" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=development local" > .env.development.local
-$ echo "HELLO=development" > .env.development
-$ echo "HELLO=local" > .env.local
-$ echo "HELLO=env" > .env
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-$ NODE_ENV=development dotenvx run --convention=flow -- node index.js 
-[dotenvx@1.X.X] injecting env (1) from .env.development.local, .env.development, .env.local, .env
-Hello development local
-```
-
-[dotenv-flow env load order](https://www.npmjs.com/package/dotenv-flow)
-
-Further, we recommend using `DOTENV_ENV` over `NODE_ENV` – as dotenvx works everywhere, not just node.
-
-```sh
-$ DOTENV_ENV=development dotenvx run --convention=flow -- node index.js
-[dotenvx@1.X.X] injecting env (1) from .env.development.local, .env.development, .env.local, .env
-Hello development local
-```
+<a href="/docs/cli/run-convention-flow">Click here if you are not redirected.</a>

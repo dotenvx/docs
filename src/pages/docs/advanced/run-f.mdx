@@ -1,25 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Compose multiple .env files for environment variables loading, as you need.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Run', href: '/docs/cli/run' },
-  ]}
-/>
-# dotenvx run -f
+<HeadRedirect url="/docs/cli/run-f" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=local" > .env.local
-$ echo "HELLO=World" > .env
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-$ dotenvx run -f .env.local -f .env -- node index.js
-[dotenvx] injecting env (1) from .env.local, .env
-Hello local
-```
-
-Note subsequent files do NOT override pre-existing variables defined in previous files or env. This follows historic principle. For example, above local wins – from the first file.
+<a href="/docs/cli/run-f">Click here if you are not redirected.</a>

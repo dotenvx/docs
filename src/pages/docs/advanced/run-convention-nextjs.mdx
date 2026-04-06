@@ -1,27 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Load envs using the Next.js convention.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Run', href: '/docs/cli/run' },
-  ]}
-/>
-# dotenvx run --convention=nextjs
+<HeadRedirect url="/docs/cli/run-convention-nextjs" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=development local" > .env.development.local
-$ echo "HELLO=local" > .env.local
-$ echo "HELLO=development" > .env.development
-$ echo "HELLO=env" > .env
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-$ dotenvx run --convention=nextjs -- node index.js
-[dotenvx] injecting env (1) from .env.development.local, .env.local, .env.development, .env
-Hello development local
-```
-
-[Next.js env load order](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#environment-variable-load-order)
+<a href="/docs/cli/run-convention-nextjs">Click here if you are not redirected.</a>

@@ -1,34 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Reference and expand variables already on your machine for use in your .env file.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Run', href: '/docs/cli/run' },
-  ]}
-/>
-# dotenvx run - Variable Expansion
+<HeadRedirect url="/docs/cli/run-variable-expansion" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```ini
-# .env
-USERNAME="username"
-DATABASE_URL="postgres://${USERNAME}@localhost/my_database"
-```
-
-```js
-// index.js
-console.log('DATABASE_URL', process.env.DATABASE_URL)
-```
-
-```sh
-$ dotenvx run --debug -- node index.js
-[dotenvx] injecting env (2) from .env
-DATABASE_URL postgres://username@localhost/my_database
-```
-
-**Disabling Variable Expansion:**
-
-To disable variable expansion use single quotes like `PASSWORD='pa$$word@'` to get the result 'pa$$word@'.
+<a href="/docs/cli/run-variable-expansion">Click here if you are not redirected.</a>

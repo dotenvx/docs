@@ -1,20 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Exit with code 1 if any errors are encountered - like a missing .env file or decryption failure.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Run', href: '/docs/cli/run' },
-  ]}
-/>
-# dotenvx run --strict
+<HeadRedirect url="/docs/cli/run-strict" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-$ dotenvx run -f .env.missing --strict -- node index.js
-[MISSING_ENV_FILE] missing file (/path/to/.env.missing). fix: [echo "HELLO=World" > .env.missing]
-```
+<a href="/docs/cli/run-strict">Click here if you are not redirected.</a>

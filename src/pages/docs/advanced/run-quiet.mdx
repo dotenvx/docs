@@ -1,23 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Use `--quiet` to suppress all output (except errors).'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Run', href: '/docs/cli/run' },
-  ]}
-/>
-# dotenvx run --quiet
+<HeadRedirect url="/docs/cli/run-quiet" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=production" > .env.production
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-$ dotenvx run -f .env.production --quiet -- node index.js
-Hello production
-```
-
-[log levels](https://github.com/winstonjs/winston?tab=readme-ov-file#logging)
+<a href="/docs/cli/run-quiet">Click here if you are not redirected.</a>

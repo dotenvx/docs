@@ -1,25 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Override existing env variables. These can be variables already on your machine or variables loaded as files consecutively. The last variable seen will \'win\'.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Run', href: '/docs/cli/run' },
-  ]}
-/>
-# dotenvx run --overload
+<HeadRedirect url="/docs/cli/run-overload" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=local" > .env.local
-$ echo "HELLO=World" > .env
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-$ dotenvx run -f .env.local -f .env --overload -- node index.js
-[dotenvx] injecting env (1) from .env.local, .env
-Hello World
-```
-
-Note that with `--overload` subsequent files DO override pre-existing variables defined in previous files.
+<a href="/docs/cli/run-overload">Click here if you are not redirected.</a>

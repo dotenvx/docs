@@ -1,24 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Decrypt your encrypted `.env` by setting `DOTENV_PRIVATE_KEY` before dotenvx run.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Run', href: '/docs/cli/run' },
-  ]}
-/>
-# DOTENV_PRIVATE_KEY=key dotenvx run
+<HeadRedirect url="/docs/cli/run-dotenv-private-key" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ touch .env
-$ dotenvx set HELLO encrypted
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-# check your .env.keys files for your privateKey
-$ DOTENV_PRIVATE_KEY="122...0b8" dotenvx run -- node index.js
-[dotenvx] injecting env (2) from .env
-Hello encrypted
-```
+<a href="/docs/cli/run-dotenv-private-key">Click here if you are not redirected.</a>

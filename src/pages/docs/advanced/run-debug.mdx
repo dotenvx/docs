@@ -1,32 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Set log level to `debug`.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Run', href: '/docs/cli/run' },
-  ]}
-/>
-# dotenvx run --debug
+<HeadRedirect url="/docs/cli/run-debug" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=production" > .env.production
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
-
-$ dotenvx run -f .env.production --debug -- node index.js
-process command [node index.js]
-options: {"env":[],"envFile":[".env.production"]}
-loading env from .env.production (/path/to/.env.production)
-{"HELLO":"production"}
-HELLO set
-HELLO set to production
-[dotenvx] injecting env (1) from .env.production
-executing process command [node index.js]
-expanding process command to [/opt/homebrew/bin/node index.js]
-Hello production
-```
-
-[log levels](https://github.com/winstonjs/winston?tab=readme-ov-file#logging)
+<a href="/docs/cli/run-debug">Click here if you are not redirected.</a>
