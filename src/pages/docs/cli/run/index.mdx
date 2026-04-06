@@ -14,3 +14,38 @@ export const description =
 # Run
 
 <GuideHeading lead={description} />
+
+```js
+console.log(`Hello ${process.env.HELLO}`)
+```
+```sh
+$ dotenvx encrypt
+$ dotenvx run -- node index.js
+```
+
+## Advanced
+
+* [run - Variable Expansion](/docs/advanced/run-variable-expansion)
+* [run - Default Values](/docs/advanced/run-default-values)
+* [run - Alternate Values](/docs/advanced/run-alternate-values)
+* [run - Interpolation Syntax Summary (Variable Expansion, Default/Alternate Values)](/docs/advanced/run-interpolation-syntax-summary)
+* [run - Command Substitution](/docs/advanced/run-command-substitution)
+* [run - Shell Expansion](/docs/advanced/run-shell-expansion)
+* [run - Multiline](/docs/advanced/run-multiline)
+* [run - Contextual Help](/docs/advanced/run-contextual-help)
+* [run -f](/docs/advanced/run-f)
+* [run --env HELLO=String](/docs/advanced/run-env)
+* [run --overload](/docs/advanced/run-overload)
+* [run - Environment Variable Precedence](/docs/advanced/run-environment-variable-precedence)
+* [DOTENV_PRIVATE_KEY=key run](/docs/advanced/run-dotenv-private-key)
+* [DOTENV_PRIVATE_KEY_PRODUCTION=key run](/docs/advanced/run-dotenv-private-key-production)
+* [DOTENV_PRIVATE_KEY_CI=key run](/docs/advanced/run-dotenv-private-key-ci)
+* [DOTENV_PRIVATE_KEY=key DOTENV_PRIVATE_KEY_PRODUCTION=key run - Combine Multiple](/docs/advanced/run-dotenv-private-key-multiple)
+* [run --verbose](/docs/advanced/run-verbose)
+* [run --debug](/docs/advanced/run-debug)
+* [run --quiet](/docs/advanced/run-quiet)
+* [run --log-level](/docs/advanced/run-log-level)
+* [run --strict](/docs/advanced/run-strict)
+* [run --convention=nextjs](/docs/advanced/run-convention-nextjs)
+* [run --convention=flow](/docs/advanced/run-convention-flow)
+
