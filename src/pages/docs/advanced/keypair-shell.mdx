@@ -1,21 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Print a shell formatted response of public/private keys.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Keypair', href: '/docs/cli/keypair' },
-  ]}
-/>
-# dotenvx keypair --format shell
+<HeadRedirect url="/docs/cli/keypair-shell" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=World" > .env
-$ dotenx encrypt
-
-$ dotenvx keypair --format shell
-DOTENV_PUBLIC_KEY=<publicKey> DOTENV_PRIVATE_KEY=<privateKey>
-```
+<a href="/docs/cli/keypair-shell">Click here if you are not redirected.</a>

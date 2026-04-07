@@ -1,21 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Print public/private keys for chosen .env* files.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Keypair', href: '/docs/cli/keypair' },
-  ]}
-/>
-# dotenvx keypair -f
+<HeadRedirect url="/docs/cli/keypair-f" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=Production" > .env.production
-$ dotenvx encrypt -f .env.production
-
-$ dotenvx keypair -f .env.production
-{"DOTENV_PUBLIC_KEY_PRODUCTION":"<publicKey>","DOTENV_PRIVATE_KEY_PRODUCTION":"<privateKey>"}
-```
+<a href="/docs/cli/keypair-f">Click here if you are not redirected.</a>

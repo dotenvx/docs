@@ -1,30 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Rotate the contents of an encrypted .env file and send to stdout.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Rotate', href: '/docs/cli/rotate' },
-  ]}
-/>
-# dotenvx rotate --stdout
+<HeadRedirect url="/docs/cli/rotate-stdout" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ dotenvx rotate --stdout
-#/-------------------[DOTENV_PUBLIC_KEY]--------------------/
-#/            public-key encryption for .env files          /
-#/       [how it works](https://dotenvx.com/encryption)     /
-#/----------------------------------------------------------/
-DOTENV_PUBLIC_KEY="034af93e93708b994c10f236c96ef88e47291066946cce2e8d98c9e02c741ced45"
-# .env
-HELLO="encrypted:12345"
-```
-
-or send to a file:
-
-```sh
-$ dotenvx rotate --stdout > somefile.txt
-```
+<a href="/docs/cli/rotate-stdout">Click here if you are not redirected.</a>

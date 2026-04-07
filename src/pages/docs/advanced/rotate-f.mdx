@@ -1,23 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Rotate public/private keys for a specified encrypted .env file and re-encrypt all encrypted values.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Rotate', href: '/docs/cli/rotate' },
-  ]}
-/>
-# dotenvx rotate -f
+<HeadRedirect url="/docs/cli/rotate-f" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=World" > .env
-$ echo "HELLO=Production" > .env.production
-
-$ dotenvx encrypt -f .env.production
-◈ encrypted (.env.production)
-$ dotenvx rotate -f .env.production
-⟳ rotated (.env.production)
-```
+<a href="/docs/cli/rotate-f">Click here if you are not redirected.</a>

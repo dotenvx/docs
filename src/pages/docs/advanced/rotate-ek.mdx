@@ -1,31 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Rotate the encrypted contents inside an encrypted .env file except for an excluded key.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Rotate', href: '/docs/cli/rotate' },
-  ]}
-/>
-# dotenvx rotate -ek
+<HeadRedirect url="/docs/cli/rotate-ek" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=World\nHOLA=Mundo" > .env
-$ dotenvx encrypt
-◈ encrypted (.env)
-$ dotenvx rotate -ek HOLA
-⟳ rotated (.env)
-```
-
-Even specify a glob pattern.
-
-```sh
-$ echo "HELLO=World\nHOLA=Mundo" > .env
-$ dotenvx encrypt
-◈ encrypted (.env)
-$ dotenvx rotate -ek "HO*"
-⟳ rotated (.env)
-```
+<a href="/docs/cli/rotate-ek">Click here if you are not redirected.</a>
