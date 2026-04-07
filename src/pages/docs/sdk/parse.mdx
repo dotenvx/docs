@@ -13,8 +13,12 @@ const src = 'HELLO=World'
 const parsed = dotenvx.parse(src)
 console.log(`Hello ${parsed.HELLO}`)
 ```
-
 ```sh
 $ node index.js
 Hello World
 ```
+
+## Advanced
+
+* [parse(src, \{processEnv:\})](/docs/sdk/parse-process-env)
+* [parse(src, \{privateKey:\})](/docs/sdk/parse-private-key)
