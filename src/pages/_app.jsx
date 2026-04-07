@@ -18,7 +18,14 @@ Router.events.on('hashChangeStart', onRouteChange)
 
 export default function App({ Component, pageProps }) {
   let router = useRouter()
-  let title = router.pathname === '/' ? 'Dotenvx' : `${pageProps.title} · Dotenvx`
+  let title =
+    router.pathname === '/'
+      ? 'Dotenvx'
+      : router.pathname.startsWith('/docs/cli')
+        ? `${pageProps.title} · Dotenvx CLI Reference`
+        : router.pathname.startsWith('/docs/sdk')
+          ? `${pageProps.title} · Dotenvx SDK Reference`
+        : `${pageProps.title} · Dotenvx`
   let url = `https://dotenvx.com${router.asPath}`
   let encodedUrl = encodeURIComponent(url)
   let imageUrl = `https://api.urlbox.io/v1/Ep4Ip4nNnFMNUg9J/png?url=${encodedUrl}&width=800&height=600&fail_on_4xx=true&fail_on_5xx=true`

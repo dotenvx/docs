@@ -25,7 +25,7 @@ function TopLevelNavItem({ href, children }) {
   )
 }
 
-function NavLink({ href, tag, active, current, level = 0, target, rel, children }) {
+function NavLink({ href, tag, hasChildren = false, active, current, level = 0, target, rel, children }) {
   let leftPaddingClass = {
     0: 'pl-2',
     1: 'pl-3',
@@ -49,11 +49,21 @@ function NavLink({ href, tag, active, current, level = 0, target, rel, children 
       )}
     >
       <span className="truncate">{children}</span>
-      {tag && (
-        <Tag variant="small" color="zinc">
-          {tag}
-        </Tag>
-      )}
+      <span className="flex items-center gap-2">
+        {tag && (
+          <Tag variant="small" color="zinc">
+            {tag}
+          </Tag>
+        )}
+        {hasChildren && (
+          <span
+            aria-hidden="true"
+            className="text-base leading-none text-zinc-500 dark:text-zinc-400"
+          >
+            ›
+          </span>
+        )}
+      </span>
     </Link>
   )
 }
@@ -107,6 +117,7 @@ function NavigationLinkItem({ link, pathname, level = 0 }) {
     <motion.li layout="position" className="relative">
       <NavLink
         href={link.href}
+        hasChildren={(link.links?.length ?? 0) > 0}
         active={isActive}
         current={isCurrent}
         level={level}
@@ -192,6 +203,10 @@ export const defaultNavigation = [
     title: 'Quickstart',
     links: [
       {
+        title: 'CLI',
+        href: '/docs/secrets-with-cli',
+      },
+      {
         title: 'Node.js',
         href: '/docs/secrets-in-nodejs',
         links: [
@@ -254,7 +269,7 @@ export const defaultNavigation = [
         ],
       },
       {
-        title: 'Other',
+        title: 'Misc',
         href: '/docs/secrets-in-bash',
         links: [
           { title: 'Bash', href: '/docs/secrets-in-bash' },
@@ -262,23 +277,23 @@ export const defaultNavigation = [
           { title: 'Cron', href: '/docs/secrets-in-cron' },
         ],
       },
-      {
-        title: 'CLI',
-        href: '/docs/secrets-with-cli',
-      },
     ]
   },
   {
     title: 'Learn',
     links: [
-      { title: 'Introduction', href: '/docs/learn' },
-      { title: 'Install', href: '/docs/install' },
-      { title: 'Basics', href: '/docs/quickstart' },
+      { title: 'Ops ⛨', href: '/docs/learn/ops' },
+      { title: 'Private Keys', href: '/docs/learn/private-keys' },
+      { title: 'Settings', href: '/docs/learn/settings' },
     ]
   },
   {
     title: 'Resources',
+
     links: [
+      { title: 'Introduction', href: '/docs/learn' },
+      { title: 'Install', href: '/docs/install' },
+      { title: 'Basics', href: '/docs/quickstart' },
       {
         title: 'Guides',
         href: '/docs/guides',
@@ -343,6 +358,7 @@ export const cliNavigation = [
       { title: 'decrypt', href: '/docs/cli/decrypt' },
       { title: 'rotate', href: '/docs/cli/rotate' },
       { title: 'keypair', href: '/docs/cli/keypair' },
+      { title: 'ops', href: '/docs/cli/ops' },
     ],
   },
   {
