@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import clsx from 'clsx'
@@ -70,6 +70,31 @@ function isLinkActive(link, pathname) {
 function hasDescendantWithHref(link, href) {
   return (link.links ?? []).some(
     (childLink) => childLink.href === href || hasDescendantWithHref(childLink, href)
+  )
+}
+
+const mobileTopLevelNavigation = [
+  { title: 'Documentation', href: '/docs' },
+  { title: 'CLI Reference', href: '/docs/cli' },
+  { title: 'SDK Reference', href: '/docs/sdk' },
+]
+
+function getMobileTopLevelSelection(pathname) {
+  if (pathname.startsWith('/docs/cli')) {
+    return '/docs/cli'
+  }
+
+  if (pathname.startsWith('/docs/sdk')) {
+    return '/docs/sdk'
+  }
+
+  return '/docs'
+}
+
+function getMobileTopLevelTitle(pathname) {
+  return (
+    mobileTopLevelNavigation.find((link) => link.href === getMobileTopLevelSelection(pathname))
+      ?.title ?? 'Documentation'
   )
 }
 
@@ -369,10 +394,100 @@ export function Navigation(props) {
   let isInsideMobileNavigation = useIsInsideMobileNavigation()
   let router = useInitialValue(useRouter(), isInsideMobileNavigation)
   let currentNavigation = getNavigationForPath(router.pathname)
+  let mobileTopLevelSelection = getMobileTopLevelSelection(router.pathname)
+  let [isMobileTopLevelOpen, setIsMobileTopLevelOpen] = useState(false)
 
   return (
     <nav {...props}>
       <ul role="list">
+        {isInsideMobileNavigation && (
+          <li className="md:mt-0 mb-3 border-b border-zinc-900/10 pb-4 dark:border-white/10">
+            <label htmlFor="mobile-top-level-nav-trigger" className="sr-only">
+              Top-level navigation
+            </label>
+            <div className="relative">
+              <button
+                id="mobile-top-level-nav-trigger"
+                type="button"
+                aria-expanded={isMobileTopLevelOpen}
+                onClick={() => setIsMobileTopLevelOpen((open) => !open)}
+                className="flex w-full items-center justify-between rounded-2xl border border-zinc-900/10 bg-zinc-50/60 px-4 py-3 text-left text-sm text-zinc-900 dark:border-white/10 dark:bg-white/5 dark:text-zinc-100"
+              >
+                <span>{getMobileTopLevelTitle(router.pathname)}</span>
+                <svg
+                  viewBox="0 0 16 16"
+                  aria-hidden="true"
+                  className="h-4 w-4 stroke-zinc-700 dark:stroke-zinc-300"
+                >
+                  {isMobileTopLevelOpen ? (
+                    <path
+                      d="M4 9.5 8 5.5l4 4"
+                      fill="none"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  ) : (
+                    <path
+                      d="M4 6.5 8 10.5l4-4"
+                      fill="none"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  )}
+                </svg>
+              </button>
+              {isMobileTopLevelOpen && (
+                <ul
+                  role="listbox"
+                  className="absolute left-0 right-0 top-full z-30 mt-3 space-y-1 rounded-2xl border border-zinc-900/10 bg-zinc-50/95 p-2 shadow-lg dark:border-white/10 dark:bg-zinc-900/95"
+                >
+                  {mobileTopLevelNavigation.map((link) => {
+                    let isCurrent = link.href === mobileTopLevelSelection
+
+                    return (
+                      <li key={link.href}>
+                        <button
+                          type="button"
+                          role="option"
+                          aria-selected={isCurrent}
+                          onClick={() => {
+                            setIsMobileTopLevelOpen(false)
+                            router.push(link.href)
+                          }}
+                          className={clsx(
+                            'flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm transition-colors hover:bg-zinc-900/5 focus-visible:bg-zinc-900/5 dark:hover:bg-white/10 dark:focus-visible:bg-white/10',
+                            isCurrent
+                              ? 'font-semibold text-zinc-900 dark:text-white'
+                              : 'text-zinc-700 dark:text-zinc-300'
+                          )}
+                        >
+                          <span>{link.title}</span>
+                          {isCurrent && (
+                            <svg
+                              viewBox="0 0 16 16"
+                              aria-hidden="true"
+                              className="h-4 w-4 stroke-zinc-900 dark:stroke-zinc-100"
+                            >
+                              <path
+                                d="m3.5 8.5 2.5 2.5 6-6"
+                                fill="none"
+                                strokeWidth="1.75"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          )}
+                        </button>
+                      </li>
+                    )
+                  })}
+                </ul>
+              )}
+            </div>
+          </li>
+        )}
         {currentNavigation.map((group, groupIndex) => (
           <NavigationGroup
             key={group.title}
