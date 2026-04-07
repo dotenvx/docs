@@ -20,10 +20,10 @@ function SdkReferenceCard({ item }) {
 
 export function SdkReferenceCards() {
   let items = [
-    { href: '/docs/advanced/config', title: 'config' },
-    { href: '/docs/advanced/parse', title: 'parse' },
-    { href: '/docs/advanced/config-set-key-value', title: 'set' },
-    { href: '/docs/advanced/config-get-key', title: 'get' },
+    { href: '/docs/sdk/config', title: 'config' },
+    { href: '/docs/sdk/parse', title: 'parse' },
+    { href: '/docs/sdk/config-set-key-value', title: 'set' },
+    { href: '/docs/sdk/config-get-key', title: 'get' },
   ]
 
   return (

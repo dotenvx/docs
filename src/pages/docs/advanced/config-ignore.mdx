@@ -1,25 +1,7 @@
-export const description =
-  'Use ignore to suppress specific errors like MISSING_ENV_FILE.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-##### [Advanced](/docs/advanced)
-# dotenvx.config(ignore: true)
+<HeadRedirect url="/docs/sdk/config-ignore" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```ini
-# .env
-HELLO="World"
-```
-
-```js
-// index.js
-require('@dotenvx/dotenvx').config({path: ['.env.missing', '.env'], ignore: ['MISSING_ENV_FILE']})
-
-console.log(`Hello ${process.env.HELLO}`)
-```
-
-```sh
-$ node index.js
-[dotenvx@1.X.X] injecting env (1) from .env
-Hello World
-```
+<a href="/docs/sdk/config-ignore">Click here if you are not redirected.</a>

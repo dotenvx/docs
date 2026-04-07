@@ -1,30 +1,7 @@
-export const description =
-  'Use overload to overwrite the prior set value.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-##### [Advanced](/docs/advanced)
-# dotenvx.config(overload: true)
+<HeadRedirect url="/docs/sdk/config-overload" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```ini
-# .env.local
-HELLO="Me"
-```
-
-```ini
-# .env
-HELLO="World"
-```
-
-```js
-// index.js
-require('@dotenvx/dotenvx').config({path: ['.env.local', '.env'], overload: true})
-
-console.log(`Hello ${process.env.HELLO}`)
-```
-
-```sh
-$ node index.js
-[dotenvx@1.28.0] injecting env (1) from .env.local, .env
-Hello World
-```
+<a href="/docs/sdk/config-overload">Click here if you are not redirected.</a>
