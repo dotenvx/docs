@@ -351,21 +351,21 @@ export const cliNavigation = [
   {
     title: 'Commands',
     links: [
-      { title: 'run', href: '/docs/cli/run' },
-      { title: 'get', href: '/docs/cli/get' },
-      { title: 'set', href: '/docs/cli/set' },
-      { title: 'encrypt', href: '/docs/cli/encrypt' },
-      { title: 'decrypt', href: '/docs/cli/decrypt' },
-      { title: 'rotate', href: '/docs/cli/rotate' },
-      { title: 'keypair', href: '/docs/cli/keypair' },
-      { title: 'ops', href: '/docs/cli/ops' },
+      { title: 'Run', href: '/docs/cli/run' },
+      { title: 'Get', href: '/docs/cli/get' },
+      { title: 'Set', href: '/docs/cli/set' },
+      { title: 'Encrypt', href: '/docs/cli/encrypt' },
+      { title: 'Decrypt', href: '/docs/cli/decrypt' },
+      { title: 'Rotate', href: '/docs/cli/rotate' },
+      { title: 'Keypair', href: '/docs/cli/keypair' },
+      { title: 'Ops ⛨', href: '/docs/cli/ops' },
     ],
   },
   {
     title: 'More',
     links: [
-      { title: 'ls', href: '/docs/cli/ls' },
-      { title: 'ext', href: '/docs/cli/ext' },
+      { title: 'Ls', href: '/docs/cli/ls' },
+      { title: 'Ext', href: '/docs/cli/ext' },
     ],
   }
 ]
