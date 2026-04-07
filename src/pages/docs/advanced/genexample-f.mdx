@@ -1,21 +1,7 @@
-export const description =
-  'Pass multiple .env files to generate your .env.example file from the combination of their contents.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-##### [Advanced](/docs/advanced)
-# dotenvx ext genexample -f
+<HeadRedirect url="/docs/cli/genexample-f" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=World" > .env
-$ echo "DB_HOST=example.com" > .env.production
-
-$ dotenvx ext genexample -f .env -f .env.production
-▣ generated (.env.example)
-```
-
-```ini {{ title: ".env.example" }}
-# .env.example
-HELLO=""
-DB_HOST=""
-```
+<a href="/docs/cli/genexample-f">Click here if you are not redirected.</a>

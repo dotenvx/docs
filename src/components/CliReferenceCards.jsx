@@ -41,7 +41,6 @@ export function CliReferenceCards() {
     { href: '/docs/cli/decrypt', title: 'decrypt' },
     { href: '/docs/cli/rotate', title: 'rotate' },
     { href: '/docs/cli/keypair', title: 'keypair' },
-    { href: '/docs/cli/ls', title: 'ls' },
   ]
 
   return (

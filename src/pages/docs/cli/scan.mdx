@@ -1,0 +1,21 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Scan for leaked secrets.'
+
+<Breadcrumb
+  items={[
+    { label: "CLI Reference", href: "/docs/cli" },
+    { label: "Extensions", href: "/docs/cli/ext" },
+  ]}
+/>
+# dotenvx ext scan
+
+<p className="lead">{description}</p>
+
+```sh
+$ dotenvx ext scan
+100 commits scanned.
+no leaks found
+```
+
+Uses [gitleaks](https://gitleaks.io) under the hood.

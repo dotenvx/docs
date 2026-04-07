@@ -1,0 +1,22 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Prevent .env files from being committed to code for a specified directory. Useful for monorepos.'
+
+<Breadcrumb
+  items={[
+    { label: "CLI Reference", href: "/docs/cli" },
+    { label: "Extensions", href: "/docs/cli/ext" },
+  ]}
+/>
+# dotenvx ext precommit directory
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+$ mkdir -p apps/backend
+$ echo "HELLO=Backend" > apps/backend/.env
+
+$ dotenvx ext precommit apps/backend
+[dotenvx][precommit] apps/backend/.env not protected (encrypted or gitignored)
+```

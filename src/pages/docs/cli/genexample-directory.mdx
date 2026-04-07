@@ -1,0 +1,27 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Generate a .env.example file inside the specified directory. Useful for monorepos.'
+
+<Breadcrumb
+  items={[
+    { label: "CLI Reference", href: "/docs/cli" },
+    { label: "Extensions", href: "/docs/cli/ext" },
+  ]}
+/>
+# dotenvx ext genexample directory
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+$ mkdir -p apps/backend
+$ echo "HELLO=Backend" > apps/backend/.env
+
+$ dotenvx ext genexample apps/backend
+▣ generated (.env.example)
+```
+
+```ini {{ title: "apps/backend/.env.example" }}
+# apps/backend/.env.example
+HELLO=""
+```

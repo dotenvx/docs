@@ -1,0 +1,36 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Extend dotenvx.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Extensions', href: '/docs/cli/ext' },
+  ]}
+/>
+
+# Extensions
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx ext
+```
+
+## Advanced
+
+* [ext genexample](/docs/cli/genexample)
+* [ext genexample -f](/docs/cli/genexample-f)
+* [ext genexample directory](/docs/cli/genexample-directory)
+* [ext gitignore](/docs/cli/gitignore)
+* [ext gitignore --pattern](/docs/cli/gitignore-pattern)
+* [ext precommit](/docs/cli/precommit)
+* [ext precommit --install](/docs/cli/precommit-install)
+* [ext precommit directory](/docs/cli/precommit-directory)
+* [ext prebuild](/docs/cli/prebuild)
+* [ext prebuild directory](/docs/cli/prebuild-directory)
+* [ext scan](/docs/cli/scan)
+
+

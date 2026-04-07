@@ -1,0 +1,18 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Prevent .env files from being committed to code.'
+
+<Breadcrumb
+  items={[
+    { label: "CLI Reference", href: "/docs/cli" },
+    { label: "Extensions", href: "/docs/cli/ext" },
+  ]}
+/>
+# dotenvx ext precommit
+
+<p className="lead">{description}</p>
+
+```sh
+$ dotenvx ext precommit
+[dotenvx][precommit] .env files (1) protected (encrypted or gitignored)
+```

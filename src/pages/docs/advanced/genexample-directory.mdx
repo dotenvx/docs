@@ -1,21 +1,7 @@
-export const description =
-  'Generate a .env.example file inside the specified directory. Useful for monorepos.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-##### [Advanced](/docs/advanced)
-# dotenvx ext genexample directory
+<HeadRedirect url="/docs/cli/genexample-directory" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=World" > .env
-$ mkdir -p apps/backend
-$ echo "HELLO=Backend" > apps/backend/.env
-
-$ dotenvx ext genexample apps/backend
-▣ generated (.env.example)
-```
-
-```ini {{ title: "apps/backend/.env.example" }}
-# apps/backend/.env.example
-HELLO=""
-```
+<a href="/docs/cli/genexample-directory">Click here if you are not redirected.</a>

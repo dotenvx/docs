@@ -320,9 +320,15 @@ export const cliNavigation = [
       { title: 'decrypt', href: '/docs/cli/decrypt' },
       { title: 'rotate', href: '/docs/cli/rotate' },
       { title: 'keypair', href: '/docs/cli/keypair' },
-      { title: 'ls', href: '/docs/cli/ls' },
     ],
   },
+  {
+    title: 'More',
+    links: [
+      { title: 'ls', href: '/docs/cli/ls' },
+      { title: 'ext', href: '/docs/cli/ext' },
+    ],
+  }
 ]
 
 export const sdkNavigation = [

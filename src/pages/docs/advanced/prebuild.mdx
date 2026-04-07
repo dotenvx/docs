@@ -1,19 +1,7 @@
-export const description =
-  'Prevent .env files from being built into your docker containers.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-##### [Advanced](/docs/advanced)
-# dotenvx ext prebuild
+<HeadRedirect url="/docs/cli/prebuild" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-Add it to your Dockerfile.
-
-```sh
-# Dockerfile
-RUN curl -fsS https://dotenvx.sh | sh
-
-...
-
-RUN dotenvx ext prebuild
-CMD ["dotenvx", "run", "--", "node", "index.js"]
-```
+<a href="/docs/cli/prebuild">Click here if you are not redirected.</a>

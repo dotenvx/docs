@@ -1,16 +1,7 @@
-export const description =
-  'Prevent .env files from being committed to code for a specified directory. Useful for monorepos.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-##### [Advanced](/docs/advanced)
-# dotenvx ext precommit directory
+<HeadRedirect url="/docs/cli/precommit-directory" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ echo "HELLO=World" > .env
-$ mkdir -p apps/backend
-$ echo "HELLO=Backend" > apps/backend/.env
-
-$ dotenvx ext precommit apps/backend
-[dotenvx][precommit] apps/backend/.env not protected (encrypted or gitignored)
-```
+<a href="/docs/cli/precommit-directory">Click here if you are not redirected.</a>

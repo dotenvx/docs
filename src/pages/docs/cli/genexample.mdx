@@ -1,0 +1,25 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Generate a .env.example file from your current .env file contents.'
+
+<Breadcrumb
+  items={[
+    { label: "CLI Reference", href: "/docs/cli" },
+    { label: "Extensions", href: "/docs/cli/ext" },
+  ]}
+/>
+# dotenvx ext genexample
+
+<p className="lead">{description}</p>
+
+```sh
+$ echo "HELLO=World" > .env
+
+$ dotenvx ext genexample
+▣ generated (.env.example)
+```
+
+```ini {{ title: ".env.example" }}
+# .env.example
+HELLO=""
+```

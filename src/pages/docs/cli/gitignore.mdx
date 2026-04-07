@@ -1,0 +1,18 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+export const description =
+  'Gitignore your .env files.'
+
+<Breadcrumb
+  items={[
+    { label: "CLI Reference", href: "/docs/cli" },
+    { label: "Extensions", href: "/docs/cli/ext" },
+  ]}
+/>
+# dotenvx ext gitignore
+
+<p className="lead">{description}</p>
+
+```sh
+$ dotenvx ext gitignore
+▣ ignored .env* (.gitignore)
+```
