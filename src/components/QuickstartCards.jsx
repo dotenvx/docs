@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 import { AstroIcon } from '@/components/icons/AstroIcon'
-import { BookIcon } from '@/components/icons/BookIcon'
 import { CalendarIcon } from '@/components/icons/CalendarIcon'
 import { DotnetIcon } from '@/components/icons/DotnetIcon'
 import { ExpressIcon } from '@/components/icons/ExpressIcon'
@@ -13,6 +12,14 @@ import { PhpIcon } from '@/components/icons/PhpIcon'
 import { PythonIcon } from '@/components/icons/PythonIcon'
 import { RubyIcon } from '@/components/icons/RubyIcon'
 import { RustIcon } from '@/components/icons/RustIcon'
+
+function CliReferenceGlyphIcon(props) {
+  return (
+    <span {...props}>
+      ❯
+    </span>
+  )
+}
 
 function QuickstartCard({ item }) {
   const Icon = item.icon
@@ -34,6 +41,12 @@ function QuickstartCard({ item }) {
 
 export function QuickstartCards({
   items = [
+    {
+      href: '/docs/secrets-with-cli',
+      title: 'CLI Quickstart',
+      icon: CliReferenceGlyphIcon,
+      iconClass: 'h-5 w-5 text-zinc-800 dark:text-zinc-200',
+    },
     {
       href: '/docs/secrets-in-nodejs',
       title: 'Node.js Quickstart',
@@ -97,7 +110,7 @@ export function QuickstartCards({
   ],
 }) {
   return (
-    <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-5">
+    <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-3">
       {items.map((item) => (
         <QuickstartCard key={item.href} item={item} />
       ))}
