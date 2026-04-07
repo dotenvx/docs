@@ -1,0 +1,26 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Programmatically get an environment variable at access/runtime.'
+
+<Breadcrumb
+  items={[
+    { label: 'SDK Reference', href: '/docs/sdk' },
+    { label: 'Get', href: '/docs/sdk/get' },
+  ]}
+/>
+
+# Get
+
+<GuideHeading lead={description} />
+
+```js
+// index.js
+const dotenvx = require('@dotenvx/dotenvx')
+const decryptedValue = dotenvx.get('HELLO')
+
+console.log(decryptedValue)
+```
+
+This is known as *Decryption at Access* and is written about in [the whitepaper](https://dotenvx.com/dotenvx.pdf).

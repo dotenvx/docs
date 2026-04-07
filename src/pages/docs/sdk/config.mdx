@@ -1,0 +1,45 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Load env at runtime.'
+
+<Breadcrumb
+  items={[
+    { label: 'SDK Reference', href: '/docs/sdk' },
+    { label: 'Config', href: '/docs/sdk/config' },
+  ]}
+/>
+
+# Config
+
+<GuideHeading lead={description} />
+
+```ini
+# .env
+HELLO="World"
+```
+```js
+// index.js
+require('@dotenvx/dotenvx').config()
+// or import '@dotenvx/dotenvx/config' if you're using esm
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+```sh
+$ node index.js
+Hello World
+```
+
+## Advanced
+
+* [config()](/docs/advanced/config)
+* [config(path: ['.env.local', '.env'])](/docs/advanced/config-path)
+* [config(overload: true)](/docs/advanced/config-overload)
+* [config(quiet: true)](/docs/advanced/config-quiet)
+* [config(strict: true)](/docs/advanced/config-strict)
+* [config(ignore: ['.env.missing', '.env'])](/docs/advanced/config-ignore)
+* [config(envKeysFile: '../../.env.keys')](/docs/advanced/config-env-keys-file)
+* [config(convention: 'nextjs')](/docs/advanced/config-convention)
+* [config(opsOff: true)](/docs/advanced/config-ops-off)
+

@@ -1,0 +1,33 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Parse a .env string directly in node.js code.'
+
+<Breadcrumb
+  items={[
+    { label: 'SDK Reference', href: '/docs/sdk' },
+    { label: 'Parse', href: '/docs/sdk/parse' },
+  ]}
+/>
+
+# Parse
+
+<GuideHeading lead={description} />
+
+```js
+// index.js
+const dotenvx = require('@dotenvx/dotenvx')
+const src = 'HELLO=World'
+const parsed = dotenvx.parse(src)
+console.log(`Hello ${parsed.HELLO}`)
+```
+```sh
+$ node index.js
+Hello World
+```
+
+## Advanced
+
+* [parse(src, \{processEnv:\})](/docs/advanced/parse-process-env)
+* [parse(src, \{privateKey:\})](/docs/advanced/parse-private-key)

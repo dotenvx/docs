@@ -1,0 +1,33 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Programmatically set an environment variable.'
+
+<Breadcrumb
+  items={[
+    { label: 'SDK Reference', href: '/docs/sdk' },
+    { label: 'Set', href: '/docs/sdk/set' },
+  ]}
+/>
+
+# Set
+
+<GuideHeading lead={description} />
+
+```js
+// index.js
+const dotenvx = require('@dotenvx/dotenvx')
+dotenvx.set('HELLO', 'World', { path: '.env' })
+```
+```js
+// index.js
+const dotenvx = require('@dotenvx/dotenvx')
+const src = 'HELLO=World'
+const parsed = dotenvx.parse(src)
+console.log(`Hello ${parsed.HELLO}`)
+```
+
+## Advanced
+
+* [set(KEY, value, \{plain: true\})](/docs/advanced/config-set-key-value-plain)

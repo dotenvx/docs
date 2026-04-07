@@ -339,6 +339,16 @@ export const sdkNavigation = [
       { title: 'Introduction', href: '/docs/sdk/introduction' },
     ],
   },
+  {
+    title: 'Methods',
+    links: [
+      { title: 'config', href: '/docs/sdk/config' },
+      { title: 'parse', href: '/docs/sdk/parse' },
+      { title: 'set', href: '/docs/sdk/set' },
+      { title: 'get', href: '/docs/sdk/get' },
+    ],
+  },
+
 ]
 
 export const navigation = defaultNavigation
