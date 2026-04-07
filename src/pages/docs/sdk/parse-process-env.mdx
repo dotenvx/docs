@@ -1,0 +1,22 @@
+export const description =
+  'Parse a .env string directly in node.js code without accessing process.env.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx.parse(src, \{processEnv:\})
+
+<p className="lead">{description}</p>
+
+Sometimes, you want to run `parse` without it accessing `process.env`. (You can pass a fake `processEnv` this way as well - sometimes useful.)
+
+```js
+// index.js
+const dotenvx = require('@dotenvx/dotenvx')
+const src = 'USER=Me'
+const parsed = dotenvx.parse(src, { processEnv: {} })
+console.log(`Hello ${parsed.USER}`)
+```
+
+```sh
+$ node index.js
+Hello Me
+```

@@ -1,8 +1,12 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
+import { HeroPattern } from '@/components/HeroPattern'
+import { SdkReferenceCards } from '@/components/SdkReferenceCards'
 
 export const description =
-  'Become a dotenvx power user.'
+  'Browse SDK reference functions.'
+
+<HeroPattern />
 
 <Breadcrumb
   items={[
@@ -13,3 +17,7 @@ export const description =
 # Introduction
 
 <GuideHeading lead={description} />
+
+## Functions
+
+<SdkReferenceCards />

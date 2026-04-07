@@ -1,0 +1,30 @@
+export const description =
+  'Use overload to overwrite the prior set value.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx.config(overload: true)
+
+<p className="lead">{description}</p>
+
+```ini
+# .env.local
+HELLO="Me"
+```
+
+```ini
+# .env
+HELLO="World"
+```
+
+```js
+// index.js
+require('@dotenvx/dotenvx').config({path: ['.env.local', '.env'], overload: true})
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+```sh
+$ node index.js
+[dotenvx@1.28.0] injecting env (1) from .env.local, .env
+Hello World
+```

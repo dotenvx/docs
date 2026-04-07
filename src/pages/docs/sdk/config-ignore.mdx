@@ -1,0 +1,25 @@
+export const description =
+  'Use ignore to suppress specific errors like MISSING_ENV_FILE.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx.config(ignore: true)
+
+<p className="lead">{description}</p>
+
+```ini
+# .env
+HELLO="World"
+```
+
+```js
+// index.js
+require('@dotenvx/dotenvx').config({path: ['.env.missing', '.env'], ignore: ['MISSING_ENV_FILE']})
+
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+```sh
+$ node index.js
+[dotenvx@1.X.X] injecting env (1) from .env
+Hello World
+```
