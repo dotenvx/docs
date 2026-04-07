@@ -13,10 +13,10 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ echo "HELLO=World" > .env
-$ echo "KEY=value" >> .env
+echo "HELLO=World" > .env
+echo "KEY=value" >> .env
 
-$ dotenvx get --format eval
+dotenvx get --format eval
 HELLO="World"
 KEY="value"
 ```
@@ -26,8 +26,8 @@ Note that this exports newlines and quoted strings.
 This can be useful for more complex .env values (spaces, escaped characters, quotes, etc) combined with `eval` on the command line.
 
 ```sh
-$ echo "console.log('Hello ' + process.env.KEY + ' ' + process.env.HELLO)" > index.js
-$ eval $(dotenvx get --format=eval) node index.js
+echo "console.log('Hello ' + process.env.KEY + ' ' + process.env.HELLO)" > index.js
+eval $(dotenvx get --format=eval) node index.js
 Hello value World
 ```
 

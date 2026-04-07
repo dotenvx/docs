@@ -13,11 +13,11 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ echo "HELLO=World" > .env
-$ echo "HELLO=Production" > .env.production
+echo "HELLO=World" > .env
+echo "HELLO=Production" > .env.production
 
-$ dotenvx encrypt -f .env.production
+dotenvx encrypt -f .env.production
 ◈ encrypted (.env.production)
-$ dotenvx rotate -f .env.production
+dotenvx rotate -f .env.production
 ⟳ rotated (.env.production)
 ```

@@ -13,19 +13,19 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ echo "HELLO=World\nHOLA=Mundo" > .env
-$ dotenvx encrypt
+echo "HELLO=World\nHOLA=Mundo" > .env
+dotenvx encrypt
 ◈ encrypted (.env)
-$ dotenvx rotate -ek HOLA
+dotenvx rotate -ek HOLA
 ⟳ rotated (.env)
 ```
 
 Even specify a glob pattern.
 
 ```sh
-$ echo "HELLO=World\nHOLA=Mundo" > .env
-$ dotenvx encrypt
+echo "HELLO=World\nHOLA=Mundo" > .env
+dotenvx encrypt
 ◈ encrypted (.env)
-$ dotenvx rotate -ek "HO*"
+dotenvx rotate -ek "HO*"
 ⟳ rotated (.env)
 ```

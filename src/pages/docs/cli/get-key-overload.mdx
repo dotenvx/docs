@@ -13,9 +13,9 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ echo "HELLO=World" > .env
-$ echo "HELLO=production" > .env.production
+echo "HELLO=World" > .env
+echo "HELLO=production" > .env.production
 
-$ dotenvx get HELLO -f .env.production --env HELLO=String -f .env --overload
+dotenvx get HELLO -f .env.production --env HELLO=String -f .env --overload
 World
 ```

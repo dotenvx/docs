@@ -13,9 +13,9 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ echo "HELLO=Production" > .env.production
-$ dotenvx encrypt -f .env.production
+echo "HELLO=Production" > .env.production
+dotenvx encrypt -f .env.production
 
-$ dotenvx keypair -f .env.production
+dotenvx keypair -f .env.production
 {"DOTENV_PUBLIC_KEY_PRODUCTION":"<publicKey>","DOTENV_PRIVATE_KEY_PRODUCTION":"<privateKey>"}
 ```

@@ -13,12 +13,12 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ touch .env
-$ dotenvx set HELLO encrypted
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+touch .env
+dotenvx set HELLO encrypted
+echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 # check your .env.keys files for your privateKey
-$ DOTENV_PRIVATE_KEY="122...0b8" dotenvx run -- node index.js
+DOTENV_PRIVATE_KEY="122...0b8" dotenvx run -- node index.js
 [dotenvx] injecting env (2) from .env
 Hello encrypted
 ```

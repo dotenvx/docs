@@ -13,10 +13,10 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ echo "HELLO=World" > .env
-$ mkdir -p apps/backend
-$ echo "HELLO=Backend" > apps/backend/.env
+echo "HELLO=World" > .env
+mkdir -p apps/backend
+echo "HELLO=Backend" > apps/backend/.env
 
-$ dotenvx ext precommit apps/backend
+dotenvx ext precommit apps/backend
 [dotenvx][precommit] apps/backend/.env not protected (encrypted or gitignored)
 ```

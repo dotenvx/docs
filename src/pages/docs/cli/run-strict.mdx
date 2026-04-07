@@ -13,8 +13,8 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
-$ dotenvx run -f .env.missing --strict -- node index.js
+dotenvx run -f .env.missing --strict -- node index.js
 [MISSING_ENV_FILE] missing file (/path/to/.env.missing). fix: [echo "HELLO=World" > .env.missing]
 ```

@@ -13,7 +13,7 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ dotenvx run --env="HELLO=World" -- sh -c 'echo Hello $HELLO'
+dotenvx run --env="HELLO=World" -- sh -c 'echo Hello $HELLO'
 Hello World
 ```
 
@@ -39,7 +39,7 @@ There are two solutions to this:
 As detailed above, use a subshell.
 
 ```bash
-$ dotenvx run -- bash -c 'echo Hello $HELLO'
+dotenvx run -- bash -c 'echo Hello $HELLO'
 ```
 
 Make sure to use single quotes `'` so values are NOT interpreted.
@@ -58,6 +58,6 @@ Or you can encapsulate in a script. Here's an example using [npm scripts](https:
 ```
 
 ```sh
-$ npm run hello
+npm run hello
 Hello World
 ```

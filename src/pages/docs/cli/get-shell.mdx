@@ -13,26 +13,26 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ echo "HELLO=World" > .env
-$ echo "KEY=value" >> .env
+echo "HELLO=World" > .env
+echo "KEY=value" >> .env
 
-$ dotenvx get --format shell
+dotenvx get --format shell
 HELLO=World KEY=value
 ```
 
 This can be useful when combined with `env` on the command line.
 
 ```sh
-$ echo "console.log('Hello ' + process.env.KEY + ' ' + process.env.HELLO)" > index.js
-$ env $(dotenvx get --format=shell) node index.js
+echo "console.log('Hello ' + process.env.KEY + ' ' + process.env.HELLO)" > index.js
+env $(dotenvx get --format=shell) node index.js
 Hello value World
 ```
 
 or with `export`.
 
 ```sh
-$ echo "console.log('Hello ' + process.env.KEY + ' ' + process.env.HELLO)" > index.js
-$ export $(dotenvx get --format=shell)
-$ node index.js
+echo "console.log('Hello ' + process.env.KEY + ' ' + process.env.HELLO)" > index.js
+export $(dotenvx get --format=shell)
+node index.js
 Hello value World
 ```

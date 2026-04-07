@@ -13,13 +13,13 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ echo "HELLO=production local" > .env.production.local
-$ echo "HELLO=production" > .env.production
-$ echo "HELLO=local" > .env.local
-$ echo "HELLO=env" > .env
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+echo "HELLO=production local" > .env.production.local
+echo "HELLO=production" > .env.production
+echo "HELLO=local" > .env.local
+echo "HELLO=env" > .env
+echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
-$ DOTENV_ENV=production dotenvx run --convention=flow -- node index.js 
+DOTENV_ENV=production dotenvx run --convention=flow -- node index.js 
 [dotenvx@1.X.X] injecting env (1) from .env.production.local, .env.production, .env.local, .env
 Hello production local
 ```

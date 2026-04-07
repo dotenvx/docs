@@ -13,11 +13,11 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ echo "HELLO=World" > .env
-$ mkdir -p apps/backend
-$ echo "HELLO=Backend" > apps/backend/.env
+echo "HELLO=World" > .env
+mkdir -p apps/backend
+echo "HELLO=Backend" > apps/backend/.env
 
-$ dotenvx ext genexample apps/backend
+dotenvx ext genexample apps/backend
 ▣ generated (.env.example)
 ```
 

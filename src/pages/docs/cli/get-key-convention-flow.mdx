@@ -13,12 +13,12 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-$ echo "HELLO=development local" > .env.development.local
-$ echo "HELLO=development" > .env.development
-$ echo "HELLO=local" > .env.local
-$ echo "HELLO=env" > .env
-$ echo "console.log('Hello ' + process.env.HELLO)" > index.js
+echo "HELLO=development local" > .env.development.local
+echo "HELLO=development" > .env.development
+echo "HELLO=local" > .env.local
+echo "HELLO=env" > .env
+echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
-$ dotenvx get HELLO --convention=flow
+dotenvx get HELLO --convention=flow
 development local
 ```
