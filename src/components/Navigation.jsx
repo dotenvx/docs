@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
 
-import { Button } from '@/components/Button'
 import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
 import { Tag } from '@/components/Tag'
 
@@ -185,14 +184,12 @@ function NavigationGroup({ group, className }) {
 export const defaultNavigation = [
   {
     title: 'Documentation',
-    href: '/docs',
     links: [
       { title: 'Introduction', href: '/docs/introduction' },
     ]
   },
   {
     title: 'Quickstart',
-    href: '/docs/quickstart',
     links: [
       {
         title: 'Node.js',
@@ -265,17 +262,25 @@ export const defaultNavigation = [
           { title: 'Cron', href: '/docs/secrets-in-cron' },
         ],
       },
+      {
+        title: 'CLI',
+        href: '/docs/secrets-with-cli',
+      },
     ]
   },
   {
     title: 'Learn',
-    href: '/docs/learn',
     links: [
       { title: 'Introduction', href: '/docs/learn' },
       { title: 'Install', href: '/docs/install' },
       { title: 'Basics', href: '/docs/quickstart' },
+    ]
+  },
+  {
+    title: 'Resources',
+    links: [
       {
-        title: 'Platforms',
+        title: 'Guides',
         href: '/docs/guides',
         links: [
           { title: 'Introduction', href: '/docs/guides' },
@@ -299,11 +304,6 @@ export const defaultNavigation = [
         target: '_blank',
         rel: 'noopener noreferrer',
       },
-    ]
-  },
-  {
-    title: 'Resources',
-    links: [
       { title: '.env', href: '/docs/env-file' },
       { title: '.env.keys', href: '/docs/env-keys-file' },
       { title: 'Statistics', href: '/docs/stats' },
@@ -311,8 +311,6 @@ export const defaultNavigation = [
       { title: 'Chrome', href: 'https://dotenvx.com/chrome-extension' },
       { title: 'Heroku', href: 'https://github.com/dotenvx/heroku-buildpack-dotenvx' },
       { title: 'VSCode', href: 'https://dotenvx.com/vscode-extension' },
-      { title: 'llms-full.txt', href: '/llms-full.txt' },
-      { title: 'llms.txt', href: '/llms.txt' },
     ]
   },
   {
@@ -496,11 +494,6 @@ export function Navigation(props) {
             className={groupIndex === 0 && 'md:mt-0'}
           />
         ))}
-        <li className="sticky bottom-0 z-10 mt-6 min-[416px]:hidden">
-          <Button href="#" variant="filled" className="w-full">
-            Sign in
-          </Button>
-        </li>
       </ul>
     </nav>
   )
