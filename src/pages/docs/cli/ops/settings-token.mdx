@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print your access token.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Ops ⛨', href: '/docs/cli/ops' },
+    { label: 'Settings', href: '/docs/cli/ops/settings' },
+    { label: 'token', href: '/docs/cli/ops/settings-token' },
+  ]}
+/>
+
+# Ops ⛨ Settings token
+
+<GuideHeading lead={description} />
+
+```sh
+dotenvx-ops settings token
+dxo_123abcd*****************************
+```

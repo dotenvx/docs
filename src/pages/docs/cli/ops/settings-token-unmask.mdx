@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print your access token (--unmask).'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Ops ⛨', href: '/docs/cli/ops' },
+    { label: 'Settings', href: '/docs/cli/ops/settings' },
+    { label: 'token --unmask', href: '/docs/cli/ops/settings-token-unmask' },
+  ]}
+/>
+
+# Ops ⛨ Settings token --unmask
+
+<GuideHeading lead={description} />
+
+```sh
+dotenvx-ops settings token --unmask
+dxo_123lO5HHaLvSmborVig0Mc6lf8c7G620vpw1
+```

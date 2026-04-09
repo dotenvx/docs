@@ -3,12 +3,14 @@ import Link from 'next/link'
 function OpsCliReferenceCard({ item }) {
   let glyph = '❯'
 
-  if (item.href === '/docs/ops/advanced/login') {
+  if (item.href === '/docs/cli/ops/login') {
     glyph = '◉'
-  } else if (item.href === '/docs/ops/advanced/logout') {
+  } else if (item.href === '/docs/cli/ops/logout') {
     glyph = '◌'
-  } else if (item.href === '/docs/cli/keypair') {
+  } else if (item.href === '/docs/cli/ops/keypair') {
     glyph = '⚷'
+  } else if (item.href === '/docs/cli/ops/settings') {
+    glyph = '⌘'
   }
 
   return (
@@ -30,9 +32,9 @@ function OpsCliReferenceCard({ item }) {
 
 export function OpsCliReferenceCards() {
   let items = [
-    { href: '/docs/ops/advanced/login', title: 'Login' },
-    { href: '/docs/ops/advanced/logout', title: 'Logout' },
-    { href: '/docs/cli/keypair', title: 'Keypair' },
+    { href: '/docs/cli/ops/login', title: 'Login' },
+    { href: '/docs/cli/ops/logout', title: 'Logout' },
+    { href: '/docs/cli/ops/settings', title: 'Settings' },
   ]
 
   return (

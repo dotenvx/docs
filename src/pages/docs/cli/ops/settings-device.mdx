@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print your device public key.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Ops ⛨', href: '/docs/cli/ops' },
+    { label: 'Settings', href: '/docs/cli/ops/settings' },
+    { label: 'device', href: '/docs/cli/ops/settings-device' },
+  ]}
+/>
+
+# Ops ⛨ Settings device
+
+<GuideHeading lead={description} />
+
+```sh
+dotenvx-ops settings device
+123abc456de*******************************************************
+```

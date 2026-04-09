@@ -2,19 +2,21 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Log into Dotenvx.'
+  'Log into Dotenvx via the CLI.'
 
 <Breadcrumb
   items={[
     { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Login', href: '/docs/cli/login' },
+    { label: 'Ops ⛨', href: '/docs/cli/ops' },
+    { label: 'Login', href: '/docs/cli/ops/login' },
   ]}
 />
 
-# Login
+# Ops ⛨ Login
 
 <GuideHeading lead={description} />
 
 ```sh
-dotenvx login
+$ dotenvx-ops login
+◉ logged in (username)
 ```

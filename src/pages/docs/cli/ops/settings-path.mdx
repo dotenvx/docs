@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print path to config file.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Ops ⛨', href: '/docs/cli/ops' },
+    { label: 'Settings', href: '/docs/cli/ops/settings' },
+    { label: 'path', href: '/docs/cli/ops/settings-path' },
+  ]}
+/>
+
+# Ops ⛨ Settings path
+
+<GuideHeading lead={description} />
+
+```sh
+dotenvx-ops settings path
+/Users/username/Library/Preferences/dotenvx/.env
+```

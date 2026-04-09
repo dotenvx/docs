@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print your device public key (--unmask).'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Ops ⛨', href: '/docs/cli/ops' },
+    { label: 'Settings', href: '/docs/cli/ops/settings' },
+    { label: 'device --unmask', href: '/docs/cli/ops/settings-device-unmask' },
+  ]}
+/>
+
+# Ops ⛨ Settings device --unmask
+
+<GuideHeading lead={description} />
+
+```sh
+dotenvx-ops settings device --unmask
+bfe7528637cc208dbe25d4fdbf6bec87db07688dd567373c35dae158d4b523365d
+```

@@ -365,7 +365,6 @@ export const cliNavigation = [
         links: [
           { title: 'Login', href: '/docs/cli/ops/login' },
           { title: 'Logout', href: '/docs/cli/ops/logout' },
-          { title: 'Keypair', href: '/docs/cli/ops/keypair' },
           { title: 'Settings', href: '/docs/cli/ops/settings' },
         ],
       },

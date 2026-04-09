@@ -1,0 +1,45 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'List available settings commands'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Ops ⛨', href: '/docs/cli/ops' },
+    { label: 'Settings', href: '/docs/cli/ops/settings' },
+  ]}
+/>
+
+# Ops ⛨ Settings
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-ops settings
+Usage: dotenvx-ops settings [options] [command]
+
+⚙️  settings
+
+Options:
+  -h, --help        display help for command
+
+Commands:
+  username          print your username
+  token [options]   print your access token (--unmask)
+  device [options]  print your device pubkey (--unmask)
+  hostname          print hostname
+  path              print path to settings file
+  help [command]    display help for command
+```
+
+## Commands
+
+* [settings username](/docs/cli/ops/settings-username)
+* [settings token](/docs/cli/ops/settings-token)
+* [settings token --unmask](/docs/cli/ops/settings-token-unmask)
+* [settings device](/docs/cli/ops/settings-device)
+* [settings device --unmask](/docs/cli/ops/settings-device-unmask)
+* [settings hostname](/docs/cli/ops/settings-hostname)
+* [settings path](/docs/cli/ops/settings-path)

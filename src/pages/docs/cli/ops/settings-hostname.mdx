@@ -1,0 +1,25 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print hostname.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Ops ⛨', href: '/docs/cli/ops' },
+    { label: 'Settings', href: '/docs/cli/ops/settings' },
+    { label: 'hostname', href: '/docs/cli/ops/settings-hostname' },
+  ]}
+/>
+
+# Ops ⛨ Settings hostname
+
+<GuideHeading lead={description} />
+
+```sh
+dotenvx-ops settings hostname
+https://ops.dotenvx.com
+```
+
+Note: By default this is `ops.dotenvx.com`. This setting exists to support future self-hosted instances of Dotenvx Ops. [Get in touch](mailto:mot@dotenvx.com) if your company needs this.
