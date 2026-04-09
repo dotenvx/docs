@@ -361,10 +361,12 @@ export const cliNavigation = [
       { title: 'Login', href: '/docs/cli/login' },
       {
         title: 'Ops ⛨',
-        href: '/docs/ops/advanced/login',
+        href: '/docs/cli/ops/introduction',
         links: [
-          { title: 'login', href: '/docs/ops/advanced/login' },
-          { title: 'logout', href: '/docs/ops/advanced/logout' },
+          { title: 'Login', href: '/docs/cli/ops/login' },
+          { title: 'Logout', href: '/docs/cli/ops/logout' },
+          { title: 'Keypair', href: '/docs/cli/ops/keypair' },
+          { title: 'Settings', href: '/docs/cli/ops/settings' },
         ],
       },
     ],

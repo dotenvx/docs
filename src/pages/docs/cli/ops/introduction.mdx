@@ -1,0 +1,29 @@
+import InstallOpsCodeGroup from '@/pages/partials/installOpsCodeGroup.mdx'
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+import { HeroPattern } from '@/components/HeroPattern'
+import { OpsCliReferenceCards } from '@/components/OpsCliReferenceCards'
+
+export const description = 'Extend Dotenvx with Ops ⛨ features.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Ops ⛨', href: '/docs/cli/ops' },
+  ]}
+/>
+
+# Introduction
+
+<GuideHeading lead={description} />
+
+
+The [Dotenvx Ops CLI](https://github.com/dotenvx/dotenvx-ops) is the official command-line interface extension for Dotenvx. It unlocks features like Armored Keys.
+
+## Installation
+
+<InstallOpsCodeGroup/>
+
+## Commands
+
+<OpsCliReferenceCards />

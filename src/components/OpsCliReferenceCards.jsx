@@ -1,20 +1,14 @@
 import Link from 'next/link'
 
-function CliReferenceCard({ item }) {
+function OpsCliReferenceCard({ item }) {
   let glyph = '❯'
 
-  if (item.href === '/docs/cli/run') {
-    glyph = '⟐'
+  if (item.href === '/docs/ops/advanced/login') {
+    glyph = '◉'
+  } else if (item.href === '/docs/ops/advanced/logout') {
+    glyph = '◌'
   } else if (item.href === '/docs/cli/keypair') {
     glyph = '⚷'
-  } else if (item.href === '/docs/cli/rotate') {
-    glyph = '⟳'
-  } else if (item.href === '/docs/cli/encrypt' || item.href === '/docs/cli/set') {
-    glyph = '⬖'
-  } else if (item.href === '/docs/cli/get' || item.href === '/docs/cli/decrypt') {
-    glyph = '⬗'
-  } else if (item.href === '/docs/cli/login') {
-    glyph = '◉'
   }
 
   return (
@@ -34,22 +28,17 @@ function CliReferenceCard({ item }) {
   )
 }
 
-export function CliReferenceCards() {
+export function OpsCliReferenceCards() {
   let items = [
-    { href: '/docs/cli/run', title: 'Run' },
-    { href: '/docs/cli/get', title: 'Get' },
-    { href: '/docs/cli/set', title: 'Set' },
-    { href: '/docs/cli/encrypt', title: 'Encrypt' },
-    { href: '/docs/cli/decrypt', title: 'Decrypt' },
-    { href: '/docs/cli/rotate', title: 'Rotate' },
+    { href: '/docs/ops/advanced/login', title: 'Login' },
+    { href: '/docs/ops/advanced/logout', title: 'Logout' },
     { href: '/docs/cli/keypair', title: 'Keypair' },
-    { href: '/docs/cli/login', title: 'Login' },
   ]
 
   return (
     <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-3">
       {items.map((item) => (
-        <CliReferenceCard key={item.href} item={item} />
+        <OpsCliReferenceCard key={item.href} item={item} />
       ))}
     </div>
   )
