@@ -13,7 +13,7 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-touch .env.production
+$ touch .env.production
 dotenvx set HELLO "production encrypted" -f .env.production
 echo "console.log('Hello ' + process.env.HELLO)" > index.js
 

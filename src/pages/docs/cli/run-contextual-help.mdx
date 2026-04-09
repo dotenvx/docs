@@ -15,14 +15,14 @@ export const description =
 For example, when missing a custom .env file:
 
 ```sh
-dotenvx run -f .env.missing -- sh -c 'echo $HELLO'
+$ dotenvx run -f .env.missing -- sh -c 'echo $HELLO'
 [MISSING_ENV_FILE] missing file (/Users/scottmotte/Code/dotenvx/playground/apr-16/.env.missing). fix: [echo "HELLO=World" > .env.missing]
 ```
 
 or when missing a KEY:
 
 ```sh
-echo "HELLO=World" > .env
+$ echo "HELLO=World" > .env
 dotenvx get GOODBYE
 [MISSING_KEY] missing key (GOODBYE)
 ```

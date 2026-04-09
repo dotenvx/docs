@@ -15,7 +15,7 @@ export const description =
 For example, to supress warnings (risky), set log level to `error`.
 
 ```sh
-echo "HELLO=production" > .env.production
+$ echo "HELLO=production" > .env.production
 echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 dotenvx run -f .env.production --log-level=error -- node index.js

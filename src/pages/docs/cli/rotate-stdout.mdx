@@ -13,7 +13,7 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-dotenvx rotate --stdout
+$ dotenvx rotate --stdout
 #/-------------------[DOTENV_PUBLIC_KEY]--------------------/
 #/            public-key encryption for .env files          /
 #/       [how it works](https://dotenvx.com/encryption)     /
@@ -26,5 +26,5 @@ HELLO="encrypted:12345"
 or send to a file:
 
 ```sh
-dotenvx rotate --stdout > somefile.txt
+$ dotenvx rotate --stdout > somefile.txt
 ```

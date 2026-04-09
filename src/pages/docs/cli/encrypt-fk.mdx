@@ -13,7 +13,7 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-mkdir -p apps/app1
+$ mkdir -p apps/app1
 echo "HELLO=World" > apps/app1/.env
 
 dotenvx encrypt -fk .env.keys -f apps/app1/.env
@@ -23,12 +23,12 @@ dotenvx encrypt -fk .env.keys -f apps/app1/.env
 Put it to use.
 
 ```sh
-dotenvx run -fk .env.keys -f apps/app1/.env
+$ dotenvx run -fk .env.keys -f apps/app1/.env
 ```
 
 Use with a relative path.
 
 ```sh
-cd apps/app1
+$ cd apps/app1
 dotenvx run -fk ../../.env.keys -f .env
 ```

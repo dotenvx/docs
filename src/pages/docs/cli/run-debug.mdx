@@ -13,7 +13,7 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-echo "HELLO=production" > .env.production
+$ echo "HELLO=production" > .env.production
 echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 dotenvx run -f .env.production --debug -- node index.js

@@ -13,7 +13,7 @@ export const description =
 <p className="lead">{description}</p>
 
 ```sh
-echo "HELLO=World" > .env
+$ echo "HELLO=World" > .env
 dotenvx encrypt --stdout
 #/-------------------[DOTENV_PUBLIC_KEY]--------------------/
 #/            public-key encryption for .env files          /
@@ -27,6 +27,6 @@ HELLO="encrypted:BDqDBibm4wsYqMpCjTQ6BsDHmMadg9K3dAt+Z9HPMfLEIRVz50hmLXPXRuDBXaJ
 or send to a file:
 
 ```sh
-echo "HELLO=World" > .env
+$ echo "HELLO=World" > .env
 dotenvx encrypt --stdout > somefile.txt
 ```
