@@ -358,7 +358,15 @@ export const cliNavigation = [
       { title: 'Decrypt', href: '/docs/cli/decrypt' },
       { title: 'Rotate', href: '/docs/cli/rotate' },
       { title: 'Keypair', href: '/docs/cli/keypair' },
-      { title: 'Ops ⛨', href: '/docs/cli/ops' },
+      { title: 'Login', href: '/docs/cli/login' },
+      {
+        title: 'Ops ⛨',
+        href: '/docs/ops/advanced/login',
+        links: [
+          { title: 'login', href: '/docs/ops/advanced/login' },
+          { title: 'logout', href: '/docs/ops/advanced/logout' },
+        ],
+      },
     ],
   },
   {

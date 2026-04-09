@@ -1,0 +1,20 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Log in to Dotenvx.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Login', href: '/docs/cli/login' },
+  ]}
+/>
+
+# Login
+
+<GuideHeading lead={description} />
+
+```sh
+dotenvx login
+```
