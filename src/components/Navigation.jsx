@@ -289,14 +289,18 @@ export const defaultNavigation = [
       },
     ]
   },
-  // {
-  //   title: 'Learn',
-  //   links: [
-  //     { title: 'Ops ⛨', href: '/docs/learn/ops' },
-  //     { title: 'Private Keys', href: '/docs/learn/private-keys' },
-  //     { title: 'Settings', href: '/docs/learn/settings' },
-  //   ]
-  // },
+  {
+    title: 'Learn',
+    links: [
+      { 
+        title: 'Private Keys',
+        href: '/docs/learn/private-keys/introduction',
+        links: [
+          { title: 'Introduction', href: '/docs/learn/private-keys/introduction' },
+        ]
+      },
+    ],
+  },
   {
     title: 'Resources',
 

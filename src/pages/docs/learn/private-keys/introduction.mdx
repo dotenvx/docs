@@ -1,0 +1,95 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Learn how to view and manage private keys with Dotenvx.'
+
+<Breadcrumb
+  items={[
+    { label: 'Documentation', href: '/docs' },
+    { label: 'Learn', href: '/docs/learn' },
+    { label: 'Private Keys' },
+  ]}
+/>
+
+# Managing Private Keys
+<GuideHeading lead={description} />
+
+## Local Private Keys – .env.keys
+
+When you run `dotenvx encrypt` a local private key is created.
+
+```sh
+$ dotenvx encrypt
+◈ encrypted (.env) + local key (.env.keys)
+```
+
+It's stored locally in a `.env.keys` file.
+
+```ini {{ title: ".env.keys" }}
+#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
+#/ private decryption keys. DO NOT commit to source control /
+#/     [how it works](https://dotenvx.com/encryption)       /
+#/----------------------------------------------------------/
+
+# .env
+DOTENV_PRIVATE_KEY=dcd72b6a81ba7ec9af83d63720189c353b02bdef831fbe7a6712632204056a36
+```
+
+You can additionally use `dotenvx keypair` to view its keypair.
+
+```sh
+$ dotenvx keypair --pp
+{
+  "DOTENV_PUBLIC_KEY": "0300aaf826449ff86c2758a598d48226c4915e2435c51f8aee5668443464aecc79",
+  "DOTENV_PRIVATE_KEY": "dcd72b6a81ba7ec9af83d63720189c353b02bdef831fbe7a6712632204056a36"
+}
+```
+
+* `DOTENVX_PUBLIC_KEY`: Used to encrypt values and lives in the `.env` file.
+* `DOTENVX_PRIVATE_KEY`: Used to decrypt values and lives in the `.env.keys` file.
+
+It is safe, and recommended, to commit your `.env` file to code but NEVER commit your `.env.keys` file to code. It is the key to the kingdom, so to speak.
+
+## Armored Private Keys – Ops ⛨
+
+When using Ops ⛨ things work a little differently – and more securely. When you run `dotenvx encrypt` a remote private key is created on your Dotenvx [account](/login). We call these armored private keys because they offer a lot more protections - more armor, so to speak.
+
+```sh
+$ dotenvx encrypt
+◈ encrypted (.env) + armored key ⛨
+```
+
+There is no `.env.keys` file for an agent or attacker to read.
+
+```sh
+$ cat .env.keys
+No such file or directory
+```
+
+It's stored remotely and accessed just in time.
+
+You can conveniently still use `dotenvx keypair` to retrieve its keypair.
+
+```sh
+$ dotenvx keypair --pp
+{
+  "DOTENV_PUBLIC_KEY": "0300aaf826449ff86c2758a598d48226c4915e2435c51f8aee5668443464aecc79",
+  "DOTENV_PRIVATE_KEY": "dcd72b6a81ba7ec9af83d63720189c353b02bdef831fbe7a6712632204056a36"
+}
+```
+
+When you run any `dotenvx run --` command, it will also be retrieved just-in-time and your command will just work.
+
+```sh
+$ dotenvx run -- sh -c 'echo Hello $HELLO'
+⟐ injected env (14) from .env · dotenvx@1.61.1
+Hello Dotenvx
+```
+
+With Ops ⛨ you maintain all the same developer experience of Dotenvx while gaining an increased level of security.
+
+Coming soon:
+
+- See when each private key is read and by whome
+- Place gates of protection in front of each armored key like human approval, access limits, and more.
