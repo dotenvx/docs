@@ -289,14 +289,14 @@ export const defaultNavigation = [
       },
     ]
   },
-  {
-    title: 'Learn',
-    links: [
-      { title: 'Ops ⛨', href: '/docs/learn/ops' },
-      { title: 'Private Keys', href: '/docs/learn/private-keys' },
-      { title: 'Settings', href: '/docs/learn/settings' },
-    ]
-  },
+  // {
+  //   title: 'Learn',
+  //   links: [
+  //     { title: 'Ops ⛨', href: '/docs/learn/ops' },
+  //     { title: 'Private Keys', href: '/docs/learn/private-keys' },
+  //     { title: 'Settings', href: '/docs/learn/settings' },
+  //   ]
+  // },
   {
     title: 'Resources',
 
@@ -341,7 +341,6 @@ export const defaultNavigation = [
     title: 'Ops ⛨',
     href: '/docs/ops',
     links: [
-      { title: 'Install', href: '/docs/ops/install' },
       { title: 'Basics', href: '/docs/ops/quickstart' },
       { title: 'Advanced', href: '/docs/ops/advanced' },
     ]
