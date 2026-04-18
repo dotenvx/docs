@@ -322,19 +322,9 @@ export const defaultNavigation = [
           { title: 'More', href: '/docs/guides' },
         ],
       },
-      {
-        title: 'Whitepaper ↗',
-        href: '/dotenvx.pdf',
-        target: '_blank',
-        rel: 'noopener noreferrer',
-      },
       { title: '.env', href: '/docs/env-file' },
       { title: '.env.keys', href: '/docs/env-keys-file' },
       { title: 'Statistics', href: '/docs/stats' },
-      { title: 'Deprecated', href: '/docs/deprecated' },
-      { title: 'Chrome', href: 'https://dotenvx.com/chrome-extension' },
-      { title: 'Heroku', href: 'https://github.com/dotenvx/heroku-buildpack-dotenvx' },
-      { title: 'VSCode', href: 'https://dotenvx.com/vscode-extension' },
     ]
   },
   {
