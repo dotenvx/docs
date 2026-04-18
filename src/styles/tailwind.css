@@ -21,6 +21,44 @@
 @tailwind utilities;
 
 @layer components {
+  :root {
+    --dotenvx-log-success: rgb(236 213 63); /* amber */
+    --dotenvx-log-warn: rgb(138 90 43); /* orangered */
+    --dotenvx-log-error: rgb(140 35 50); /* red */
+    --dotenvx-log-info: rgb(128 128 128); /* gray (256-color 244) */
+    --dotenvx-log-help: rgb(0 135 255); /* dodgerblue (256-color 33) */
+    --dotenvx-log-verbose: rgb(215 175 215); /* plum (256-color 182) */
+    --dotenvx-log-debug: rgb(215 175 215); /* plum (256-color 182) */
+  }
+
+  .logger-success {
+    color: var(--dotenvx-log-success) !important;
+  }
+
+  .logger-warn {
+    color: var(--dotenvx-log-warn) !important;
+  }
+
+  .logger-error {
+    color: var(--dotenvx-log-error) !important;
+  }
+
+  .logger-info {
+    color: var(--dotenvx-log-info) !important;
+  }
+
+  .logger-help {
+    color: var(--dotenvx-log-help) !important;
+  }
+
+  .logger-verbose {
+    color: var(--dotenvx-log-verbose) !important;
+  }
+
+  .logger-debug {
+    color: var(--dotenvx-log-debug) !important;
+  }
+
   .prose h5 a {
     color: var(--tw-prose-captions);
     text-decoration: none;
