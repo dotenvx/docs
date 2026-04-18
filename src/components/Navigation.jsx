@@ -197,6 +197,16 @@ export const defaultNavigation = [
     title: 'Documentation',
     links: [
       { title: 'Introduction', href: '/docs/introduction' },
+      {
+        title: 'Install',
+        href: '/docs/install',
+        links: [
+          { title: 'cURL', href: '/docs/install#curl' },
+          { title: 'NPM', href: '/docs/install#npm' },
+          { title: 'Windows', href: '/docs/install#windows' },
+          { title: 'Other', href: '/docs/install#other' },
+        ],
+      },
     ]
   },
   {
@@ -292,7 +302,6 @@ export const defaultNavigation = [
 
     links: [
       { title: 'Introduction', href: '/docs/learn' },
-      { title: 'Install', href: '/docs/install' },
       { title: 'Basics', href: '/docs/quickstart' },
       {
         title: 'Guides',

@@ -1,51 +1,36 @@
-export const description =
-  'Other ways to install `dotenvx`'
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+import { HeroPattern } from '@/components/HeroPattern'
 
-##### [Documentation](/docs)
+import InstallWithOpsCurlCodeGroup from '@/pages/partials/installWithOpsCurlCodeGroup.mdx'
+import InstallWithOpsNpmCodeGroup from '@/pages/partials/installWithOpsNpmCodeGroup.mdx'
+import InstallWithOpsWingetCodeGroup from '@/pages/partials/installWithOpsWingetCodeGroup.mdx'
+
+export const description = 'Install `dotenvx` and `dotenvx-ops`.'
+
+<HeroPattern />
+
+<Breadcrumb
+  items={[
+    { label: 'Documentation', href: '/docs' },
+  ]}
+/>
 # Install
 
-Install `dotenvx` where you need it. {{ className: 'lead' }}
+<GuideHeading lead={description} />
 
-<CodeGroup>
+## cURL {{ id: 'curl' }}
 
-```bash {{ title: "Npm" }}
-npm install @dotenvx/dotenvx --save
-npx dotenvx help
-```
+<InstallWithOpsCurlCodeGroup/>
 
-```bash {{ title: "Curl" }}
-curl -sfS https://dotenvx.sh | sh
-dotenvx help
-```
+[install.sh](https://dotenvx.sh/install.sh) • [ops/install.sh](https://dotenvx.sh/ops/install.sh)
 
-```bash {{ title: "Brew" }}
-brew install dotenvx/brew/dotenvx
-dotenvx help
-```
+## NPM
 
-```bash {{ title: "Docker" }}
-docker run -it --rm -v $(pwd):/app dotenv/dotenvx help
-```
+`dotenvx` is made with javascript – so use it just like `dotenv` – as a drop-in replacement.
 
-```bash {{ title: "GitHub Releases" }}
-curl -L -o dotenvx.tar.gz "https://github.com/dotenvx/dotenvx/releases/latest/download/dotenvx-$(uname -s)-$(uname -m).tar.gz"
-tar -xzf dotenvx.tar.gz
-./dotenvx help
-```
+<InstallWithOpsNpmCodeGroup/>
 
-```bash {{ title: "Windows" }}
-winget install dotenvx
-```
-
-</CodeGroup>
-
-## Npm
-
-`dotenvx` is made with javascript – so you can use it just like you use `dotenv` – as a drop-in replacement.
-
-```bash
-npm install @dotenvx/dotenvx --save
-```
 ```js
 // index.js
 require('@dotenvx/dotenvx').config()
@@ -54,9 +39,28 @@ require('@dotenvx/dotenvx').config()
 console.log(`Hello ${process.env.HELLO}`)
 ```
 
-Find the [@dotenvx/dotenvx package here](https://www.npmjs.com/package/@dotenvx/dotenvx).
+[npmjs.com](https://www.npmjs.com/package/@dotenvx/dotenvx)
 
-## Brew
+## Windows
+
+<InstallWithOpsWingetCodeGroup/>
+
+[releases](https://github.com/dotenvx/dotenvx/release) • [amd64](https://github.com/dotenvx/releases/raw/main/latest/dotenvx-windows-amd64.zip) • [x86_64](https://github.com/dotenvx/releases/raw/main/latest/dotenvx-windows-x86_64.zip) • unzip to extract dotenvx.exe
+
+&nbsp;
+
+## Other
+
+Other ways to install.
+
+* [Brew](#brew)
+* [Docker](#docker)
+* [GitHub Releases](#github)
+* [Heroku](#heroku)
+* [Standalone](#standalone)
+* [Wget](#wget)
+
+### Brew {{ id: "brew" }}
 
 Installing with [brew](https://brew.sh) is the most straight forward global install:
 
@@ -67,23 +71,7 @@ brew install dotenvx/brew/dotenvx
 
 Find the [dotenvx brew tap here](https://github.com/dotenvx/homebrew-brew).
 
-## Shell
-
-After brew our install.sh script is easiest. With curl:
-
-```bash
-curl -sfS https://dotenvx.sh | sh
-```
-
-Or with wget:
-
-```bash
-wget -qO- https://dotenvx.sh | sh
-```
-
-Read the [install.sh script here](https://github.com/dotenvx/dotenvx.sh/blob/main/install.sh).
-
-## Docker
+### Docker {{ id: "docker" }}
 
 We also provide a [docker image](https://hub.docker.com/r/dotenv/dotenvx) for your convenience:
 
@@ -101,7 +89,7 @@ RUN curl -sfS https://dotenvx.sh/install.sh | sh
 CMD ["dotenvx", "run", "--", "echo", "Hello $HELLO"]
 ```
 
-## GitHub Releases
+### GitHub Releases {{ id: "github" }}
 
 You can also download straight from [GitHub Releases](https://github.com/dotenvx/dotenvx/releases).
 
@@ -115,26 +103,7 @@ tar -xzf dotenvx.tar.gz
   If you download manually you'll need to move the binary somewhere in your PATH.
 </Note>
 
-## Windows
-
-Install with winget
-
-```
-winget install dotenvx
-```
-
-or download [the windows executable](https://github.com/dotenvx/dotenvx/releases) directly from the [releases page](https://github.com/dotenvx/dotenvx/releases).
-
-> * [dotenvx-windows-amd64.zip
-](https://github.com/dotenvx/releases/raw/main/latest/dotenvx-windows-amd64.zip)
-> * [dotenvx-windows-x86_64.zip
-](https://github.com/dotenvx/releases/raw/main/latest/dotenvx-windows-x86_64.zip)
-
-(unzip to extract `dotenvx.exe`)
-
-## Other
-
-### Heroku Buildpack
+### Heroku Buildpack {{ id: "heroku" }}
 
 For our Heroku friends, we have a [heroku buildpack](https://github.com/dotenvx/heroku-buildpack-dotenvx).
 
@@ -149,7 +118,7 @@ The `dotenvx` binary will be available to your deployment so that you can use it
 web: dotenvx run -- node index.js
 ```
 
-### Standalone
+### Standalone {{ id: "standalone" }}
 
 `dotenvx` is a standalone binary, so (if you want) you can just download it directly:
 
@@ -213,10 +182,12 @@ Or prefer to run as needed, uses `npx`.
 npx @dotenvx/dotenvx help
 ```
 
-### pkgx
+### Wget {{ id: "wget" }}
 
-[pkgx](https://pkgx.sh) is a single, standalone binary that can run anything. Since it can run anything, it can run `dotenvx`:
-
-```sh
-pkgx npx @dotenvx/dotenvx help
+```bash
+wget -qO- https://dotenvx.sh | sh
 ```
+
+[install.sh source](https://github.com/dotenvx/dotenvx.sh/blob/main/install.sh)
+
+
