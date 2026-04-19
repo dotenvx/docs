@@ -19,10 +19,10 @@ export const description =
 
 When you run `dotenvx encrypt` a local private key is created.
 
-```sh
-$ dotenvx encrypt
-◈ encrypted (.env) + local key (.env.keys)
-```
+<CodeGroup>
+<code title="Dotenvx" code="dotenvx encrypt">{`$ dotenvx encrypt
+`}<span className="logger-success">◈ encrypted (.env) + local key (.env.keys)</span></code>
+</CodeGroup>
 
 It's stored locally in a `.env.keys` file.
 
@@ -55,10 +55,10 @@ It is safe, and recommended, to commit your `.env` file to code but NEVER commit
 
 When using Ops ⛨ things work a little differently – and more securely. When you run `dotenvx encrypt` a remote private key is created on your Dotenvx [account](/login). We call these armored private keys because they offer a lot more protections - more armor, so to speak.
 
-```sh
-$ dotenvx encrypt
-◈ encrypted (.env) + armored key ⛨
-```
+<CodeGroup>
+<code title="with Ops ⛨" code="dotenvx encrypt">{`$ dotenvx encrypt
+`}<span className="logger-success">◈ encrypted (.env) + armored key ⛨</span></code>
+</CodeGroup>
 
 There is no `.env.keys` file for an agent or attacker to read.
 
@@ -81,11 +81,11 @@ $ dotenvx keypair --pp
 
 When you run any `dotenvx run --` command, it will also be retrieved just-in-time and your command will just work.
 
-```sh
-$ dotenvx run -- sh -c 'echo Hello $HELLO'
-⟐ injected env (14) from .env · dotenvx@1.61.1
-Hello Dotenvx
-```
+<CodeGroup>
+<code title="Dotenvx" code={`dotenvx run -- sh -c 'echo Hello $HELLO'`}>{`$ dotenvx run -- sh -c 'echo Hello $HELLO'
+`}<span className="logger-success">⟐ injected env (14) from .env</span>{`
+Hello Dotenvx`}</code>
+</CodeGroup>
 
 With Ops ⛨ you maintain all the same developer experience of Dotenvx while gaining an increased level of security.
 
