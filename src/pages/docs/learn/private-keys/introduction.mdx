@@ -81,9 +81,12 @@ $ dotenvx keypair --pp
 
 When you run any `dotenvx run --` command, it will also be retrieved just-in-time and your command will just work.
 
+```js
+console.log(`Hello ${process.env.HELLO}`)
+```
 <CodeGroup>
-<code title="Dotenvx" code={`dotenvx run -- sh -c 'echo Hello $HELLO'`}>{`$ dotenvx run -- sh -c 'echo Hello $HELLO'
-`}<span className="logger-success">⟐ injected env (14) from .env</span>{`
+<code title="Dotenvx" code={`dotenvx run -- node index.js`}>{`$ dotenvx run -- node index.js`}
+<span className="logger-success">⟐ injected env (14) from .env</span>{`
 Hello Dotenvx`}</code>
 </CodeGroup>
 
