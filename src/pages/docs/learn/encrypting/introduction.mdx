@@ -45,6 +45,8 @@ Once encrypted, the .env file is safe, and recommended, to commit to code. A .en
 * `.env.keys`
   * `DOTENV_PRIVATE_KEY=` a special key that holds the private decryption key
 
+For Ops ⛨ the private key is stored on your account as an armored key rather than locally in .env.keys.
+
 ## Decryption at Runtime
 
 Use `dotenvx run` to inject the encrypted (and plaintext) values into any runtime process just in time. This command reads the private key and uses it to decrypt and inject each value into `process.env` just in time.
