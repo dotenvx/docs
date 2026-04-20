@@ -1,0 +1,80 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Learn how Dotenvx encryption works and how to use it.'
+
+<Breadcrumb
+  items={[
+    { label: 'Documentation', href: '/docs' },
+    { label: 'Learn', href: '/docs/learn' },
+    { label: 'Encrypting' },
+  ]}
+/>
+
+# Encrypting
+<GuideHeading lead={description} />
+
+## Encrypt a .env file
+
+Starting with a plaintext .env file, run `dotenvx encrypt`. Your .env file will be converted to an encrypted format. The keys are preserved, the values become ciphertext, and a the public key (for encrypting) is added to the .env file.
+
+```ini
+# .env
+HELLO="Dotenvx"
+```
+<CodeGroup>
+<code code="dotenvx encrypt">{`$ dotenvx encrypt
+`}<span className="logger-success">◈ encrypted (.env) + local key (.env.keys)</span></code>
+</CodeGroup>
+```ini
+# .env
+DOTENV_PUBLIC_KEY="03954ac90bc5a05fa3e9c5e6c7c6464335a3f91770424b5769f5501478b27d4906"
+HELLO="encrypted:BEJXNoNDHv/2zCy9vppyfRw+AtSzWsT6uLTOYcL+tGefTasmOQX7jr42EQBx3+XwHCQxcpmWxkU7R9mPYfjbjNgFiIOpkGox66gGG6LOFF9tzHjy8nDhXuF8JcnFSBHVRNS3IekOIPA="
+```
+
+## Encrypted .env Format
+
+Once encrypted, the .env file is safe, and recommended, to commit to code. A .env.keys file is also created. It should not be commited to source control. It holds the private decryption key.
+
+* `.env`
+  * `KEY` keys are preserved
+  * `=encrypted:` values are converted to encrypted ciphertext
+  * `=value` plaintext values can be safely mixed in
+  * `DOTENV_PUBLIC_KEY=` a special key that holds the public encryption key
+* `.env.keys`
+  * `DOTENV_PRIVATE_KEY=` a special key that holds the private decryption key
+
+## Decryption at Runtime
+
+Use `dotenvx run` to inject the encrypted (and plaintext) values into any runtime process just in time. This command reads the private key and uses it to decrypt and inject each value into `process.env` just in time.
+
+```js
+// index.js
+console.log(`Hello ${process.env.HELLO}`)
+```
+<CodeGroup>
+<code code="dotenvx run -- node index.js">{`$ dotenvx run -- node index.js
+`}<span className="logger-success">⟐ injected env (2) from .env</span>
+Hello Dotenvx</code>
+</CodeGroup>
+
+## Multiple Environments
+
+Use the same workflow for multiple environments. Create a `.env.ENVIRONMENT` file, encrypt it, and decrypt it at runtime – all with a single flag change: `-f` for file.
+
+```ini
+# .env.production
+HELLO="Production"
+```
+<CodeGroup>
+<code code="dotenvx encrypt">{`$ dotenvx encrypt -f .env.production
+`}<span className="logger-success">◈ encrypted (.env.production) + local key (.env.keys)</span></code>
+</CodeGroup>
+<CodeGroup>
+<code code="dotenvx run -- node index.js">{`$ dotenvx run -f .env.production -- node index.js
+`}<span className="logger-success">⟐ injected env (2) from .env.production</span>
+Hello Production</code>
+</CodeGroup>
+
+

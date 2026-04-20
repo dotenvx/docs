@@ -293,6 +293,13 @@ export const defaultNavigation = [
     title: 'Learn',
     links: [
       { 
+        title: 'Encrypting',
+        href: '/docs/learn/encrypting/introduction',
+        links: [
+          { title: 'Introduction', href: '/docs/learn/encrypting/introduction' },
+        ]
+      },
+      { 
         title: 'Private Keys',
         href: '/docs/learn/private-keys/introduction',
         links: [
