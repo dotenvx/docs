@@ -1,5 +1,7 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
+import EncryptWithOpsCodeGroup from '@/pages/partials/encryptWithOpsCodeGroup.mdx'
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
 
 export const description =
   'Learn how to view and manage private keys with Dotenvx.'
@@ -15,28 +17,38 @@ export const description =
 # Managing Private Keys
 <GuideHeading lead={description} />
 
-## Local Private Keys – .env.keys
+## Generating
 
-When you run `dotenvx encrypt` a local private key is created.
+Run `dotenvx encrypt` to generate a private key.
 
-<CodeGroup>
-<code title="Dotenvx" code="dotenvx encrypt">{`$ dotenvx encrypt
-`}<span className="logger-success">◈ encrypted (.env) + local key (.env.keys)</span></code>
-</CodeGroup>
+<EncryptWithOpsCodeGroup/>
 
-It's stored locally in a `.env.keys` file.
+The private key is written:
 
-```ini {{ title: ".env.keys" }}
-#/------------------!DOTENV_PRIVATE_KEYS!-------------------/
-#/ private decryption keys. DO NOT commit to source control /
-#/     [how it works](https://dotenvx.com/encryption)       /
-#/----------------------------------------------------------/
+* **Traditional:** written locally to a `.env.keys` file.
+* **With Ops ⛨:** written remotely to your account – as armored keys.
 
-# .env
-DOTENV_PRIVATE_KEY=dcd72b6a81ba7ec9af83d63720189c353b02bdef831fbe7a6712632204056a36
-```
+<RenderableTabs variant="code">
+  <RenderableTab title="Dotenvx">
+    ```ini
+    # .env.keys - DO NOT commit to source control
+    DOTENV_PRIVATE_KEY=dcd72b6a81ba7ec9af83d63720189c353b02bdef831fbe7a6712632204056a36
+    ```
+  </RenderableTab>
+  <RenderableTab title="with Ops ⛨">
+    <img
+      src="https://github.com/user-attachments/assets/3e8943da-9358-4e6d-89e4-8c5d604c5095"
+      alt="Ops UI preview"
+      className="px-4 py-4"
+    />
+  </RenderableTab>
+</RenderableTabs>
 
-You can additionally use `dotenvx keypair` to view its keypair.
+## Viewing
+
+### CLI
+
+Use `dotenvx keypair` to view the private key from the CLI.
 
 ```sh
 $ dotenvx keypair --pp
@@ -49,51 +61,8 @@ $ dotenvx keypair --pp
 * `DOTENVX_PUBLIC_KEY`: Used to encrypt values and lives in the `.env` file.
 * `DOTENVX_PRIVATE_KEY`: Used to decrypt values and lives in the `.env.keys` file.
 
-It is safe, and recommended, to commit your `.env` file to code but NEVER commit your `.env.keys` file to code. It is the key to the kingdom, so to speak.
+### UI
 
-## Armored Private Keys – Ops ⛨
+Ops ⛨ users can additionally view all their private keys in the [UI](https://ops.dotenvx.com).
 
-When using Ops ⛨ things work a little differently – and more securely. When you run `dotenvx encrypt` a remote private key is created on your Dotenvx [account](/login). We call these armored private keys because they offer a lot more protections - more armor, so to speak.
-
-<CodeGroup>
-<code title="with Ops ⛨" code="dotenvx encrypt">{`$ dotenvx encrypt
-`}<span className="logger-success">◈ encrypted (.env) + armored key ⛨</span></code>
-</CodeGroup>
-
-There is no `.env.keys` file for an agent or attacker to read.
-
-```sh
-$ cat .env.keys
-No such file or directory
-```
-
-It's stored remotely and accessed just in time.
-
-You can conveniently still use `dotenvx keypair` to retrieve its keypair.
-
-```sh
-$ dotenvx keypair --pp
-{
-  "DOTENV_PUBLIC_KEY": "0300aaf826449ff86c2758a598d48226c4915e2435c51f8aee5668443464aecc79",
-  "DOTENV_PRIVATE_KEY": "dcd72b6a81ba7ec9af83d63720189c353b02bdef831fbe7a6712632204056a36"
-}
-```
-
-When you run any `dotenvx run --` command, it will also be retrieved just-in-time and your command will just work.
-
-```js
-// index.js
-console.log(`Hello ${process.env.HELLO}`)
-```
-<CodeGroup>
-<code title="Dotenvx" code={`dotenvx run -- node index.js`}>{`$ dotenvx run -- node index.js`}
-<span className="logger-success">⟐ injected env (14) from .env</span>{`
-Hello Dotenvx`}</code>
-</CodeGroup>
-
-With Ops ⛨ you maintain all the same developer experience of Dotenvx while gaining an increased level of security.
-
-Coming soon:
-
-- See when each private key is read and by whom
-- Place gates of protection in front of each armored key like human approval, access limits, and more.
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/3e8943da-9358-4e6d-89e4-8c5d604c5095' www='ops.dotenvx.com' />
