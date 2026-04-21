@@ -340,7 +340,6 @@ export const defaultNavigation = [
   },
   {
     title: 'Ops ⛨',
-    href: '/docs/ops',
     links: [
       { title: 'Basics', href: '/docs/ops/quickstart' },
       { title: 'Advanced', href: '/docs/ops/advanced' },
