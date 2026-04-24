@@ -225,6 +225,7 @@ export const defaultNavigation = [
           { title: 'Express', href: '/docs/secrets-in-express' },
           { title: 'Astro', href: '/docs/secrets-in-astro' },
           { title: 'Bun', href: '/docs/secrets-in-bun' },
+          { title: 'Cloudflare Workers', href: '/docs/secrets-in-cloudflare-workers' },
         ],
       },
       {
