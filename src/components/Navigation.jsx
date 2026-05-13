@@ -233,6 +233,7 @@ export const defaultNavigation = [
         href: '/docs/secrets-in-python',
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-python' },
+          { title: 'uv', href: '/docs/secrets-in-uv' },
         ],
       },
       {
