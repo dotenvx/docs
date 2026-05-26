@@ -1,15 +1,15 @@
 import Link from 'next/link'
 
-function OpsCliReferenceCard({ item }) {
+function VltCliReferenceCard({ item }) {
   let glyph = '❯'
 
-  if (item.href === '/docs/cli/ops/login') {
+  if (item.href === '/docs/cli/vlt/login') {
     glyph = '◉'
-  } else if (item.href === '/docs/cli/ops/logout') {
+  } else if (item.href === '/docs/cli/vlt/logout') {
     glyph = '◌'
-  } else if (item.href === '/docs/cli/ops/keypair') {
+  } else if (item.href === '/docs/cli/vlt/keypair') {
     glyph = '⚷'
-  } else if (item.href === '/docs/cli/ops/settings') {
+  } else if (item.href === '/docs/cli/vlt/settings') {
     glyph = '⌘'
   }
 
@@ -30,17 +30,17 @@ function OpsCliReferenceCard({ item }) {
   )
 }
 
-export function OpsCliReferenceCards() {
+export function VltCliReferenceCards() {
   let items = [
-    { href: '/docs/cli/ops/login', title: 'Login' },
-    { href: '/docs/cli/ops/logout', title: 'Logout' },
-    { href: '/docs/cli/ops/settings', title: 'Settings' },
+    { href: '/docs/cli/vlt/login', title: 'Login' },
+    { href: '/docs/cli/vlt/logout', title: 'Logout' },
+    { href: '/docs/cli/vlt/settings', title: 'Settings' },
   ]
 
   return (
     <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-3">
       {items.map((item) => (
-        <OpsCliReferenceCard key={item.href} item={item} />
+        <VltCliReferenceCard key={item.href} item={item} />
       ))}
     </div>
   )

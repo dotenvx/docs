@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print your device public key.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Vlt ⛨', href: '/docs/cli/vlt' },
+    { label: 'Settings', href: '/docs/cli/vlt/settings' },
+    { label: 'device', href: '/docs/cli/vlt/settings-device' },
+  ]}
+/>
+
+# Vlt ⛨ Settings device
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-vlt settings device
+123abc456de*******************************************************
+```

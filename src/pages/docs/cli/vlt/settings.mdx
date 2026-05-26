@@ -1,0 +1,45 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'List available settings commands'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Vlt ⛨', href: '/docs/cli/vlt' },
+    { label: 'Settings', href: '/docs/cli/vlt/settings' },
+  ]}
+/>
+
+# Vlt ⛨ Settings
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-vlt settings
+Usage: dotenvx-vlt settings [options] [command]
+
+⚙️  settings
+
+Options:
+  -h, --help        display help for command
+
+Commands:
+  username          print your username
+  token [options]   print your access token (--unmask)
+  device [options]  print your device pubkey (--unmask)
+  hostname          print hostname
+  path              print path to settings file
+  help [command]    display help for command
+```
+
+## Commands
+
+* [settings username](/docs/cli/vlt/settings-username)
+* [settings token](/docs/cli/vlt/settings-token)
+* [settings token --unmask](/docs/cli/vlt/settings-token-unmask)
+* [settings device](/docs/cli/vlt/settings-device)
+* [settings device --unmask](/docs/cli/vlt/settings-device-unmask)
+* [settings hostname](/docs/cli/vlt/settings-hostname)
+* [settings path](/docs/cli/vlt/settings-path)

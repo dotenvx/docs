@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print path to config file.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Vlt ⛨', href: '/docs/cli/vlt' },
+    { label: 'Settings', href: '/docs/cli/vlt/settings' },
+    { label: 'path', href: '/docs/cli/vlt/settings-path' },
+  ]}
+/>
+
+# Vlt ⛨ Settings path
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-vlt settings path
+/Users/username/Library/Preferences/dotenvx/.env
+```

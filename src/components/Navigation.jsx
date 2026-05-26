@@ -371,11 +371,11 @@ export const cliNavigation = [
       { title: 'Login', href: '/docs/cli/login' },
       {
         title: 'Vlt ⛨',
-        href: '/docs/cli/ops/introduction',
+        href: '/docs/cli/vlt/introduction',
         links: [
-          { title: 'Login', href: '/docs/cli/ops/login' },
-          { title: 'Logout', href: '/docs/cli/ops/logout' },
-          { title: 'Settings', href: '/docs/cli/ops/settings' },
+          { title: 'Login', href: '/docs/cli/vlt/login' },
+          { title: 'Logout', href: '/docs/cli/vlt/logout' },
+          { title: 'Settings', href: '/docs/cli/vlt/settings' },
         ],
       },
     ],

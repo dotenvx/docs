@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print your username.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Vlt ⛨', href: '/docs/cli/vlt' },
+    { label: 'Settings', href: '/docs/cli/vlt/settings' },
+    { label: 'username', href: '/docs/cli/vlt/settings-username' },
+  ]}
+/>
+
+# Vlt ⛨ Settings username
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-vlt settings username
+username
+```

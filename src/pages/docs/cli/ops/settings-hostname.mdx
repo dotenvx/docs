@@ -1,25 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-import { GuideHeading } from '@/components/GuideHeading'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-export const description =
-  'Print hostname.'
+<HeadRedirect url="/docs/cli/vlt/settings-hostname" />
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Vlt ⛨', href: '/docs/cli/ops' },
-    { label: 'Settings', href: '/docs/cli/ops/settings' },
-    { label: 'hostname', href: '/docs/cli/ops/settings-hostname' },
-  ]}
-/>
+# Redirecting
 
-# Vlt ⛨ Settings hostname
-
-<GuideHeading lead={description} />
-
-```sh
-$ dotenvx-vlt settings hostname
-https://ops.dotenvx.com
-```
-
-Note: By default this is `ops.dotenvx.com`. This setting exists to support future self-hosted instances of Dotenvx Ops. [Get in touch](mailto:mot@dotenvx.com) if your company needs this.
+<a href="/docs/cli/vlt/settings-hostname">Click here if you are not redirected.</a>

@@ -1,0 +1,22 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Log into Dotenvx via the CLI.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Vlt ⛨', href: '/docs/cli/vlt' },
+    { label: 'Login', href: '/docs/cli/vlt/login' },
+  ]}
+/>
+
+# Vlt ⛨ Login
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-vlt login
+◉ logged in (username)
+```

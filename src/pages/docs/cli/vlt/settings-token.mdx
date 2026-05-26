@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print your access token.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Vlt ⛨', href: '/docs/cli/vlt' },
+    { label: 'Settings', href: '/docs/cli/vlt/settings' },
+    { label: 'token', href: '/docs/cli/vlt/settings-token' },
+  ]}
+/>
+
+# Vlt ⛨ Settings token
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-vlt settings token
+dxo_123abcd*****************************
+```

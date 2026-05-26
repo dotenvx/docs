@@ -1,0 +1,28 @@
+import InstallVltCodeGroup from '@/pages/partials/installVltCodeGroup.mdx'
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+import { HeroPattern } from '@/components/HeroPattern'
+import { VltCliReferenceCards } from '@/components/VltCliReferenceCards'
+
+export const description = 'Extend Dotenvx with Vlt ⛨.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Vlt ⛨', href: '/docs/cli/vlt' },
+  ]}
+/>
+
+# Introduction
+
+<GuideHeading lead={description} />
+
+The [Dotenvx Vlt CLI](https://github.com/dotenvx/dotenvx-vlt) is the official command-line interface extension for Dotenvx. It unlocks features like Armored Keys.
+
+## Installation
+
+<InstallVltCodeGroup/>
+
+## Commands
+
+<VltCliReferenceCards />
