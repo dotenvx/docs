@@ -1,0 +1,40 @@
+import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
+import InstallOpsCodeGroup from '@/pages/partials/installOpsCodeGroup.mdx'
+
+export const description =
+  'Sync, observe, and audit your environment variables.'
+
+##### [Vlt](/docs/vlt)
+# Basics
+
+Learn the basics of `dotenvx-vlt` in just a few minutes. {{ className: 'lead' }}
+
+- login
+
+## Log in
+
+> Log in to harden your keys.
+
+<CodeGroup>
+
+```bash {{ title: "Curl" }}
+$ dotenvx-vlt login
+◈ logged in
+```
+
+```bash {{ title: "Npm" }}
+$ npx @dotenvx/dotenvx-vlt login
+◈ logged in
+```
+
+</CodeGroup>
+
+Encrypt your `.env*` file (if you haven't already).
+
+```bash {{ title: "Encrypt" }}
+$ echo "HELLO=world" > .env
+$ dotenvx encrypt
+◈ encrypted (.env) + key (.env.keys)
+```
+
+That's it! Your private key(s) are armored off machine.
