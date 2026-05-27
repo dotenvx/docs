@@ -341,7 +341,7 @@ export const defaultNavigation = [
     ]
   },
   {
-    title: 'Vault ⛨',
+    title: 'VLT ⛨',
     links: [
       { title: 'Basics', href: '/docs/vlt/quickstart' },
       { title: 'Advanced', href: '/docs/vlt/advanced' },
@@ -370,7 +370,7 @@ export const cliNavigation = [
       { title: 'Keypair', href: '/docs/cli/keypair' },
       { title: 'Login', href: '/docs/cli/login' },
       {
-        title: 'Vault ⛨',
+        title: 'VLT ⛨',
         href: '/docs/cli/vlt/introduction',
         links: [
           { title: 'Login', href: '/docs/cli/vlt/login' },
