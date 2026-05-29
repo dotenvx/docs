@@ -1,0 +1,34 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Pull armored key into .env.keys.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'VLT ⛨', href: '/docs/cli/vlt' },
+    { label: 'Armor', href: '/docs/cli/vlt/armor' },
+    { label: 'pull', href: '/docs/cli/vlt/armor-pull' },
+  ]}
+/>
+
+# VLT ⛨ Armor pull
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-vlt armor pull
+```
+
+Use a specific env file.
+
+```sh
+$ dotenvx-vlt armor pull -f .env.production
+```
+
+Use a token or team.
+
+```sh
+$ dotenvx-vlt armor pull --token token --team team
+```

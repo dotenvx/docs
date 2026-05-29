@@ -1,0 +1,40 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+import { VltArmorReferenceCards } from '@/components/VltCliReferenceCards'
+
+export const description =
+  'Work with armored keys.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'VLT ⛨', href: '/docs/cli/vlt' },
+    { label: 'Armor', href: '/docs/cli/vlt/armor' },
+  ]}
+/>
+
+# VLT ⛨ Armor
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-vlt armor
+Usage: dotenvx-vlt armor [options] [command]
+
+ARMORED KEYS ⛨
+
+Options:
+  -h, --help        display help for command
+
+Commands:
+  up [options]      armor private key
+  down [options]    dearmor private key
+  push [options]    push armored key (from .env.keys)
+  pull [options]    pull armored key (into .env.keys)
+  rotate [options]  rotate armored key and re-encrypt .env file
+  move [options]    move armored key (to other team)
+```
+
+## Commands
+
+<VltArmorReferenceCards />

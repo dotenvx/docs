@@ -1,0 +1,22 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Turn VLT on.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'VLT ⛨', href: '/docs/cli/vlt' },
+    { label: 'Settings', href: '/docs/cli/vlt/settings' },
+    { label: 'on', href: '/docs/cli/vlt/settings-on' },
+  ]}
+/>
+
+# VLT ⛨ Settings on
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-vlt settings on
+```

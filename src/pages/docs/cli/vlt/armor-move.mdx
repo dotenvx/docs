@@ -1,0 +1,34 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Move armored key to another team.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'VLT ⛨', href: '/docs/cli/vlt' },
+    { label: 'Armor', href: '/docs/cli/vlt/armor' },
+    { label: 'move', href: '/docs/cli/vlt/armor-move' },
+  ]}
+/>
+
+# VLT ⛨ Armor move
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-vlt armor move
+```
+
+Use a specific env file.
+
+```sh
+$ dotenvx-vlt armor move -f .env.production
+```
+
+Use a token.
+
+```sh
+$ dotenvx-vlt armor move --token token
+```

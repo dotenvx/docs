@@ -375,8 +375,21 @@ export const cliNavigation = [
         title: 'VLT ⛨',
         href: '/docs/cli/vlt/introduction',
         links: [
+          {
+            title: 'Armor',
+            href: '/docs/cli/vlt/armor',
+            links: [
+              { title: 'Up', href: '/docs/cli/vlt/armor-up' },
+              { title: 'Down', href: '/docs/cli/vlt/armor-down' },
+              { title: 'Push', href: '/docs/cli/vlt/armor-push' },
+              { title: 'Pull', href: '/docs/cli/vlt/armor-pull' },
+              { title: 'Rotate', href: '/docs/cli/vlt/armor-rotate' },
+              { title: 'Move', href: '/docs/cli/vlt/armor-move' },
+            ],
+          },
           { title: 'Login', href: '/docs/cli/vlt/login' },
           { title: 'Logout', href: '/docs/cli/vlt/logout' },
+          { title: 'Keypair', href: '/docs/cli/vlt/keypair' },
           { title: 'Settings', href: '/docs/cli/vlt/settings' },
         ],
       },
@@ -387,8 +400,6 @@ export const cliNavigation = [
     title: 'Hidden',
     links: [
       { title: 'Armor', href: '/docs/cli/armor' },
-      { title: 'Login', href: '/docs/cli/login' },
-      { title: 'Logout', href: '/docs/cli/logout' },
       { title: 'Doctor', href: '/docs/cli/doctor' },
     ],
   }

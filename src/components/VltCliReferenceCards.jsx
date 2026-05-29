@@ -3,7 +3,21 @@ import Link from 'next/link'
 function VltCliReferenceCard({ item }) {
   let glyph = '❯'
 
-  if (item.href === '/docs/cli/vlt/login') {
+  if (item.href === '/docs/cli/vlt/armor') {
+    glyph = '⛨'
+  } else if (item.href === '/docs/cli/vlt/armor-up') {
+    glyph = '↑'
+  } else if (item.href === '/docs/cli/vlt/armor-down') {
+    glyph = '↓'
+  } else if (item.href === '/docs/cli/vlt/armor-push') {
+    glyph = '→'
+  } else if (item.href === '/docs/cli/vlt/armor-pull') {
+    glyph = '←'
+  } else if (item.href === '/docs/cli/vlt/armor-rotate') {
+    glyph = '↻'
+  } else if (item.href === '/docs/cli/vlt/armor-move') {
+    glyph = '↔'
+  } else if (item.href === '/docs/cli/vlt/login') {
     glyph = '◉'
   } else if (item.href === '/docs/cli/vlt/logout') {
     glyph = '◌'
@@ -32,9 +46,30 @@ function VltCliReferenceCard({ item }) {
 
 export function VltCliReferenceCards() {
   let items = [
+    { href: '/docs/cli/vlt/armor', title: 'Armor' },
     { href: '/docs/cli/vlt/login', title: 'Login' },
     { href: '/docs/cli/vlt/logout', title: 'Logout' },
+    { href: '/docs/cli/vlt/keypair', title: 'Keypair' },
     { href: '/docs/cli/vlt/settings', title: 'Settings' },
+  ]
+
+  return (
+    <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-3">
+      {items.map((item) => (
+        <VltCliReferenceCard key={item.href} item={item} />
+      ))}
+    </div>
+  )
+}
+
+export function VltArmorReferenceCards() {
+  let items = [
+    { href: '/docs/cli/vlt/armor-up', title: 'Up' },
+    { href: '/docs/cli/vlt/armor-down', title: 'Down' },
+    { href: '/docs/cli/vlt/armor-push', title: 'Push' },
+    { href: '/docs/cli/vlt/armor-pull', title: 'Pull' },
+    { href: '/docs/cli/vlt/armor-rotate', title: 'Rotate' },
+    { href: '/docs/cli/vlt/armor-move', title: 'Move' },
   ]
 
   return (
