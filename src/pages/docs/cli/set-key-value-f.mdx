@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Set an (encrypted) key/value for another .env file.'
 
@@ -10,11 +11,11 @@ export const description =
 />
 # dotenvx set KEY value -f
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```sh
 $ touch .env.production
 
 dotenvx set HELLO production -f .env.production
-set HELLO with encryption (.env.production)
+◈ encrypted HELLO (.env.production)
 ```

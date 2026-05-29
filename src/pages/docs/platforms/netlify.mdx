@@ -251,7 +251,7 @@ DOTENV_PRIVATE_KEY_PRODUCTION="2e54f80372d2122edef0ebe7cf6c055f30ae05dafd5461ffb
 </CodeGroup>
 
 <Note>
-  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1password or [dotenvx ops](https://dotenvx.com/vlt).
+  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [VLT ⛨](https://dotenvx.com/vlt).
 </Note>
 
 We're ready to inject the encrypted `.env.production` secrets into the app on boot.
@@ -296,7 +296,7 @@ $ npm run build
 > build
 > dotenvx run -- next build
 
-[dotenvx@0.38.0] injecting env (2) from .env.production
+⟐ injected env (2) from .env.production
 ✓ Compiled successfully
 ```
 
@@ -312,7 +312,7 @@ Result (5 files):
 - 0 warnings
 - 0 hints
 
-[dotenvx@0.38.0] injecting env (2) from .env.production
+⟐ injected env (2) from .env.production
 16:33:35 [build] ✓ Completed in 54ms.
 ```
 

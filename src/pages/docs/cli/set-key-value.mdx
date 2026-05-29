@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Set a single key/value.'
 
@@ -10,13 +11,13 @@ export const description =
 />
 # dotenvx set KEY value
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```sh
 $ touch .env
 
 dotenvx set HELLO World
-set HELLO with encryption (.env)
+◈ encrypted HELLO (.env)
 ```
 
 * encryption defaults to on

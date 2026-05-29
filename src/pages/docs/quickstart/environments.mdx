@@ -64,9 +64,9 @@ $ echo "HELLO=production" > .env.production
 $ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 $ dotenvx run -f=.env.production --verbose -- node index.js
-[dotenvx][verbose] loading env from /path/to/.env.production
-[dotenvx][verbose] HELLO set
-[dotenvx][info] loading env (1) from .env.production
+┆ loading env from .env.production (/path/to/.env.production)
+┆ HELLO set
+⟐ injected env (1) from .env.production
 Hello production
 ```
 
@@ -79,16 +79,11 @@ $ echo "HELLO=production" > .env.production
 $ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 $ dotenvx run -f=.env.production --debug -- node index.js
-[dotenvx][debug] configuring options
-[dotenvx][debug] {"envFile":[".env.production"]}
-[dotenvx][verbose] loading env from /path/to/.env.production
-[dotenvx][debug] reading env from /path/to/.env.production
-[dotenvx][debug] parsing env from /path/to/.env.production
-[dotenvx][debug] {"HELLO":"production"}
-[dotenvx][debug] writing env from /path/to/.env.production
-[dotenvx][verbose] HELLO set
-[dotenvx][debug] HELLO set to production
-[dotenvx][info] loading env (1) from .env.production
+┆ loading env from .env.production (/path/to/.env.production)
+┆ {"HELLO":"production"}
+┆ HELLO set
+┆ HELLO set to production
+⟐ injected env (1) from .env.production
 Hello production
 ```
 

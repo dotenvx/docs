@@ -348,7 +348,7 @@ DOTENV_PRIVATE_KEY_PRODUCTION="424d0ea072eb17c6bee9b4b42ff6333513cf128ea3d5d60cc
 ```
 
 <Note>
-  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1password or [dotenvx ops](https://dotenvx.com/vlt).
+  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [VLT ⛨](https://dotenvx.com/vlt).
 </Note>
 
 We're ready to inject the encrypted `.env.production` secrets into the app on boot.
@@ -374,14 +374,14 @@ Your app restarts and `env` is successfully injected using the encrypted content
 ```shell {{ title: 'Node' }}
 $ flyctl logs
 [info] INFO Preparing to run: `docker-entrypoint.sh dotenvx run -- node index.js` as root
-[info][dotenvx@0.38.0] injecting env (2) from .env.production
+[info] ⟐ injected env (2) from .env.production
 [info]Server running on port:3000
 ```
 
 ```shell {{ title: 'Python' }}
 $ flyctl logs
 [info] INFO Preparing to run: `dotenvx run -- gunicorn --bind 0.0.0.0:5000 wsgi:app` as root
-[info][dotenvx@0.38.0] injecting env (2) from .env.production
+[info] ⟐ injected env (2) from .env.production
 [info][INFO] Starting gunicorn 21.2.0
 [info][INFO] Listening at: http://0.0.0.0:5000
 ```
@@ -389,21 +389,21 @@ $ flyctl logs
 ```shell {{ title: 'PHP' }}
 $ flyctl logs
 [info] INFO Preparing to run: `docker-php-entrypoint dotenvx run -- apache2-foreground` as root
-[info][dotenvx@0.38.0] injecting env (2) from .env.production
+[info] ⟐ injected env (2) from .env.production
 [info][core:notice] [pid 316] AH00094: Command line: 'apache2 -D FOREGROUND'
 ```
 
 ```shell {{ title: 'Ruby' }}
 $ flyctl logs
 [info] INFO Preparing to run: `docker-php-entrypoint dotenvx run -- ruby index.rb -o 0.0.0.0` as root
-[info][dotenvx@0.38.0] injecting env (2) from .env.production
+[info] ⟐ injected env (2) from .env.production
 [info]== Sinatra (v3.2.0) has taken the stage on 4567 for development with backup from WEBrick
 ```
 
 ```shell {{ title: 'Go' }}
 $ flyctl logs
 [info] INFO Preparing to run: `dotenvx run -- ./main` as root
-[info][dotenvx@0.38.0] injecting env (2) from .env.production
+[info] ⟐ injected env (2) from .env.production
 [info]   ____    __
 [info]  / __/___/ /  ___
 [info] / _// __/ _ \/ _ \
@@ -413,7 +413,7 @@ $ flyctl logs
 ```shell {{ title: 'Rust' }}
 $ flyctl logs
 [info] INFO Preparing to run: `dotenvx run -- ./target/release/app` as root
-[info][dotenvx@0.38.0] injecting env (2) from .env.production
+[info] ⟐ injected env (2) from .env.production
 [info]Rocket has launched from http://0.0.0.0:20629
 ```
 

@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Print a shell formatted response of public/private keys.'
 
@@ -10,7 +11,7 @@ export const description =
 />
 # dotenvx keypair --format shell
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```sh
 $ echo "HELLO=World" > .env

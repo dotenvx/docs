@@ -60,7 +60,7 @@ In development the `dotenvx run` command reads from your `.env.keys` file to dec
 
 ```bash {{ title: "development" }}
 $ dotenvx run -- node index.js
-[dotenvx@0.38.0] injecting env (2) from .env
+⟐ injected env (2) from .env
 Hello World
 ```
 
@@ -69,7 +69,7 @@ In production, do NOT include your `.env.keys` file. Instead, set your `DOTENV_P
 ```bash {{ title: "production" }}
 $ dotenvx set HELLO production -f .env.production
 $ DOTENV_PRIVATE_KEY_PRODUCTION="4a650a4159790e2341a388ebcd7526036fd33cc6240667c7cd940cde7b11cfaf" dotenvx run -- node index.js
-[dotenvx@0.38.0] injecting env (2) from .env.production
+⟐ injected env (2) from .env.production
 Hello production
 > :-D
 ```

@@ -323,7 +323,7 @@ DOTENV_PRIVATE_KEY_PRODUCTION="3c54363a4a678042d298660e2038df68aaa4a9383048d913d
 ```
 
 <Note>
-  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1password or [dotenvx ops](https://dotenvx.com/vlt).
+  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [VLT ⛨](https://dotenvx.com/vlt).
 </Note>
 
 We're ready to inject the encrypted `.env.production` secrets into Docker run.
@@ -350,32 +350,32 @@ Your app reboots and `env` is successfully injected using the encrypted contents
 
 ```shell {{ title: 'Node' }}
 $ npx @railway/cli@latest logs
-[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
+⟐ injected env (1) from .env.vault
 Server running on port:5821
 ```
 
 ```shell {{ title: 'Python' }}
 $ npx @railway/cli@latest logs
-[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
+⟐ injected env (1) from .env.vault
 [2024-01-26 17:42:34 +0000] [13] [INFO] Listening at: http://0.0.0.0:5000 (13)
 ```
 
 ```shell {{ title: 'PHP' }}
 $ npx @railway/cli@latest logs
 INFO Preparing to run: `docker-php-entrypoint dotenvx run -- apache2-foreground` as root
-[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
+⟐ injected env (1) from .env.vault
 [core:notice] [pid 316] AH00094: Command line: 'apache2 -D FOREGROUND'
 ```
 
 ```shell {{ title: 'Ruby' }}
 $ npx @railway/cli@latest logs
-[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
+⟐ injected env (1) from .env.vault
 == Sinatra (v3.2.0) has taken the stage on 4567 for development with backup from WEBrick
 ```
 
 ```shell {{ title: 'Go' }}
 $ npx @railway/cli@latest logs
-[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
+⟐ injected env (1) from .env.vault
    ____    __
   / __/___/ /  ___
  / _// __/ _ \/ _ \
@@ -384,7 +384,7 @@ $ npx @railway/cli@latest logs
 
 ```shell {{ title: 'Rust' }}
 $ npx @railway/cli@latest logs
-[dotenvx@0.11.0] injecting env (1) from encrypted .env.vault
+⟐ injected env (1) from .env.vault
 Rocket has launched from http://0.0.0.0:20629
 ```
 

@@ -107,7 +107,7 @@ Try running it locally.
 
 ```
 $ npm run dev
-web:dev: [dotenvx@0.43.2] injecting env (1) from .env
+web:dev: ⟐ injected env (1) from .env
 docs:dev: - ready started server on 0.0.0.0:3001, url: http://localhost:3001
 web:dev: - ready started server on 0.0.0.0:3000, url: http://localhost:3000
 ```
@@ -157,7 +157,7 @@ DOTENV_PRIVATE_KEY_PRODUCTION="424d0ea072eb17c6bee9b4b42ff6333513cf128ea3d5d60cc
 ```
 
 <Note>
-  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1password or [dotenvx ops](https://dotenvx.com/vlt).
+  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [VLT ⛨](https://dotenvx.com/vlt).
 </Note>
 
 We're ready to inject the encrypted `.env.production` secrets into the app on boot.
@@ -173,7 +173,7 @@ DOTENV_PRIVATE_KEY_PRODUCTION="424d0ea072eb17c6bee9b4b42ff6333513cf128ea3d5d60cc
 Your script starts and `env` is successfully injected using the encrypted contents of `.env.production`.
 
 ```sh
-web:dev: [dotenvx@0.43.2] injecting env (1) from .env
+web:dev: ⟐ injected env (1) from .env
 docs:dev: - ready started server on 0.0.0.0:3001, url: http://localhost:3001
 web:dev: - ready started server on 0.0.0.0:3000, url: http://localhost:3000
 ```

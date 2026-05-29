@@ -121,7 +121,7 @@ DOTENV_PRIVATE_KEY_PRODUCTION="3c54363a4a678042d298660e2038df68aaa4a9383048d913d
 ```
 
 <Note>
-  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1password or [dotenvx ops](https://dotenvx.com/vlt).
+  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [VLT ⛨](https://dotenvx.com/vlt).
 </Note>
 
 We're ready to inject the encrypted `.env.production` secrets into Docker run.
@@ -163,27 +163,27 @@ Your docker instance starts and `env` is successfully injected using the encrypt
 <CodeGroup>
 
 ```shell {{ title: 'Node' }}
-[dotenvx@0.38.0] injecting env (2) from .env.production
+⟐ injected env (2) from .env.production
 Server running on port:3000
 ```
 
 ```shell {{ title: 'Python' }}
-[dotenvx@0.38.0] injecting env (2) from .env.production
+⟐ injected env (2) from .env.production
 [2024-01-15 04:36:09 +0000] [15] [INFO] Starting gunicorn 21.2.0
 ```
 
 ```shell {{ title: 'PHP' }}
-[dotenvx@0.38.0] injecting env (2) from .env.production
+⟐ injected env (2) from .env.production
 [Mon Jan 15 05:18:12.420951 2024] [core:notice] [pid 15] AH00094: Command line: 'apache2 -D FOREGROUND'
 ```
 
 ```shell {{ title: 'Ruby' }}
-[dotenvx@0.38.0] injecting env (2) from .env.production
+⟐ injected env (2) from .env.production
 == Sinatra (v3.2.0) has taken the stage on 4567 for development with backup from WEBrick
 ```
 
 ```shell {{ title: 'Go' }}
-[dotenvx@0.38.0] injecting env (2) from .env.production
+⟐ injected env (2) from .env.production
    ____    __
   / __/___/ /  ___
  / _// __/ _ \/ _ \
@@ -191,7 +191,7 @@ Server running on port:3000
 ```
 
 ```shell {{ title: 'Rust' }}
-[dotenvx@0.38.0] injecting env (2) from .env.production
+⟐ injected env (2) from .env.production
 🚀 Rocket has launched from http://0.0.0.0:2062
 ```
 

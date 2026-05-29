@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Return a single environment variable\'s value using the Next.js convention'
 
@@ -10,7 +11,7 @@ export const description =
 />
 # dotenvx get KEY --convention=nextjs
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```sh
 $ echo "HELLO=development local" > .env.development.local

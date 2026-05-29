@@ -88,7 +88,7 @@ Run `nx serve` prefaced by `dotenvx`.
 ```bash
 $ dotenvx run -f apps/app/.env -- npx nx serve app
 
-[dotenvx@0.15.4] injecting env (1) from apps/app/.env
+⟐ injected env (1) from apps/app/.env
 
 > nx run app:serve:development
 ...
@@ -139,7 +139,7 @@ DOTENV_PRIVATE_KEY_PRODUCTION="424d0ea072eb17c6bee9b4b42ff6333513cf128ea3d5d60cc
 ```
 
 <Note>
-  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1password or [dotenvx ops](https://dotenvx.com/vlt).
+  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [VLT ⛨](https://dotenvx.com/vlt).
 </Note>
 
 We're ready to inject the encrypted `.env.production` secrets into the app on boot.
@@ -155,7 +155,7 @@ DOTENV_PRIVATE_KEY_PRODUCTION="424d0ea072eb17c6bee9b4b42ff6333513cf128ea3d5d60cc
 Your script starts and `env` is successfully injected using the encrypted contents of `.env.production`.
 
 ```bash
-[dotenvx@0.43.1] injecting env (2) from apps/app/.env.production
+⟐ injected env (2) from apps/app/.env.production
 Listening at http://localhost:3333/
 ```
 

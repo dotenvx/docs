@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Rotate the encrypted contents inside an encrypted .env file except for an excluded key.'
 
@@ -10,7 +11,7 @@ export const description =
 />
 # dotenvx rotate -ek
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```sh
 $ echo "HELLO=World\nHOLA=Mundo" > .env

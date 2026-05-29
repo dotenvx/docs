@@ -62,9 +62,9 @@ export function CliReferenceCards() {
 
 export function CliHiddenReferenceCards() {
   let commands = [
+    { href: '/docs/cli/armor', title: 'Armor' },
     { href: '/docs/cli/login', title: 'Login' },
     { href: '/docs/cli/logout', title: 'Logout' },
-    { href: '/docs/cli/armor', title: 'Armor' },
     { href: '/docs/cli/doctor', title: 'Doctor' },
   ]
 

@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Set a value containing a leading dash.'
 
@@ -10,7 +11,7 @@ export const description =
 />
 # dotenvx set KEY -- "- + * ÷"
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 If your value starts with a dash (`-`), then place two dashes instructing the cli that there are no more flag arguments.
 
@@ -18,5 +19,5 @@ If your value starts with a dash (`-`), then place two dashes instructing the cl
 $ touch .env.ci
 
 dotenvx set HELLO -f .env.ci -- "- + * ÷"
-set HELLO with encryption (.env.ci)
+◈ encrypted HELLO (.env.ci)
 ```

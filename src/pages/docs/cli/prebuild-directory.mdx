@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Prevent .env files from being built into your docker containers for a specified directory. Useful for monorepos.'
 
@@ -10,7 +11,7 @@ export const description =
 />
 # dotenvx ext prebuild directory
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 Add it to your Dockerfile.
 

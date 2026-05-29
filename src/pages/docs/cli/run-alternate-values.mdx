@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Use alternate values when environment variables are set and non-empty.'
 
@@ -10,7 +11,7 @@ export const description =
 />
 # dotenvx run - Alternate Values
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```ini
 # .env
@@ -34,7 +35,7 @@ console.log('CACHE_ENABLED', process.env.CACHE_ENABLED)
 
 ```sh
 $ dotenvx run --debug -- node index.js
-[dotenvx@1.X.X] injecting env (4) from .env
+⟐ injected env (4) from .env
 NODE_ENV production
 DEBUG_MODE false
 LOG_LEVEL error

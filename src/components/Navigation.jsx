@@ -369,12 +369,6 @@ export const cliNavigation = [
     ],
   },
   {
-    title: 'More',
-    links: [
-      { title: 'Ls', href: '/docs/cli/ls' },
-    ],
-  },
-  {
     title: 'Advanced',
     links: [
       {
@@ -392,9 +386,9 @@ export const cliNavigation = [
   {
     title: 'Hidden',
     links: [
+      { title: 'Armor', href: '/docs/cli/armor' },
       { title: 'Login', href: '/docs/cli/login' },
       { title: 'Logout', href: '/docs/cli/logout' },
-      { title: 'Armor', href: '/docs/cli/armor' },
       { title: 'Doctor', href: '/docs/cli/doctor' },
     ],
   }

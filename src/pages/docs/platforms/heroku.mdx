@@ -147,7 +147,7 @@ DOTENV_PRIVATE_KEY_PRODUCTION="424d0ea072eb17c6bee9b4b42ff6333513cf128ea3d5d60cc
 ```
 
 <Note>
-  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1password or [dotenvx ops](https://dotenvx.com/vlt).
+  You SHOULD commit `.env.production` to code. It is now encrypted, safe, and recommended to do so. But DO NOT commit `.env.keys` to code. Keep them somewhere safe like 1Password or [VLT ⛨](https://dotenvx.com/vlt).
 </Note>
 
 We're ready to inject the encrypted `.env.production` secrets into the app on boot.
@@ -172,32 +172,32 @@ Your app restarts and `env` is successfully injected using the encrypted content
 
 ```shell {{ title: 'Node' }}
 heroku[web.1]: Starting process with command `dotenvx run -- node index.js`
-app[web.1]: [dotenvx@0.38.0] injecting env (2) from .env.production
+app[web.1]: ⟐ injected env (2) from .env.production
 app[web.1]: Server running on port:7521/
 ```
 
 ```shell {{ title: 'Python' }}
 heroku[web.1]: Starting process with command `dotenvx run -- gunicorn --workers 4 --bind 0.0.0.0:${PORT} wsgi:app`
-app[web.1]: [dotenvx@0.38.0] injecting env (2) from .env.production
+app[web.1]: ⟐ injected env (2) from .env.production
 app[web.1]: [INFO] Starting gunicorn 21.2.0
 ```
 
 ```shell {{ title: 'PHP' }}
 $ heroku logs --tail
 heroku[web.1]: Starting process with command `dotenvx run -- heroku-php-apache2`
-app[web.1]: [dotenvx@0.38.0] injecting env (2) from .env.production
+app[web.1]: ⟐ injected env (2) from .env.production
 app[web.1]: Starting php-fpm with 4 workers...
 ```
 
 ```shell {{ title: 'Ruby' }}
 heroku[web.1]: Starting process with command `dotenvx run -- ruby index.rb`
-app[web.1]: [dotenvx@0.38.0] injecting env (2) from .env.production
+app[web.1]: ⟐ injected env (2) from .env.production
 app[web.1]: == Sinatra (v3.2.0) has taken the stage on 20576 for production with backup from WEBrick
 ```
 
 ```shell {{ title: 'Go' }}
 heroku[web.1]: Starting process with command `dotenvx run -- app`
-app[web.1]: [dotenvx@0.38.0] injecting env (2) from .env.production
+app[web.1]: ⟐ injected env (2) from .env.production
 app[web.1]:
 app[web.1]: ____    __
 app[web.1]: / __/___/ /  ___
@@ -207,7 +207,7 @@ app[web.1]: /___/\__/_//_/\___/ v4.11.4
 
 ```shell {{ title: 'Rust' }}
 heroku[web.1]: Starting process with command `ROCKET_ADDRESS=0.0.0.0 ROCKET_PORT=20629 dotenvx run -- ./target/release/your-app`
-app[web.1]: [dotenvx@0.38.0] injecting env (2) from .env.production
+app[web.1]: ⟐ injected env (2) from .env.production
 app[web.1]: Rocket has launched from http://0.0.0.0:8930
 ```
 

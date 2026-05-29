@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Specify the key(s) to NOT encrypt by passing --exclude-key.'
 
@@ -10,7 +11,7 @@ export const description =
 />
 # dotenvx encrypt -ek
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```sh
 $ echo "HELLO=World\nHELLO2=Universe" > .env

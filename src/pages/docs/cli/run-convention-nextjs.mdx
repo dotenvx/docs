@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Load envs using the Next.js convention.'
 
@@ -10,7 +11,7 @@ export const description =
 />
 # dotenvx run --convention=nextjs
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```sh
 $ echo "HELLO=development local" > .env.development.local
@@ -20,7 +21,7 @@ echo "HELLO=env" > .env
 echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 dotenvx run --convention=nextjs -- node index.js
-[dotenvx] injecting env (1) from .env.development.local, .env.local, .env.development, .env
+⟐ injected env (1) from .env.development.local, .env.local, .env.development, .env
 Hello development local
 ```
 

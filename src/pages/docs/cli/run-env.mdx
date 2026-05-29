@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Set environment variables as a simple KEY=value string pair.'
 
@@ -10,13 +11,13 @@ export const description =
 />
 # dotenvx run --env HELLO=String
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```sh
 $ echo "HELLO=World" > .env
 echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 dotenvx run --env HELLO=String -f .env -- node index.js
-[dotenvx] injecting env (1) from .env, and --env flag
+⟐ injected env (1) from .env, and --env flag
 Hello String
 ```

@@ -188,7 +188,7 @@ DOTENV_PRIVATE_KEY_CI="d4d2e22102c58f741cdddacaf69a1a64751fc014aafb90de0f1e7e6cb
 ```
 
 <Note>
-  DO NOT commit `.env.keys` to code – keep it somewhere safe like 1password or [dotenvx ops](https://dotenvx.com/vlt).
+  DO NOT commit `.env.keys` to code – keep it somewhere safe like 1Password or [VLT ⛨](https://dotenvx.com/vlt).
 </Note>
 
 Lastly, commit your `.env.ci` to code as it is now encrypted, safe, and recommended to do so.
@@ -208,7 +208,7 @@ Commit those changes safely to code and rerun the build.
 
 That's it! On rerun, your `.env.ci` file will be decrypted and its CI secrets injected as environment variables – just in time. Your build script will say `Hello ci/cd`.
 
-You'll know things worked correctly when you see `injecting env (2) from .env.ci` in your logs.
+You'll know things worked correctly when you see `⟐ injected env (2) from .env.ci` in your logs.
 
 <ScreenshotBrowser url='/assets/docs/github-actions-logs-vault.png' www='github actions build' />
 

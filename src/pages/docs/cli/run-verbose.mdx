@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Set log level to `verbose`.'
 
@@ -10,7 +11,7 @@ export const description =
 />
 # dotenvx run --verbose
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```sh
 $ echo "HELLO=production" > .env.production
@@ -19,7 +20,7 @@ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 dotenvx run -f .env.production --verbose -- node index.js
 loading env from .env.production (/path/to/.env.production)
 HELLO set
-[dotenvx] injecting env (1) from .env.production
+⟐ injected env (1) from .env.production
 Hello production
 ```
 

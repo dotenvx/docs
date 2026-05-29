@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Decrypt the contents of a specified key inside an encrypted .env file.'
 
@@ -10,7 +11,7 @@ export const description =
 />
 # dotenvx decrypt -k
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```sh
 $ echo "HELLO=World\nHOLA=Mundo" > .env

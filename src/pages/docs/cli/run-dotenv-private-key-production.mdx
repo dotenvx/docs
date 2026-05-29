@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Decrypt your encrypted `.env.production` by setting `DOTENV_PRIVATE_KEY_PRODUCTION` before dotenvx run.'
 
@@ -10,7 +11,7 @@ export const description =
 />
 # DOTENV_PRIVATE_KEY_PRODUCTION=key dotenvx run
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```sh
 $ touch .env.production
@@ -19,7 +20,7 @@ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 
 # check .env.keys for your privateKey
 DOTENV_PRIVATE_KEY_PRODUCTION="122...0b8" dotenvx run -- node index.js
-[dotenvx] injecting env (2) from .env.production
+⟐ injected env (2) from .env.production
 Hello production encrypted
 ```
 

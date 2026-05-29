@@ -1,4 +1,5 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
 export const description =
   'Add the output of a command to one of your variables in your .env file.'
 
@@ -10,7 +11,7 @@ export const description =
 />
 # dotenvx run - Command Substitution
 
-<p className="lead">{description}</p>
+<GuideHeading lead={description} />
 
 ```ini
 # .env
@@ -24,6 +25,6 @@ console.log('DATABASE_URL', process.env.DATABASE_URL)
 
 ```sh
 $ dotenvx run --debug -- node index.js
-[dotenvx] injecting env (1) from .env
+⟐ injected env (1) from .env
 DATABASE_URL postgres://yourusername@localhost/my_database
 ```
