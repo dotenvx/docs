@@ -292,6 +292,13 @@ export const defaultNavigation = [
     ]
   },
   {
+    title: 'VLT ⛨',
+    links: [
+      { title: 'Basics', href: '/docs/vlt/quickstart' },
+      { title: 'Advanced', href: '/docs/vlt/advanced' },
+    ]
+  },
+  {
     title: 'Learn',
     links: [
       { 
@@ -308,12 +315,6 @@ export const defaultNavigation = [
           { title: 'Introduction', href: '/docs/learn/private-keys/introduction' },
         ]
       },
-    ],
-  },
-  {
-    title: 'Resources',
-
-    links: [
       {
         title: 'Guides',
         href: '/docs/guides',
@@ -333,16 +334,15 @@ export const defaultNavigation = [
           { title: 'More', href: '/docs/guides' },
         ],
       },
+    ],
+  },
+  {
+    title: 'Resources',
+
+    links: [
       { title: '.env', href: '/docs/env-file' },
       { title: '.env.keys', href: '/docs/env-keys-file' },
       { title: 'Statistics', href: '/docs/stats' },
-    ]
-  },
-  {
-    title: 'VLT ⛨',
-    links: [
-      { title: 'Basics', href: '/docs/vlt/quickstart' },
-      { title: 'Advanced', href: '/docs/vlt/advanced' },
     ]
   },
   
