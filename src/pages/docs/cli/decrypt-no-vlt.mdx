@@ -2,7 +2,7 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Convert encrypted .env file to plain .env file.'
+  'Disable Dotenvx VLT features.'
 
 <Breadcrumb
   items={[
@@ -11,20 +11,11 @@ export const description =
   ]}
 />
 
-# Decrypt
+# dotenvx decrypt --no-vlt
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx decrypt
+$ dotenvx decrypt --no-vlt
 ◇ decrypted (.env)
 ```
-
-## Advanced
-
-* [decrypt -f](/docs/cli/decrypt-f)
-* [decrypt -fk](/docs/cli/decrypt-fk)
-* [decrypt -k](/docs/cli/decrypt-k)
-* [decrypt -ek](/docs/cli/decrypt-ek)
-* [decrypt --stdout](/docs/cli/decrypt-stdout)
-* [decrypt --no-vlt](/docs/cli/decrypt-no-vlt)

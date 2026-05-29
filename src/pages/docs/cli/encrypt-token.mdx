@@ -1,0 +1,21 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Set the VLT token.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Encrypt', href: '/docs/cli/encrypt' },
+  ]}
+/>
+
+# dotenvx encrypt --token
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx encrypt --token token
+◈ encrypted (.env) · armored ⛨
+```
