@@ -314,8 +314,6 @@ export const defaultNavigation = [
     title: 'Resources',
 
     links: [
-      { title: 'Introduction', href: '/docs/learn' },
-      { title: 'Basics', href: '/docs/quickstart' },
       {
         title: 'Guides',
         href: '/docs/guides',

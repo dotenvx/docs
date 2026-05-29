@@ -1,44 +1,108 @@
 export const description =
   'Stats'
 
+export const wide = true
+
 ##### Resources
 # Stats
 
-### Weekly
+Download stats for Dotenvx packages and platform installers. {{ className: 'lead' }}
 
-* <img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx](https://npmjs.com/@dotenvx/dotenvx)
-* <img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-darwin-amd64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-darwin-amd64](https://npmjs.com/@dotenvx/dotenvx-darwin-amd64)
-* <img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-darwin-arm64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-darwin-arm64](https://npmjs.com/@dotenvx/dotenvx-darwin-arm64)
-* <img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-darwin-x86_64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-darwin-x86_64](https://npmjs.com/@dotenvx/dotenvx-darwin-x86_64)
-* <img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-linux-aarch64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-linux-aarch64](https://npmjs.com/@dotenvx/dotenvx-linux-aarch64)
-* <img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-linux-amd64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-linux-amd64](https://npmjs.com/@dotenvx/dotenvx-linux-amd64)
-* <img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-linux-arm64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-linux-arm64](https://npmjs.com/@dotenvx/dotenvx-linux-arm64)
-* <img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-linux-x86_64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-linux-x86_64](https://npmjs.com/@dotenvx/dotenvx-linux-x86_64)
-* <img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-windows-amd64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-windows-amd64](https://npmjs.com/@dotenvx/dotenvx-windows-amd64)
-* <img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-windows-x86_64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-windows-x86_64](https://npmjs.com/@dotenvx/dotenvx-windows-x86_64)
+<div className="not-prose my-8 overflow-x-auto rounded-xl border border-zinc-900/10 dark:border-white/10 [&_img]:h-4 [&_img]:max-w-none">
+  <table className="w-full min-w-[920px] divide-y divide-zinc-900/10 text-sm dark:divide-white/10">
+    <thead className="bg-zinc-50 dark:bg-white/[0.03]">
+      <tr>
+        <th scope="col" className="px-4 py-3 text-left font-semibold text-zinc-900 dark:text-zinc-100">Source</th>
+        <th scope="col" className="px-4 py-3 text-left font-semibold text-zinc-900 dark:text-zinc-100">Weekly</th>
+        <th scope="col" className="px-4 py-3 text-left font-semibold text-zinc-900 dark:text-zinc-100">Monthly</th>
+        <th scope="col" className="px-4 py-3 text-left font-semibold text-zinc-900 dark:text-zinc-100">Yearly</th>
+        <th scope="col" className="px-4 py-3 text-left font-semibold text-zinc-900 dark:text-zinc-100">All Time</th>
+        <th scope="col" className="px-4 py-3 text-left font-semibold text-zinc-900 dark:text-zinc-100">Package</th>
+      </tr>
+    </thead>
+    <tbody className="divide-y divide-zinc-900/10 bg-white dark:divide-white/10 dark:bg-transparent">
+      <tr>
+        <th scope="row" className="whitespace-nowrap px-4 py-4 text-left font-medium text-zinc-900 dark:text-zinc-100">NPM</th>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx?label=" alt="npm weekly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx?label=" alt="npm monthly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dy/@dotenvx/dotenvx?label=" alt="npm yearly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx?label=" alt="npm all-time downloads" /></td>
+        <td className="whitespace-nowrap px-4 py-4"><a href="https://npmjs.com/@dotenvx/dotenvx">@dotenvx/dotenvx</a></td>
+      </tr>
+      <tr>
+        <th scope="row" className="whitespace-nowrap px-4 py-4 text-left font-medium text-zinc-900 dark:text-zinc-100">Mac amd64</th>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-darwin-amd64?label=" alt="mac amd64 weekly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-darwin-amd64?label=" alt="mac amd64 monthly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dy/@dotenvx/dotenvx-darwin-amd64?label=" alt="mac amd64 yearly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-darwin-amd64?label=" alt="mac amd64 all-time downloads" /></td>
+        <td className="whitespace-nowrap px-4 py-4"><a href="https://npmjs.com/@dotenvx/dotenvx-darwin-amd64">@dotenvx/dotenvx-darwin-amd64</a></td>
+      </tr>
+      <tr>
+        <th scope="row" className="whitespace-nowrap px-4 py-4 text-left font-medium text-zinc-900 dark:text-zinc-100">Mac arm64</th>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-darwin-arm64?label=" alt="mac arm64 weekly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-darwin-arm64?label=" alt="mac arm64 monthly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dy/@dotenvx/dotenvx-darwin-arm64?label=" alt="mac arm64 yearly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-darwin-arm64?label=" alt="mac arm64 all-time downloads" /></td>
+        <td className="whitespace-nowrap px-4 py-4"><a href="https://npmjs.com/@dotenvx/dotenvx-darwin-arm64">@dotenvx/dotenvx-darwin-arm64</a></td>
+      </tr>
+      <tr>
+        <th scope="row" className="whitespace-nowrap px-4 py-4 text-left font-medium text-zinc-900 dark:text-zinc-100">Mac x86_64</th>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-darwin-x86_64?label=" alt="mac x86_64 weekly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-darwin-x86_64?label=" alt="mac x86_64 monthly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dy/@dotenvx/dotenvx-darwin-x86_64?label=" alt="mac x86_64 yearly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-darwin-x86_64?label=" alt="mac x86_64 all-time downloads" /></td>
+        <td className="whitespace-nowrap px-4 py-4"><a href="https://npmjs.com/@dotenvx/dotenvx-darwin-x86_64">@dotenvx/dotenvx-darwin-x86_64</a></td>
+      </tr>
+      <tr>
+        <th scope="row" className="whitespace-nowrap px-4 py-4 text-left font-medium text-zinc-900 dark:text-zinc-100">Linux aarch64</th>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-linux-aarch64?label=" alt="linux aarch64 weekly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-linux-aarch64?label=" alt="linux aarch64 monthly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dy/@dotenvx/dotenvx-linux-aarch64?label=" alt="linux aarch64 yearly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-linux-aarch64?label=" alt="linux aarch64 all-time downloads" /></td>
+        <td className="whitespace-nowrap px-4 py-4"><a href="https://npmjs.com/@dotenvx/dotenvx-linux-aarch64">@dotenvx/dotenvx-linux-aarch64</a></td>
+      </tr>
+      <tr>
+        <th scope="row" className="whitespace-nowrap px-4 py-4 text-left font-medium text-zinc-900 dark:text-zinc-100">Linux amd64</th>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-linux-amd64?label=" alt="linux amd64 weekly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-linux-amd64?label=" alt="linux amd64 monthly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dy/@dotenvx/dotenvx-linux-amd64?label=" alt="linux amd64 yearly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-linux-amd64?label=" alt="linux amd64 all-time downloads" /></td>
+        <td className="whitespace-nowrap px-4 py-4"><a href="https://npmjs.com/@dotenvx/dotenvx-linux-amd64">@dotenvx/dotenvx-linux-amd64</a></td>
+      </tr>
+      <tr>
+        <th scope="row" className="whitespace-nowrap px-4 py-4 text-left font-medium text-zinc-900 dark:text-zinc-100">Linux arm64</th>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-linux-arm64?label=" alt="linux arm64 weekly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-linux-arm64?label=" alt="linux arm64 monthly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dy/@dotenvx/dotenvx-linux-arm64?label=" alt="linux arm64 yearly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-linux-arm64?label=" alt="linux arm64 all-time downloads" /></td>
+        <td className="whitespace-nowrap px-4 py-4"><a href="https://npmjs.com/@dotenvx/dotenvx-linux-arm64">@dotenvx/dotenvx-linux-arm64</a></td>
+      </tr>
+      <tr>
+        <th scope="row" className="whitespace-nowrap px-4 py-4 text-left font-medium text-zinc-900 dark:text-zinc-100">Linux x86_64</th>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-linux-x86_64?label=" alt="linux x86_64 weekly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-linux-x86_64?label=" alt="linux x86_64 monthly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dy/@dotenvx/dotenvx-linux-x86_64?label=" alt="linux x86_64 yearly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-linux-x86_64?label=" alt="linux x86_64 all-time downloads" /></td>
+        <td className="whitespace-nowrap px-4 py-4"><a href="https://npmjs.com/@dotenvx/dotenvx-linux-x86_64">@dotenvx/dotenvx-linux-x86_64</a></td>
+      </tr>
+      <tr>
+        <th scope="row" className="whitespace-nowrap px-4 py-4 text-left font-medium text-zinc-900 dark:text-zinc-100">Windows amd64</th>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-windows-amd64?label=" alt="windows amd64 weekly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-windows-amd64?label=" alt="windows amd64 monthly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dy/@dotenvx/dotenvx-windows-amd64?label=" alt="windows amd64 yearly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-windows-amd64?label=" alt="windows amd64 all-time downloads" /></td>
+        <td className="whitespace-nowrap px-4 py-4"><a href="https://npmjs.com/@dotenvx/dotenvx-windows-amd64">@dotenvx/dotenvx-windows-amd64</a></td>
+      </tr>
+      <tr>
+        <th scope="row" className="whitespace-nowrap px-4 py-4 text-left font-medium text-zinc-900 dark:text-zinc-100">Windows x86_64</th>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dw/@dotenvx/dotenvx-windows-x86_64?label=" alt="windows x86_64 weekly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-windows-x86_64?label=" alt="windows x86_64 monthly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dy/@dotenvx/dotenvx-windows-x86_64?label=" alt="windows x86_64 yearly downloads" /></td>
+        <td className="px-4 py-4"><img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-windows-x86_64?label=" alt="windows x86_64 all-time downloads" /></td>
+        <td className="whitespace-nowrap px-4 py-4"><a href="https://npmjs.com/@dotenvx/dotenvx-windows-x86_64">@dotenvx/dotenvx-windows-x86_64</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-### Monthly
-
-* <img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx](https://npmjs.com/@dotenvx/dotenvx)
-* <img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-darwin-amd64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-darwin-amd64](https://npmjs.com/@dotenvx/dotenvx-darwin-amd64)
-* <img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-darwin-arm64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-darwin-arm64](https://npmjs.com/@dotenvx/dotenvx-darwin-arm64)
-* <img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-darwin-x86_64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-darwin-x86_64](https://npmjs.com/@dotenvx/dotenvx-darwin-x86_64)
-* <img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-linux-aarch64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-linux-aarch64](https://npmjs.com/@dotenvx/dotenvx-linux-aarch64)
-* <img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-linux-amd64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-linux-amd64](https://npmjs.com/@dotenvx/dotenvx-linux-amd64)
-* <img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-linux-arm64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-linux-arm64](https://npmjs.com/@dotenvx/dotenvx-linux-arm64)
-* <img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-linux-x86_64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-linux-x86_64](https://npmjs.com/@dotenvx/dotenvx-linux-x86_64)
-* <img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-windows-amd64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-windows-amd64](https://npmjs.com/@dotenvx/dotenvx-windows-amd64)
-* <img src="https://img.shields.io/npm/dm/@dotenvx/dotenvx-windows-x86_64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-windows-x86_64](https://npmjs.com/@dotenvx/dotenvx-windows-x86_64)
-
-### All Time
-
-* <img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx](https://npmjs.com/@dotenvx/dotenvx)
-* <img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-darwin-amd64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-darwin-amd64](https://npmjs.com/@dotenvx/dotenvx-darwin-amd64)
-* <img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-darwin-arm64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-darwin-arm64](https://npmjs.com/@dotenvx/dotenvx-darwin-arm64)
-* <img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-darwin-x86_64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-darwin-x86_64](https://npmjs.com/@dotenvx/dotenvx-darwin-x86_64)
-* <img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-linux-aarch64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-linux-aarch64](https://npmjs.com/@dotenvx/dotenvx-linux-aarch64)
-* <img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-linux-amd64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-linux-amd64](https://npmjs.com/@dotenvx/dotenvx-linux-amd64)
-* <img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-linux-arm64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-linux-arm64](https://npmjs.com/@dotenvx/dotenvx-linux-arm64)
-* <img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-linux-x86_64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-linux-x86_64](https://npmjs.com/@dotenvx/dotenvx-linux-x86_64)
-* <img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-windows-amd64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-windows-amd64](https://npmjs.com/@dotenvx/dotenvx-windows-amd64)
-* <img src="https://img.shields.io/npm/dt/@dotenvx/dotenvx-windows-x86_64" alt="npm" class="inline-block my-2"/> [@dotenvx/dotenvx-windows-x86_64](https://npmjs.com/@dotenvx/dotenvx-windows-x86_64)
+Platform package totals are reported by npm for each OS-architecture package.

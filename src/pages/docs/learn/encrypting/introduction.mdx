@@ -25,7 +25,7 @@ HELLO="Dotenvx"
 ```
 <CodeGroup>
 <code code="dotenvx encrypt">{`$ dotenvx encrypt
-`}<span className="logger-success">◈ encrypted (.env) + local key (.env.keys)</span></code>
+`}<span className="logger-success">◈ encrypted (.env)</span></code>
 </CodeGroup>
 ```ini
 # .env
@@ -71,12 +71,11 @@ HELLO="Production"
 ```
 <CodeGroup>
 <code code="dotenvx encrypt">{`$ dotenvx encrypt -f .env.production
-`}<span className="logger-success">◈ encrypted (.env.production) + local key (.env.keys)</span></code>
+`}<span className="logger-success">◈ encrypted (.env.production)</span></code>
 </CodeGroup>
 <CodeGroup>
 <code code="dotenvx run -- node index.js">{`$ dotenvx run -f .env.production -- node index.js
 `}<span className="logger-success">⟐ injected env (2) from .env.production</span>
 Hello Production</code>
 </CodeGroup>
-
 

@@ -223,7 +223,7 @@ const usePreferredLanguageStore = create((set) => ({
     })),
 }))
 
-function useTabGroupProps(availableLanguages) {
+export function useTabGroupProps(availableLanguages) {
   let { preferredLanguages, addPreferredLanguage } = usePreferredLanguageStore()
   let [selectedIndex, setSelectedIndex] = useState(0)
   let activeLanguage = [...availableLanguages].sort(

@@ -2,6 +2,8 @@ import { Children } from 'react'
 import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
 
+import { useTabGroupProps } from '@/components/Code'
+
 function getPanelTitle(child) {
   return child?.props?.title ?? 'Tab'
 }
@@ -61,6 +63,8 @@ function RenderableTabsPanels({ children, variant }) {
 
 export function RenderableTabs({ children, title, variant = 'default' }) {
   let hasTabs = Children.count(children) > 1
+  let tabTitles = Children.map(children, (child) => getPanelTitle(child))
+  let tabGroupProps = useTabGroupProps(tabTitles)
 
   if (!hasTabs) {
     return (
@@ -71,17 +75,16 @@ export function RenderableTabs({ children, title, variant = 'default' }) {
   }
 
   return (
-    <Tab.Group as="div" className="not-prose my-6 overflow-hidden rounded-2xl bg-zinc-900 shadow-md dark:ring-1 dark:ring-white/10">
-      {({ selectedIndex }) => (
-        <>
-          <RenderableTabsHeader title={title} selectedIndex={selectedIndex}>
-            {children}
-          </RenderableTabsHeader>
-          <RenderableTabsPanels variant={variant}>
-            {children}
-          </RenderableTabsPanels>
-        </>
-      )}
+    <Tab.Group
+      {...tabGroupProps}
+      className="not-prose my-6 overflow-hidden rounded-2xl bg-zinc-900 shadow-md dark:ring-1 dark:ring-white/10"
+    >
+      <RenderableTabsHeader title={title} selectedIndex={tabGroupProps.selectedIndex}>
+        {children}
+      </RenderableTabsHeader>
+      <RenderableTabsPanels variant={variant}>
+        {children}
+      </RenderableTabsPanels>
     </Tab.Group>
   )
 }

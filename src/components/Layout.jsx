@@ -9,7 +9,7 @@ import { Prose } from '@/components/Prose'
 import { Search } from '@/components/Search'
 import { SectionProvider } from '@/components/SectionProvider'
 
-export function Layout({ children, sections = [] }) {
+export function Layout({ children, sections = [], wide = false }) {
   return (
     <SectionProvider sections={sections}>
       <div className="lg:ml-72 xl:ml-80">
@@ -29,7 +29,7 @@ export function Layout({ children, sections = [] }) {
           </div>
         </motion.header>
         <div className="relative px-4 pt-14 sm:px-6 lg:px-8">
-          <main className="max-w-2xl py-16">
+          <main className={`${wide ? 'max-w-5xl' : 'max-w-2xl'} py-16`}>
             <Prose as="article">{children}</Prose>
           </main>
           <Footer />
