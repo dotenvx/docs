@@ -1,0 +1,20 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Ignore specific error codes.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Get', href: '/docs/cli/get' },
+  ]}
+/>
+
+# dotenvx get KEY --ignore
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx get HELLO --ignore=MISSING_ENV_FILE
+```

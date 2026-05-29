@@ -1,0 +1,22 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Return a colon formatted response.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Get', href: '/docs/cli/get' },
+  ]}
+/>
+
+# dotenvx get --format colon
+
+<GuideHeading lead={description} />
+
+```sh
+$ echo "HELLO=World" > .env
+dotenvx get --format colon
+HELLO: World
+```

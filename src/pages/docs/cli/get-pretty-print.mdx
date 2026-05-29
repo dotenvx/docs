@@ -1,0 +1,24 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Make JSON output more readable.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Get', href: '/docs/cli/get' },
+  ]}
+/>
+
+# dotenvx get --pretty-print
+
+<GuideHeading lead={description} />
+
+```sh
+$ echo "HELLO=World" > .env
+dotenvx get --pretty-print
+{
+  "HELLO": "World"
+}
+```
