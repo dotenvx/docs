@@ -1,0 +1,20 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Do not create missing .env files.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Set', href: '/docs/cli/set' },
+  ]}
+/>
+
+# dotenvx set KEY value --no-create
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx set HELLO World -f .env.production --no-create
+```

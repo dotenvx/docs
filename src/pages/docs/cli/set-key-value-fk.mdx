@@ -1,0 +1,21 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Specify path to .env.keys.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Set', href: '/docs/cli/set' },
+  ]}
+/>
+
+# dotenvx set KEY value -fk
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx set HELLO World -f apps/app1/.env -fk .env.keys
+◈ encrypted HELLO (apps/app1/.env)
+```
