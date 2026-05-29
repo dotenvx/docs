@@ -1,0 +1,25 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print all .env files in a tree structure.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Extensions', href: '/docs/cli/ext' },
+  ]}
+/>
+
+# dotenvx ext ls
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx ext ls
+├─ .env.production
+├─ .env
+└─ apps
+   └─ backend
+      └─ .env
+```

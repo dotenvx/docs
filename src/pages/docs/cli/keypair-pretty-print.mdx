@@ -1,0 +1,24 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Make JSON output more readable.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Keypair', href: '/docs/cli/keypair' },
+  ]}
+/>
+
+# dotenvx keypair --pretty-print
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx keypair --pretty-print
+{
+  "DOTENV_PUBLIC_KEY": "<publicKey>",
+  "DOTENV_PRIVATE_KEY": "<privateKey>"
+}
+```
