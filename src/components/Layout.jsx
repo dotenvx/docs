@@ -32,7 +32,7 @@ export function Layout({ children, sections = [], wide = false }) {
           <main className={`${wide ? 'max-w-5xl' : 'max-w-2xl'} py-16`}>
             <Prose as="article">{children}</Prose>
           </main>
-          <Footer />
+          <Footer wide={wide} />
         </div>
       </div>
     </SectionProvider>

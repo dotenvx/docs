@@ -2,21 +2,21 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Log into Dotenvx.'
+  'Work with armored keys.'
 
 <Breadcrumb
   items={[
     { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Login', href: '/docs/cli/login' },
+    { label: 'Armor', href: '/docs/cli/armor' },
   ]}
 />
 
-# Login
+# Armor
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx login
+$ dotenvx armor
 ```
 
-This hidden command proxies to `dotenvx vlt login`.
+This hidden command proxies to `dotenvx vlt armor`.

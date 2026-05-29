@@ -1,17 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-export const description =
-  'Turn off Dotenvx Vlt features.'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-     { label: 'Run', href: '/docs/cli/run' },
-  ]}
-/>
-# dotenvx run --vlt-off
+<HeadRedirect url="/docs/cli/run-no-vlt" />
 
-<p className="lead">{description}</p>
+# Redirecting
 
-```sh
-$ dotenvx run --vlt-off -- yourcommand
-```
+<a href="/docs/cli/run-no-vlt">Click here if you are not redirected.</a>

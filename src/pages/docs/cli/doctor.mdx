@@ -2,21 +2,25 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Log into Dotenvx.'
+  'Scan for dotenv loaders.'
 
 <Breadcrumb
   items={[
     { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Login', href: '/docs/cli/login' },
+    { label: 'Doctor', href: '/docs/cli/doctor' },
   ]}
 />
 
-# Login
+# Doctor
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx login
+$ dotenvx doctor
 ```
 
-This hidden command proxies to `dotenvx vlt login`.
+Scan the current directory for existing dotenv loaders.
+
+```sh
+$ dotenvx doctor apps/backend
+```

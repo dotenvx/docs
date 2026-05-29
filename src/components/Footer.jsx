@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Transition } from '@headlessui/react'
 
-import { Button } from '@/components/Button'
 import { navigation } from '@/components/Navigation'
 
 function CheckIcon(props) {
@@ -102,24 +101,21 @@ function Feedback() {
 
 function PageLink({ label, page, previous = false }) {
   return (
-    <>
-      <Button
-        href={page.href}
-        aria-label={`${label}: ${page.title}`}
-        variant="secondary"
-        arrow={previous ? 'left' : 'right'}
-      >
-        {label}
-      </Button>
-      <Link
-        href={page.href}
-        tabIndex={-1}
-        aria-hidden="true"
-        className="text-base font-semibold text-zinc-900 transition hover:text-zinc-600 dark:text-white dark:hover:text-zinc-300"
-      >
+    <Link
+      href={page.href}
+      aria-label={`${label}: ${page.title}`}
+      className={`group flex min-h-[6rem] flex-col justify-center rounded-2xl border border-zinc-900/10 px-6 py-4 no-underline transition hover:border-zinc-900/25 dark:border-white/10 dark:hover:border-white/25 ${previous ? 'items-start text-left' : 'items-end text-right'}`}
+    >
+      <span className="text-lg font-medium leading-7 text-zinc-900 dark:text-zinc-100">
         {page.title}
-      </Link>
-    </>
+      </span>
+      <span
+        className={`mt-2 flex items-center gap-2 text-base leading-6 text-zinc-500 transition group-hover:text-zinc-700 dark:text-zinc-400 dark:group-hover:text-zinc-200 ${previous ? '' : 'flex-row-reverse'}`}
+      >
+        <span aria-hidden="true">{previous ? '‹' : '›'}</span>
+        {label}
+      </span>
+    </Link>
   )
 }
 
@@ -142,14 +138,14 @@ function PageNavigation() {
   }
 
   return (
-    <div className="flex">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
       {previousPage && (
-        <div className="flex flex-col items-start gap-3">
+        <div>
           <PageLink label="Previous" page={previousPage} previous />
         </div>
       )}
       {nextPage && (
-        <div className="ml-auto flex flex-col items-end gap-3">
+        <div className={previousPage ? '' : 'sm:col-start-2'}>
           <PageLink label="Next" page={nextPage} />
         </div>
       )}
@@ -181,66 +177,35 @@ function GitHubIcon(props) {
   )
 }
 
-function YoutubeIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path fillRule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clipRule="evenodd" />
-    </svg>
-  )
-}
-
-function VSCodeIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z"></path>
-    </svg>
-  )
-}
-
-function SocialLink({ href, icon: Icon, children }) {
+function SocialLink({ href, icon: Icon, children, className = "h-5 w-5" }) {
   return (
     <Link href={href} className="group">
       <span className="sr-only">{children}</span>
-      <Icon className="h-5 w-5 fill-zinc-700 transition group-hover:fill-zinc-900 dark:group-hover:fill-zinc-500" />
+      <Icon className={`${className} fill-zinc-700 transition group-hover:fill-zinc-900 dark:group-hover:fill-zinc-500`} />
     </Link>
   )
 }
 
 function SmallPrint() {
   return (
-    <div className="flex flex-col items-center justify-between gap-5 border-t border-zinc-900/5 pt-8 dark:border-white/5 sm:flex-row">
-      <p className="text-xs text-zinc-600 dark:text-zinc-400">
-        &copy; Copyright {new Date().getFullYear()}. All rights reserved.
-      </p>
+    <div className="flex flex-col items-center justify-end gap-5 border-t border-zinc-900/5 pt-8 dark:border-white/5 sm:flex-row">
       <div className="flex gap-4">
-        <Link href="/llms.txt" className="text-xs text-zinc-500">
-          llms.txt
-        </Link>
-        <Link href="/llms-full.txt" className="text-xs text-zinc-500 mr-2">
-          llms-full.txt
-        </Link>
-        <SocialLink href="https://x.com/dotenvx" icon={XIcon}>
+        <SocialLink href="https://x.com/dotenvx" icon={XIcon} className="h-4 w-4">
           Follow us on X
         </SocialLink>
-        <SocialLink href="https://github.com/dotenvx/dotenvx" icon={GitHubIcon}>
+        <SocialLink href="https://github.com/dotenvx/dotenvx" icon={GitHubIcon} className="h-[18px] w-[18px]">
           Follow us on GitHub
-        </SocialLink>
-        <SocialLink href="https://youtube.com/@dotenvx" icon={YoutubeIcon}>
-          Follow us on YouTube
-        </SocialLink>
-        <SocialLink href="https://marketplace.visualstudio.com/items?itemName=dotenv.dotenv-vscode" icon={VSCodeIcon}>
-          Install VSCode extension
         </SocialLink>
       </div>
     </div>
   )
 }
 
-export function Footer() {
+export function Footer({ wide = false }) {
   let router = useRouter()
 
   return (
-    <footer className="mx-auto max-w-2xl space-y-10 pb-16 lg:max-w-5xl">
+    <footer className={`${wide ? 'max-w-5xl' : 'max-w-2xl'} space-y-10 pb-16`}>
       <Feedback key={router.pathname} />
       <PageNavigation />
       <SmallPrint />

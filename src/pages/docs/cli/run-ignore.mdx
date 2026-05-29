@@ -2,21 +2,19 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Log into Dotenvx.'
+  'Ignore specific error codes.'
 
 <Breadcrumb
   items={[
     { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Login', href: '/docs/cli/login' },
+    { label: 'Run', href: '/docs/cli/run' },
   ]}
 />
 
-# Login
+# dotenvx run --ignore
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx login
+$ dotenvx run --ignore=MISSING_ENV_FILE -- yourcommand
 ```
-
-This hidden command proxies to `dotenvx vlt login`.

@@ -197,16 +197,6 @@ export const defaultNavigation = [
     title: 'Documentation',
     links: [
       { title: 'Introduction', href: '/docs/introduction' },
-      {
-        title: 'Install',
-        href: '/docs/install',
-        links: [
-          { title: 'cURL', href: '/docs/install#curl' },
-          { title: 'NPM', href: '/docs/install#npm' },
-          { title: 'Windows', href: '/docs/install#windows' },
-          { title: 'Other', href: '/docs/install#other' },
-        ],
-      },
     ]
   },
   {
@@ -281,8 +271,8 @@ export const defaultNavigation = [
         ],
       },
       {
-        title: 'Misc',
-        href: '/docs/secrets-in-bash',
+        title: 'Other',
+        href: '/docs/secrets-in-other',
         links: [
           { title: 'Bash', href: '/docs/secrets-in-bash' },
           { title: 'Fish', href: '/docs/secrets-in-fish' },
@@ -301,6 +291,16 @@ export const defaultNavigation = [
   {
     title: 'Learn',
     links: [
+      {
+        title: 'Install',
+        href: '/docs/install',
+        links: [
+          { title: 'cURL', href: '/docs/install#curl' },
+          { title: 'NPM', href: '/docs/install#npm' },
+          { title: 'Windows', href: '/docs/install#windows' },
+          { title: 'Other', href: '/docs/install#other' },
+        ],
+      },
       { 
         title: 'Encrypting',
         href: '/docs/learn/encrypting/introduction',
@@ -366,7 +366,17 @@ export const cliNavigation = [
       { title: 'Decrypt', href: '/docs/cli/decrypt' },
       { title: 'Rotate', href: '/docs/cli/rotate' },
       { title: 'Keypair', href: '/docs/cli/keypair' },
-      { title: 'Login', href: '/docs/cli/login' },
+    ],
+  },
+  {
+    title: 'More',
+    links: [
+      { title: 'Ls', href: '/docs/cli/ls' },
+    ],
+  },
+  {
+    title: 'Advanced',
+    links: [
       {
         title: 'VLT ⛨',
         href: '/docs/cli/vlt/introduction',
@@ -376,13 +386,16 @@ export const cliNavigation = [
           { title: 'Settings', href: '/docs/cli/vlt/settings' },
         ],
       },
+      { title: 'Ext', href: '/docs/cli/ext' },
     ],
   },
   {
-    title: 'More',
+    title: 'Hidden',
     links: [
-      { title: 'Ls', href: '/docs/cli/ls' },
-      { title: 'Ext', href: '/docs/cli/ext' },
+      { title: 'Login', href: '/docs/cli/login' },
+      { title: 'Logout', href: '/docs/cli/logout' },
+      { title: 'Armor', href: '/docs/cli/armor' },
+      { title: 'Doctor', href: '/docs/cli/doctor' },
     ],
   }
 ]

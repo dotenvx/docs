@@ -13,8 +13,14 @@ function CliReferenceCard({ item }) {
     glyph = '⬖'
   } else if (item.href === '/docs/cli/get' || item.href === '/docs/cli/decrypt') {
     glyph = '⬗'
-  } else if (item.href === '/docs/cli/login') {
-    glyph = '◉'
+  } else if (item.href === '/docs/cli/login' || item.href === '/docs/cli/logout' || item.href === '/docs/cli/armor') {
+    glyph = '⛨'
+  } else if (item.href === '/docs/cli/doctor') {
+    glyph = '✚'
+  } else if (item.href === '/docs/cli/vlt/introduction') {
+    glyph = '⛨'
+  } else if (item.href === '/docs/cli/ext') {
+    glyph = '⊕'
   }
 
   return (
@@ -35,7 +41,7 @@ function CliReferenceCard({ item }) {
 }
 
 export function CliReferenceCards() {
-  let items = [
+  let commands = [
     { href: '/docs/cli/run', title: 'Run' },
     { href: '/docs/cli/get', title: 'Get' },
     { href: '/docs/cli/set', title: 'Set' },
@@ -43,12 +49,43 @@ export function CliReferenceCards() {
     { href: '/docs/cli/decrypt', title: 'Decrypt' },
     { href: '/docs/cli/rotate', title: 'Rotate' },
     { href: '/docs/cli/keypair', title: 'Keypair' },
-    { href: '/docs/cli/login', title: 'Login' },
   ]
 
   return (
     <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-3">
-      {items.map((item) => (
+      {commands.map((item) => (
+        <CliReferenceCard key={item.href} item={item} />
+      ))}
+    </div>
+  )
+}
+
+export function CliHiddenReferenceCards() {
+  let commands = [
+    { href: '/docs/cli/login', title: 'Login' },
+    { href: '/docs/cli/logout', title: 'Logout' },
+    { href: '/docs/cli/armor', title: 'Armor' },
+    { href: '/docs/cli/doctor', title: 'Doctor' },
+  ]
+
+  return (
+    <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-3">
+      {commands.map((item) => (
+        <CliReferenceCard key={item.href} item={item} />
+      ))}
+    </div>
+  )
+}
+
+export function CliAdvancedReferenceCards() {
+  let commands = [
+    { href: '/docs/cli/vlt/introduction', title: 'VLT ⛨' },
+    { href: '/docs/cli/ext', title: 'Ext' },
+  ]
+
+  return (
+    <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-3">
+      {commands.map((item) => (
         <CliReferenceCard key={item.href} item={item} />
       ))}
     </div>
