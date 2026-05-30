@@ -2,25 +2,21 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Log out of Dotenvx via the CLI.'
+  'Pretty print output.'
 
 <Breadcrumb
   items={[
     { label: 'CLI Reference', href: '/docs/cli' },
     { label: 'VLT ⛨', href: '/docs/cli/vlt' },
-    { label: 'Logout', href: '/docs/cli/vlt/logout' },
+    { label: 'Keypair', href: '/docs/cli/vlt/keypair' },
+    { label: 'pretty-print', href: '/docs/cli/vlt/keypair-pretty-print' },
   ]}
 />
 
-# VLT ⛨ Logout
+# VLT ⛨ Keypair --pretty-print
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx-vlt logout
-◌ logged out (username)
+$ dotenvx-vlt keypair --pretty-print
 ```
-
-## Advanced
-
-* [logout --hostname](/docs/cli/vlt/logout-hostname)

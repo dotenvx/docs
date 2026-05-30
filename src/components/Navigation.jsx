@@ -387,9 +387,33 @@ export const cliNavigation = [
               { title: 'Move', href: '/docs/cli/vlt/armor-move' },
             ],
           },
-          { title: 'Login', href: '/docs/cli/vlt/login' },
-          { title: 'Logout', href: '/docs/cli/vlt/logout' },
-          { title: 'Keypair', href: '/docs/cli/vlt/keypair' },
+          {
+            title: 'Login',
+            href: '/docs/cli/vlt/login',
+            links: [
+              { title: 'hostname', href: '/docs/cli/vlt/login-hostname' },
+            ],
+          },
+          {
+            title: 'Logout',
+            href: '/docs/cli/vlt/logout',
+            links: [
+              { title: 'hostname', href: '/docs/cli/vlt/logout-hostname' },
+            ],
+          },
+          {
+            title: 'Keypair',
+            href: '/docs/cli/vlt/keypair',
+            links: [
+              { title: 'publicKey', href: '/docs/cli/vlt/keypair-public-key' },
+              { title: 'hostname', href: '/docs/cli/vlt/keypair-hostname' },
+              { title: 'token', href: '/docs/cli/vlt/keypair-token' },
+              { title: 'team', href: '/docs/cli/vlt/keypair-team' },
+              { title: 'f', href: '/docs/cli/vlt/keypair-f' },
+              { title: 'no-spinner', href: '/docs/cli/vlt/keypair-no-spinner' },
+              { title: 'pretty-print', href: '/docs/cli/vlt/keypair-pretty-print' },
+            ],
+          },
           { title: 'Settings', href: '/docs/cli/vlt/settings' },
         ],
       },

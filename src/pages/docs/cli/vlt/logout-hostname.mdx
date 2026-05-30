@@ -2,25 +2,21 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Log out of Dotenvx via the CLI.'
+  'Set hostname for logout.'
 
 <Breadcrumb
   items={[
     { label: 'CLI Reference', href: '/docs/cli' },
     { label: 'VLT ⛨', href: '/docs/cli/vlt' },
     { label: 'Logout', href: '/docs/cli/vlt/logout' },
+    { label: 'hostname', href: '/docs/cli/vlt/logout-hostname' },
   ]}
 />
 
-# VLT ⛨ Logout
+# VLT ⛨ Logout --hostname
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx-vlt logout
-◌ logged out (username)
+$ dotenvx-vlt logout --hostname https://vlt.dotenvx.com
 ```
-
-## Advanced
-
-* [logout --hostname](/docs/cli/vlt/logout-hostname)

@@ -2,25 +2,21 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Log out of Dotenvx via the CLI.'
+  'Set path to your env file.'
 
 <Breadcrumb
   items={[
     { label: 'CLI Reference', href: '/docs/cli' },
     { label: 'VLT ⛨', href: '/docs/cli/vlt' },
-    { label: 'Logout', href: '/docs/cli/vlt/logout' },
+    { label: 'Keypair', href: '/docs/cli/vlt/keypair' },
+    { label: 'f', href: '/docs/cli/vlt/keypair-f' },
   ]}
 />
 
-# VLT ⛨ Logout
+# VLT ⛨ Keypair -f
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx-vlt logout
-◌ logged out (username)
+$ dotenvx-vlt keypair -f .env.production
 ```
-
-## Advanced
-
-* [logout --hostname](/docs/cli/vlt/logout-hostname)
