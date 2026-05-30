@@ -451,7 +451,7 @@ export const sdkNavigation = [
 
 export const navigation = defaultNavigation
 
-function getNavigationForPath(pathname) {
+export function getNavigationForPath(pathname) {
   if (pathname.startsWith('/docs/cli')) {
     return cliNavigation
   }
