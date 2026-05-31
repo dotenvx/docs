@@ -1,0 +1,22 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Set path to your env file.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Armor', href: '/docs/cli/armor' },
+    { label: 'Keypair', href: '/docs/cli/armor/keypair' },
+    { label: 'f', href: '/docs/cli/armor/keypair-f' },
+  ]}
+/>
+
+# Armor Keypair -f
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-armor keypair -f .env.production
+```

@@ -1,0 +1,20 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Disable Dotenvx Armor features.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Run', href: '/docs/cli/run' },
+  ]}
+/>
+
+# dotenvx run --no-armor
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx run --no-armor -- yourcommand
+```

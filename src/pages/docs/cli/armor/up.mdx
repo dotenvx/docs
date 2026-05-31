@@ -1,0 +1,33 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Armor private key.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Armor', href: '/docs/cli/armor' },
+    { label: 'up', href: '/docs/cli/armor/up' },
+  ]}
+/>
+
+# Armor Up
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-armor up
+```
+
+Use a specific env file.
+
+```sh
+$ dotenvx-armor up -f .env.production
+```
+
+Use a token or team.
+
+```sh
+$ dotenvx-armor up --token token --team team
+```

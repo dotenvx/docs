@@ -1,0 +1,26 @@
+import InstallArmorCodeGroup from '@/pages/partials/installArmorCodeGroup.mdx'
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+import { HeroPattern } from '@/components/HeroPattern'
+import { ArmorCliReferenceCards } from '@/components/ArmorCliReferenceCards'
+
+export const description = 'Dotenvx Armor keeps your private decryption keys armored off device.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Armor', href: '/docs/cli/armor' },
+  ]}
+/>
+
+# Introduction
+
+<GuideHeading lead={description} />
+
+## Installation
+
+<InstallArmorCodeGroup/>
+
+## Commands
+
+<ArmorCliReferenceCards />

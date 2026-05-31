@@ -1,0 +1,33 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Push armored key from .env.keys.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Armor', href: '/docs/cli/armor' },
+    { label: 'push', href: '/docs/cli/armor/push' },
+  ]}
+/>
+
+# Armor Push
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-armor push
+```
+
+Use a specific env file.
+
+```sh
+$ dotenvx-armor push -f .env.production
+```
+
+Use a token or team.
+
+```sh
+$ dotenvx-armor push --token token --team team
+```

@@ -2,9 +2,9 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 import { HeroPattern } from '@/components/HeroPattern'
 
-import InstallWithVltCurlCodeGroup from '@/pages/partials/installWithVltCurlCodeGroup.mdx'
-import InstallWithVltNpmCodeGroup from '@/pages/partials/installWithVltNpmCodeGroup.mdx'
-import InstallWithVltWingetCodeGroup from '@/pages/partials/installWithVltWingetCodeGroup.mdx'
+import InstallWithArmorCurlCodeGroup from '@/pages/partials/installWithArmorCurlCodeGroup.mdx'
+import InstallWithArmorNpmCodeGroup from '@/pages/partials/installWithArmorNpmCodeGroup.mdx'
+import InstallWithArmorWingetCodeGroup from '@/pages/partials/installWithArmorWingetCodeGroup.mdx'
 
 export const description = 'Install dotenvx.'
 
@@ -21,15 +21,15 @@ export const description = 'Install dotenvx.'
 
 ## cURL {{ id: 'curl' }}
 
-<InstallWithVltCurlCodeGroup/>
+<InstallWithArmorCurlCodeGroup/>
 
-[install.sh](https://dotenvx.sh/install.sh) • [vlt/install.sh](https://dotenvx.sh/vlt/install.sh)
+[install.sh](https://dotenvx.sh/install.sh) • [armor/install.sh](https://dotenvx.sh/armor/install.sh)
 
 ## NPM
 
 `dotenvx` is made with javascript – so use it just like `dotenv` – as a drop-in replacement.
 
-<InstallWithVltNpmCodeGroup/>
+<InstallWithArmorNpmCodeGroup/>
 
 ```js
 // index.js
@@ -43,7 +43,7 @@ console.log(`Hello ${process.env.HELLO}`)
 
 ## Windows
 
-<InstallWithVltWingetCodeGroup/>
+<InstallWithArmorWingetCodeGroup/>
 
 [releases](https://github.com/dotenvx/dotenvx/release) • [amd64](https://github.com/dotenvx/releases/raw/main/latest/dotenvx-windows-amd64.zip) • [x86_64](https://github.com/dotenvx/releases/raw/main/latest/dotenvx-windows-x86_64.zip) • unzip to extract dotenvx.exe
 

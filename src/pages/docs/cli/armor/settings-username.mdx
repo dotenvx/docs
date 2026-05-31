@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print your username.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Armor', href: '/docs/cli/armor' },
+    { label: 'Settings', href: '/docs/cli/armor/settings' },
+    { label: 'username', href: '/docs/cli/armor/settings-username' },
+  ]}
+/>
+
+# Armor Settings username
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-armor settings username
+username
+```

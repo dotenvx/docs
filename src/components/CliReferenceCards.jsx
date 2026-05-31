@@ -21,7 +21,7 @@ function CliReferenceCard({ item }) {
     glyph = '⛨'
   } else if (item.href === '/docs/cli/doctor') {
     glyph = '✚'
-  } else if (item.href === '/docs/cli/vlt/introduction') {
+  } else if (item.href === '/docs/cli/armor/introduction') {
     glyph = '⛨'
   } else if (item.href === '/docs/cli/ext') {
     glyph = '⊕'
@@ -66,7 +66,6 @@ export function CliReferenceCards() {
 
 export function CliHiddenReferenceCards() {
   let commands = [
-    { href: '/docs/cli/armor', title: 'Armor' },
     { href: '/docs/cli/doctor', title: 'Doctor' },
   ]
 
@@ -81,7 +80,7 @@ export function CliHiddenReferenceCards() {
 
 export function CliAdvancedReferenceCards() {
   let commands = [
-    { href: '/docs/cli/vlt/introduction', title: 'VLT ⛨' },
+    { href: '/docs/cli/armor/introduction', title: 'Armor ⛨' },
     { href: '/docs/cli/ext', title: 'Ext' },
   ]
 

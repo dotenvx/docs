@@ -1,0 +1,47 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'List available settings commands'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Armor', href: '/docs/cli/armor' },
+    { label: 'Settings', href: '/docs/cli/armor/settings' },
+  ]}
+/>
+
+# Armor Settings
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-armor settings
+Usage: dotenvx-armor settings [options] [command]
+
+⚙️  settings
+
+Options:
+  -h, --help        display help for command
+
+Commands:
+  username          print your username
+  token [options]   print your access token (--unmask)
+  device [options]  print your device pubkey (--unmask)
+  hostname          print hostname
+  path              print path to settings file
+  on                turn armor on
+  help [command]    display help for command
+```
+
+## Commands
+
+* [settings username](/docs/cli/armor/settings-username)
+* [settings token](/docs/cli/armor/settings-token)
+* [settings token --unmask](/docs/cli/armor/settings-token-unmask)
+* [settings device](/docs/cli/armor/settings-device)
+* [settings device --unmask](/docs/cli/armor/settings-device-unmask)
+* [settings hostname](/docs/cli/armor/settings-hostname)
+* [settings path](/docs/cli/armor/settings-path)
+* [settings on](/docs/cli/armor/settings-on)

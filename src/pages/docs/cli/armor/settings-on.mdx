@@ -1,0 +1,22 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Turn Armor on.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Armor', href: '/docs/cli/armor' },
+    { label: 'Settings', href: '/docs/cli/armor/settings' },
+    { label: 'on', href: '/docs/cli/armor/settings-on' },
+  ]}
+/>
+
+# Armor Settings on
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-armor settings on
+```

@@ -282,10 +282,10 @@ export const defaultNavigation = [
     ]
   },
   {
-    title: 'VLT ⛨',
+    title: 'Armor ⛨',
     links: [
-      { title: 'Basics', href: '/docs/vlt/quickstart' },
-      { title: 'Advanced', href: '/docs/vlt/advanced' },
+      { title: 'Basics', href: '/docs/armor/quickstart' },
+      { title: 'Advanced', href: '/docs/armor/advanced' },
     ]
   },
   {
@@ -372,49 +372,42 @@ export const cliNavigation = [
     title: 'Advanced',
     links: [
       {
-        title: 'VLT ⛨',
-        href: '/docs/cli/vlt/introduction',
+        title: 'Armor ⛨',
+        href: '/docs/cli/armor/introduction',
         links: [
-          {
-            title: 'Armor',
-            href: '/docs/cli/vlt/armor',
-            links: [
-              { title: 'Up', href: '/docs/cli/vlt/armor-up' },
-              { title: 'Down', href: '/docs/cli/vlt/armor-down' },
-              { title: 'Push', href: '/docs/cli/vlt/armor-push' },
-              { title: 'Pull', href: '/docs/cli/vlt/armor-pull' },
-              { title: 'Rotate', href: '/docs/cli/vlt/armor-rotate' },
-              { title: 'Move', href: '/docs/cli/vlt/armor-move' },
-            ],
-          },
+          { title: 'Up', href: '/docs/cli/armor/up' },
+          { title: 'Down', href: '/docs/cli/armor/down' },
+          { title: 'Push', href: '/docs/cli/armor/push' },
+          { title: 'Pull', href: '/docs/cli/armor/pull' },
+          { title: 'Move', href: '/docs/cli/armor/move' },
           {
             title: 'Login',
-            href: '/docs/cli/vlt/login',
+            href: '/docs/cli/armor/login',
             links: [
-              { title: 'hostname', href: '/docs/cli/vlt/login-hostname' },
+              { title: 'hostname', href: '/docs/cli/armor/login-hostname' },
             ],
           },
           {
             title: 'Logout',
-            href: '/docs/cli/vlt/logout',
+            href: '/docs/cli/armor/logout',
             links: [
-              { title: 'hostname', href: '/docs/cli/vlt/logout-hostname' },
+              { title: 'hostname', href: '/docs/cli/armor/logout-hostname' },
             ],
           },
           {
             title: 'Keypair',
-            href: '/docs/cli/vlt/keypair',
+            href: '/docs/cli/armor/keypair',
             links: [
-              { title: 'publicKey', href: '/docs/cli/vlt/keypair-public-key' },
-              { title: 'hostname', href: '/docs/cli/vlt/keypair-hostname' },
-              { title: 'token', href: '/docs/cli/vlt/keypair-token' },
-              { title: 'team', href: '/docs/cli/vlt/keypair-team' },
-              { title: 'f', href: '/docs/cli/vlt/keypair-f' },
-              { title: 'no-spinner', href: '/docs/cli/vlt/keypair-no-spinner' },
-              { title: 'pretty-print', href: '/docs/cli/vlt/keypair-pretty-print' },
+              { title: 'publicKey', href: '/docs/cli/armor/keypair-public-key' },
+              { title: 'hostname', href: '/docs/cli/armor/keypair-hostname' },
+              { title: 'token', href: '/docs/cli/armor/keypair-token' },
+              { title: 'team', href: '/docs/cli/armor/keypair-team' },
+              { title: 'f', href: '/docs/cli/armor/keypair-f' },
+              { title: 'no-spinner', href: '/docs/cli/armor/keypair-no-spinner' },
+              { title: 'pretty-print', href: '/docs/cli/armor/keypair-pretty-print' },
             ],
           },
-          { title: 'Settings', href: '/docs/cli/vlt/settings' },
+          { title: 'Settings', href: '/docs/cli/armor/settings' },
         ],
       },
       { title: 'Ext', href: '/docs/cli/ext' },
@@ -423,7 +416,6 @@ export const cliNavigation = [
   {
     title: 'Hidden',
     links: [
-      { title: 'Armor', href: '/docs/cli/armor' },
       { title: 'Doctor', href: '/docs/cli/doctor' },
     ],
   }

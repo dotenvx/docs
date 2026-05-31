@@ -1,0 +1,21 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Disable Dotenvx Armor features.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Keypair', href: '/docs/cli/keypair' },
+  ]}
+/>
+
+# dotenvx keypair --no-armor
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx keypair --no-armor
+{"DOTENV_PUBLIC_KEY":"<publicKey>","DOTENV_PRIVATE_KEY":"<privateKey>"}
+```

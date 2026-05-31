@@ -1,6 +1,6 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
-import EncryptWithVltCodeGroup from '@/pages/partials/encryptWithVltCodeGroup.mdx'
+import EncryptWithArmorCodeGroup from '@/pages/partials/encryptWithArmorCodeGroup.mdx'
 import { ScreenshotBrowser } from '@/components/ScreenshotBrowser'
 
 export const description =
@@ -21,12 +21,12 @@ export const description =
 
 Run `dotenvx encrypt` to generate a private key.
 
-<EncryptWithVltCodeGroup/>
+<EncryptWithArmorCodeGroup/>
 
 The private key is written:
 
 * **Traditional:** written locally to a `.env.keys` file.
-* **With VLT ⛨:** written remotely to your account – as an armored key.
+* **With Armor ⛨:** written remotely to your account – as an armored key.
 
 <RenderableTabs variant="code">
   <RenderableTab title="Dotenvx">
@@ -35,7 +35,7 @@ The private key is written:
     DOTENV_PRIVATE_KEY=dcd72b6a81ba7ec9af83d63720189c353b02bdef831fbe7a6712632204056a36
     ```
   </RenderableTab>
-  <RenderableTab title="with VLT ⛨">
+  <RenderableTab title="with Armor ⛨">
     <img
       src="https://github.com/user-attachments/assets/3e8943da-9358-4e6d-89e4-8c5d604c5095"
       alt="Ops UI preview"
@@ -67,6 +67,6 @@ $ dotenvx keypair --pp
 
 ### UI
 
-VLT ⛨ users can additionally view all their private keys in the [UI](https://vlt.dotenvx.com).
+Armor ⛨ users can additionally view all their private keys in the [UI](https://armor.dotenvx.com).
 
-<ScreenshotBrowser url='https://github.com/user-attachments/assets/3e8943da-9358-4e6d-89e4-8c5d604c5095' www='vlt.dotenvx.com' />
+<ScreenshotBrowser url='https://github.com/user-attachments/assets/3e8943da-9358-4e6d-89e4-8c5d604c5095' www='armor.dotenvx.com' />

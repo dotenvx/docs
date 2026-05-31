@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print your access token.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Armor', href: '/docs/cli/armor' },
+    { label: 'Settings', href: '/docs/cli/armor/settings' },
+    { label: 'token', href: '/docs/cli/armor/settings-token' },
+  ]}
+/>
+
+# Armor Settings token
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx-armor settings token
+dxo_123abcd*****************************
+```
