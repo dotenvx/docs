@@ -1,0 +1,34 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Understand the encrypted .env file format.'
+
+<Breadcrumb
+  items={[
+    { label: 'Documentation', href: '/docs' },
+    { label: 'Learn', href: '/docs/learn' },
+    { label: 'Encrypting', href: '/docs/learn/encrypting/introduction' },
+    { label: 'Encrypted Files' },
+  ]}
+/>
+
+# Encrypted Files
+<GuideHeading lead={description} />
+
+Once encrypted, the `.env` file is safe, and recommended, to commit to code.
+
+```ini
+# .env
+DOTENV_PUBLIC_KEY="03954ac90bc5a05fa3e9c5e6c7c6464335a3f91770424b5769f5501478b27d4906"
+HELLO="encrypted:BEJXNoNDHv/2zCy9vppyfRw+AtSzWsT6uLTOYcL+tGefTasmOQX7jr42EQBx3+XwHCQxcpmWxkU7R9mPYfjbjNgFiIOpkGox66gGG6LOFF9tzHjy8nDhXuF8JcnFSBHVRNS3IekOIPA="
+```
+
+## Format
+
+* `KEY` names are preserved.
+* `encrypted:` values are ciphertext.
+* Plaintext values can be safely mixed in when a value is not sensitive.
+* `DOTENV_PUBLIC_KEY` holds the public key used to encrypt values.
+
+The public key can live in source control because it can only encrypt values. It cannot decrypt them.

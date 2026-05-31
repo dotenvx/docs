@@ -1,0 +1,37 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Learn how armored keys keep private decryption keys off device.'
+
+<Breadcrumb
+  items={[
+    { label: 'Documentation', href: '/docs' },
+    { label: 'Learn', href: '/docs/learn' },
+    { label: 'Armoring' },
+  ]}
+/>
+
+# Armoring
+<GuideHeading lead={description} />
+
+Armoring stores private decryption keys remotely as armored keys instead of writing them locally to `.env.keys`.
+
+Use Armor to move an existing private key off device.
+
+```sh
+$ dotenvx-armor up
+```
+
+Pull an armored key back into `.env.keys` when a local workflow needs it.
+
+```sh
+$ dotenvx-armor down
+```
+
+Push and pull are also available for syncing armored keys with `.env.keys`.
+
+```sh
+$ dotenvx-armor push
+$ dotenvx-armor pull
+```

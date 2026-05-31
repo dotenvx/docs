@@ -1,0 +1,42 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Understand private decryption keys and where they should live.'
+
+<Breadcrumb
+  items={[
+    { label: 'Documentation', href: '/docs' },
+    { label: 'Learn', href: '/docs/learn' },
+    { label: 'Encrypting', href: '/docs/learn/encrypting/introduction' },
+    { label: 'Private Keys' },
+  ]}
+/>
+
+# Private Keys
+<GuideHeading lead={description} />
+
+When `dotenvx encrypt` creates encrypted values, it also creates a private decryption key.
+
+By default, the private key is written to `.env.keys`.
+
+```ini
+# .env.keys - DO NOT commit to source control
+DOTENV_PRIVATE_KEY=dcd72b6a81ba7ec9af83d63720189c353b02bdef831fbe7a6712632204056a36
+```
+
+## Source Control
+
+Commit encrypted `.env` files. Do not commit `.env.keys`.
+
+The encrypted file is designed to move through git. The private key is the sensitive material that decrypts it.
+
+## Armor
+
+With Armor, the private key is stored remotely as an armored key instead of locally in `.env.keys`.
+
+```sh
+$ dotenvx-armor up
+```
+
+Use [Armoring](/docs/learn/armoring/introduction) when you want private keys kept off device.

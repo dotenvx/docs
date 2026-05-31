@@ -282,37 +282,34 @@ export const defaultNavigation = [
     ]
   },
   {
-    title: 'Armor ⛨',
-    links: [
-      { title: 'Basics', href: '/docs/armor/quickstart' },
-      { title: 'Advanced', href: '/docs/armor/advanced' },
-    ]
-  },
-  {
     title: 'Learn',
     links: [
       {
-        title: 'Install',
-        href: '/docs/install',
+        title: 'Installing',
+        href: '/docs/learn/installing',
         links: [
-          { title: 'cURL', href: '/docs/install#curl' },
-          { title: 'NPM', href: '/docs/install#npm' },
-          { title: 'Windows', href: '/docs/install#windows' },
-          { title: 'Other', href: '/docs/install#other' },
+          { title: 'cURL', href: '/docs/learn/installing#curl' },
+          { title: 'NPM', href: '/docs/learn/installing#npm' },
+          { title: 'Windows', href: '/docs/learn/installing#windows' },
+          { title: 'Other', href: '/docs/learn/installing#other' },
         ],
       },
-      { 
+      {
         title: 'Encrypting',
         href: '/docs/learn/encrypting/introduction',
         links: [
           { title: 'Introduction', href: '/docs/learn/encrypting/introduction' },
+          { title: 'Encrypted Files', href: '/docs/learn/encrypting/encrypted-files' },
+          { title: 'Private Keys', href: '/docs/learn/encrypting/private-keys' },
+          { title: 'Runtime Decryption', href: '/docs/learn/encrypting/runtime-decryption' },
+          { title: 'Multiple Environments', href: '/docs/learn/encrypting/multiple-environments' },
         ]
       },
-      { 
-        title: 'Private Keys',
-        href: '/docs/learn/private-keys/introduction',
+      {
+        title: 'Armoring',
+        href: '/docs/learn/armoring/introduction',
         links: [
-          { title: 'Introduction', href: '/docs/learn/private-keys/introduction' },
+          { title: 'Introduction', href: '/docs/learn/armoring/introduction' },
         ]
       },
       {
@@ -345,7 +342,7 @@ export const defaultNavigation = [
       { title: 'Statistics', href: '/docs/stats' },
     ]
   },
-  
+
 ]
 
 export const cliNavigation = [

@@ -1,0 +1,34 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Decrypt encrypted values just in time at runtime.'
+
+<Breadcrumb
+  items={[
+    { label: 'Documentation', href: '/docs' },
+    { label: 'Learn', href: '/docs/learn' },
+    { label: 'Encrypting', href: '/docs/learn/encrypting/introduction' },
+    { label: 'Runtime Decryption' },
+  ]}
+/>
+
+# Runtime Decryption
+<GuideHeading lead={description} />
+
+Use `dotenvx run` to inject encrypted and plaintext values into a process just in time.
+
+This command reads the private key, decrypts each encrypted value, and injects the result into `process.env`.
+
+```js
+// index.js
+console.log(`Hello ${process.env.HELLO}`)
+```
+
+<CodeGroup>
+<code code="dotenvx run -- node index.js">{`$ dotenvx run -- node index.js
+`}<span className="logger-success">⟐ injected env (2) from .env</span>
+Hello Dotenvx</code>
+</CodeGroup>
+
+The application receives normal environment variables. It does not need to know whether a value came from plaintext or ciphertext.

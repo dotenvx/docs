@@ -1,0 +1,39 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Use encrypted env files across multiple environments.'
+
+<Breadcrumb
+  items={[
+    { label: 'Documentation', href: '/docs' },
+    { label: 'Learn', href: '/docs/learn' },
+    { label: 'Encrypting', href: '/docs/learn/encrypting/introduction' },
+    { label: 'Multiple Environments' },
+  ]}
+/>
+
+# Multiple Environments
+<GuideHeading lead={description} />
+
+Use the same encryption workflow for each environment. Create a `.env.ENVIRONMENT` file, encrypt it, and decrypt it at runtime with `-f`.
+
+```ini
+# .env.production
+HELLO="Production"
+```
+
+<CodeGroup>
+<code code="dotenvx encrypt -f .env.production">{`$ dotenvx encrypt -f .env.production
+`}<span className="logger-success">◈ encrypted (.env.production)</span></code>
+</CodeGroup>
+
+Run with the same file.
+
+<CodeGroup>
+<code code="dotenvx run -f .env.production -- node index.js">{`$ dotenvx run -f .env.production -- node index.js
+`}<span className="logger-success">⟐ injected env (2) from .env.production</span>
+Hello Production</code>
+</CodeGroup>
+
+This keeps each environment's values separate while preserving the same encrypted-file workflow.

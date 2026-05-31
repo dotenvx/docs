@@ -26,14 +26,14 @@ export function ExploreCards ({
       description: 'Learn how encrypted .env files work.'
     },
     {
-      href: '/docs/learn/encrypting/introduction#multiple-environments',
+      href: '/docs/learn/encrypting/multiple-environments',
       title: 'Environments',
       description: 'Use encrypted env files across environments.'
     },
     {
-      href: '/docs/learn/private-keys/introduction',
-      title: 'Private Keys',
-      description: 'Learn how to manage private keys.'
+      href: '/docs/learn/armoring/introduction',
+      title: 'Armoring',
+      description: 'Keep private keys off device with armored keys.'
     }
   ]
 }) {
