@@ -1,4 +1,4 @@
-import { forwardRef, Fragment, useState } from 'react'
+import { forwardRef, Fragment, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Transition } from '@headlessui/react'
@@ -124,22 +124,60 @@ function PageNavigation() {
   let navigation = getNavigationForPath(router.pathname)
   let flattenLinks = (links) =>
     links.flatMap((link) => [
-      link,
+      ...(link.footer === false ? [] : [link]),
       ...flattenLinks(link.links ?? []),
     ])
-  let allPages = navigation.flatMap((group) => flattenLinks(group.links ?? []))
+  let uniquePages = (pages) => {
+    let seen = new Set()
+    return pages.filter((page) => {
+      if (seen.has(page.href)) {
+        return false
+      }
+
+      seen.add(page.href)
+      return true
+    })
+  }
+  let allPages = uniquePages(navigation.flatMap((group) => flattenLinks(group.links ?? [])))
   let currentPageIndex = allPages.findIndex(
     (page) => page.href === router.pathname
   )
 
-  if (currentPageIndex === -1) {
-    return null
-  }
+  let previousPage = currentPageIndex === -1 ? undefined : allPages[currentPageIndex - 1]
+  let nextPage = currentPageIndex === -1 ? undefined : allPages[currentPageIndex + 1]
 
-  let previousPage = allPages[currentPageIndex - 1]
-  let nextPage = allPages[currentPageIndex + 1]
+  useEffect(() => {
+    let handleKeyDown = (event) => {
+      if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) {
+        return
+      }
 
-  if (!previousPage && !nextPage) {
+      let target = event.target
+      let tagName = target?.tagName
+
+      if (
+        target?.isContentEditable ||
+        tagName === 'INPUT' ||
+        tagName === 'TEXTAREA' ||
+        tagName === 'SELECT'
+      ) {
+        return
+      }
+
+      if (event.key === 'ArrowLeft' && previousPage) {
+        event.preventDefault()
+        router.push(previousPage.href)
+      } else if (event.key === 'ArrowRight' && nextPage) {
+        event.preventDefault()
+        router.push(nextPage.href)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [nextPage, previousPage, router])
+
+  if (currentPageIndex === -1 || (!previousPage && !nextPage)) {
     return null
   }
 

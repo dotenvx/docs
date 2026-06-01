@@ -273,6 +273,7 @@ export const defaultNavigation = [
       {
         title: 'Other',
         href: '/docs/secrets-in-other',
+        footer: false,
         links: [
           { title: 'Bash', href: '/docs/secrets-in-bash' },
           { title: 'Fish', href: '/docs/secrets-in-fish' },
@@ -312,6 +313,15 @@ export const defaultNavigation = [
           { title: 'Introduction', href: '/docs/learn/armoring/introduction' },
         ]
       },
+    ],
+  },
+  {
+    title: 'Resources',
+
+    links: [
+      { title: '.env', href: '/docs/env-file' },
+      { title: '.env.keys', href: '/docs/env-keys-file' },
+      { title: 'Statistics', href: '/docs/stats' },
       {
         title: 'Guides',
         href: '/docs/guides',
@@ -328,18 +338,8 @@ export const defaultNavigation = [
           { title: 'Render', href: '/docs/platforms/render' },
           { title: 'Railway', href: '/docs/platforms/railway' },
           { title: 'Vercel', href: '/docs/platforms/vercel' },
-          { title: 'More', href: '/docs/guides' },
         ],
       },
-    ],
-  },
-  {
-    title: 'Resources',
-
-    links: [
-      { title: '.env', href: '/docs/env-file' },
-      { title: '.env.keys', href: '/docs/env-keys-file' },
-      { title: 'Statistics', href: '/docs/stats' },
     ]
   },
 
