@@ -366,8 +366,10 @@ export const cliNavigation = [
     ],
   },
   {
-    title: 'Advanced',
+    title: 'Professional Security',
     links: [
+      { title: 'Login', href: '/docs/cli/login' },
+      { title: 'Logout', href: '/docs/cli/logout' },
       {
         title: 'Armor ⛨',
         href: '/docs/cli/armor/introduction',
@@ -377,16 +379,9 @@ export const cliNavigation = [
           { title: 'Push', href: '/docs/cli/armor/push' },
           { title: 'Pull', href: '/docs/cli/armor/pull' },
           { title: 'Move', href: '/docs/cli/armor/move' },
-          { title: 'Settings', href: '/docs/cli/armor/settings' },
         ],
       },
       { title: 'Ext', href: '/docs/cli/ext' },
-    ],
-  },
-  {
-    title: 'Hidden',
-    links: [
-      { title: 'Doctor', href: '/docs/cli/doctor' },
     ],
   }
 ]

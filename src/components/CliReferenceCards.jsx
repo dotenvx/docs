@@ -19,8 +19,6 @@ function CliReferenceCard({ item }) {
     glyph = '◌'
   } else if (item.href === '/docs/cli/armor') {
     glyph = '⛨'
-  } else if (item.href === '/docs/cli/doctor') {
-    glyph = '✚'
   } else if (item.href === '/docs/cli/armor/introduction') {
     glyph = '⛨'
   } else if (item.href === '/docs/cli/ext') {
@@ -64,22 +62,10 @@ export function CliReferenceCards() {
   )
 }
 
-export function CliHiddenReferenceCards() {
-  let commands = [
-    { href: '/docs/cli/doctor', title: 'Doctor' },
-  ]
-
-  return (
-    <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-3">
-      {commands.map((item) => (
-        <CliReferenceCard key={item.href} item={item} />
-      ))}
-    </div>
-  )
-}
-
 export function CliAdvancedReferenceCards() {
   let commands = [
+    { href: '/docs/cli/login', title: 'Login' },
+    { href: '/docs/cli/logout', title: 'Logout' },
     { href: '/docs/cli/armor/introduction', title: 'Armor ⛨' },
     { href: '/docs/cli/ext', title: 'Ext' },
   ]
