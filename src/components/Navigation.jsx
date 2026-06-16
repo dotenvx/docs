@@ -377,33 +377,6 @@ export const cliNavigation = [
           { title: 'Push', href: '/docs/cli/armor/push' },
           { title: 'Pull', href: '/docs/cli/armor/pull' },
           { title: 'Move', href: '/docs/cli/armor/move' },
-          {
-            title: 'Login',
-            href: '/docs/cli/armor/login',
-            links: [
-              { title: 'hostname', href: '/docs/cli/armor/login-hostname' },
-            ],
-          },
-          {
-            title: 'Logout',
-            href: '/docs/cli/armor/logout',
-            links: [
-              { title: 'hostname', href: '/docs/cli/armor/logout-hostname' },
-            ],
-          },
-          {
-            title: 'Keypair',
-            href: '/docs/cli/armor/keypair',
-            links: [
-              { title: 'publicKey', href: '/docs/cli/armor/keypair-public-key' },
-              { title: 'hostname', href: '/docs/cli/armor/keypair-hostname' },
-              { title: 'token', href: '/docs/cli/armor/keypair-token' },
-              { title: 'team', href: '/docs/cli/armor/keypair-team' },
-              { title: 'f', href: '/docs/cli/armor/keypair-f' },
-              { title: 'no-spinner', href: '/docs/cli/armor/keypair-no-spinner' },
-              { title: 'pretty-print', href: '/docs/cli/armor/keypair-pretty-print' },
-            ],
-          },
           { title: 'Settings', href: '/docs/cli/armor/settings' },
         ],
       },
