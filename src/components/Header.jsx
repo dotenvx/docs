@@ -4,8 +4,8 @@ import clsx from 'clsx'
 import { Popover, Transition } from '@headlessui/react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
-import { Button } from '@/components/Button'
 import { Logo } from '@/components/Logo'
+import { GitHubIcon } from '@/components/icons/GitHubIcon'
 import {
   MobileNavigation,
   useIsInsideMobileNavigation,
@@ -124,12 +124,16 @@ export const Header = forwardRef(function Header({ className }, ref) {
         >
           Log In
         </Link>
-        <Link
-          href="/docs/secrets-with-cli"
-          className="hidden md:inline-flex items-center justify-center rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-1.5 font-extrabold tracking-tight text-white dark:text-white no-underline hover:no-underline hover:text-zinc-950 dark:hover:text-zinc-950 transition-all duration-200 hover:bg-zinc-100 hover:shadow-[0_0_24px_rgba(236,213,63,0.18)] text-xs md:text-sm whitespace-nowrap"
+        <a
+          href="https://github.com/dotenvx/dotenvx"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub repository"
+          className="hidden md:inline-flex h-11 w-11 items-center justify-center text-zinc-500 dark:text-zinc-300/90 no-underline hover:no-underline hover:text-zinc-700 dark:hover:text-zinc-100 transition-colors duration-200"
+          data-umami-event="GitHub repository link"
         >
-          Get Started
-        </Link>
+          <GitHubIcon className="h-5 w-5" />
+        </a>
       </div>
     </motion.div>
   )
