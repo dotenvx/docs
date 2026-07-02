@@ -21,4 +21,11 @@ dotenvx run -f .env.production --quiet -- node index.js
 Hello production
 ```
 
+You can also set `DOTENV_CONFIG_QUIET=true`.
+
+```sh
+DOTENV_CONFIG_QUIET=true dotenvx run -f .env.production -- node index.js
+Hello production
+```
+
 [log levels](https://github.com/winstonjs/winston?tab=readme-ov-file#logging)

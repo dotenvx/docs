@@ -23,3 +23,11 @@ $ node index.js
 Error: [MISSING_ENV_FILE] missing .env.missing file (/path/to/.env.missing)
 Hello World
 ```
+
+You can also set `DOTENV_CONFIG_QUIET=true`.
+
+```sh
+$ DOTENV_CONFIG_QUIET=true node index.js
+Error: [MISSING_ENV_FILE] missing .env.missing file (/path/to/.env.missing)
+Hello World
+```
