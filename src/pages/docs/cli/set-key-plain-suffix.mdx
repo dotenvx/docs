@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+export const description =
+  'Set a plaintext key/value by ending the key with _PLAIN.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Set', href: '/docs/cli/set' },
+  ]}
+/>
+# dotenvx set KEY_PLAIN value
+
+<GuideHeading lead={description} />
+
+```sh
+$ touch .env
+
+dotenvx set HELLO_PLAIN World
+◇ set HELLO_PLAIN (.env)
+```
+
+Keys ending in `_PLAIN` are not encrypted by `dotenvx set` or `dotenvx encrypt`.
