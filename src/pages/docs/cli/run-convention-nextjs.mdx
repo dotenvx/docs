@@ -25,4 +25,12 @@ dotenvx run --convention=nextjs -- node index.js
 Hello development local
 ```
 
+You can also set `DOTENV_CONFIG_CONVENTION=nextjs`.
+
+```sh
+$ DOTENV_CONFIG_CONVENTION=nextjs dotenvx run -- node index.js
+⟐ injected env (1) from .env.development.local, .env.local, .env.development, .env
+Hello development local
+```
+
 [Next.js env load order](https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#environment-variable-load-order)

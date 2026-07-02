@@ -39,6 +39,12 @@ This is equivalent to using `--convention=nextjs` with the CLI:
 $ dotenvx run --convention=nextjs -- node index.js
 ```
 
+You can also set `DOTENV_CONFIG_CONVENTION=nextjs`.
+
+```sh
+$ DOTENV_CONFIG_CONVENTION=nextjs node index.js
+```
+
 ## Flow convention
 
 Load environment files using the dotenv-flow convention:
@@ -62,4 +68,10 @@ console.log(`Hello ${process.env.HELLO}`)
 $ NODE_ENV=development node index.js
 ⟐ injected env (1) from .env.development.local, .env.development, .env.local, .env
 Hello development local
+```
+
+You can also set `DOTENV_CONFIG_CONVENTION=flow`.
+
+```sh
+$ NODE_ENV=development DOTENV_CONFIG_CONVENTION=flow node index.js
 ```

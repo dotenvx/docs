@@ -23,3 +23,10 @@ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 dotenvx get HELLO --convention=flow
 development local
 ```
+
+You can also set `DOTENV_CONFIG_CONVENTION=flow`.
+
+```sh
+$ DOTENV_CONFIG_CONVENTION=flow dotenvx get HELLO
+development local
+```

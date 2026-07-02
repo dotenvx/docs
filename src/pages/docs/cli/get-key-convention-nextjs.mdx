@@ -23,3 +23,10 @@ echo "console.log('Hello ' + process.env.HELLO)" > index.js
 dotenvx get HELLO --convention=nextjs
 development local
 ```
+
+You can also set `DOTENV_CONFIG_CONVENTION=nextjs`.
+
+```sh
+$ DOTENV_CONFIG_CONVENTION=nextjs dotenvx get HELLO
+development local
+```
