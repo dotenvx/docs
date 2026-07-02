@@ -1,0 +1,23 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+export const description =
+  'Skip encryption for keys ending in _PLAIN.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+     { label: 'Encrypt', href: '/docs/cli/encrypt' },
+  ]}
+/>
+# dotenvx encrypt KEY_PLAIN
+
+<GuideHeading lead={description} />
+
+```sh
+$ echo "HELLO=World\nHELLO_PLAIN=visible" > .env
+
+dotenvx encrypt
+◈ encrypted (.env)
+```
+
+`HELLO` is encrypted. `HELLO_PLAIN` stays plaintext.
