@@ -23,3 +23,11 @@ DOTENV_PRIVATE_KEY="122...0b8" dotenvx run -- node index.js
 ⟐ injected env (2) from .env
 Hello encrypted
 ```
+
+You can also load this value from 1Password with `op read`.
+
+```sh
+DOTENV_PRIVATE_KEY="$(op read op://Engineering/my-app/DOTENV_PRIVATE_KEY)" dotenvx run -- node index.js
+```
+
+See [Use dotenvx with 1Password](/docs/guides/1password).

@@ -31,6 +31,8 @@ Commit encrypted `.env` files. Do not commit `.env.keys`.
 
 The encrypted file is designed to move through git. The private key is the sensitive material that decrypts it.
 
+You can also keep private keys in 1Password and load them at runtime with `op read` or `op run`. See [Use dotenvx with 1Password](/docs/guides/1password).
+
 ## Armor
 
 With Armor, the private key is stored remotely as an armored key instead of locally in `.env.keys`.
