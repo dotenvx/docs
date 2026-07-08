@@ -363,13 +363,8 @@ export const cliNavigation = [
       { title: 'Set', href: '/docs/cli/set' },
       { title: 'Encrypt', href: '/docs/cli/encrypt' },
       { title: 'Decrypt', href: '/docs/cli/decrypt' },
-      { title: 'Rotate', href: '/docs/cli/rotate' },
       { title: 'Keypair', href: '/docs/cli/keypair' },
-    ],
-  },
-  {
-    title: 'Advanced',
-    links: [
+      { title: 'Ls', href: '/docs/cli/ls' },
       { title: 'Genexample', href: '/docs/cli/genexample' },
       { title: 'Gitignore', href: '/docs/cli/gitignore' },
       { title: 'Precommit', href: '/docs/cli/precommit' },
@@ -402,7 +397,6 @@ export const cliNavigation = [
           { title: 'Logout', href: '/docs/cli/armor/logout' },
         ],
       },
-      { title: 'Ext', href: '/docs/cli/ext' },
     ],
   }
 ]

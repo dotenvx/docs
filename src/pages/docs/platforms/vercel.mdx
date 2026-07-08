@@ -135,8 +135,8 @@ For Next.js, swap `process.env` for `dotenvx.get`. For Astro, you can leave thin
 ```js {{ title: 'Next' }}
 // app/page.tsx
 import * as dotenvx from '@dotenvx/dotenvx';
-export default function Page() {
-  return <h1>Hello {dotenvx.get('HELLO')}</h1>;
+export default async function Page() {
+  return <h1>Hello {await dotenvx.get('HELLO')}</h1>;
 }
 ```
 
@@ -171,8 +171,8 @@ export default function Page({ hello }: { hello: string }) {
   return <h1>Hello {hello}</h1>;
 }
 
-export function getServerSideProps() {
-  const hello = dotenvx.get('HELLO')
+export async function getServerSideProps() {
+  const hello = await dotenvx.get('HELLO')
   return {
     props: {
       hello,

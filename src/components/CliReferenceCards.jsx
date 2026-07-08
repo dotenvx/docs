@@ -7,12 +7,12 @@ function CliReferenceCard({ item }) {
     glyph = '⟐'
   } else if (item.href === '/docs/cli/keypair') {
     glyph = '⚷'
-  } else if (item.href === '/docs/cli/rotate') {
-    glyph = '⟳'
   } else if (item.href === '/docs/cli/encrypt' || item.href === '/docs/cli/set') {
     glyph = '⬖'
   } else if (item.href === '/docs/cli/get' || item.href === '/docs/cli/decrypt') {
     glyph = '⬗'
+  } else if (item.href === '/docs/cli/ls') {
+    glyph = '↳'
   } else if (item.href === '/docs/cli/keychain') {
     glyph = '⌥'
   } else if (item.href === '/docs/cli/armor') {
@@ -47,8 +47,12 @@ export function CliReferenceCards() {
     { href: '/docs/cli/set', title: 'Set' },
     { href: '/docs/cli/encrypt', title: 'Encrypt' },
     { href: '/docs/cli/decrypt', title: 'Decrypt' },
-    { href: '/docs/cli/rotate', title: 'Rotate' },
     { href: '/docs/cli/keypair', title: 'Keypair' },
+    { href: '/docs/cli/ls', title: 'Ls' },
+    { href: '/docs/cli/genexample', title: 'Genexample' },
+    { href: '/docs/cli/gitignore', title: 'Gitignore' },
+    { href: '/docs/cli/precommit', title: 'Precommit' },
+    { href: '/docs/cli/prebuild', title: 'Prebuild' },
   ]
 
   return (
@@ -60,12 +64,8 @@ export function CliReferenceCards() {
   )
 }
 
-export function CliAdvancedReferenceCards() {
+export function CliProfessionalSecurityReferenceCards() {
   let commands = [
-    { href: '/docs/cli/genexample', title: 'Genexample' },
-    { href: '/docs/cli/gitignore', title: 'Gitignore' },
-    { href: '/docs/cli/precommit', title: 'Precommit' },
-    { href: '/docs/cli/prebuild', title: 'Prebuild' },
     { href: '/docs/cli/keychain', title: 'Keychain ⌥' },
     { href: '/docs/cli/armor/introduction', title: 'Armor ⛨' },
   ]

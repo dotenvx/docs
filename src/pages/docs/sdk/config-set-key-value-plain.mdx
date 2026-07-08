@@ -9,5 +9,10 @@ export const description =
 ```js
 // index.js
 const dotenvx = require('@dotenvx/dotenvx')
-dotenvx.set('HELLO', 'World', { plain: true })
+
+async function main() {
+  await dotenvx.set('HELLO', 'World', { plain: true })
+}
+
+main()
 ```

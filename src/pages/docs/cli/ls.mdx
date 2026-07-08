@@ -1,0 +1,32 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print all .env files in a tree structure.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Ls', href: '/docs/cli/ls' },
+  ]}
+/>
+
+# dotenvx ls
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx ls
+├─ .env.production
+├─ .env
+└─ apps
+   └─ backend
+      └─ .env
+```
+
+Pass a directory to list `.env` files under that path.
+
+```sh
+$ dotenvx ls apps/backend
+└─ .env
+```

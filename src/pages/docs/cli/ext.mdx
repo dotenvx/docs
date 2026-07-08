@@ -1,28 +1,5 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-import { GuideHeading } from '@/components/GuideHeading'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-export const description =
-  'Extend dotenvx.'
+<HeadRedirect url="/docs/cli/ls" />
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Extensions', href: '/docs/cli/ext' },
-  ]}
-/>
-
-# Extensions
-
-<GuideHeading lead={description} />
-
-```sh
-$ dotenvx ext
-```
-
-## Advanced
-
-* [ext ls](/docs/cli/ext-ls)
-* [ext ls directory](/docs/cli/ext-ls-directory)
-* [ext ls -f](/docs/cli/ext-ls-f)
-* [ext ls -ef](/docs/cli/ext-ls-ef)
-* [ext scan](/docs/cli/scan)
+[Go to the ls command documentation.](/docs/cli/ls)

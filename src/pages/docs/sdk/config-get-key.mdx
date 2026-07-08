@@ -9,9 +9,14 @@ export const description =
 ```js
 // index.js
 const dotenvx = require('@dotenvx/dotenvx')
-const decryptedValue = dotenvx.get('HELLO')
 
-console.log(decryptedValue)
+async function main() {
+  const decryptedValue = await dotenvx.get('HELLO')
+
+  console.log(decryptedValue)
+}
+
+main()
 ```
 
 This is known as *Decryption at Access* and is written about in [the whitepaper](https://dotenvx.com/dotenvx.pdf).

@@ -1,26 +1,5 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-import { GuideHeading } from '@/components/GuideHeading'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-export const description =
-  'Print all .env files inside a specified path to a directory.'
+<HeadRedirect url="/docs/cli/ls" />
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Extensions', href: '/docs/cli/ext' },
-  ]}
-/>
-
-# dotenvx ext ls directory
-
-<GuideHeading lead={description} />
-
-```sh
-$ touch .env
-touch .env.production
-mkdir -p apps/backend
-touch apps/backend/.env
-
-dotenvx ext ls apps/backend
-└─ .env
-```
+[Go to the ls command documentation.](/docs/cli/ls)

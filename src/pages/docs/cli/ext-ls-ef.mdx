@@ -1,30 +1,5 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-import { GuideHeading } from '@/components/GuideHeading'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-export const description =
-  'Glob .env filenames excluding a wildcard.'
+<HeadRedirect url="/docs/cli/ls" />
 
-<Breadcrumb
-  items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Extensions', href: '/docs/cli/ext' },
-  ]}
-/>
-
-# dotenvx ext ls -ef
-
-<GuideHeading lead={description} />
-
-```sh
-$ touch .env
-touch .env.production
-mkdir -p apps/backend
-touch apps/backend/.env
-touch apps/backend/.env.prod
-
-dotenvx ext ls -ef '**/.env.prod*'
-├─ .env
-└─ apps
-   └─ backend
-      └─ .env
-```
+[Go to the ls command documentation.](/docs/cli/ls)
