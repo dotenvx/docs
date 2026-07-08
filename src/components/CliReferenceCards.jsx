@@ -13,6 +13,8 @@ function CliReferenceCard({ item }) {
     glyph = '⬗'
   } else if (item.href === '/docs/cli/ls') {
     glyph = '↳'
+  } else if (item.href === '/docs/cli/lock') {
+    glyph = '⊡'
   } else if (item.href === '/docs/cli/keychain') {
     glyph = '⌥'
   } else if (item.href === '/docs/cli/armor') {
@@ -66,6 +68,7 @@ export function CliReferenceCards() {
 
 export function CliProfessionalSecurityReferenceCards() {
   let commands = [
+    { href: '/docs/cli/lock', title: 'Lock ⊡' },
     { href: '/docs/cli/keychain', title: 'Keychain ⌥' },
     { href: '/docs/cli/armor/introduction', title: 'Armor ⛨' },
   ]

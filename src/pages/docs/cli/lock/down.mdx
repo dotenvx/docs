@@ -1,0 +1,21 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Unlock a private key in .env.keys with its local passphrase.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Lock', href: '/docs/cli/lock' },
+    { label: 'down', href: '/docs/cli/lock/down' },
+  ]}
+/>
+
+# Lock Down
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx lock down
+```

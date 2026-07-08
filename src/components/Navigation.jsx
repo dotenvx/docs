@@ -375,6 +375,14 @@ export const cliNavigation = [
     title: 'Professional Security',
     links: [
       {
+        title: 'Lock ⊡',
+        href: '/docs/cli/lock',
+        links: [
+          { title: 'Up', href: '/docs/cli/lock/up' },
+          { title: 'Down', href: '/docs/cli/lock/down' },
+        ],
+      },
+      {
         title: 'Keychain ⌥',
         href: '/docs/cli/keychain',
         links: [

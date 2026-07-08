@@ -1,0 +1,31 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Lock private keys with a local passphrase to keep them protected inside .env.keys.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Lock', href: '/docs/cli/lock' },
+  ]}
+/>
+
+# Lock
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx lock
+```
+
+## Security note
+
+Lock security is only as good as the passphrase you choose. If an attacker gets your `.env.keys` file, they can try to brute force the locked private keys offline for as long as they want.
+
+For stronger security, use [Armor](/docs/cli/armor/introduction) to move private keys out of `.env.keys` and into Dotenvx Armor.
+
+## Commands
+
+* [up](/docs/cli/lock/up)
+* [down](/docs/cli/lock/down)
