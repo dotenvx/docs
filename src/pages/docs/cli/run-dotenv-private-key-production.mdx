@@ -34,4 +34,13 @@ DOTENV_PRIVATE_KEY_PRODUCTION="$(op read op://Engineering/my-app/DOTENV_PRIVATE_
 
 See [Use dotenvx with 1Password](/docs/guides/1password).
 
+Or load it from Bitwarden with `bw get password`.
+
+```sh
+export BW_SESSION="$(bw unlock --raw)"
+DOTENV_PRIVATE_KEY_PRODUCTION="$(bw get password DOTENV_PRIVATE_KEY_PRODUCTION)" dotenvx run -- node index.js
+```
+
+See [Use dotenvx with Bitwarden](/docs/guides/bitwarden).
+
 Note the `DOTENV_PRIVATE_KEY_PRODUCTION` ends with `_PRODUCTION`. This instructs dotenvx run to load the `.env.production` file.

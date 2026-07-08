@@ -31,3 +31,12 @@ DOTENV_PRIVATE_KEY="$(op read op://Engineering/my-app/DOTENV_PRIVATE_KEY)" doten
 ```
 
 See [Use dotenvx with 1Password](/docs/guides/1password).
+
+Or load it from Bitwarden with `bw get password`.
+
+```sh
+export BW_SESSION="$(bw unlock --raw)"
+DOTENV_PRIVATE_KEY="$(bw get password DOTENV_PRIVATE_KEY)" dotenvx run -- node index.js
+```
+
+See [Use dotenvx with Bitwarden](/docs/guides/bitwarden).

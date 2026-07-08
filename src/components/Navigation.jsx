@@ -328,6 +328,7 @@ export const defaultNavigation = [
         links: [
           { title: 'Introduction', href: '/docs/guides' },
           { title: '1Password', href: '/docs/guides/1password' },
+          { title: 'Bitwarden', href: '/docs/guides/bitwarden' },
           { title: 'Cloudflare', href: '/docs/platforms/cloudflare' },
           { title: 'Digital Ocean', href: '/docs/platforms/digital-ocean' },
           { title: 'Docker', href: '/docs/platforms/docker' },
