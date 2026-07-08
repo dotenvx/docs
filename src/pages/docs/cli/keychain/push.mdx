@@ -1,0 +1,22 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Copy a private key from .env.keys into macOS Keychain.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Keychain', href: '/docs/cli/keychain' },
+    { label: 'push', href: '/docs/cli/keychain/push' },
+  ]}
+/>
+
+# Keychain Push
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx keychain push
+```
+

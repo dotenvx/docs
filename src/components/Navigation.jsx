@@ -366,10 +366,27 @@ export const cliNavigation = [
     ],
   },
   {
+    title: 'Advanced',
+    links: [
+      { title: 'Genexample', href: '/docs/cli/genexample' },
+      { title: 'Gitignore', href: '/docs/cli/gitignore' },
+      { title: 'Precommit', href: '/docs/cli/precommit' },
+      { title: 'Prebuild', href: '/docs/cli/prebuild' },
+    ],
+  },
+  {
     title: 'Professional Security',
     links: [
-      { title: 'Login', href: '/docs/cli/login' },
-      { title: 'Logout', href: '/docs/cli/logout' },
+      {
+        title: 'Keychain ⌥',
+        href: '/docs/cli/keychain',
+        links: [
+          { title: 'Up', href: '/docs/cli/keychain/up' },
+          { title: 'Down', href: '/docs/cli/keychain/down' },
+          { title: 'Push', href: '/docs/cli/keychain/push' },
+          { title: 'Pull', href: '/docs/cli/keychain/pull' },
+        ],
+      },
       {
         title: 'Armor ⛨',
         href: '/docs/cli/armor/introduction',
@@ -379,6 +396,8 @@ export const cliNavigation = [
           { title: 'Push', href: '/docs/cli/armor/push' },
           { title: 'Pull', href: '/docs/cli/armor/pull' },
           { title: 'Move', href: '/docs/cli/armor/move' },
+          { title: 'Login', href: '/docs/cli/armor/login' },
+          { title: 'Logout', href: '/docs/cli/armor/logout' },
         ],
       },
       { title: 'Ext', href: '/docs/cli/ext' },

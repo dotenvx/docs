@@ -6,10 +6,10 @@ export const description =
 <Breadcrumb
   items={[
     { label: "CLI Reference", href: "/docs/cli" },
-    { label: "Extensions", href: "/docs/cli/ext" },
+    { label: "Advanced", href: "/docs/advanced" },
   ]}
 />
-# dotenvx ext precommit directory
+# dotenvx precommit directory
 
 <GuideHeading lead={description} />
 
@@ -18,6 +18,6 @@ $ echo "HELLO=World" > .env
 mkdir -p apps/backend
 echo "HELLO=Backend" > apps/backend/.env
 
-dotenvx ext precommit apps/backend
+dotenvx precommit apps/backend
 ☠ apps/backend/.env not encrypted/gitignored
 ```

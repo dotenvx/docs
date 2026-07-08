@@ -1,19 +1,20 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
+
 export const description =
-  'Gitignore your .env files.'
+  'Disable loading private keys from macOS Keychain.'
 
 <Breadcrumb
   items={[
-    { label: "CLI Reference", href: "/docs/cli" },
-    { label: "Advanced", href: "/docs/advanced" },
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Get', href: '/docs/cli/get' },
   ]}
 />
-# dotenvx gitignore
+
+# Get KEY --no-keychain
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx gitignore
-▣ ignored .env* (.gitignore)
+$ dotenvx get HELLO --no-keychain
 ```

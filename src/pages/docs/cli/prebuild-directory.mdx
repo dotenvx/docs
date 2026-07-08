@@ -6,10 +6,10 @@ export const description =
 <Breadcrumb
   items={[
     { label: "CLI Reference", href: "/docs/cli" },
-    { label: "Extensions", href: "/docs/cli/ext" },
+    { label: "Advanced", href: "/docs/advanced" },
   ]}
 />
-# dotenvx ext prebuild directory
+# dotenvx prebuild directory
 
 <GuideHeading lead={description} />
 
@@ -21,6 +21,6 @@ RUN curl -fsS https://dotenvx.sh | sh
 
 ...
 
-RUN dotenvx ext prebuild apps/backend
+RUN dotenvx prebuild apps/backend
 CMD ["dotenvx", "run", "--", "node", "apps/backend/index.js"]
 ```

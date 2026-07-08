@@ -6,10 +6,10 @@ export const description =
 <Breadcrumb
   items={[
     { label: "CLI Reference", href: "/docs/cli" },
-    { label: "Extensions", href: "/docs/cli/ext" },
+    { label: "Advanced", href: "/docs/advanced" },
   ]}
 />
-# dotenvx ext genexample directory
+# dotenvx genexample directory
 
 <GuideHeading lead={description} />
 
@@ -18,7 +18,7 @@ $ echo "HELLO=World" > .env
 mkdir -p apps/backend
 echo "HELLO=Backend" > apps/backend/.env
 
-dotenvx ext genexample apps/backend
+dotenvx genexample apps/backend
 ▣ generated (.env.example)
 ```
 

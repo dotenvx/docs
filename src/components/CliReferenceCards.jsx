@@ -13,10 +13,8 @@ function CliReferenceCard({ item }) {
     glyph = '⬖'
   } else if (item.href === '/docs/cli/get' || item.href === '/docs/cli/decrypt') {
     glyph = '⬗'
-  } else if (item.href === '/docs/cli/login') {
-    glyph = '◉'
-  } else if (item.href === '/docs/cli/logout') {
-    glyph = '◌'
+  } else if (item.href === '/docs/cli/keychain') {
+    glyph = '⌥'
   } else if (item.href === '/docs/cli/armor') {
     glyph = '⛨'
   } else if (item.href === '/docs/cli/armor/introduction') {
@@ -64,10 +62,12 @@ export function CliReferenceCards() {
 
 export function CliAdvancedReferenceCards() {
   let commands = [
-    { href: '/docs/cli/login', title: 'Login' },
-    { href: '/docs/cli/logout', title: 'Logout' },
+    { href: '/docs/cli/genexample', title: 'Genexample' },
+    { href: '/docs/cli/gitignore', title: 'Gitignore' },
+    { href: '/docs/cli/precommit', title: 'Precommit' },
+    { href: '/docs/cli/prebuild', title: 'Prebuild' },
+    { href: '/docs/cli/keychain', title: 'Keychain ⌥' },
     { href: '/docs/cli/armor/introduction', title: 'Armor ⛨' },
-    { href: '/docs/cli/ext', title: 'Ext' },
   ]
 
   return (
