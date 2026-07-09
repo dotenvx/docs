@@ -214,6 +214,7 @@ export const defaultNavigation = [
           { title: 'Next.js', href: '/docs/secrets-in-nextjs' },
           { title: 'Express', href: '/docs/secrets-in-express' },
           { title: 'Astro', href: '/docs/secrets-in-astro' },
+          { title: 'Expo', href: '/docs/secrets-in-expo' },
           { title: 'Bun', href: '/docs/secrets-in-bun' },
           { title: 'Cloudflare Workers', href: '/docs/secrets-in-cloudflare-workers' },
         ],
