@@ -20,6 +20,13 @@ export const description =
 $ dotenvx lock up
 ```
 
+Here's what a locked key looks like:
+
+```ini
+# .env.keys
+DOTENV_PRIVATE_KEY=locked:02f5b97ad58b49ae324cd4e7937bc19b251d006b31cacf46f789eeaf03f923cedc:AZIPDxKqjPLiGl5b4CqVGbR3CIBDUcqHthGaoeWLoUvxbTHJkj3jGoGWGaxFSDUJGQUmWDaExRzxKpVydYF_7qiWr1ecqksOFho5t3EMwKbqX2-y-LZO9K3a4SJaYAjDJXpn3NwG4vAt1oLmGA
+```
+
 Choose a strong passphrase. If an attacker gets your `.env.keys` file, they can try to brute force the locked private key offline.
 
 For stronger security, use [Armor](/docs/cli/armor/introduction).
