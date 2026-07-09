@@ -2,7 +2,7 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Disable loading private keys from macOS Keychain.'
+  'Disable loading private keys from the OS secret store.'
 
 <Breadcrumb
   items={[
@@ -11,10 +11,10 @@ export const description =
   ]}
 />
 
-# Keypair --no-keychain
+# Keypair --no-native
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx keypair --no-keychain
+$ dotenvx keypair --no-native
 ```

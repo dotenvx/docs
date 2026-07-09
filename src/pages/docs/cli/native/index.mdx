@@ -2,28 +2,28 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Store private keys in macOS Keychain to keep them out of .env.keys.'
+  "Move private keys into your OS secret store (macOS Keychain supported)."
 
 <Breadcrumb
   items={[
     { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Keychain', href: '/docs/cli/keychain' },
+    { label: 'Native', href: '/docs/cli/native' },
   ]}
 />
 
-# Keychain
+# Native
 
 <GuideHeading lead={description} />
 
 Currently supported on macOS.
 
 ```sh
-$ dotenvx keychain
+$ dotenvx native
 ```
 
 ## Commands
 
-* [up](/docs/cli/keychain/up)
-* [down](/docs/cli/keychain/down)
-* [push](/docs/cli/keychain/push)
-* [pull](/docs/cli/keychain/pull)
+* [up](/docs/cli/native/up)
+* [down](/docs/cli/native/down)
+* [push](/docs/cli/native/push)
+* [pull](/docs/cli/native/pull)

@@ -2,21 +2,20 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Copy a private key from .env.keys into macOS Keychain.'
+  "Copy a private key from .env.keys into your OS secret store."
 
 <Breadcrumb
   items={[
     { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Keychain', href: '/docs/cli/keychain' },
-    { label: 'push', href: '/docs/cli/keychain/push' },
+    { label: 'Native', href: '/docs/cli/native' },
+    { label: 'push', href: '/docs/cli/native/push' },
   ]}
 />
 
-# Keychain Push
+# Native Push
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx keychain push
+$ dotenvx native push
 ```
-

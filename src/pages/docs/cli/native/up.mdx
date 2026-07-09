@@ -2,27 +2,26 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Move a private key from .env.keys into macOS Keychain.'
+  "Move a private key from .env.keys into your OS secret store."
 
 <Breadcrumb
   items={[
     { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Keychain', href: '/docs/cli/keychain' },
-    { label: 'up', href: '/docs/cli/keychain/up' },
+    { label: 'Native', href: '/docs/cli/native' },
+    { label: 'up', href: '/docs/cli/native/up' },
   ]}
 />
 
-# Keychain Up
+# Native Up
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx keychain up
+$ dotenvx native up
 ```
 
 Specify files with -f and -fk.
 
 ```sh
-$ dotenvx keychain up -f .env.production -fk .env.keys
+$ dotenvx native up -f .env.production -fk .env.keys
 ```
-

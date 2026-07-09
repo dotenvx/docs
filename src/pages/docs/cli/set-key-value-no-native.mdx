@@ -2,19 +2,19 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Disable loading private keys from macOS Keychain.'
+  'Disable loading private keys from the OS secret store.'
 
 <Breadcrumb
   items={[
     { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Run', href: '/docs/cli/run' },
+    { label: 'Set', href: '/docs/cli/set' },
   ]}
 />
 
-# Run --no-keychain
+# Set KEY value --no-native
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx run --no-keychain -- yourcommand
+$ dotenvx set HELLO Dotenvx --no-native
 ```

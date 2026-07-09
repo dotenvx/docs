@@ -383,13 +383,13 @@ export const cliNavigation = [
         ],
       },
       {
-        title: 'Keychain ⌥',
-        href: '/docs/cli/keychain',
+        title: 'Native ⌥',
+        href: '/docs/cli/native',
         links: [
-          { title: 'Up', href: '/docs/cli/keychain/up' },
-          { title: 'Down', href: '/docs/cli/keychain/down' },
-          { title: 'Push', href: '/docs/cli/keychain/push' },
-          { title: 'Pull', href: '/docs/cli/keychain/pull' },
+          { title: 'Up', href: '/docs/cli/native/up' },
+          { title: 'Down', href: '/docs/cli/native/down' },
+          { title: 'Push', href: '/docs/cli/native/push' },
+          { title: 'Pull', href: '/docs/cli/native/pull' },
         ],
       },
       {
