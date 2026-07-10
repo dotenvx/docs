@@ -1,7 +1,7 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 export const description =
-  'Specify path to .env.keys. This is useful with monorepos.'
+  'Specify a .env.keys file or a directory containing one. This is useful with monorepos.'
 
 <Breadcrumb
   items={[
@@ -14,9 +14,9 @@ export const description =
 <GuideHeading lead={description} />
 
 ```sh
-$ mkdir -p apps/app1
-touch apps/app1/.env
-dotenvx set HELLO world -fk .env.keys -f apps/app1/.env
+$ cd apps/web
 
-dotenvx run -fk .env.keys -f apps/app1/.env -- yourcommand
+dotenvx run -f . -fk ../.. -- node index.js
 ```
+
+Here the workspace uses its own `.env`, while `-fk ../..` loads the shared root `.env.keys`.

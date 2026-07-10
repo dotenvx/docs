@@ -1,0 +1,28 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Run a command using the .env file in a directory. This is useful with monorepos.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Run', href: '/docs/cli/run' },
+  ]}
+/>
+
+# dotenvx run -f directory
+
+<GuideHeading lead={description} />
+
+From a workspace, point `-f` at the monorepo root to load its `.env`:
+
+```sh
+$ cd apps/web
+
+dotenvx run -f ../.. -- node index.js
+⟐ injected env (1) from ../../.env
+Hello World
+```
+
+When `.env.keys` sits beside the resolved `.env`, encrypted values are decrypted automatically.

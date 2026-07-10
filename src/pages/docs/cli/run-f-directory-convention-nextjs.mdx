@@ -1,0 +1,26 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Run a command using the Next.js convention from a directory. This is useful with monorepos.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Run', href: '/docs/cli/run' },
+  ]}
+/>
+
+# dotenvx run -f directory --convention=nextjs
+
+<GuideHeading lead={description} />
+
+The directory becomes the base for every file in the convention:
+
+```sh
+$ cd apps/web
+
+dotenvx run -f ../.. --convention=nextjs -- node index.js
+⟐ injected env (1) from ../../.env.development.local, ../../.env.local, ../../.env.development, ../../.env
+Hello development local
+```

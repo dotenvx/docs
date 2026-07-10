@@ -2,7 +2,7 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Specify a .env.keys file or a directory containing one.'
+  'Return an environment variable using the Next.js convention from a directory. This is useful with monorepos.'
 
 <Breadcrumb
   items={[
@@ -11,15 +11,15 @@ export const description =
   ]}
 />
 
-# dotenvx get KEY -fk
+# dotenvx get KEY -f directory --convention=nextjs
 
 <GuideHeading lead={description} />
+
+The directory becomes the base for every file in the convention:
 
 ```sh
 $ cd apps/web
 
-dotenvx get HELLO -f . -fk ../..
-World
+dotenvx get HELLO -f ../.. --convention=nextjs
+development local
 ```
-
-Here the workspace uses its own `.env`, while `-fk ../..` loads the shared root `.env.keys`.

@@ -1,5 +1,6 @@
 import { Heading } from '@/components/Heading'
 import { Button } from '@/components/Button'
+import { FolderIcon } from '@/components/icons/FolderIcon'
 import { NxIcon } from '@/components/icons/NxIcon'
 import { TurborepoIcon } from '@/components/icons/TurborepoIcon'
 
@@ -10,6 +11,16 @@ export function Monorepos() {
         Monorepos
       </Heading>
       <div className="not-prose mt-4 grid grid-cols-1 gap-x-6 gap-y-10 border-t border-zinc-900/5 pt-10 dark:border-white/5 sm:grid-cols-2 xl:max-w-none xl:grid-cols-3">
+        <div key="directories" className="flex flex-row-reverse gap-6">
+          <div className="flex-auto">
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">
+              Directories
+            </h3>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Load shared root envs from any workspace</p>
+            <p className="mt-4"><Button href="/docs/monorepos" variant="text" arrow="right">Monorepo Guide</Button></p>
+          </div>
+          <FolderIcon className="h-9 w-9 text-zinc-500 dark:text-zinc-400"/>
+        </div>
         <div key="nx" className="flex flex-row-reverse gap-6">
           <div className="flex-auto">
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">

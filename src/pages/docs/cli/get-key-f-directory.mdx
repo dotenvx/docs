@@ -2,7 +2,7 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Specify a .env.keys file or a directory containing one.'
+  'Return an environment variable from the .env file in a directory. This is useful with monorepos.'
 
 <Breadcrumb
   items={[
@@ -11,15 +11,17 @@ export const description =
   ]}
 />
 
-# dotenvx get KEY -fk
+# dotenvx get KEY -f directory
 
 <GuideHeading lead={description} />
+
+From a workspace, point `-f` at the monorepo root to read its `.env`:
 
 ```sh
 $ cd apps/web
 
-dotenvx get HELLO -f . -fk ../..
+dotenvx get HELLO -f ../..
 World
 ```
 
-Here the workspace uses its own `.env`, while `-fk ../..` loads the shared root `.env.keys`.
+When `.env.keys` sits beside the resolved `.env`, encrypted values are decrypted automatically.

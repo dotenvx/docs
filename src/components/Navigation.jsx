@@ -328,6 +328,7 @@ export const defaultNavigation = [
         href: '/docs/guides',
         links: [
           { title: 'Introduction', href: '/docs/guides' },
+          { title: 'Monorepos', href: '/docs/monorepos' },
           { title: '1Password', href: '/docs/guides/1password' },
           { title: 'Bitwarden', href: '/docs/guides/bitwarden' },
           { title: 'Cloudflare', href: '/docs/platforms/cloudflare' },
