@@ -1,0 +1,34 @@
+export const description =
+  'Use a directory as the base for convention files.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx.config(path: directory, convention: 'nextjs')
+
+<p className="lead">{description}</p>
+
+This is useful when loading a workspace's env files from a monorepo root.
+
+```js
+// index.js
+require('@dotenvx/dotenvx').config({
+  path: 'apps/web',
+  convention: 'nextjs'
+})
+```
+
+The directory becomes the base for every file in the convention:
+
+```text
+apps/web/.env.development.local
+apps/web/.env.local
+apps/web/.env.development
+apps/web/.env
+```
+
+Without a convention, a directory path loads the `.env` inside it:
+
+```js
+require('@dotenvx/dotenvx').config({
+  path: 'apps/web'
+})
+```
