@@ -1,8 +1,7 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
-export const description =
-  "Move private keys into your OS secret store (macOS Keychain supported)."
+export const description = 'Move private keys into your OS secret store.'
 
 <Breadcrumb
   items={[
@@ -15,7 +14,13 @@ export const description =
 
 <GuideHeading lead={description} />
 
-Currently supported on macOS.
+Native uses your operating system's secret store:
+
+- macOS: Keychain
+- Windows: Credential Manager
+- Linux: Secret Service through `secret-tool`
+
+On Linux, `secret-tool` and an available Secret Service are required.
 
 ```sh
 $ dotenvx native
@@ -23,7 +28,7 @@ $ dotenvx native
 
 ## Commands
 
-* [up](/docs/cli/native/up)
-* [down](/docs/cli/native/down)
-* [push](/docs/cli/native/push)
-* [pull](/docs/cli/native/pull)
+- [up](/docs/cli/native/up)
+- [down](/docs/cli/native/down)
+- [push](/docs/cli/native/push)
+- [pull](/docs/cli/native/pull)
