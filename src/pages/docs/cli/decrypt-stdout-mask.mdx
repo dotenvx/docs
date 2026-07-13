@@ -1,0 +1,30 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Decrypt an encrypted .env file to stdout with its values masked.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Decrypt', href: '/docs/cli/decrypt' },
+  ]}
+/>
+
+# dotenvx decrypt --stdout --mask
+
+<GuideHeading lead={description} />
+
+The encrypted `.env` file remains unchanged. By default, up to the first six characters are visible.
+
+```sh
+$ echo "SECRET=abcdefghijkl" > .env
+$ dotenvx encrypt
+◈ encrypted (.env)
+
+$ dotenvx decrypt --stdout --mask
+...
+SECRET="abcdef******"
+```
+
+Pass a number to control how many characters are visible, such as `--mask 0` to fully mask values.

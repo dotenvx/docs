@@ -21,6 +21,7 @@ Advanced CLI commands.
 * [run -f](/docs/cli/run-f)
 * [run -f directory](/docs/cli/run-f-directory)
 * [run --env HELLO=String](/docs/cli/run-env)
+* [run --mask](/docs/cli/run-mask)
 * [run --overload](/docs/cli/run-overload)
 * [run - Environment Variable Precedence](/docs/cli/run-environment-variable-precedence)
 * [DOTENV_PRIVATE_KEY=key run](/docs/cli/run-dotenv-private-key)
@@ -42,6 +43,7 @@ Advanced CLI commands.
 * [run --no-native](/docs/cli/run-no-native)
 * [run --no-armor](/docs/cli/run-no-armor)
 * [get KEY](/docs/cli/get-key)
+* [get KEY --mask](/docs/cli/get-key-mask)
 * [get KEY -f](/docs/cli/get-key-f)
 * [get KEY -f directory](/docs/cli/get-key-f-directory)
 * [get KEY --env](/docs/cli/get-key-env)
@@ -82,6 +84,7 @@ Advanced CLI commands.
 * [decrypt -k](/docs/cli/decrypt-k)
 * [decrypt -ek](/docs/cli/decrypt-ek)
 * [decrypt --stdout](/docs/cli/decrypt-stdout)
+* [decrypt --stdout --mask](/docs/cli/decrypt-stdout-mask)
 * [decrypt --no-native](/docs/cli/decrypt-no-native)
 * [decrypt --no-armor](/docs/cli/decrypt-no-armor)
 * [keypair](/docs/cli/keypair)
@@ -136,6 +139,7 @@ Use dotenvx directly in code.
 * [config()](/docs/sdk/config)
 * [config(path: ['.env.local', '.env'])](/docs/sdk/config-path)
 * [config(overload: true)](/docs/sdk/config-overload)
+* [config(mask: true)](/docs/sdk/config-mask)
 * [config(quiet: true)](/docs/sdk/config-quiet)
 * [config(strict: true)](/docs/sdk/config-strict)
 * [config(ignore: ['.env.missing', '.env'])](/docs/sdk/config-ignore)
@@ -150,6 +154,7 @@ Use dotenvx directly in code.
 * [set(KEY, value)](/docs/sdk/config-set-key-value)
 * [set(KEY, value, \{plain: true\})](/docs/sdk/config-set-key-value-plain)
 * [get(KEY)](/docs/sdk/config-get-key)
+* [get(KEY, \{mask: true\})](/docs/sdk/get-mask)
 
 ## Whitepaper 📄
 

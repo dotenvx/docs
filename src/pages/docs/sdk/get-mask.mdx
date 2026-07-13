@@ -2,7 +2,7 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Programmatically get an environment variable at access/runtime.'
+  'Programmatically return a masked environment variable value.'
 
 <Breadcrumb
   items={[
@@ -11,25 +11,28 @@ export const description =
   ]}
 />
 
-# Get
+# dotenvx.get(KEY, \{mask: true\})
 
 <GuideHeading lead={description} />
+
+By default, up to the first six characters are visible.
 
 ```js
 // index.js
 const dotenvx = require('@dotenvx/dotenvx')
 
 async function main() {
-  const decryptedValue = await dotenvx.get('HELLO')
+  const maskedValue = await dotenvx.get('SECRET', { mask: true })
 
-  console.log(decryptedValue)
+  console.log(maskedValue)
 }
 
 main()
 ```
 
-This is known as *Decryption at Access* and is written about in [the whitepaper](https://dotenvx.com/dotenvx.pdf).
+```sh
+$ node index.js
+abcdef******
+```
 
-## Options
-
-* [get(KEY, \{mask: true\})](/docs/sdk/get-mask)
+Set `mask: 0` to fully mask values.

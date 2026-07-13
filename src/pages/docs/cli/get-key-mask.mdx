@@ -1,0 +1,32 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Return a masked environment variable value.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Get', href: '/docs/cli/get' },
+  ]}
+/>
+
+# dotenvx get KEY --mask
+
+<GuideHeading lead={description} />
+
+By default, up to the first six characters are visible.
+
+```sh
+$ echo "SECRET=abcdefghijkl" > .env
+
+$ dotenvx get SECRET --mask
+abcdef******
+```
+
+Pass a number to control how many characters are visible.
+
+```sh
+$ dotenvx get SECRET --mask 0
+************
+```

@@ -1,0 +1,33 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Inject masked values into a command.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Run', href: '/docs/cli/run' },
+  ]}
+/>
+
+# dotenvx run --mask
+
+<GuideHeading lead={description} />
+
+By default, up to the first six characters are visible.
+
+```sh
+$ echo "SECRET=abcdefghijkl" > .env
+$ echo "console.log(process.env.SECRET)" > index.js
+
+$ dotenvx run --mask --quiet -- node index.js
+abcdef******
+```
+
+Pass a number to control how many characters are visible.
+
+```sh
+$ dotenvx run --mask 0 --quiet -- node index.js
+************
+```

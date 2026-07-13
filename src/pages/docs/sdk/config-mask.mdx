@@ -1,0 +1,31 @@
+export const description =
+  'Inject and return masked values.'
+
+##### [Advanced](/docs/advanced)
+# dotenvx.config(mask: true)
+
+<p className="lead">{description}</p>
+
+By default, up to the first six characters are visible.
+
+```ini
+# .env
+SECRET="abcdefghijkl"
+```
+
+```js
+// index.js
+const dotenvx = require('@dotenvx/dotenvx')
+const result = dotenvx.config({ mask: true, quiet: true })
+
+console.log(process.env.SECRET)
+console.log(result.parsed.SECRET)
+```
+
+```sh
+$ node index.js
+abcdef******
+abcdef******
+```
+
+Set `mask: 0` to fully mask values.
