@@ -405,6 +405,8 @@ export const cliNavigation = [
           { title: 'Move', href: '/docs/cli/armor/move' },
           { title: 'Login', href: '/docs/cli/armor/login' },
           { title: 'Logout', href: '/docs/cli/armor/logout' },
+          { title: 'Status', href: '/docs/cli/armor/status' },
+          { title: 'Settings', href: '/docs/cli/armor/settings' },
         ],
       },
     ],

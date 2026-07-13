@@ -1,0 +1,24 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print the current Dotenvx Armor status.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Armor', href: '/docs/cli/armor' },
+    { label: 'status', href: '/docs/cli/armor/status' },
+  ]}
+/>
+
+# Armor Status
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx armor status
+on
+```
+
+The command prints `on` when you are logged in and Armor is enabled. Otherwise, it prints `off`.

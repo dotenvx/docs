@@ -19,3 +19,7 @@ export const description =
 ```sh
 $ dotenvx armor login
 ```
+
+After authentication, dotenvx first attempts to store your access token in your operating system's native secret store: macOS Keychain, Windows Credential Manager, or Linux Secret Service.
+
+If native secure storage is unavailable, dotenvx falls back to its [settings file](/docs/cli/armor/settings). This follows a common CLI credential-storage pattern: prefer protected OS storage when available while remaining usable in headless or minimal environments.

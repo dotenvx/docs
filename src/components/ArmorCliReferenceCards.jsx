@@ -19,6 +19,10 @@ function ArmorCliReferenceCard({ item }) {
     glyph = '◉'
   } else if (item.href === '/docs/cli/armor/logout') {
     glyph = '◌'
+  } else if (item.href === '/docs/cli/armor/status') {
+    glyph = '●'
+  } else if (item.href === '/docs/cli/armor/settings') {
+    glyph = '⚙'
   }
 
   return (
@@ -47,6 +51,8 @@ export function ArmorCliReferenceCards() {
     { href: '/docs/cli/armor/move', title: 'Move' },
     { href: '/docs/cli/armor/login', title: 'Login' },
     { href: '/docs/cli/armor/logout', title: 'Logout' },
+    { href: '/docs/cli/armor/status', title: 'Status' },
+    { href: '/docs/cli/armor/settings', title: 'Settings' },
   ]
 
   return (
