@@ -1,5 +1,6 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
+import { Video } from '@/components/Video'
 
 export const description =
   'Print all .env files in a tree structure.'
@@ -15,6 +16,8 @@ export const description =
 
 <GuideHeading lead={description} />
 
+<Video mp4="https://github.com/user-attachments/assets/e4be662b-7102-41ec-857a-c5d82f965885" />
+
 ```sh
 $ dotenvx ls
 ├─ .env.production
@@ -29,4 +32,22 @@ Pass a directory to list `.env` files under that path.
 ```sh
 $ dotenvx ls apps/backend
 └─ .env
+```
+
+## JSON output
+
+Use `--json` to print matching `.env` files as a JSON array of absolute filepaths.
+
+```sh
+$ dotenvx ls --json
+[
+  "/path/to/project/.env",
+  "/path/to/project/apps/backend/.env"
+]
+```
+
+Progress and summary details are written to stderr, so stdout can be safely piped to another command or file.
+
+```sh
+$ dotenvx ls --json > dotenv-files.json
 ```
