@@ -1,0 +1,20 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Set the Armor token for retrieving armored private keys.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Run', href: '/docs/cli/run' },
+  ]}
+/>
+
+# dotenvx run --token
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx run --token "$DOTENVX_ARMOR_TOKEN" -- yourcommand
+```

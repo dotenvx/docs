@@ -1,0 +1,31 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  "Redact successfully decrypted values from a command's output."
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Run', href: '/docs/cli/run' },
+  ]}
+/>
+
+# dotenvx run --redact
+
+<GuideHeading lead={description} />
+
+The command receives the real values, but matching values in its stdout and stderr are replaced with `[REDACTED]`.
+
+```sh
+$ touch .env
+$ dotenvx set SECRET super-secret-value
+$ echo "console.log(process.env.SECRET)" > index.js
+
+$ dotenvx run --redact --quiet -- node index.js
+[REDACTED]
+```
+
+Redaction is off by default. It applies only to values that were encrypted, successfully decrypted, and injected. Plaintext values are left unchanged. Matching is exact, so transformed or derived values are not redacted.
+
+Because redaction filters stdout and stderr, interactive commands that require a TTY may behave differently.
