@@ -1,0 +1,25 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Run Codex non-interactively while redacting injected values from its output.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Run', href: '/docs/cli/run' },
+  ]}
+/>
+
+# dotenvx run --redact -- codex exec
+
+<GuideHeading lead={description} />
+
+Codex receives the real environment variables, but any matching values it prints are replaced with `[REDACTED]`.
+
+```sh
+$ echo "SECRET=super-secret-value" > .env
+
+$ dotenvx run --redact --quiet -- codex exec 'Print the value of $SECRET'
+[REDACTED]
+```

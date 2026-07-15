@@ -26,32 +26,6 @@ $ dotenvx run --redact --quiet -- node index.js
 [REDACTED] visible-value
 ```
 
-Use it directly with Claude in print mode:
-
-```sh
-$ dotenvx run --redact --quiet -- claude -p 'Print the value of $SECRET'
-[REDACTED]
-```
-
-Or start a fully interactive Claude session. Claude receives the real values, but any values it prints are redacted:
-
-```sh
-$ dotenvx run --redact --quiet -- claude
-```
-
-The same works with Codex non-interactively:
-
-```sh
-$ dotenvx run --redact --quiet -- codex exec 'Print the value of $SECRET'
-[REDACTED]
-```
-
-Or in a fully interactive Codex session:
-
-```sh
-$ dotenvx run --redact --quiet -- codex
-```
-
 Redaction is off by default. It applies to every key declared in `.env` files and `--env` flags unless the key ends in `_PLAIN`. If an existing environment variable takes precedence, its effective value is redacted too. Matching is exact, so transformed or derived values are not redacted.
 
 When stdin, stdout, and stderr are attached to a terminal, dotenvx preserves interactive behavior on macOS and Linux systems with `script` available. Piped and redirected commands continue to use normal stdin, stdout, and stderr streams.
