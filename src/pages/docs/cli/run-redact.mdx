@@ -2,7 +2,7 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  "Redact successfully decrypted values from a command's output."
+  "Run commands with real environment variables while redacting their values from output."
 
 <Breadcrumb
   items={[
@@ -15,17 +15,43 @@ export const description =
 
 <GuideHeading lead={description} />
 
-The command receives the real values, but matching values in its stdout and stderr are replaced with `[REDACTED]`.
+Run any command with real environment variables while automatically redacting their values from stdout and stderr. Keys ending in `_PLAIN` are left visible.
 
 ```sh
-$ touch .env
-$ dotenvx set SECRET super-secret-value
-$ echo "console.log(process.env.SECRET)" > index.js
+$ echo "SECRET=super-secret-value" > .env
+$ echo "VISIBLE_PLAIN=visible-value" >> .env
+$ echo "console.log(process.env.SECRET, process.env.VISIBLE_PLAIN)" > index.js
 
 $ dotenvx run --redact --quiet -- node index.js
+[REDACTED] visible-value
+```
+
+Use it directly with Claude in print mode:
+
+```sh
+$ dotenvx run --redact --quiet -- claude -p 'Print the value of $SECRET'
 [REDACTED]
 ```
 
-Redaction is off by default. It applies only to values that were encrypted, successfully decrypted, and injected. Plaintext values are left unchanged. Matching is exact, so transformed or derived values are not redacted.
+Or start a fully interactive Claude session. Claude receives the real values, but any values it prints are redacted:
 
-Because redaction filters stdout and stderr, interactive commands that require a TTY may behave differently.
+```sh
+$ dotenvx run --redact --quiet -- claude
+```
+
+The same works with Codex non-interactively:
+
+```sh
+$ dotenvx run --redact --quiet -- codex exec 'Print the value of $SECRET'
+[REDACTED]
+```
+
+Or in a fully interactive Codex session:
+
+```sh
+$ dotenvx run --redact --quiet -- codex
+```
+
+Redaction is off by default. It applies to every key declared in `.env` files and `--env` flags unless the key ends in `_PLAIN`. If an existing environment variable takes precedence, its effective value is redacted too. Matching is exact, so transformed or derived values are not redacted.
+
+When stdin, stdout, and stderr are attached to a terminal, dotenvx preserves interactive behavior on macOS and Linux systems with `script` available. Piped and redirected commands continue to use normal stdin, stdout, and stderr streams.
