@@ -51,8 +51,9 @@ export function CliReferenceCards() {
     { href: '/docs/cli/decrypt', title: 'Decrypt' },
     { href: '/docs/cli/keypair', title: 'Keypair' },
     { href: '/docs/cli/ls', title: 'Ls' },
-    { href: '/docs/cli/genexample', title: 'Genexample' },
     { href: '/docs/cli/gitignore', title: 'Gitignore' },
+    { href: '/docs/cli/genexample', title: 'Genexample' },
+    { href: '/docs/cli/validate', title: 'Validate' },
     { href: '/docs/cli/precommit', title: 'Precommit' },
     { href: '/docs/cli/prebuild', title: 'Prebuild' },
   ]

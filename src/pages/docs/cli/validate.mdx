@@ -1,0 +1,38 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Validate .env file(s) against .env.example.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Validate', href: '/docs/cli/validate' },
+  ]}
+/>
+
+# Validate
+
+<GuideHeading lead={description} />
+
+Use `.env.example` to declare required environment variables and validate `.env` file(s) before running your app.
+
+```ini
+# .env.example
+DATABASE_URL=
+API_KEY=
+SENTRY_DSN= # optional
+```
+
+```sh
+$ dotenvx validate
+[VALIDATION_FAILED] missing required (DATABASE_URL, API_KEY). fix: [https://github.com/dotenvx/dotenvx/issues/907]
+```
+
+`dotenvx validate` does not run a command. It loads and decrypts the selected env files, checks them against `.env.example`, and exits with code 1 when validation fails. On success, it prints `▣ validated` and exits with code 0.
+
+```sh
+$ dotenvx validate -f .env.production -fk .env.keys
+```
+
+Any inline comment containing the word `optional` marks that key as optional.
