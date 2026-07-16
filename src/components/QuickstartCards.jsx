@@ -1,7 +1,9 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 import { AstroIcon } from '@/components/icons/AstroIcon'
 import { CalendarIcon } from '@/components/icons/CalendarIcon'
+import { ClaudeCodeIcon } from '@/components/icons/ClaudeCodeIcon'
 import { DotnetIcon } from '@/components/icons/DotnetIcon'
 import { ExpressIcon } from '@/components/icons/ExpressIcon'
 import { GoIcon } from '@/components/icons/GoIcon'
@@ -12,6 +14,7 @@ import { PhpIcon } from '@/components/icons/PhpIcon'
 import { PythonIcon } from '@/components/icons/PythonIcon'
 import { RubyIcon } from '@/components/icons/RubyIcon'
 import { RustIcon } from '@/components/icons/RustIcon'
+import openAiLogo from '@/images/logos/openai.svg'
 
 function CliReferenceGlyphIcon(props) {
   return (
@@ -19,6 +22,10 @@ function CliReferenceGlyphIcon(props) {
       ❯
     </span>
   )
+}
+
+function OpenAIIcon(props) {
+  return <Image src={openAiLogo} alt="OpenAI" unoptimized {...props} />
 }
 
 function QuickstartCard({ item }) {
@@ -46,6 +53,18 @@ export function QuickstartCards({
       title: 'CLI Quickstart',
       icon: CliReferenceGlyphIcon,
       iconClass: 'h-5 w-5 text-zinc-800 dark:text-zinc-200',
+    },
+    {
+      href: '/docs/secrets-in-claude',
+      title: 'Claude Quickstart',
+      icon: ClaudeCodeIcon,
+      iconClass: 'h-5 w-5 text-[#D97757]',
+    },
+    {
+      href: '/docs/secrets-in-codex',
+      title: 'Codex Quickstart',
+      icon: OpenAIIcon,
+      iconClass: 'h-5 w-5 dark:invert',
     },
     {
       href: '/docs/secrets-in-nodejs',

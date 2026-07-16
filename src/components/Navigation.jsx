@@ -207,6 +207,14 @@ export const defaultNavigation = [
         href: '/docs/secrets-with-cli',
       },
       {
+        title: 'Claude',
+        href: '/docs/secrets-in-claude',
+      },
+      {
+        title: 'Codex',
+        href: '/docs/secrets-in-codex',
+      },
+      {
         title: 'Node.js',
         href: '/docs/secrets-in-nodejs',
         links: [
