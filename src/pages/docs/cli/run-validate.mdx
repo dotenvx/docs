@@ -1,0 +1,45 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Validate your environment against .env.example.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Run', href: '/docs/cli/run' },
+  ]}
+/>
+
+# dotenvx run --validate
+
+<GuideHeading lead={description} />
+
+Use `.env.example` to declare the environment variables your command requires.
+
+```ini
+# .env.example
+DATABASE_URL=
+API_KEY=
+SENTRY_DSN= # optional
+```
+
+```sh
+$ dotenvx run --validate -- node index.js
+[VALIDATION_FAILED] missing required (DATABASE_URL, API_KEY). fix: [https://github.com/dotenvx/dotenvx/issues/907]
+```
+
+Validation errors are reported without stopping your command. Combine `--validate` with `--strict` to exit with code 1 before the command runs.
+
+```sh
+$ dotenvx run --validate --strict -- node index.js
+```
+
+Any inline comment containing the word `optional` marks that key as optional.
+
+```ini
+SENTRY_DSN= # optional
+LOG_LEVEL=info # this value is optional
+```
+
+If `.env.example` is missing, dotenvx reports `MISSING_ENV_EXAMPLE`. An empty `.env.example` is valid and declares no required variables.
