@@ -1,5 +1,6 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
+import { Video } from '@/components/Video'
 
 export const description =
   'Run Codex non-interactively while redacting injected values from its output.'
@@ -23,3 +24,5 @@ $ echo "SECRET=super-secret-value" > .env
 $ dotenvx run --redact --quiet -- codex exec 'Print the value of $SECRET'
 [REDACTED]
 ```
+
+<Video mp4="https://github.com/user-attachments/assets/36cdfe6b-429a-4cb7-a087-894c5f043a2b" />
