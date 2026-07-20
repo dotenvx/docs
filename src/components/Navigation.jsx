@@ -1,11 +1,38 @@
 import { useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
 import { Tag } from '@/components/Tag'
+import { ClaudeCodeIcon } from '@/components/icons/ClaudeCodeIcon'
+import { DotnetIcon } from '@/components/icons/DotnetIcon'
+import { GoIcon } from '@/components/icons/GoIcon'
+import { JavaIcon } from '@/components/icons/JavaIcon'
+import { NodeIcon } from '@/components/icons/NodeIcon'
+import { OnePasswordIcon } from '@/components/icons/OnePasswordIcon'
+import { PhpIcon } from '@/components/icons/PhpIcon'
+import { PythonIcon } from '@/components/icons/PythonIcon'
+import { RubyIcon } from '@/components/icons/RubyIcon'
+import { RustIcon } from '@/components/icons/RustIcon'
+import openAiLogo from '@/images/logos/openai.svg'
+
+function CliIcon({ className, ...props }) {
+  return (
+    <span
+      className={clsx('flex items-center justify-center pb-px text-[15px] leading-none', className)}
+      {...props}
+    >
+      ❯
+    </span>
+  )
+}
+
+function OpenAIIcon(props) {
+  return <Image src={openAiLogo} alt="" unoptimized {...props} />
+}
 
 function useInitialValue(value, condition = true) {
   let initialValue = useRef(value).current
@@ -25,7 +52,7 @@ function TopLevelNavItem({ href, children }) {
   )
 }
 
-function NavLink({ href, tag, hasChildren = false, active, current, level = 0, target, rel, children }) {
+function NavLink({ href, tag, icon: Icon, iconClassName, hasChildren = false, active, current, level = 0, target, rel, children }) {
   let leftPaddingClass = {
     0: 'pl-2',
     1: 'pl-3',
@@ -48,7 +75,20 @@ function NavLink({ href, tag, hasChildren = false, active, current, level = 0, t
             : 'text-zinc-600 hover:bg-zinc-900/2.5 dark:text-zinc-400 dark:hover:bg-white/5'
       )}
     >
-      <span className="truncate">{children}</span>
+      <span className="flex min-w-0 items-center gap-2">
+        {Icon && (
+          <span className="flex h-4 w-4 shrink-0 items-center justify-center">
+            <Icon
+              aria-hidden="true"
+              className={clsx(
+                'h-4 w-4 text-zinc-500 grayscale [&_path]:fill-current dark:text-zinc-400 dark:opacity-80',
+                iconClassName
+              )}
+            />
+          </span>
+        )}
+        <span className="truncate">{children}</span>
+      </span>
       <span className="flex items-center gap-2">
         {tag && (
           <Tag variant="small" color="zinc">
@@ -123,6 +163,8 @@ function NavigationLinkItem({ link, pathname, level = 0 }) {
         level={level}
         target={link.target}
         rel={link.rel}
+        icon={level === 0 ? link.icon : undefined}
+        iconClassName={level === 0 ? link.iconClassName : undefined}
       >
         {link.title}
       </NavLink>
@@ -205,22 +247,29 @@ export const defaultNavigation = [
       {
         title: 'CLI',
         href: '/docs/secrets-with-cli',
+        icon: CliIcon,
       },
       {
         title: 'Claude',
         href: '/docs/secrets-in-claude',
+        icon: ClaudeCodeIcon,
+        iconClassName: 'h-3.5 w-3.5',
       },
       {
         title: 'Codex',
         href: '/docs/secrets-in-codex',
+        icon: OpenAIIcon,
       },
       {
         title: '1Password',
         href: '/docs/secrets-in-1password',
+        icon: OnePasswordIcon,
+        iconClassName: 'h-3.5 w-3.5',
       },
       {
         title: 'Node.js',
         href: '/docs/secrets-in-nodejs',
+        icon: NodeIcon,
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-nodejs' },
           { title: 'Next.js', href: '/docs/secrets-in-nextjs' },
@@ -234,6 +283,8 @@ export const defaultNavigation = [
       {
         title: 'Python',
         href: '/docs/secrets-in-python',
+        icon: PythonIcon,
+        iconClassName: 'h-3.5 w-3.5',
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-python' },
           { title: 'uv', href: '/docs/secrets-in-uv' },
@@ -242,6 +293,7 @@ export const defaultNavigation = [
       {
         title: 'PHP',
         href: '/docs/secrets-in-php',
+        icon: PhpIcon,
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-php' },
         ],
@@ -249,6 +301,8 @@ export const defaultNavigation = [
       {
         title: 'Ruby',
         href: '/docs/secrets-in-ruby',
+        icon: RubyIcon,
+        iconClassName: 'h-3.5 w-3.5',
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-ruby' },
         ],
@@ -256,6 +310,7 @@ export const defaultNavigation = [
       {
         title: 'Go',
         href: '/docs/secrets-in-go',
+        icon: GoIcon,
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-go' },
         ],
@@ -263,6 +318,8 @@ export const defaultNavigation = [
       {
         title: 'Rust',
         href: '/docs/secrets-in-rust',
+        icon: RustIcon,
+        iconClassName: 'h-3.5 w-3.5',
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-rust' },
         ],
@@ -270,6 +327,7 @@ export const defaultNavigation = [
       {
         title: 'Java',
         href: '/docs/secrets-in-java',
+        icon: JavaIcon,
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-java' },
           { title: 'Kotlin', href: '/docs/secrets-in-kotlin' },
@@ -279,6 +337,7 @@ export const defaultNavigation = [
       {
         title: '.NET',
         href: '/docs/secrets-in-dotnet',
+        icon: DotnetIcon,
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-dotnet' },
         ],
