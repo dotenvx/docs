@@ -215,6 +215,10 @@ export const defaultNavigation = [
         href: '/docs/secrets-in-codex',
       },
       {
+        title: '1Password',
+        href: '/docs/secrets-in-1password',
+      },
+      {
         title: 'Node.js',
         href: '/docs/secrets-in-nodejs',
         links: [

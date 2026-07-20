@@ -8,6 +8,7 @@ import { DotnetIcon } from '@/components/icons/DotnetIcon'
 import { ExpressIcon } from '@/components/icons/ExpressIcon'
 import { GoIcon } from '@/components/icons/GoIcon'
 import { JavaIcon } from '@/components/icons/JavaIcon'
+import { OnePasswordIcon } from '@/components/icons/OnePasswordIcon'
 import { NextIcon } from '@/components/icons/NextIcon'
 import { NodeIcon } from '@/components/icons/NodeIcon'
 import { PhpIcon } from '@/components/icons/PhpIcon'
@@ -65,6 +66,12 @@ export function QuickstartCards({
       title: 'Codex Quickstart',
       icon: OpenAIIcon,
       iconClass: 'h-5 w-5 dark:invert',
+    },
+    {
+      href: '/docs/secrets-in-1password',
+      title: '1Pass Quickstart',
+      icon: OnePasswordIcon,
+      iconClass: 'h-5 w-5 text-[#0572EC]',
     },
     {
       href: '/docs/secrets-in-nodejs',
