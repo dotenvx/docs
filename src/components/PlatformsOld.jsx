@@ -60,7 +60,7 @@ export function Platforms() {
               Docker
             </h3>
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with Docker &amp; Docker Compose</p>
-            <p className="mt-4"><Button href="/docs/platforms/docker" variant="text" arrow="right">Docker Guides</Button></p>
+            <p className="mt-4"><Button href="/docs/secrets-in-docker" variant="text" arrow="right">Docker Guides</Button></p>
           </div>
           <DockerIcon className="h-9 w-9 text-[#2496ED]"/>
         </div>

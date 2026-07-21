@@ -7,8 +7,10 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
 import { Tag } from '@/components/Tag'
+import { BitwardenIcon } from '@/components/icons/BitwardenIcon'
 import { ClaudeCodeIcon } from '@/components/icons/ClaudeCodeIcon'
 import { DotnetIcon } from '@/components/icons/DotnetIcon'
+import { DockerIcon } from '@/components/icons/DockerIcon'
 import { GoIcon } from '@/components/icons/GoIcon'
 import { JavaIcon } from '@/components/icons/JavaIcon'
 import { NodeIcon } from '@/components/icons/NodeIcon'
@@ -267,6 +269,17 @@ export const defaultNavigation = [
         iconClassName: 'h-3.5 w-3.5',
       },
       {
+        title: 'Bitwarden',
+        href: '/docs/secrets-in-bitwarden',
+        icon: BitwardenIcon,
+        iconClassName: 'h-3.5 w-3.5 text-[#175DDC]',
+      },
+      {
+        title: 'Docker',
+        href: '/docs/secrets-in-docker',
+        icon: DockerIcon,
+      },
+      {
         title: 'Node.js',
         href: '/docs/secrets-in-nodejs',
         icon: NodeIcon,
@@ -404,7 +417,7 @@ export const defaultNavigation = [
           { title: 'Bitwarden', href: '/docs/guides/bitwarden' },
           { title: 'Cloudflare', href: '/docs/platforms/cloudflare' },
           { title: 'Digital Ocean', href: '/docs/platforms/digital-ocean' },
-          { title: 'Docker', href: '/docs/platforms/docker' },
+          { title: 'Docker', href: '/docs/secrets-in-docker' },
           { title: 'Docker Compose', href: '/docs/platforms/docker-compose' },
           { title: 'Fly', href: '/docs/platforms/fly' },
           { title: 'GitHub', href: '/docs/cis/github-actions' },

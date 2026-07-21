@@ -38,7 +38,6 @@ Password: <your DOTENV_PRIVATE_KEY_PRODUCTION value>
 Use `bw get password` to read the Bitwarden item password into `DOTENV_PRIVATE_KEY`.
 
 ```sh
-export BW_SESSION="$(bw unlock --raw)"
 DOTENV_PRIVATE_KEY="$(bw get password DOTENV_PRIVATE_KEY)" dotenvx run -- npm start
 ```
 
@@ -49,7 +48,6 @@ DOTENV_PRIVATE_KEY="$(bw get password DOTENV_PRIVATE_KEY)" dotenvx run -- npm st
 For `.env.production`, read the matching Bitwarden item into `DOTENV_PRIVATE_KEY_PRODUCTION`.
 
 ```sh
-export BW_SESSION="$(bw unlock --raw)"
 DOTENV_PRIVATE_KEY_PRODUCTION="$(bw get password DOTENV_PRIVATE_KEY_PRODUCTION)" dotenvx run -- npm start
 ```
 

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { AstroIcon } from '@/components/icons/AstroIcon'
+import { BitwardenIcon } from '@/components/icons/BitwardenIcon'
 import { CalendarIcon } from '@/components/icons/CalendarIcon'
 import { ClaudeCodeIcon } from '@/components/icons/ClaudeCodeIcon'
 import { DotnetIcon } from '@/components/icons/DotnetIcon'
@@ -72,6 +73,12 @@ export function QuickstartCards({
       title: '1Pass Quickstart',
       icon: OnePasswordIcon,
       iconClass: 'h-5 w-5 text-[#0572EC]',
+    },
+    {
+      href: '/docs/secrets-in-bitwarden',
+      title: 'Bitwarden Quickstart',
+      icon: BitwardenIcon,
+      iconClass: 'h-5 w-5 text-[#175DDC]',
     },
     {
       href: '/docs/secrets-in-nodejs',
