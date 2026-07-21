@@ -56,7 +56,10 @@ export default function (nextConfig = {}) {
             let pagesDir = path.resolve('./src/pages')
             this.addContextDependency(pagesDir)
 
-            let files = glob.sync('**/*.mdx', { cwd: pagesDir })
+            let files = glob.sync('**/*.mdx', {
+              cwd: pagesDir,
+              ignore: ['docs/frameworks/**'],
+            })
             let data = files.map((file) => {
               let url =
                 file === 'index.mdx' ? '/' : `/${file.replace(/\.mdx$/, '')}`
@@ -84,7 +87,10 @@ export default function (nextConfig = {}) {
                 tokenize: 'full',
                 document: {
                   id: 'url',
-                  index: 'content',
+                  index: [
+                    { field: 'title', tokenize: 'full' },
+                    { field: 'content', tokenize: 'full' },
+                  ],
                   store: ['title', 'pageTitle', 'pageUrl'],
                 },
                 context: {
@@ -123,7 +129,24 @@ export default function (nextConfig = {}) {
                 if (result.length === 0) {
                   return []
                 }
-                return result[0].result.map((item) => ({
+
+                let limit = options.limit ?? Infinity
+                let items = []
+                let seen = new Set()
+
+                // FlexSearch returns one result group per indexed field. Titles are
+                // indexed first, so exact page and section names outrank incidental
+                // mentions in body copy.
+                for (let group of result) {
+                  for (let item of group.result) {
+                    if (!seen.has(item.id)) {
+                      seen.add(item.id)
+                      items.push(item)
+                    }
+                  }
+                }
+
+                return items.slice(0, limit).map((item) => ({
                   url: item.id,
                   title: item.doc.title,
                   pageTitle: item.doc.pageTitle,

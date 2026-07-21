@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 import { AstroIcon } from '@/components/icons/AstroIcon'
 import { BitwardenIcon } from '@/components/icons/BitwardenIcon'
@@ -12,11 +11,11 @@ import { JavaIcon } from '@/components/icons/JavaIcon'
 import { OnePasswordIcon } from '@/components/icons/OnePasswordIcon'
 import { NextIcon } from '@/components/icons/NextIcon'
 import { NodeIcon } from '@/components/icons/NodeIcon'
+import { OpenAIIcon } from '@/components/icons/OpenAIIcon'
 import { PhpIcon } from '@/components/icons/PhpIcon'
 import { PythonIcon } from '@/components/icons/PythonIcon'
 import { RubyIcon } from '@/components/icons/RubyIcon'
 import { RustIcon } from '@/components/icons/RustIcon'
-import openAiLogo from '@/images/logos/openai.svg'
 
 function CliReferenceGlyphIcon(props) {
   return (
@@ -26,23 +25,24 @@ function CliReferenceGlyphIcon(props) {
   )
 }
 
-function OpenAIIcon(props) {
-  return <Image src={openAiLogo} alt="OpenAI" unoptimized {...props} />
-}
-
 function QuickstartCard({ item }) {
   const Icon = item.icon
 
   return (
     <Link
       href={item.href}
-      className="group relative flex flex-col gap-3 rounded-xl border border-zinc-900/10 bg-zinc-50/40 p-4 no-underline transition-colors hover:border-zinc-900/25 dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/20 md:p-5"
+      className="group relative flex flex-col gap-2 rounded-xl border border-zinc-900/10 bg-zinc-50/40 p-4 no-underline transition-colors hover:border-zinc-900/25 dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/20"
     >
       <div className="flex h-8 w-8 items-center justify-center rounded-md border border-zinc-900/15 bg-zinc-100/60 dark:border-white/15 dark:bg-white/5">
         <Icon className={item.iconClass ?? 'h-5 w-5 text-zinc-800 dark:text-zinc-200'} />
       </div>
       <h3 className="text-base font-semibold leading-6 text-zinc-900 dark:text-zinc-100">
-        {item.title}
+        {item.shortTitle ? (
+          <>
+            <span className="min-[520px]:hidden">{item.title}</span>
+            <span className="hidden min-[520px]:inline">{item.shortTitle}</span>
+          </>
+        ) : item.title}
       </h3>
     </Link>
   )
@@ -66,11 +66,12 @@ export function QuickstartCards({
       href: '/docs/secrets-in-codex',
       title: 'Codex Quickstart',
       icon: OpenAIIcon,
-      iconClass: 'h-5 w-5 dark:invert',
+      iconClass: 'h-5 w-5 text-black dark:text-zinc-100',
     },
     {
       href: '/docs/secrets-in-1password',
-      title: '1Pass Quickstart',
+      title: '1Password Quickstart',
+      shortTitle: '1Pass Quickstart',
       icon: OnePasswordIcon,
       iconClass: 'h-5 w-5 text-[#0572EC]',
     },

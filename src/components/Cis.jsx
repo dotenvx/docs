@@ -76,7 +76,7 @@ export function Cis() {
               GitHub Actions
             </h3>
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use .env.vault with GitHub Actions</p>
-            <p className="mt-4"><Button href="/docs/cis/github-actions" variant="text" arrow="right">GitHub Actions Guides</Button></p>
+            <p className="mt-4"><Button href="/docs/secrets-in-github-actions" variant="text" arrow="right">GitHub Actions Guides</Button></p>
           </div>
           <GitHubIcon className="h-9 w-9 text-[#181717] dark:invert"/>
         </div>

@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 function SunIcon(props) {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
@@ -18,27 +20,57 @@ function MoonIcon(props) {
   )
 }
 
+function disableTransitionsTemporarily() {
+  document.documentElement.classList.add('[&_*]:!transition-none')
+  window.setTimeout(() => {
+    document.documentElement.classList.remove('[&_*]:!transition-none')
+  }, 0)
+}
+
+function toggleMode() {
+  disableTransitionsTemporarily()
+
+  let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+  let isSystemDarkMode = darkModeMediaQuery.matches
+  let isDarkMode = document.documentElement.classList.toggle('dark')
+
+  if (isDarkMode === isSystemDarkMode) {
+    delete window.localStorage.isDarkMode
+  } else {
+    window.localStorage.isDarkMode = isDarkMode
+  }
+}
+
 export function ModeToggle() {
-  function disableTransitionsTemporarily() {
-    document.documentElement.classList.add('[&_*]:!transition-none')
-    window.setTimeout(() => {
-      document.documentElement.classList.remove('[&_*]:!transition-none')
-    }, 0)
-  }
+  useEffect(() => {
+    function handleKeyDown(event) {
+      let target = event.target
+      let tagName = target?.tagName
 
-  function toggleMode() {
-    disableTransitionsTemporarily()
+      if (
+        target?.isContentEditable ||
+        tagName === 'INPUT' ||
+        tagName === 'TEXTAREA' ||
+        tagName === 'SELECT'
+      ) {
+        return
+      }
 
-    let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    let isSystemDarkMode = darkModeMediaQuery.matches
-    let isDarkMode = document.documentElement.classList.toggle('dark')
-
-    if (isDarkMode === isSystemDarkMode) {
-      delete window.localStorage.isDarkMode
-    } else {
-      window.localStorage.isDarkMode = isDarkMode
+      if (
+        event.key.toLowerCase() === 'm' &&
+        !event.metaKey &&
+        !event.ctrlKey &&
+        !event.altKey &&
+        !event.repeat
+      ) {
+        event.preventDefault()
+        toggleMode()
+      }
     }
-  }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
 
   return (
     <button

@@ -1,58 +1,7 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
-import { GuideHeading } from '@/components/GuideHeading'
+import { HeadRedirect } from '@/components/HeadRedirect'
 
-export const description =
-  'Load dotenvx private keys from Bitwarden at runtime.'
+<HeadRedirect url="/docs/secrets-in-bitwarden" />
 
-<Breadcrumb
-  items={[
-    { label: 'Documentation', href: '/docs' },
-    { label: 'Guides', href: '/docs/guides' },
-    { label: 'Bitwarden' },
-  ]}
-/>
+# Redirecting
 
-# Use dotenvx with Bitwarden
-<GuideHeading lead={description} />
-
-Store your `DOTENV_PRIVATE_KEY*` values in Bitwarden, then load them into the environment before running `dotenvx`.
-
-## Store a Private Key
-
-Create a Bitwarden login item named after the dotenvx private-key environment variable.
-
-```txt
-Name: DOTENV_PRIVATE_KEY
-Password: <your DOTENV_PRIVATE_KEY value>
-```
-
-For `.env.production`, name the item `DOTENV_PRIVATE_KEY_PRODUCTION`.
-
-```txt
-Name: DOTENV_PRIVATE_KEY_PRODUCTION
-Password: <your DOTENV_PRIVATE_KEY_PRODUCTION value>
-```
-
-## Read a Private Key
-
-Use `bw get password` to read the Bitwarden item password into `DOTENV_PRIVATE_KEY`.
-
-```sh
-DOTENV_PRIVATE_KEY="$(bw get password DOTENV_PRIVATE_KEY)" dotenvx run -- npm start
-```
-
-`dotenvx run` sees `DOTENV_PRIVATE_KEY`, decrypts `.env`, and injects the decrypted values into your process.
-
-## Use Production
-
-For `.env.production`, read the matching Bitwarden item into `DOTENV_PRIVATE_KEY_PRODUCTION`.
-
-```sh
-DOTENV_PRIVATE_KEY_PRODUCTION="$(bw get password DOTENV_PRIVATE_KEY_PRODUCTION)" dotenvx run -- npm start
-```
-
-The item name, environment variable name, and dotenvx private-key name match one-to-one.
-
-## Team Workflows
-
-Bitwarden works well for developers who already use Bitwarden locally. For teams that want private keys stored off-device, shared by project, and available without each developer wiring local Bitwarden access, use [Armor](/docs/learn/armoring/introduction).
+<a href="/docs/secrets-in-bitwarden">Click here if you are not redirected.</a>

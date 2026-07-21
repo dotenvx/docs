@@ -32,7 +32,7 @@ You can also load this value from 1Password with `op read`.
 DOTENV_PRIVATE_KEY_PRODUCTION="$(op read op://Engineering/my-app/DOTENV_PRIVATE_KEY_PRODUCTION)" dotenvx run -- node index.js
 ```
 
-See [Use dotenvx with 1Password](/docs/guides/1password).
+See [Use dotenvx with 1Password](/docs/secrets-in-1password).
 
 Or load it from Bitwarden with `bw get password`.
 
@@ -41,6 +41,6 @@ export BW_SESSION="$(bw unlock --raw)"
 DOTENV_PRIVATE_KEY_PRODUCTION="$(bw get password DOTENV_PRIVATE_KEY_PRODUCTION)" dotenvx run -- node index.js
 ```
 
-See [Use dotenvx with Bitwarden](/docs/guides/bitwarden).
+See [Use dotenvx with Bitwarden](/docs/secrets-in-bitwarden).
 
 Note the `DOTENV_PRIVATE_KEY_PRODUCTION` ends with `_PRODUCTION`. This instructs dotenvx run to load the `.env.production` file.

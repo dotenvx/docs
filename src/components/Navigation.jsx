@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -12,14 +11,15 @@ import { ClaudeCodeIcon } from '@/components/icons/ClaudeCodeIcon'
 import { DotnetIcon } from '@/components/icons/DotnetIcon'
 import { DockerIcon } from '@/components/icons/DockerIcon'
 import { GoIcon } from '@/components/icons/GoIcon'
+import { GitHubIcon } from '@/components/icons/GitHubIcon'
 import { JavaIcon } from '@/components/icons/JavaIcon'
 import { NodeIcon } from '@/components/icons/NodeIcon'
+import { OpenAIIcon } from '@/components/icons/OpenAIIcon'
 import { OnePasswordIcon } from '@/components/icons/OnePasswordIcon'
 import { PhpIcon } from '@/components/icons/PhpIcon'
 import { PythonIcon } from '@/components/icons/PythonIcon'
 import { RubyIcon } from '@/components/icons/RubyIcon'
 import { RustIcon } from '@/components/icons/RustIcon'
-import openAiLogo from '@/images/logos/openai.svg'
 
 function CliIcon({ className, ...props }) {
   return (
@@ -30,10 +30,6 @@ function CliIcon({ className, ...props }) {
       ❯
     </span>
   )
-}
-
-function OpenAIIcon(props) {
-  return <Image src={openAiLogo} alt="" unoptimized {...props} />
 }
 
 function useInitialValue(value, condition = true) {
@@ -275,11 +271,6 @@ export const defaultNavigation = [
         iconClassName: 'h-3.5 w-3.5 text-[#175DDC]',
       },
       {
-        title: 'Docker',
-        href: '/docs/secrets-in-docker',
-        icon: DockerIcon,
-      },
-      {
         title: 'Node.js',
         href: '/docs/secrets-in-nodejs',
         icon: NodeIcon,
@@ -356,6 +347,20 @@ export const defaultNavigation = [
         ],
       },
       {
+        title: 'Docker',
+        href: '/docs/secrets-in-docker',
+        icon: DockerIcon,
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-docker' },
+          { title: 'Docker Compose', href: '/docs/secrets-in-docker-compose' },
+        ],
+      },
+      {
+        title: 'GitHub Actions',
+        href: '/docs/secrets-in-github-actions',
+        icon: GitHubIcon,
+      },
+      {
         title: 'Other',
         href: '/docs/secrets-in-other',
         footer: false,
@@ -413,14 +418,14 @@ export const defaultNavigation = [
         links: [
           { title: 'Introduction', href: '/docs/guides' },
           { title: 'Monorepos', href: '/docs/monorepos' },
-          { title: '1Password', href: '/docs/guides/1password' },
-          { title: 'Bitwarden', href: '/docs/guides/bitwarden' },
+          { title: '1Password', href: '/docs/secrets-in-1password' },
+          { title: 'Bitwarden', href: '/docs/secrets-in-bitwarden' },
           { title: 'Cloudflare', href: '/docs/platforms/cloudflare' },
           { title: 'Digital Ocean', href: '/docs/platforms/digital-ocean' },
           { title: 'Docker', href: '/docs/secrets-in-docker' },
-          { title: 'Docker Compose', href: '/docs/platforms/docker-compose' },
+          { title: 'Docker Compose', href: '/docs/secrets-in-docker-compose' },
           { title: 'Fly', href: '/docs/platforms/fly' },
-          { title: 'GitHub', href: '/docs/cis/github-actions' },
+          { title: 'GitHub Actions', href: '/docs/secrets-in-github-actions' },
           { title: 'Heroku', href: '/docs/platforms/heroku' },
           { title: 'Netlify', href: '/docs/platforms/netlify' },
           { title: 'Render', href: '/docs/platforms/render' },
