@@ -361,6 +361,15 @@ export const defaultNavigation = [
         icon: GitHubIcon,
       },
       {
+        title: 'Monorepos',
+        href: '/docs/secrets-in-monorepos',
+        links: [
+          { title: 'Introduction', href: '/docs/secrets-in-monorepos' },
+          { title: 'Nx', href: '/docs/secrets-in-nx' },
+          { title: 'Turborepo', href: '/docs/secrets-in-turborepo' },
+        ],
+      },
+      {
         title: 'Other',
         href: '/docs/secrets-in-other',
         footer: false,
@@ -413,19 +422,13 @@ export const defaultNavigation = [
       { title: '.env.keys', href: '/docs/env-keys-file' },
       { title: 'Statistics', href: '/docs/stats' },
       {
-        title: 'Guides',
+        title: 'Platform Guides',
         href: '/docs/guides',
         links: [
           { title: 'Introduction', href: '/docs/guides' },
-          { title: 'Monorepos', href: '/docs/monorepos' },
-          { title: '1Password', href: '/docs/secrets-in-1password' },
-          { title: 'Bitwarden', href: '/docs/secrets-in-bitwarden' },
           { title: 'Cloudflare', href: '/docs/platforms/cloudflare' },
           { title: 'Digital Ocean', href: '/docs/platforms/digital-ocean' },
-          { title: 'Docker', href: '/docs/secrets-in-docker' },
-          { title: 'Docker Compose', href: '/docs/secrets-in-docker-compose' },
           { title: 'Fly', href: '/docs/platforms/fly' },
-          { title: 'GitHub Actions', href: '/docs/secrets-in-github-actions' },
           { title: 'Heroku', href: '/docs/platforms/heroku' },
           { title: 'Netlify', href: '/docs/platforms/netlify' },
           { title: 'Render', href: '/docs/platforms/render' },

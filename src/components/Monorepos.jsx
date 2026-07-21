@@ -17,7 +17,7 @@ export function Monorepos() {
               Directories
             </h3>
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Load shared root envs from any workspace</p>
-            <p className="mt-4"><Button href="/docs/monorepos" variant="text" arrow="right">Monorepo Guide</Button></p>
+            <p className="mt-4"><Button href="/docs/secrets-in-monorepos" variant="text" arrow="right">Monorepo Guide</Button></p>
           </div>
           <FolderIcon className="h-9 w-9 text-zinc-500 dark:text-zinc-400"/>
         </div>
@@ -27,7 +27,7 @@ export function Monorepos() {
               Nx
             </h3>
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Nx</p>
-            <p className="mt-4"><Button href="/docs/monorepos/nx" variant="text" arrow="right">Nx Guide</Button></p>
+            <p className="mt-4"><Button href="/docs/secrets-in-nx" variant="text" arrow="right">Nx Guide</Button></p>
           </div>
           <NxIcon className="h-9 w-9 text-[#143055] dark:text-[#ffffff]"/>
         </div>
@@ -37,7 +37,7 @@ export function Monorepos() {
               Turborepo
             </h3>
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">Use dotenvx with Turborepo</p>
-            <p className="mt-4"><Button href="/docs/monorepos/turborepo" variant="text" arrow="right">Turborepo Guide</Button></p>
+            <p className="mt-4"><Button href="/docs/secrets-in-turborepo" variant="text" arrow="right">Turborepo Guide</Button></p>
           </div>
           <TurborepoIcon className="h-9 w-9 text-[#EF4444]"/>
         </div>
