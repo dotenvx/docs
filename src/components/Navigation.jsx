@@ -257,18 +257,19 @@ export const defaultNavigation = [
         title: 'Codex',
         href: '/docs/secrets-in-codex',
         icon: OpenAIIcon,
+        iconClassName: 'h-[13px] w-[13px]',
       },
       {
         title: '1Password',
         href: '/docs/secrets-in-1password',
         icon: OnePasswordIcon,
-        iconClassName: 'h-3.5 w-3.5',
+        iconClassName: 'h-[13px] w-[13px]',
       },
       {
         title: 'Bitwarden',
         href: '/docs/secrets-in-bitwarden',
         icon: BitwardenIcon,
-        iconClassName: 'h-3.5 w-3.5 text-[#175DDC]',
+        iconClassName: 'h-[13px] w-[13px]',
       },
       {
         title: 'Node.js',
@@ -288,7 +289,7 @@ export const defaultNavigation = [
         title: 'Python',
         href: '/docs/secrets-in-python',
         icon: PythonIcon,
-        iconClassName: 'h-3.5 w-3.5',
+        iconClassName: 'h-[13px] w-[13px]',
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-python' },
           { title: 'uv', href: '/docs/secrets-in-uv' },
@@ -306,7 +307,7 @@ export const defaultNavigation = [
         title: 'Ruby',
         href: '/docs/secrets-in-ruby',
         icon: RubyIcon,
-        iconClassName: 'h-3.5 w-3.5',
+        iconClassName: 'h-[13px] w-[13px]',
         links: [
           { title: 'Introduction', href: '/docs/secrets-in-ruby' },
         ],
@@ -359,6 +360,7 @@ export const defaultNavigation = [
         title: 'GitHub Actions',
         href: '/docs/secrets-in-github-actions',
         icon: GitHubIcon,
+        iconClassName: 'h-[13px] w-[13px]',
       },
       {
         title: 'Monorepos',
