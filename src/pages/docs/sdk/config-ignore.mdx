@@ -23,3 +23,11 @@ $ node index.js
 ⟐ injected env (1) from .env
 Hello World
 ```
+
+You can also set `DOTENV_CONFIG_IGNORE`. Its value is a comma-separated list.
+
+```sh
+$ DOTENV_CONFIG_IGNORE=MISSING_ENV_FILE,OTHER node index.js
+⟐ injected env (1) from .env
+Hello World
+```

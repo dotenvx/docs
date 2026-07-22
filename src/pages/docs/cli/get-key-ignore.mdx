@@ -18,3 +18,15 @@ export const description =
 ```sh
 $ dotenvx get HELLO --ignore=MISSING_ENV_FILE
 ```
+
+Ignore multiple error codes by separating them with spaces.
+
+```sh
+$ dotenvx get HELLO --ignore=MISSING_ENV_FILE MISSING_KEY
+```
+
+You can also set `DOTENV_CONFIG_IGNORE`. Its value is a comma-separated list.
+
+```sh
+$ DOTENV_CONFIG_IGNORE=MISSING_ENV_FILE,OTHER dotenvx get HELLO
+```

@@ -2,31 +2,31 @@ import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
 
 export const description =
-  'Ignore specific error codes.'
+  'Ignore specific validation error codes.'
 
 <Breadcrumb
   items={[
     { label: 'CLI Reference', href: '/docs/cli' },
-    { label: 'Run', href: '/docs/cli/run' },
+    { label: 'Validate', href: '/docs/cli/validate' },
   ]}
 />
 
-# dotenvx run --ignore
+# dotenvx validate --ignore
 
 <GuideHeading lead={description} />
 
 ```sh
-$ dotenvx run --ignore=MISSING_ENV_FILE -- yourcommand
+$ dotenvx validate --ignore=MISSING_ENV_EXAMPLE
 ```
 
 Ignore multiple error codes by separating them with spaces.
 
 ```sh
-$ dotenvx run --ignore=MISSING_ENV_FILE MISSING_KEY -- yourcommand
+$ dotenvx validate --ignore=MISSING_ENV_FILE MISSING_ENV_EXAMPLE
 ```
 
 You can also set `DOTENV_CONFIG_IGNORE`. Its value is a comma-separated list.
 
 ```sh
-$ DOTENV_CONFIG_IGNORE=MISSING_ENV_FILE,OTHER dotenvx run -- yourcommand
+$ DOTENV_CONFIG_IGNORE=MISSING_ENV_FILE,OTHER dotenvx validate
 ```
