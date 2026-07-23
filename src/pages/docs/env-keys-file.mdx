@@ -42,22 +42,6 @@ $ dotenvx set HELLO World
 
 Do not commit `.env.keys` to source code. Keep them somewhere safe like 1Password or [Armor ⛨](https://dotenvx.com/armor).
 
-## Protecting from agents
-
-After encryption, `DOTENV_PUBLIC_KEY` lives in your encrypted `.env` file. This means agents and automation can keep running [`dotenvx set`](/docs/cli/set-key-value) and [`dotenvx encrypt`](/docs/cli/encrypt) without reading `.env.keys`.
-
-```sh
-$ chmod a-r .env.keys
-
-$ dotenvx set HELLO World
-◈ encrypted HELLO (.env)
-
-$ dotenvx encrypt
-◈ encrypted (.env)
-```
-
-Keep `.env.keys` unreadable by agents, while still letting them safely update encrypted values.
-
 ## History
 
 The `.env.keys` file originally came out of development work on [dotenv-vault](https://github.com/dotenv-org/dotenv-vault) in early 2023. It's current format came out about during [an effort in May 2024](https://github.com/dotenvx/dotenvx/issues/189) to support encryption without the ability to decrypt.
