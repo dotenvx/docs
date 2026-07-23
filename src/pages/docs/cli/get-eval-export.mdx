@@ -1,0 +1,40 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Return export statements for loading .env values into the current shell.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Get', href: '/docs/cli/get' },
+  ]}
+/>
+
+# dotenvx get --format eval-export
+
+<GuideHeading lead={description} />
+
+```sh
+$ echo "HELLO=World" > .env
+dotenvx get --format eval-export
+export HELLO='World'
+```
+
+Evaluate the output to make the values available to subsequent commands in your current shell.
+
+```sh
+$ eval "$(dotenvx get --format=eval-export)"
+echo "$HELLO"
+World
+```
+
+Use `--include-key` to export only matching variables.
+
+```sh
+$ eval "$(dotenvx get -ik 'TF_VAR_*' --format=eval-export)"
+terraform plan
+terraform apply
+```
+
+The exported values remain in the current shell until you unset them or close the shell. Prefer `dotenvx run --` when variables only need to be available to a single command.
