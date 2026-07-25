@@ -1,0 +1,50 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Display help for dotenvx or a specific command.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+  ]}
+/>
+
+# dotenvx help
+
+<GuideHeading lead={description} />
+
+Display the top-level command list and options:
+
+```sh
+$ dotenvx help
+Usage: dotenvx run -- yourcommand
+
+a secure dotenv–from the creator of `dotenv`
+
+Options:
+  -V, --version  output the version number
+  -h, --help     display help for command
+
+Commands:
+  run
+  get [KEY]
+  set <KEY> <value>
+  encrypt
+  decrypt
+  keypair [KEY]
+  ls [directory]
+  gitignore
+  genexample [directory]
+  validate
+  precommit [directory]
+  prebuild [directory]
+```
+
+Pass a command name for detailed help:
+
+```sh
+$ dotenvx help run
+Usage: dotenvx run [options] -- yourcommand
+```
+

@@ -466,6 +466,8 @@ export const cliNavigation = [
       { title: 'Validate', href: '/docs/cli/validate' },
       { title: 'Precommit', href: '/docs/cli/precommit' },
       { title: 'Prebuild', href: '/docs/cli/prebuild' },
+      { title: 'Help', href: '/docs/cli/help' },
+      { title: 'Version', href: '/docs/cli/version' },
     ],
   },
   {

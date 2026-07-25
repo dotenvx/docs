@@ -1,0 +1,26 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Exclude keys that match a glob pattern.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Get', href: '/docs/cli/get' },
+  ]}
+/>
+
+# dotenvx get -ek
+
+<GuideHeading lead={description} />
+
+Pass `--exclude-key`, or its `-ek` alias. Glob patterns are supported.
+
+```sh
+$ echo "DOTENV_PUBLIC_KEY=public\nHELLO=World" > .env
+
+$ dotenvx get --format=eval-export -ek "DOTENV_PUBLIC_KEY*"
+export HELLO='World'
+```
+

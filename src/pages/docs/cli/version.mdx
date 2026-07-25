@@ -1,0 +1,28 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Print the installed dotenvx version.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+  ]}
+/>
+
+# dotenvx --version
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx --version
+X.X.X
+```
+
+The short `-V` flag is equivalent:
+
+```sh
+$ dotenvx -V
+X.X.X
+```
+
