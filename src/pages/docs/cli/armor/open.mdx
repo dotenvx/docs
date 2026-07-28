@@ -1,0 +1,27 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Open an armored key in your browser.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Armor', href: '/docs/cli/armor' },
+    { label: 'open', href: '/docs/cli/armor/open' },
+  ]}
+/>
+
+# Armor Open
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx armor open
+```
+
+Open the armored key for a specific env file.
+
+```sh
+$ dotenvx armor open -f .env.production
+```

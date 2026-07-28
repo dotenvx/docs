@@ -499,6 +499,7 @@ export const cliNavigation = [
           { title: 'Down', href: '/docs/cli/armor/down' },
           { title: 'Push', href: '/docs/cli/armor/push' },
           { title: 'Pull', href: '/docs/cli/armor/pull' },
+          { title: 'Open', href: '/docs/cli/armor/open' },
           { title: 'Move', href: '/docs/cli/armor/move' },
           { title: 'Login', href: '/docs/cli/armor/login' },
           { title: 'Logout', href: '/docs/cli/armor/logout' },
