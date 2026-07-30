@@ -8,6 +8,7 @@ import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
 import { Tag } from '@/components/Tag'
 import { BitwardenIcon } from '@/components/icons/BitwardenIcon'
 import { ClaudeCodeIcon } from '@/components/icons/ClaudeCodeIcon'
+import { CursorIcon } from '@/components/icons/CursorIcon'
 import { DotnetIcon } from '@/components/icons/DotnetIcon'
 import { DockerIcon } from '@/components/icons/DockerIcon'
 import { GoIcon } from '@/components/icons/GoIcon'
@@ -257,6 +258,12 @@ export const defaultNavigation = [
         title: 'Codex',
         href: '/docs/secrets-in-codex',
         icon: OpenAIIcon,
+        iconClassName: 'h-[13px] w-[13px]',
+      },
+      {
+        title: 'Cursor',
+        href: '/docs/secrets-in-cursor',
+        icon: CursorIcon,
         iconClassName: 'h-[13px] w-[13px]',
       },
       {

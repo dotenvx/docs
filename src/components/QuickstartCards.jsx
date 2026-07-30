@@ -4,6 +4,7 @@ import { AstroIcon } from '@/components/icons/AstroIcon'
 import { BitwardenIcon } from '@/components/icons/BitwardenIcon'
 import { CalendarIcon } from '@/components/icons/CalendarIcon'
 import { ClaudeCodeIcon } from '@/components/icons/ClaudeCodeIcon'
+import { CursorIcon } from '@/components/icons/CursorIcon'
 import { DotnetIcon } from '@/components/icons/DotnetIcon'
 import { ExpressIcon } from '@/components/icons/ExpressIcon'
 import { GoIcon } from '@/components/icons/GoIcon'
@@ -66,6 +67,12 @@ export function QuickstartCards({
       href: '/docs/secrets-in-codex',
       title: 'Codex Quickstart',
       icon: OpenAIIcon,
+      iconClass: 'h-5 w-5 text-black dark:text-zinc-100',
+    },
+    {
+      href: '/docs/secrets-in-cursor',
+      title: 'Cursor Quickstart',
+      icon: CursorIcon,
       iconClass: 'h-5 w-5 text-black dark:text-zinc-100',
     },
     {
