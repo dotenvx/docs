@@ -57,6 +57,16 @@ fn main() {
 
 It's a convenient and widely adopted format for separating your secrets and config from your code.
 
+## Use it with dotenvx
+
+Dotenvx loads the values from your `.env` file and makes them available to your application. Preface your application's command with `dotenvx run --`.
+
+```sh
+$ dotenvx run -- your-app-boot-command
+```
+
+[Get started with dotenvx →](/docs/quickstart)
+
 ## Keys
 
 For the sake of portability (and sanity), environment variable names (keys) must consist solely of letters, digits, and the underscore ( `_` ) and must not begin with a digit. In regex-speak, the names must match the following pattern:
