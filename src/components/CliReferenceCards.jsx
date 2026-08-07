@@ -9,6 +9,8 @@ function CliReferenceCard({ item }) {
     glyph = '⚷'
   } else if (item.href === '/docs/cli/encrypt' || item.href === '/docs/cli/set') {
     glyph = '⬖'
+  } else if (item.href === '/docs/cli/del') {
+    glyph = '◇'
   } else if (item.href === '/docs/cli/get' || item.href === '/docs/cli/decrypt') {
     glyph = '⬗'
   } else if (item.href === '/docs/cli/ls') {
@@ -47,6 +49,7 @@ export function CliReferenceCards() {
     { href: '/docs/cli/run', title: 'Run' },
     { href: '/docs/cli/get', title: 'Get' },
     { href: '/docs/cli/set', title: 'Set' },
+    { href: '/docs/cli/del', title: 'Del' },
     { href: '/docs/cli/encrypt', title: 'Encrypt' },
     { href: '/docs/cli/decrypt', title: 'Decrypt' },
     { href: '/docs/cli/keypair', title: 'Keypair' },

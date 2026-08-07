@@ -1,0 +1,21 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+export const description =
+  'Delete a key from another .env file.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Del', href: '/docs/cli/del' },
+  ]}
+/>
+# dotenvx del KEY -f
+
+<GuideHeading lead={description} />
+
+```sh
+$ echo "HELLO=production" > .env.production
+
+dotenvx del HELLO -f .env.production
+◇ removed HELLO (.env.production)
+```

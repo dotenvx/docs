@@ -464,6 +464,7 @@ export const cliNavigation = [
       { title: 'Run', href: '/docs/cli/run' },
       { title: 'Get', href: '/docs/cli/get' },
       { title: 'Set', href: '/docs/cli/set' },
+      { title: 'Del', href: '/docs/cli/del' },
       { title: 'Encrypt', href: '/docs/cli/encrypt' },
       { title: 'Decrypt', href: '/docs/cli/decrypt' },
       { title: 'Keypair', href: '/docs/cli/keypair' },

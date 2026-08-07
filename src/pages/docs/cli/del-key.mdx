@@ -1,0 +1,21 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+export const description =
+  'Delete a single key from your .env file.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Del', href: '/docs/cli/del' },
+  ]}
+/>
+# dotenvx del KEY
+
+<GuideHeading lead={description} />
+
+```sh
+$ echo "HELLO=World" > .env
+
+dotenvx del HELLO
+◇ removed HELLO (.env)
+```

@@ -1,0 +1,26 @@
+import { Breadcrumb } from '@/components/Breadcrumb'
+import { GuideHeading } from '@/components/GuideHeading'
+
+export const description =
+  'Delete a single environment variable.'
+
+<Breadcrumb
+  items={[
+    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'Del', href: '/docs/cli/del' },
+  ]}
+/>
+
+# Del
+
+<GuideHeading lead={description} />
+
+```sh
+$ dotenvx del HELLO
+◇ removed HELLO (.env)
+```
+
+## Options
+
+* [del KEY](/docs/cli/del-key)
+* [del KEY -f](/docs/cli/del-key-f)
