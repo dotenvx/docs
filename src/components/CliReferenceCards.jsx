@@ -10,7 +10,7 @@ function CliReferenceCard({ item }) {
   } else if (item.href === '/docs/cli/encrypt' || item.href === '/docs/cli/set') {
     glyph = '⬖'
   } else if (item.href === '/docs/cli/del') {
-    glyph = '◇'
+    glyph = '−'
   } else if (item.href === '/docs/cli/get' || item.href === '/docs/cli/decrypt') {
     glyph = '⬗'
   } else if (item.href === '/docs/cli/ls') {
