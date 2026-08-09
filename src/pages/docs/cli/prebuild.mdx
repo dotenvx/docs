@@ -1,5 +1,6 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
+import { Video } from '@/components/Video'
 export const description =
   'Prevent .env files from being built into your docker containers.'
 
@@ -24,3 +25,5 @@ RUN curl -fsS https://dotenvx.sh | sh
 RUN dotenvx prebuild
 CMD ["dotenvx", "run", "--", "node", "index.js"]
 ```
+
+<Video mp4="https://github.com/user-attachments/assets/6e3c22bb-0d71-4121-9954-346f35c7e58f" />
