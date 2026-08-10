@@ -70,10 +70,23 @@ export function CliReferenceCards() {
   )
 }
 
-export function CliProfessionalSecurityReferenceCards() {
+export function CliBetterSecurityReferenceCards() {
   let commands = [
     { href: '/docs/cli/lock', title: 'Lock ⊡' },
     { href: '/docs/cli/native', title: 'Native ⌥' },
+  ]
+
+  return (
+    <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-3">
+      {commands.map((item) => (
+        <CliReferenceCard key={item.href} item={item} />
+      ))}
+    </div>
+  )
+}
+
+export function CliForSecurityTeamsReferenceCards() {
+  let commands = [
     { href: '/docs/cli/armor/introduction', title: 'Armor ⛨' },
   ]
 

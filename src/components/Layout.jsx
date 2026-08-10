@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Logo } from '@/components/Logo'
+import { ModeToggle } from '@/components/ModeToggle'
 import { Navigation } from '@/components/Navigation'
 import { Prose } from '@/components/Prose'
 import { Search } from '@/components/Search'
@@ -17,13 +18,13 @@ export function Layout({ children, sections = [], wide = false }) {
           layoutScroll
           className="contents lg:pointer-events-none lg:fixed lg:inset-0 lg:z-40 lg:flex"
         >
-          <div className="contents border-t border-yellow-300 lg:pointer-events-auto lg:block lg:w-72 lg:overflow-y-auto lg:border-r lg:border-zinc-900/10 lg:px-5 lg:pb-8 lg:pt-2 lg:dark:border-white/10 xl:w-80">
+          <div className="contents border-t border-[color:var(--design-mark)] lg:pointer-events-auto lg:block lg:w-72 lg:overflow-y-auto lg:border-r lg:border-[color:var(--design-line)] lg:px-5 lg:pb-8 lg:pt-2 xl:w-80">
             <div className="hidden lg:flex lg:items-center">
               <Link href="/" aria-label="Home" className="block mt-[10px]">
-                <Logo className="h-4 w-auto" />
+                <Logo className="h-[1.8rem] w-[1.8rem] rounded-[0.05rem]" />
               </Link>
             </div>
-            <Header className="border-t border-yellow-300 dark:rounded-t-lg"/>
+            <Header className="border-t border-[color:var(--design-mark)] dark:rounded-t-lg"/>
             <Search className="mt-6 hidden lg:block" />
             <Navigation className="hidden lg:mt-6 lg:block" />
           </div>
@@ -35,6 +36,7 @@ export function Layout({ children, sections = [], wide = false }) {
           <Footer wide={wide} />
         </div>
       </div>
+      <ModeToggle />
     </SectionProvider>
   )
 }

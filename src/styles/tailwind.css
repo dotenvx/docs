@@ -67,4 +67,228 @@
   .prose h5 a:hover {
     color: var(--tw-prose-body);
   }
+
+  /*
+   * Design tokens — keep in sync with ../radar design-body / ../dotenvx.github.io radar-layout.
+   * Prefer changing tokens in radar first, then mirror here.
+   *
+   * Type color tiers:
+   *   1. --design-ink        titles / hero / emphasis
+   *   2. --design-body       paragraphs, links, list items, descriptions
+   *   3. --design-secondary  breadcrumbs, list titles, eyebrows, quiet UI
+   *   --design-dim aliases --design-secondary
+   */
+  body.design-body {
+    --design-bg: #fafafa;
+    --design-bg-deep: #fafafa;
+    --design-bg-lift: #f4f4f5;
+    --design-menu-bg: #ffffff;
+    --design-ink: #1f282c;
+    --design-body: #303b3f;
+    --design-secondary: rgba(48, 59, 63, 0.42);
+    --design-dim: var(--design-secondary);
+    --design-mid: rgba(48, 59, 63, 0.58);
+    --design-line: rgba(48, 59, 63, 0.16);
+    --design-mark: #ecd53f;
+    --design-gold: #6d5c32;
+    --design-hover: rgba(48, 59, 63, 0.06);
+    --design-panel: #ffffff;
+    --design-etch:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(48, 59, 63, 0.1),
+      inset 0 0 0 1px rgba(48, 59, 63, 0.12);
+    --design-etch-divider:
+      linear-gradient(
+        180deg,
+        rgba(48, 59, 63, 0.12) 0,
+        rgba(48, 59, 63, 0.12) 1px,
+        rgba(255, 255, 255, 0.85) 1px,
+        rgba(255, 255, 255, 0.85) 2px
+      );
+    --design-font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      'Segoe UI', sans-serif;
+    --design-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      'Liberation Mono', 'Courier New', monospace;
+    --design-control-radius: 0.125rem;
+    /*
+      Type size scale (only these — do not invent one-offs):
+      1. --design-text-display  hero brand titles
+      2. --design-text-title    page titles, CTA messages
+      3. --design-text-size     body / lists / descriptions
+      4. --design-text-compact  code, meta, eyebrows, buttons, nav
+    */
+    --design-text-display: clamp(2.85rem, 7vw, 4rem);
+    --design-text-title: 1.75rem;
+    --design-text-size: 15px;
+    --design-text-compact: 13px;
+
+    background: var(--design-bg);
+    color: var(--design-body);
+    font-family: var(--design-font-sans);
+    font-size: var(--design-text-size);
+    letter-spacing: 0;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  html.dark body.design-body {
+    --design-bg: #0a0a0a;
+    --design-bg-deep: #050505;
+    --design-bg-lift: #12110e;
+    --design-menu-bg: var(--design-bg);
+    --design-ink: #e8e0d2;
+    --design-body: #c4b08a;
+    --design-secondary: rgba(203, 187, 160, 0.42);
+    --design-dim: var(--design-secondary);
+    --design-mid: rgba(212, 189, 132, 0.58);
+    --design-line: rgba(212, 189, 132, 0.22);
+    --design-mark: #ecd53f;
+    --design-gold: #d4bd84;
+    --design-hover: rgba(212, 189, 132, 0.08);
+    --design-panel: rgba(0, 0, 0, 0.28);
+    --design-etch:
+      inset 0 1px 0 rgba(255, 244, 188, 0.16),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.72),
+      inset 0 0 0 1px rgba(212, 189, 132, 0.2),
+      inset 0 0 0 2px rgba(63, 60, 53, 0.4);
+    --design-etch-divider:
+      linear-gradient(
+        180deg,
+        rgba(212, 189, 132, 0.2) 0,
+        rgba(212, 189, 132, 0.2) 1px,
+        rgba(0, 0, 0, 0.55) 1px,
+        rgba(0, 0, 0, 0.55) 2px
+      );
+    background: linear-gradient(
+      180deg,
+      var(--design-bg-deep) 0%,
+      var(--design-bg) 48%,
+      var(--design-bg-lift) 100%
+    );
+  }
+
+  /*
+    Storm — third theme: cool battle-gray, not light and not parchment-dark.
+    html carries both .dark (for shared dark component rules) and .storm (token override).
+  */
+  html.storm body.design-body {
+    --design-bg: #161a21;
+    --design-bg-deep: #0e1116;
+    --design-bg-lift: #1c222b;
+    --design-menu-bg: #1a1f28;
+    --design-ink: #e4e9f1;
+    --design-body: #a7b1c2;
+    --design-secondary: rgba(167, 177, 194, 0.42);
+    --design-dim: var(--design-secondary);
+    --design-mid: rgba(176, 190, 212, 0.62);
+    --design-line: rgba(176, 190, 212, 0.2);
+    --design-mark: #ecd53f;
+    --design-gold: #9eb0c8;
+    --design-hover: rgba(176, 190, 212, 0.09);
+    --design-panel: rgba(14, 17, 22, 0.45);
+    --design-etch:
+      inset 0 1px 0 rgba(210, 225, 255, 0.14),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.7),
+      inset 0 0 0 1px rgba(150, 170, 200, 0.2),
+      inset 0 0 0 2px rgba(40, 48, 60, 0.45);
+    --design-etch-divider:
+      linear-gradient(
+        180deg,
+        rgba(176, 190, 212, 0.22) 0,
+        rgba(176, 190, 212, 0.22) 1px,
+        rgba(0, 0, 0, 0.55) 1px,
+        rgba(0, 0, 0, 0.55) 2px
+      );
+    background:
+      radial-gradient(
+        ellipse 110% 70% at 70% -10%,
+        rgba(120, 150, 200, 0.14),
+        transparent 52%
+      ),
+      radial-gradient(
+        ellipse 90% 55% at 15% 0%,
+        rgba(70, 85, 115, 0.18),
+        transparent 48%
+      ),
+      linear-gradient(
+        180deg,
+        var(--design-bg-deep) 0%,
+        var(--design-bg) 48%,
+        var(--design-bg-lift) 100%
+      );
+  }
+
+  /* Mirrored from ../radar design-kbd + design-theme-control */
+  .design-kbd {
+    border: 1px solid var(--design-line, var(--design-dim));
+    color: var(--design-dim);
+    font-family: var(--design-font-mono);
+    font-size: var(--design-text-compact);
+    letter-spacing: 0.06em;
+    line-height: 1;
+    min-width: 1.35rem;
+    padding: 0.2rem 0.3rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .design-theme-control {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    bottom: 1rem;
+    box-shadow: none;
+    color: var(--design-dim);
+    cursor: pointer;
+    display: inline-flex;
+    gap: 0.55rem;
+    left: 1rem;
+    outline: none;
+    padding: 0;
+    position: fixed;
+    z-index: 45;
+  }
+
+  .design-theme-control:focus,
+  .design-theme-control:focus-visible {
+    box-shadow: none;
+    outline: none;
+  }
+
+  .design-theme-control:hover,
+  .design-theme-control:focus-visible {
+    color: var(--design-ink);
+  }
+
+  .design-theme-control:hover .design-theme-control-key,
+  .design-theme-control:focus-visible .design-theme-control-key {
+    border-color: var(--design-ink);
+    color: var(--design-ink);
+  }
+
+  .design-theme-control-key {
+    flex-shrink: 0;
+  }
+
+  .design-theme-control-label {
+    color: var(--design-mid);
+    font-family: var(--design-font-mono);
+    font-size: var(--design-text-compact);
+    letter-spacing: 0.04em;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    text-transform: none;
+    transform: translateX(-0.15rem);
+    transition: opacity 140ms ease, max-width 160ms ease, transform 160ms ease;
+    white-space: nowrap;
+  }
+
+  .design-theme-control:hover .design-theme-control-label,
+  .design-theme-control:focus-visible .design-theme-control-label {
+    max-width: 8rem;
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

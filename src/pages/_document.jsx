@@ -1,53 +1,70 @@
 import { Head, Html, Main, NextScript } from 'next/document'
-import Script from 'next/script';
+import Script from 'next/script'
 
 const modeScript = `
-  let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+  (function () {
+    var MODES = ['light', 'dark', 'storm']
 
-  updateMode()
-  darkModeMediaQuery.addEventListener('change', updateModeWithoutTransitions)
-  window.addEventListener('storage', updateModeWithoutTransitions)
+    function resolveThemeMode() {
+      var stored = localStorage.getItem('themeMode')
+      if (MODES.indexOf(stored) !== -1) return stored
 
-  function updateMode() {
-    let isSystemDarkMode = darkModeMediaQuery.matches
-    let isDarkMode = window.localStorage.isDarkMode === 'true' || (!('isDarkMode' in window.localStorage) && isSystemDarkMode)
+      // Migrate legacy docs toggle
+      if (localStorage.getItem('isDarkMode') === 'true') return 'dark'
+      if (localStorage.getItem('isDarkMode') === 'false') return 'light'
 
-    if (isDarkMode) {
+      return 'dark'
+    }
+
+    function applyThemeMode(mode) {
+      var root = document.documentElement
+      root.classList.toggle('dark', mode === 'dark' || mode === 'storm')
+      root.classList.toggle('storm', mode === 'storm')
+      var meta = document.querySelector('meta[name="theme-color"]')
+      if (meta) {
+        meta.setAttribute(
+          'content',
+          mode === 'storm' ? '#14171c' : mode === 'dark' ? '#0a0a0a' : '#e4e7e6'
+        )
+      }
+      try {
+        window.dispatchEvent(new CustomEvent('radar:theme-change', { detail: { mode: mode } }))
+      } catch (e) {}
+    }
+
+    function disableTransitionsTemporarily() {
+      document.documentElement.classList.add('[&_*]:!transition-none')
+      window.setTimeout(function () {
+        document.documentElement.classList.remove('[&_*]:!transition-none')
+      }, 0)
+    }
+
+    window.__radarThemeMode = window.__radarThemeMode || {}
+    window.__radarThemeMode.modes = MODES
+    window.__radarThemeMode.resolve = resolveThemeMode
+    window.__radarThemeMode.apply = applyThemeMode
+    window.__radarThemeMode.next = function (mode) {
+      var i = MODES.indexOf(mode)
+      return MODES[(i + 1) % MODES.length]
+    }
+    window.__radarThemeMode.prev = function (mode) {
+      var i = MODES.indexOf(mode)
+      return MODES[(i - 1 + MODES.length) % MODES.length]
+    }
+
+    try {
+      var mode = resolveThemeMode()
+      if (!localStorage.getItem('themeMode')) localStorage.setItem('themeMode', mode)
+      applyThemeMode(mode)
+    } catch (e) {
       document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
     }
 
-    if (isDarkMode === isSystemDarkMode) {
-      delete window.localStorage.isDarkMode
-    }
-  }
-
-  function disableTransitionsTemporarily() {
-    document.documentElement.classList.add('[&_*]:!transition-none')
-    window.setTimeout(() => {
-      document.documentElement.classList.remove('[&_*]:!transition-none')
-    }, 0)
-  }
-
-  function updateModeWithoutTransitions() {
-    disableTransitionsTemporarily()
-    updateMode()
-  }
-
-  function toggleMode() {
-    disableTransitionsTemporarily()
-
-    let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    let isSystemDarkMode = darkModeMediaQuery.matches
-    let isDarkMode = document.documentElement.classList.toggle('dark')
-
-    if (isDarkMode === isSystemDarkMode) {
-      delete window.localStorage.isDarkMode
-    } else {
-      window.localStorage.isDarkMode = isDarkMode
-    }
-  }
+    window.addEventListener('storage', function () {
+      disableTransitionsTemporarily()
+      applyThemeMode(resolveThemeMode())
+    })
+  })()
 `
 
 export default function Document() {
@@ -55,8 +72,9 @@ export default function Document() {
     <Html lang="en" className="dark">
       <Head>
         <script dangerouslySetInnerHTML={{ __html: modeScript }} />
+        <meta name="theme-color" content="#0a0a0a" />
       </Head>
-      <body className="bg-[#f6f1e6] antialiased dark:bg-black">
+      <body className="design-body antialiased">
         <Main />
         <NextScript />
         {process.env.NODE_ENV === 'production' && (

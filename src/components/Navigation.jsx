@@ -43,7 +43,7 @@ function TopLevelNavItem({ href, children }) {
     <li className="">
       <Link
         href={href}
-        className="block rounded-md px-3 py-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-900/2.5 dark:text-zinc-400 dark:hover:bg-white/5"
+        className="block rounded-md px-3 py-2 text-sm text-[color:var(--design-mid)] transition-colors hover:bg-[color:var(--design-hover)] hover:text-[color:var(--design-ink)]"
       >
         {children}
       </Link>
@@ -68,10 +68,10 @@ function NavLink({ href, tag, icon: Icon, iconClassName, hasChildren = false, ac
         'flex justify-between gap-2 rounded-md px-4 py-1 text-sm transition-colors',
         leftPaddingClass,
         current
-          ? 'bg-zinc-900/5 text-zinc-900 dark:bg-white/10 dark:text-white'
+          ? 'bg-[color:var(--design-hover)] text-[color:var(--design-ink)]'
           : active
-            ? 'text-zinc-900 dark:text-white'
-            : 'text-zinc-600 hover:bg-zinc-900/2.5 dark:text-zinc-400 dark:hover:bg-white/5'
+            ? 'text-[color:var(--design-ink)]'
+            : 'text-[color:var(--design-mid)] hover:bg-[color:var(--design-hover)] hover:text-[color:var(--design-ink)]'
       )}
     >
       <span className="flex min-w-0 items-center gap-2">
@@ -80,7 +80,7 @@ function NavLink({ href, tag, icon: Icon, iconClassName, hasChildren = false, ac
             <Icon
               aria-hidden="true"
               className={clsx(
-                'h-4 w-4 text-zinc-500 grayscale [&_path]:fill-current dark:text-zinc-400 dark:opacity-80',
+                'h-4 w-4 text-[color:var(--design-mid)] grayscale [&_path]:fill-current',
                 iconClassName
               )}
             />
@@ -97,7 +97,7 @@ function NavLink({ href, tag, icon: Icon, iconClassName, hasChildren = false, ac
         {hasChildren && (
           <span
             aria-hidden="true"
-            className="text-base leading-none text-zinc-500 dark:text-zinc-400"
+            className="text-base leading-none text-[color:var(--design-secondary)]"
           >
             ›
           </span>
@@ -214,7 +214,7 @@ function NavigationGroup({ group, className }) {
     <li className={clsx('relative mt-6', className)}>
       <motion.h2
         layout="position"
-        className="pl-2 text-xs font-semibold text-zinc-900 dark:text-white"
+        className="pl-2 text-xs font-semibold text-[color:var(--design-ink)]"
       >
         {group.href ? (
           <a href={group.href}>{group.title}</a>
@@ -479,7 +479,7 @@ export const cliNavigation = [
     ],
   },
   {
-    title: 'Professional Security',
+    title: 'Better Security',
     links: [
       {
         title: 'Lock ⊡',
@@ -499,6 +499,11 @@ export const cliNavigation = [
           { title: 'Pull', href: '/docs/cli/native/pull' },
         ],
       },
+    ],
+  },
+  {
+    title: 'For Security Teams',
+    links: [
       {
         title: 'Armor ⛨',
         href: '/docs/cli/armor/introduction',
@@ -516,7 +521,7 @@ export const cliNavigation = [
         ],
       },
     ],
-  }
+  },
 ]
 
 export const sdkNavigation = [
@@ -564,7 +569,7 @@ export function Navigation(props) {
     <nav {...props}>
       <ul role="list">
         {isInsideMobileNavigation && (
-          <li className="md:mt-0 mb-3 border-b border-zinc-900/10 pb-4 dark:border-white/10">
+          <li className="md:mt-0 mb-3 border-b border-[color:var(--design-line)] pb-4">
             <label htmlFor="mobile-top-level-nav-trigger" className="sr-only">
               Top-level navigation
             </label>
@@ -574,13 +579,13 @@ export function Navigation(props) {
                 type="button"
                 aria-expanded={isMobileTopLevelOpen}
                 onClick={() => setIsMobileTopLevelOpen((open) => !open)}
-                className="flex w-full items-center justify-between rounded-2xl border border-zinc-900/10 bg-zinc-50/60 px-4 py-3 text-left text-sm text-zinc-900 dark:border-white/10 dark:bg-white/5 dark:text-zinc-100"
+                className="flex w-full items-center justify-between rounded-2xl border border-[color:var(--design-line)] bg-[var(--design-bg-lift)] px-4 py-3 text-left text-sm text-[color:var(--design-ink)]"
               >
                 <span>{getMobileTopLevelTitle(router.pathname)}</span>
                 <svg
                   viewBox="0 0 16 16"
                   aria-hidden="true"
-                  className="h-4 w-4 stroke-zinc-700 dark:stroke-zinc-300"
+                  className="h-4 w-4 stroke-[color:var(--design-mid)]"
                 >
                   {isMobileTopLevelOpen ? (
                     <path
@@ -604,7 +609,7 @@ export function Navigation(props) {
               {isMobileTopLevelOpen && (
                 <ul
                   role="listbox"
-                  className="absolute left-0 right-0 top-full z-30 mt-3 space-y-1 rounded-2xl border border-zinc-900/10 bg-zinc-50/95 p-2 shadow-lg dark:border-white/10 dark:bg-zinc-900/95"
+                  className="absolute left-0 right-0 top-full z-30 mt-3 space-y-1 rounded-2xl border border-[color:var(--design-line)] bg-[var(--design-menu-bg)] p-2 shadow-lg"
                 >
                   {mobileTopLevelNavigation.map((link) => {
                     let isCurrent = link.href === mobileTopLevelSelection
@@ -620,10 +625,10 @@ export function Navigation(props) {
                             router.push(link.href)
                           }}
                           className={clsx(
-                            'flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm transition-colors hover:bg-zinc-900/5 focus-visible:bg-zinc-900/5 dark:hover:bg-white/10 dark:focus-visible:bg-white/10',
+                            'flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm transition-colors hover:bg-[color:var(--design-hover)] focus-visible:bg-[color:var(--design-hover)]',
                             isCurrent
-                              ? 'font-semibold text-zinc-900 dark:text-white'
-                              : 'text-zinc-700 dark:text-zinc-300'
+                              ? 'font-semibold text-[color:var(--design-ink)]'
+                              : 'text-[color:var(--design-body)]'
                           )}
                         >
                           <span>{link.title}</span>
@@ -631,7 +636,7 @@ export function Navigation(props) {
                             <svg
                               viewBox="0 0 16 16"
                               aria-hidden="true"
-                              className="h-4 w-4 stroke-zinc-900 dark:stroke-zinc-100"
+                              className="h-4 w-4 stroke-[color:var(--design-ink)]"
                             >
                               <path
                                 d="m3.5 8.5 2.5 2.5 6-6"
