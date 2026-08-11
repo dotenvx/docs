@@ -1,31 +1,29 @@
-import { Breadcrumb } from '@/components/Breadcrumb'
+import { DesignHero } from '@/components/DesignHero'
 import { ExploreCards } from '@/components/ExploreCards'
-import { GuideHeading } from '@/components/GuideHeading'
-import { HeroPattern } from '@/components/HeroPattern'
 import { QuickstartCards } from '@/components/QuickstartCards'
 
 export const description =
   'Designed as a secure dotenv. You can encrypt your .env files–and more.'
 
-<HeroPattern />
-
-<Breadcrumb
-  items={[
-    { label: 'Documentation', href: '/docs' },
-  ]}
+<DesignHero
+  title="Introduction"
+  description={description}
+  crumbs={[{ label: 'Docs', href: '/docs' }]}
+  visual={
+    <div className="design-hero-ascii" aria-hidden="true">
+      {[
+        '    ┌───────────┐',
+        '   ┌───────────┐│',
+        '  ┌───────────┐││',
+        '  │ DOCS      │││',
+        '  │ ────────  ││┘',
+        '  │ ──────    │┘',
+        '  └───────────┘',
+      ].join('\n')}
+    </div>
+  }
 />
-# Introduction
 
-<GuideHeading lead={description} />
+<QuickstartCards title="Quickstarts" />
 
-## Quickstart
-
-Put Dotenvx to use in your workflows and projects.
-
-<QuickstartCards />
-
-## Explore
-
-Discover the core concepts and reference docs.
-
-<ExploreCards />
+<ExploreCards title="Explore" />

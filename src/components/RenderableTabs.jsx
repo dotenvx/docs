@@ -1,6 +1,5 @@
 import { Children } from 'react'
 import { Tab } from '@headlessui/react'
-import clsx from 'clsx'
 
 import { useTabGroupProps } from '@/components/Code'
 
@@ -8,68 +7,22 @@ function getPanelTitle(child) {
   return child?.props?.title ?? 'Tab'
 }
 
-function RenderableTabsHeader({ title, children, selectedIndex }) {
-  let hasTabs = Children.count(children) > 1
+export function RenderableTabs({ children, title, variant = 'default' }) {
+  let childArray = Children.toArray(children).filter(Boolean)
+  let hasTabs = childArray.length > 1
+  let tabTitles = childArray.map((child) => getPanelTitle(child))
+  let tabGroupProps = useTabGroupProps(tabTitles)
 
-  if (!title && !hasTabs) {
-    return null
-  }
-
-  return (
-    <div className="flex min-h-[calc(theme(spacing.12)+1px)] flex-wrap items-start gap-x-4 border-b border-zinc-700 bg-zinc-800 px-4 dark:border-zinc-800 dark:bg-transparent">
-      {title && (
-        <h3 className="mr-auto pt-3 text-xs font-semibold text-white">
-          {title}
-        </h3>
-      )}
-      {hasTabs && (
-        <Tab.List className="-mb-px flex gap-4 text-xs font-medium">
-          {Children.map(children, (child, childIndex) => (
-            <Tab
-              className={clsx(
-                'border-b py-3 transition focus:[&:not(:focus-visible)]:outline-none',
-                childIndex === selectedIndex
-                  ? 'border-yellow-500 text-yellow-400'
-                  : 'border-transparent text-zinc-400 hover:text-zinc-300'
-              )}
-            >
-              {getPanelTitle(child)}
-            </Tab>
-          ))}
-        </Tab.List>
-      )}
-    </div>
-  )
-}
-
-function RenderableTabsPanels({ children, variant }) {
   let panelClassName =
     variant === 'code'
-      ? 'text-zinc-200 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&_a]:text-yellow-400 [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-yellow-300 [&_img]:my-2 [&_img]:h-auto [&_img]:max-w-full [&_img]:rounded-lg [&_pre]:m-0 [&_pre]:overflow-x-auto [&_pre]:rounded-none [&_pre]:bg-transparent [&_pre]:p-4 [&_pre]:text-xs'
-      : 'p-4 text-sm text-zinc-200 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&_a]:text-yellow-400 [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-yellow-300 [&_img]:my-2 [&_img]:h-auto [&_img]:max-w-full [&_img]:rounded-lg [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:bg-black/30 [&_pre]:p-3'
-
-  return (
-    <Tab.Panels>
-      {Children.map(children, (child) => (
-        <Tab.Panel>
-          <div className={panelClassName}>
-            {child.props.children}
-          </div>
-        </Tab.Panel>
-      ))}
-    </Tab.Panels>
-  )
-}
-
-export function RenderableTabs({ children, title, variant = 'default' }) {
-  let hasTabs = Children.count(children) > 1
-  let tabTitles = Children.map(children, (child) => getPanelTitle(child))
-  let tabGroupProps = useTabGroupProps(tabTitles)
+      ? 'design-codeblock [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&_a]:text-[color:var(--design-body)] [&_a]:underline [&_img]:my-2 [&_img]:h-auto [&_img]:max-w-full [&_pre]:m-0 [&_pre]:overflow-x-auto [&_pre]:bg-transparent [&_pre]:p-0 [&_pre]:text-compact'
+      : 'p-4 text-compact text-[color:var(--design-body)] [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&_a]:text-[color:var(--design-body)] [&_a]:underline [&_img]:my-2 [&_img]:h-auto [&_img]:max-w-full'
 
   if (!hasTabs) {
     return (
-      <div className="not-prose my-6 overflow-hidden rounded-2xl bg-zinc-900 shadow-md dark:ring-1 dark:ring-white/10">
-        <div className="p-4 text-sm text-zinc-200">{children}</div>
+      <div className="not-prose my-6">
+        {title ? <p className="design-list-title mb-3">{title}</p> : null}
+        <div className={panelClassName}>{childArray[0]}</div>
       </div>
     )
   }
@@ -77,14 +30,33 @@ export function RenderableTabs({ children, title, variant = 'default' }) {
   return (
     <Tab.Group
       {...tabGroupProps}
-      className="not-prose my-6 overflow-hidden rounded-2xl bg-zinc-900 shadow-md dark:ring-1 dark:ring-white/10"
+      className="design-choice design-choice--code not-prose my-6"
+      style={{ '--design-choice-count': childArray.length }}
     >
-      <RenderableTabsHeader title={title} selectedIndex={tabGroupProps.selectedIndex}>
-        {children}
-      </RenderableTabsHeader>
-      <RenderableTabsPanels variant={variant}>
-        {children}
-      </RenderableTabsPanels>
+      {title ? (
+        <p className="design-list-title border-b border-[color:var(--design-line)] px-4 py-3">
+          {title}
+        </p>
+      ) : null}
+      <div className="design-choice-current">
+        <Tab.Panels>
+          {childArray.map((child, index) => (
+            <Tab.Panel key={tabTitles[index]} className="design-choice-code-panel">
+              <div className={panelClassName}>{child.props.children}</div>
+            </Tab.Panel>
+          ))}
+        </Tab.Panels>
+      </div>
+      <Tab.List className="design-choice-options" aria-label="Options">
+        {childArray.map((child, index) => (
+          <Tab
+            key={tabTitles[index]}
+            className="design-choice-option focus:outline-none"
+          >
+            {getPanelTitle(child)}
+          </Tab>
+        ))}
+      </Tab.List>
     </Tab.Group>
   )
 }

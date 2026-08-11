@@ -1,160 +1,24 @@
-import Link from 'next/link'
+import { DesignList } from '@/components/DesignList'
 
-import { AstroIcon } from '@/components/icons/AstroIcon'
-import { BitwardenIcon } from '@/components/icons/BitwardenIcon'
-import { CalendarIcon } from '@/components/icons/CalendarIcon'
-import { ClaudeCodeIcon } from '@/components/icons/ClaudeCodeIcon'
-import { CursorIcon } from '@/components/icons/CursorIcon'
-import { DotnetIcon } from '@/components/icons/DotnetIcon'
-import { ExpressIcon } from '@/components/icons/ExpressIcon'
-import { GoIcon } from '@/components/icons/GoIcon'
-import { JavaIcon } from '@/components/icons/JavaIcon'
-import { OnePasswordIcon } from '@/components/icons/OnePasswordIcon'
-import { NextIcon } from '@/components/icons/NextIcon'
-import { NodeIcon } from '@/components/icons/NodeIcon'
-import { OpenAIIcon } from '@/components/icons/OpenAIIcon'
-import { PhpIcon } from '@/components/icons/PhpIcon'
-import { PythonIcon } from '@/components/icons/PythonIcon'
-import { RubyIcon } from '@/components/icons/RubyIcon'
-import { RustIcon } from '@/components/icons/RustIcon'
+const defaultItems = [
+  { href: '/docs/secrets-with-cli', title: 'CLI' },
+  { href: '/docs/secrets-in-claude', title: 'Claude' },
+  { href: '/docs/secrets-in-codex', title: 'Codex' },
+  { href: '/docs/secrets-in-cursor', title: 'Cursor' },
+  { href: '/docs/secrets-in-1password', title: '1Password' },
+  { href: '/docs/secrets-in-bitwarden', title: 'Bitwarden' },
+  { href: '/docs/secrets-in-nodejs', title: 'Node.js' },
+  { href: '/docs/secrets-in-nextjs', title: 'Next.js' },
+  { href: '/docs/secrets-in-express', title: 'Express' },
+  { href: '/docs/secrets-in-python', title: 'Python' },
+  { href: '/docs/secrets-in-php', title: 'PHP' },
+  { href: '/docs/secrets-in-ruby', title: 'Ruby' },
+  { href: '/docs/secrets-in-go', title: 'Go' },
+  { href: '/docs/secrets-in-rust', title: 'Rust' },
+  { href: '/docs/secrets-in-java', title: 'Java' },
+  { href: '/docs/secrets-in-dotnet', title: '.NET' },
+]
 
-function CliReferenceGlyphIcon(props) {
-  return (
-    <span {...props}>
-      ❯
-    </span>
-  )
-}
-
-function QuickstartCard({ item }) {
-  const Icon = item.icon
-
-  return (
-    <Link
-      href={item.href}
-      className="group relative flex flex-col gap-2 rounded-xl border border-zinc-900/10 bg-zinc-50/40 p-4 no-underline transition-colors hover:border-zinc-900/25 dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/20"
-    >
-      <div className="flex h-8 w-8 items-center justify-center rounded-md border border-zinc-900/15 bg-zinc-100/60 dark:border-white/15 dark:bg-white/5">
-        <Icon className={item.iconClass ?? 'h-5 w-5 text-zinc-800 dark:text-zinc-200'} />
-      </div>
-      <h3 className="text-base font-semibold leading-6 text-zinc-900 dark:text-zinc-100">
-        {item.shortTitle ? (
-          <>
-            <span className="min-[520px]:hidden">{item.title}</span>
-            <span className="hidden min-[520px]:inline">{item.shortTitle}</span>
-          </>
-        ) : item.title}
-      </h3>
-    </Link>
-  )
-}
-
-export function QuickstartCards({
-  items = [
-    {
-      href: '/docs/secrets-with-cli',
-      title: 'CLI Quickstart',
-      icon: CliReferenceGlyphIcon,
-      iconClass: 'h-5 w-5 text-zinc-800 dark:text-zinc-200',
-    },
-    {
-      href: '/docs/secrets-in-claude',
-      title: 'Claude Quickstart',
-      icon: ClaudeCodeIcon,
-      iconClass: 'h-5 w-5 text-[#D97757]',
-    },
-    {
-      href: '/docs/secrets-in-codex',
-      title: 'Codex Quickstart',
-      icon: OpenAIIcon,
-      iconClass: 'h-5 w-5 text-black dark:text-zinc-100',
-    },
-    {
-      href: '/docs/secrets-in-cursor',
-      title: 'Cursor Quickstart',
-      icon: CursorIcon,
-      iconClass: 'h-5 w-5 text-black dark:text-zinc-100',
-    },
-    {
-      href: '/docs/secrets-in-1password',
-      title: '1Password Quickstart',
-      shortTitle: '1Pass Quickstart',
-      icon: OnePasswordIcon,
-      iconClass: 'h-5 w-5 text-[#0572EC]',
-    },
-    {
-      href: '/docs/secrets-in-bitwarden',
-      title: 'Bitwarden Quickstart',
-      icon: BitwardenIcon,
-      iconClass: 'h-5 w-5 text-[#175DDC]',
-    },
-    {
-      href: '/docs/secrets-in-nodejs',
-      title: 'Node.js Quickstart',
-      icon: NodeIcon,
-      iconClass: 'h-5 w-5 text-[#339933]',
-    },
-    {
-      href: '/docs/secrets-in-nextjs',
-      title: 'Next.js Quickstart',
-      icon: NextIcon,
-      iconClass: 'h-5 w-5 text-[#000000] dark:invert',
-    },
-    {
-      href: '/docs/secrets-in-express',
-      title: 'Express Quickstart',
-      icon: ExpressIcon,
-      iconClass: 'h-5 w-5 text-[#000000] dark:invert',
-    },
-    {
-      href: '/docs/secrets-in-python',
-      title: 'Python Quickstart',
-      icon: PythonIcon,
-      iconClass: 'h-5 w-5 text-[#3776AB]',
-    },
-    {
-      href: '/docs/secrets-in-php',
-      title: 'PHP Quickstart',
-      icon: PhpIcon,
-      iconClass: 'h-5 w-5 text-[#777BB4]',
-    },
-    {
-      href: '/docs/secrets-in-ruby',
-      title: 'Ruby Quickstart',
-      icon: RubyIcon,
-      iconClass: 'h-5 w-5 text-[#CC342D]',
-    },
-    {
-      href: '/docs/secrets-in-go',
-      title: 'Go Quickstart',
-      icon: GoIcon,
-      iconClass: 'h-5 w-5 text-[#00ADD8]',
-    },
-    {
-      href: '/docs/secrets-in-rust',
-      title: 'Rust Quickstart',
-      icon: RustIcon,
-      iconClass: 'h-5 w-5 text-[#000000] dark:invert',
-    },
-    {
-      href: '/docs/secrets-in-java',
-      title: 'Java Quickstart',
-      icon: JavaIcon,
-      iconClass: 'h-5 w-5 text-[#F89820]',
-    },
-    {
-      href: '/docs/secrets-in-dotnet',
-      title: '.NET Quickstart',
-      icon: DotnetIcon,
-      iconClass: 'h-5 w-5 text-[#512BD4]',
-    },
-  ],
-}) {
-  return (
-    <div className="not-prose mt-6 grid grid-cols-1 gap-4 min-[520px]:grid-cols-3 xl:grid-cols-3">
-      {items.map((item) => (
-        <QuickstartCard key={item.href} item={item} />
-      ))}
-    </div>
-  )
+export function QuickstartCards({ title, items = defaultItems }) {
+  return <DesignList title={title} items={items} />
 }

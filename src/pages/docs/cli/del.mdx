@@ -6,7 +6,7 @@ export const description =
 
 <Breadcrumb
   items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'CLI', href: '/docs/cli' },
     { label: 'Del', href: '/docs/cli/del' },
   ]}
 />
@@ -20,7 +20,10 @@ $ dotenvx del HELLO
 ◇ removed HELLO (.env)
 ```
 
-## Options
-
-* [del KEY](/docs/cli/del-key)
-* [del KEY -f](/docs/cli/del-key-f)
+<DesignList
+  title="Options"
+  items={[
+    { href: "/docs/cli/del-key", title: "del KEY" },
+    { href: "/docs/cli/del-key-f", title: "del KEY -f" },
+  ]}
+/>

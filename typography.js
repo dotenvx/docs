@@ -39,10 +39,10 @@ module.exports = ({ theme }) => ({
       '--tw-prose-invert-th-borders': 'var(--design-line)',
       '--tw-prose-invert-td-borders': 'var(--design-line)',
 
-      // Base
+      // Base — design-text-size
       color: 'var(--tw-prose-body)',
-      fontSize: '0.9375rem',
-      lineHeight: theme('lineHeight.7'),
+      fontSize: 'var(--design-text-size)',
+      lineHeight: '1.5',
 
       // Layout
       '> *': {
@@ -62,8 +62,8 @@ module.exports = ({ theme }) => ({
         marginBottom: theme('spacing.4'),
       },
       '[class~="lead"]': {
-        fontSize: theme('fontSize.base')[0],
-        ...theme('fontSize.base')[1],
+        fontSize: 'var(--design-text-size)',
+        lineHeight: '1.5',
       },
 
       // Lists
@@ -119,7 +119,7 @@ module.exports = ({ theme }) => ({
       },
       'ul > li::marker': {
         color: theme('colors.zinc.600'),
-        fontWeight: '700',
+        fontWeight: '500',
         fontSize: '1.1em',
       },
       '> ul > li p': {
@@ -181,32 +181,34 @@ module.exports = ({ theme }) => ({
         content: 'close-quote',
       },
 
-      // Headings
+      // Headings — title size (h1) vs body size (h2+); weight 500 like radar titles
       h1: {
         color: 'var(--tw-prose-headings)',
-        fontWeight: '700',
-        fontSize: theme('fontSize.2xl')[0],
-        ...theme('fontSize.2xl')[1],
+        fontWeight: '500',
+        fontSize: 'var(--design-text-title)',
+        lineHeight: '1.25',
         marginBottom: theme('spacing.2'),
       },
       h2: {
         color: 'var(--tw-prose-headings)',
-        fontWeight: '600',
-        fontSize: theme('fontSize.lg')[0],
-        ...theme('fontSize.lg')[1],
+        fontWeight: '500',
+        fontSize: 'var(--design-text-size)',
+        lineHeight: '1.5',
         marginTop: theme('spacing.8'),
         marginBottom: theme('spacing.2'),
       },
       h3: {
         color: 'var(--tw-prose-headings)',
-        fontSize: theme('fontSize.base')[0],
-        ...theme('fontSize.base')[1],
-        fontWeight: '600',
+        fontSize: 'var(--design-text-size)',
+        lineHeight: '1.5',
+        fontWeight: '500',
         marginTop: theme('spacing.10'),
         marginBottom: theme('spacing.2'),
       },
       h5: {
         color: 'var(--tw-prose-captions)',
+        fontSize: 'var(--design-text-compact)',
+        lineHeight: '1.35',
       },
       'h5 a': {
         color: 'var(--tw-prose-captions)',
@@ -227,8 +229,8 @@ module.exports = ({ theme }) => ({
       },
       figcaption: {
         color: 'var(--tw-prose-captions)',
-        fontSize: theme('fontSize.xs')[0],
-        ...theme('fontSize.xs')[1],
+        fontSize: 'var(--design-text-compact)',
+        lineHeight: '1.35',
         marginTop: theme('spacing.2'),
       },
 
@@ -289,22 +291,14 @@ module.exports = ({ theme }) => ({
         paddingRight: '0',
       },
 
-      // Inline elements
+      // Inline elements — body links use .design-link (../radar design/link)
       a: {
-        color: 'var(--tw-prose-links)',
+        borderBottom: 'none',
+        fontWeight: 'inherit',
+      },
+      'a.no-underline, a.no-underline:hover': {
+        borderBottom: 'none',
         textDecoration: 'none',
-        borderBottom: '1px solid currentColor',
-        fontWeight: '400',
-        '&:hover': {
-          color: 'var(--tw-prose-links-hover)',
-          borderBottomWidth: '2px',
-        },
-      },
-      'a.no-underline': {
-        borderBottom: 'none',
-      },
-      'a.no-underline:hover': {
-        borderBottom: 'none',
       },
       'h5 a, h5 a:hover': {
         color: 'var(--tw-prose-captions)',
@@ -331,17 +325,18 @@ module.exports = ({ theme }) => ({
         paddingLeft: theme('padding[1.5]'),
         boxShadow: 'inset 0 0 0 1px var(--tw-prose-code-ring)',
         backgroundColor: 'var(--tw-prose-code-bg)',
-        fontSize: theme('fontSize.2xs'),
+        fontSize: 'var(--design-text-compact)',
+        lineHeight: '1.35',
       },
       ':is(a, h1, h2, h3, blockquote, thead th) code': {
         color: 'inherit',
       },
       'h2 code': {
-        fontSize: theme('fontSize.base')[0],
+        fontSize: 'inherit',
         fontWeight: 'inherit',
       },
       'h3 code': {
-        fontSize: theme('fontSize.sm')[0],
+        fontSize: 'inherit',
         fontWeight: 'inherit',
       },
 

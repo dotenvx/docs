@@ -1,18 +1,14 @@
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
-import { HeroPattern } from '@/components/HeroPattern'
-
 import InstallWithArmorCurlCodeGroup from '@/pages/partials/installWithArmorCurlCodeGroup.mdx'
 import InstallWithArmorNpmCodeGroup from '@/pages/partials/installWithArmorNpmCodeGroup.mdx'
 import InstallWithArmorWingetCodeGroup from '@/pages/partials/installWithArmorWingetCodeGroup.mdx'
 
 export const description = 'Install dotenvx.'
 
-<HeroPattern />
-
 <Breadcrumb
   items={[
-    { label: 'Documentation', href: '/docs' },
+    { label: 'Docs', href: '/docs' },
     { label: 'Learn', href: '/docs/learn' },
     { label: 'Installing' },
   ]}
@@ -55,13 +51,16 @@ console.log(`Hello ${process.env.HELLO}`)
 
 Other ways to install.
 
-* [Brew](#brew)
-* [Docker](#docker)
-* [GitHub Releases](#github)
-* [Heroku](#heroku)
-* [Standalone](#standalone)
-* [Wget](#wget)
-
+<DesignList
+  items={[
+    { href: "#brew", title: "Brew" },
+    { href: "#docker", title: "Docker" },
+    { href: "#github", title: "GitHub Releases" },
+    { href: "#heroku", title: "Heroku" },
+    { href: "#standalone", title: "Standalone" },
+    { href: "#wget", title: "Wget" },
+  ]}
+/>
 ### Brew {{ id: "brew" }}
 
 Installing with [brew](https://brew.sh) is the most straight forward global install:

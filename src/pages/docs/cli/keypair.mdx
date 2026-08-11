@@ -6,7 +6,7 @@ export const description =
 
 <Breadcrumb
   items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'CLI', href: '/docs/cli' },
     { label: 'Keypair', href: '/docs/cli/keypair' },
   ]}
 />
@@ -20,13 +20,16 @@ $ dotenvx keypair
 {"DOTENV_PUBLIC_KEY":"<publicKey>","DOTENV_PRIVATE_KEY":"<privateKey>"}
 ```
 
-## Options
-
-* [keypair -f](/docs/cli/keypair-f)
-* [keypair -fk](/docs/cli/keypair-fk)
-* [keypair DOTENV_PRIVATE_KEY](/docs/cli/keypair-key)
-* [keypair --format json](/docs/cli/keypair-json)
-* [keypair --format shell](/docs/cli/keypair-shell)
-* [keypair --format colon](/docs/cli/keypair-colon)
-* [keypair --pretty-print](/docs/cli/keypair-pretty-print)
-* [keypair --no-armor](/docs/cli/keypair-no-armor)
+<DesignList
+  title="Options"
+  items={[
+    { href: "/docs/cli/keypair-f", title: "keypair -f" },
+    { href: "/docs/cli/keypair-fk", title: "keypair -fk" },
+    { href: "/docs/cli/keypair-key", title: "keypair DOTENV_PRIVATE_KEY" },
+    { href: "/docs/cli/keypair-json", title: "keypair --format json" },
+    { href: "/docs/cli/keypair-shell", title: "keypair --format shell" },
+    { href: "/docs/cli/keypair-colon", title: "keypair --format colon" },
+    { href: "/docs/cli/keypair-pretty-print", title: "keypair --pretty-print" },
+    { href: "/docs/cli/keypair-no-armor", title: "keypair --no-armor" },
+  ]}
+/>

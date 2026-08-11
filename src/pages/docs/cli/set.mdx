@@ -6,7 +6,7 @@ export const description =
 
 <Breadcrumb
   items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'CLI', href: '/docs/cli' },
     { label: 'Set', href: '/docs/cli/set' },
   ]}
 />
@@ -20,15 +20,18 @@ $ dotenvx set HELLO World
 ◈ encrypted HELLO (.env)
 ```
 
-## Options
-
-* [set KEY value](/docs/cli/set-key-value)
-* [set KEY value -f](/docs/cli/set-key-value-f)
-* [set KEY value -fk](/docs/cli/set-key-value-fk)
-* [set KEY "value with spaces"](/docs/cli/set-key-value-with-spaces)
-* [set KEY -- "- + * ÷"](/docs/cli/set-key-value-with-leading-dash)
-* [set KEY value --encrypt](/docs/cli/set-key-value-encrypt)
-* [set KEY value --plain](/docs/cli/set-key-value-plain)
-* [set KEY_PLAIN value](/docs/cli/set-key-plain-suffix)
-* [set KEY value --no-create](/docs/cli/set-key-value-no-create)
-* [set KEY value --no-armor](/docs/cli/set-key-value-no-armor)
+<DesignList
+  title="Options"
+  items={[
+    { href: "/docs/cli/set-key-value", title: "set KEY value" },
+    { href: "/docs/cli/set-key-value-f", title: "set KEY value -f" },
+    { href: "/docs/cli/set-key-value-fk", title: "set KEY value -fk" },
+    { href: "/docs/cli/set-key-value-with-spaces", title: "set KEY \"value with spaces\"" },
+    { href: "/docs/cli/set-key-value-with-leading-dash", title: "set KEY -- \"- + * \u00f7\"" },
+    { href: "/docs/cli/set-key-value-encrypt", title: "set KEY value --encrypt" },
+    { href: "/docs/cli/set-key-value-plain", title: "set KEY value --plain" },
+    { href: "/docs/cli/set-key-plain-suffix", title: "set KEY_PLAIN value" },
+    { href: "/docs/cli/set-key-value-no-create", title: "set KEY value --no-create" },
+    { href: "/docs/cli/set-key-value-no-armor", title: "set KEY value --no-armor" },
+  ]}
+/>

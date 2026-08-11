@@ -2,26 +2,23 @@ import Link from 'next/link'
 
 export function Breadcrumb({ items = [] }) {
   return (
-    <div className="not-prose mb-2 flex flex-wrap items-center gap-1.5 text-sm text-[color:var(--design-secondary)]">
+    <nav className="design-breadcrumb not-prose" aria-label="Breadcrumb">
       {items.map((item, index) => (
-        <span key={`${item.label}-${index}`} className="inline-flex items-center gap-1.5">
+        <span key={`${item.label}-${index}`} className="design-breadcrumb-item">
           {item.href ? (
-            <Link
-              href={item.href}
-              className="no-underline hover:text-[color:var(--design-ink)]"
-            >
+            <Link href={item.href} className="design-breadcrumb-link">
               {item.label}
             </Link>
           ) : (
-            <span>{item.label}</span>
+            <span className="design-breadcrumb-current">{item.label}</span>
           )}
           {index < items.length - 1 && (
-            <span className="text-[color:var(--design-dim)]" aria-hidden="true">
+            <span className="design-breadcrumb-sep" aria-hidden="true">
               ›
             </span>
           )}
         </span>
       ))}
-    </div>
+    </nav>
   )
 }

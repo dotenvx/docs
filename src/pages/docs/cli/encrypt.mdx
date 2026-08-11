@@ -6,7 +6,7 @@ export const description =
 
 <Breadcrumb
   items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'CLI', href: '/docs/cli' },
     { label: 'Encrypt', href: '/docs/cli/encrypt' },
   ]}
 />
@@ -20,14 +20,17 @@ $ dotenvx encrypt
 ◈ encrypted (.env)
 ```
 
-## Options
-
-* [encrypt -f](/docs/cli/encrypt-f)
-* [encrypt -fk](/docs/cli/encrypt-fk)
-* [encrypt -k](/docs/cli/encrypt-k)
-* [encrypt -ek](/docs/cli/encrypt-ek)
-* [encrypt KEY_PLAIN](/docs/cli/encrypt-plain-suffix)
-* [encrypt --stdout](/docs/cli/encrypt-stdout)
-* [encrypt --token](/docs/cli/encrypt-token)
-* [encrypt --no-create](/docs/cli/encrypt-no-create)
-* [encrypt --no-armor](/docs/cli/encrypt-no-armor)
+<DesignList
+  title="Options"
+  items={[
+    { href: "/docs/cli/encrypt-f", title: "encrypt -f" },
+    { href: "/docs/cli/encrypt-fk", title: "encrypt -fk" },
+    { href: "/docs/cli/encrypt-k", title: "encrypt -k" },
+    { href: "/docs/cli/encrypt-ek", title: "encrypt -ek" },
+    { href: "/docs/cli/encrypt-plain-suffix", title: "encrypt KEY_PLAIN" },
+    { href: "/docs/cli/encrypt-stdout", title: "encrypt --stdout" },
+    { href: "/docs/cli/encrypt-token", title: "encrypt --token" },
+    { href: "/docs/cli/encrypt-no-create", title: "encrypt --no-create" },
+    { href: "/docs/cli/encrypt-no-armor", title: "encrypt --no-armor" },
+  ]}
+/>

@@ -47,7 +47,7 @@ export function Tag({
   return (
     <span
       className={clsx(
-        'font-mono text-[0.625rem] font-semibold leading-6',
+        'font-mono text-[0.625rem] font-medium leading-6',
         variantStyles[variant],
         colorStyles[color][variant]
       )}

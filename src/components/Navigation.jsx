@@ -1,9 +1,10 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
 
+import { DocsSectionSwitcher } from '@/components/DocsSectionSwitcher'
 import { useIsInsideMobileNavigation } from '@/components/MobileNavigation'
 import { Tag } from '@/components/Tag'
 import { BitwardenIcon } from '@/components/icons/BitwardenIcon'
@@ -43,7 +44,7 @@ function TopLevelNavItem({ href, children }) {
     <li className="">
       <Link
         href={href}
-        className="block rounded-md px-3 py-2 text-sm text-[color:var(--design-mid)] transition-colors hover:bg-[color:var(--design-hover)] hover:text-[color:var(--design-ink)]"
+        className="block rounded-md px-3 py-2 text-compact text-[color:var(--design-mid)] transition-colors hover:bg-[color:var(--design-hover)] hover:text-[color:var(--design-ink)]"
       >
         {children}
       </Link>
@@ -65,7 +66,7 @@ function NavLink({ href, tag, icon: Icon, iconClassName, hasChildren = false, ac
       target={target}
       rel={rel}
       className={clsx(
-        'flex justify-between gap-2 rounded-md px-4 py-1 text-sm transition-colors',
+        'flex justify-between gap-2 rounded-md px-4 py-1 text-compact transition-colors',
         leftPaddingClass,
         current
           ? 'bg-[color:var(--design-hover)] text-[color:var(--design-ink)]'
@@ -97,7 +98,7 @@ function NavLink({ href, tag, icon: Icon, iconClassName, hasChildren = false, ac
         {hasChildren && (
           <span
             aria-hidden="true"
-            className="text-base leading-none text-[color:var(--design-secondary)]"
+            className="text-size leading-none text-[color:var(--design-secondary)]"
           >
             ›
           </span>
@@ -118,31 +119,6 @@ function isLinkActive(link, pathname) {
 function hasDescendantWithHref(link, href) {
   return (link.links ?? []).some(
     (childLink) => childLink.href === href || hasDescendantWithHref(childLink, href)
-  )
-}
-
-const mobileTopLevelNavigation = [
-  { title: 'Documentation', href: '/docs' },
-  { title: 'CLI Reference', href: '/docs/cli' },
-  { title: 'SDK Reference', href: '/docs/sdk' },
-]
-
-function getMobileTopLevelSelection(pathname) {
-  if (pathname.startsWith('/docs/cli')) {
-    return '/docs/cli'
-  }
-
-  if (pathname.startsWith('/docs/sdk')) {
-    return '/docs/sdk'
-  }
-
-  return '/docs'
-}
-
-function getMobileTopLevelTitle(pathname) {
-  return (
-    mobileTopLevelNavigation.find((link) => link.href === getMobileTopLevelSelection(pathname))
-      ?.title ?? 'Documentation'
   )
 }
 
@@ -214,7 +190,7 @@ function NavigationGroup({ group, className }) {
     <li className={clsx('relative mt-6', className)}>
       <motion.h2
         layout="position"
-        className="pl-2 text-xs font-semibold text-[color:var(--design-ink)]"
+        className="pl-2 text-compact font-medium text-[color:var(--design-ink)]"
       >
         {group.href ? (
           <a href={group.href}>{group.title}</a>
@@ -235,7 +211,7 @@ function NavigationGroup({ group, className }) {
 
 export const defaultNavigation = [
   {
-    title: 'Documentation',
+    title: 'Docs',
     links: [
       { title: 'Introduction', href: '/docs/introduction' },
     ]
@@ -452,7 +428,7 @@ export const defaultNavigation = [
 
 export const cliNavigation = [
   {
-    title: 'CLI Reference',
+    title: 'CLI',
     href: '/docs/cli',
     links: [
       { title: 'Introduction', href: '/docs/cli/introduction' },
@@ -526,7 +502,7 @@ export const cliNavigation = [
 
 export const sdkNavigation = [
   {
-    title: 'SDK Reference',
+    title: 'SDK',
     href: '/docs/sdk',
     links: [
       { title: 'Introduction', href: '/docs/sdk/introduction' },
@@ -562,100 +538,13 @@ export function Navigation(props) {
   let isInsideMobileNavigation = useIsInsideMobileNavigation()
   let router = useInitialValue(useRouter(), isInsideMobileNavigation)
   let currentNavigation = getNavigationForPath(router.pathname)
-  let mobileTopLevelSelection = getMobileTopLevelSelection(router.pathname)
-  let [isMobileTopLevelOpen, setIsMobileTopLevelOpen] = useState(false)
 
   return (
     <nav {...props}>
+      {isInsideMobileNavigation && (
+        <DocsSectionSwitcher className="mb-5 -mx-4 sm:-mx-6" />
+      )}
       <ul role="list">
-        {isInsideMobileNavigation && (
-          <li className="md:mt-0 mb-3 border-b border-[color:var(--design-line)] pb-4">
-            <label htmlFor="mobile-top-level-nav-trigger" className="sr-only">
-              Top-level navigation
-            </label>
-            <div className="relative">
-              <button
-                id="mobile-top-level-nav-trigger"
-                type="button"
-                aria-expanded={isMobileTopLevelOpen}
-                onClick={() => setIsMobileTopLevelOpen((open) => !open)}
-                className="flex w-full items-center justify-between rounded-2xl border border-[color:var(--design-line)] bg-[var(--design-bg-lift)] px-4 py-3 text-left text-sm text-[color:var(--design-ink)]"
-              >
-                <span>{getMobileTopLevelTitle(router.pathname)}</span>
-                <svg
-                  viewBox="0 0 16 16"
-                  aria-hidden="true"
-                  className="h-4 w-4 stroke-[color:var(--design-mid)]"
-                >
-                  {isMobileTopLevelOpen ? (
-                    <path
-                      d="M4 9.5 8 5.5l4 4"
-                      fill="none"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  ) : (
-                    <path
-                      d="M4 6.5 8 10.5l4-4"
-                      fill="none"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  )}
-                </svg>
-              </button>
-              {isMobileTopLevelOpen && (
-                <ul
-                  role="listbox"
-                  className="absolute left-0 right-0 top-full z-30 mt-3 space-y-1 rounded-2xl border border-[color:var(--design-line)] bg-[var(--design-menu-bg)] p-2 shadow-lg"
-                >
-                  {mobileTopLevelNavigation.map((link) => {
-                    let isCurrent = link.href === mobileTopLevelSelection
-
-                    return (
-                      <li key={link.href}>
-                        <button
-                          type="button"
-                          role="option"
-                          aria-selected={isCurrent}
-                          onClick={() => {
-                            setIsMobileTopLevelOpen(false)
-                            router.push(link.href)
-                          }}
-                          className={clsx(
-                            'flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm transition-colors hover:bg-[color:var(--design-hover)] focus-visible:bg-[color:var(--design-hover)]',
-                            isCurrent
-                              ? 'font-semibold text-[color:var(--design-ink)]'
-                              : 'text-[color:var(--design-body)]'
-                          )}
-                        >
-                          <span>{link.title}</span>
-                          {isCurrent && (
-                            <svg
-                              viewBox="0 0 16 16"
-                              aria-hidden="true"
-                              className="h-4 w-4 stroke-[color:var(--design-ink)]"
-                            >
-                              <path
-                                d="m3.5 8.5 2.5 2.5 6-6"
-                                fill="none"
-                                strokeWidth="1.75"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          )}
-                        </button>
-                      </li>
-                    )
-                  })}
-                </ul>
-              )}
-            </div>
-          </li>
-        )}
         {currentNavigation.map((group, groupIndex) => (
           <NavigationGroup
             key={group.title}

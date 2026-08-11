@@ -6,7 +6,7 @@ export const description =
 
 <Breadcrumb
   items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'CLI', href: '/docs/cli' },
     { label: 'Run', href: '/docs/cli/run' },
   ]}
 />
@@ -24,42 +24,45 @@ $ dotenvx run -- node index.js
 ⟐ injected env (14) from .env
 ```
 
-## Options
-
-* [run - Variable Expansion](/docs/cli/run-variable-expansion)
-* [run - Default Values](/docs/cli/run-default-values)
-* [run - Alternate Values](/docs/cli/run-alternate-values)
-* [run - Interpolation Syntax Summary (Variable Expansion, Default/Alternate Values)](/docs/cli/run-interpolation-syntax-summary)
-* [run - Command Substitution](/docs/cli/run-command-substitution)
-* [run - Shell Expansion](/docs/cli/run-shell-expansion)
-* [run - Multiline](/docs/cli/run-multiline)
-* [run - Contextual Help](/docs/cli/run-contextual-help)
-* [run -f](/docs/cli/run-f)
-* [run -f directory](/docs/cli/run-f-directory)
-* [run -fk](/docs/cli/run-fk)
-* [run --env HELLO=String](/docs/cli/run-env)
-* [run --redact](/docs/cli/run-redact)
-* [run --redact -- claude -p](/docs/cli/run-redact-claude-print)
-* [run --redact -- claude](/docs/cli/run-redact-claude)
-* [run --redact -- codex exec](/docs/cli/run-redact-codex-exec)
-* [run --redact -- codex](/docs/cli/run-redact-codex)
-* [run --mask](/docs/cli/run-mask)
-* [run --token](/docs/cli/run-token)
-* [run --overload](/docs/cli/run-overload)
-* [run --ignore](/docs/cli/run-ignore)
-* [run - Environment Variable Precedence](/docs/cli/run-environment-variable-precedence)
-* [DOTENV_PRIVATE_KEY=key run](/docs/cli/run-dotenv-private-key)
-* [DOTENV_PRIVATE_KEY_PRODUCTION=key run](/docs/cli/run-dotenv-private-key-production)
-* [DOTENV_PRIVATE_KEY_CI=key run](/docs/cli/run-dotenv-private-key-ci)
-* [DOTENV_PRIVATE_KEY=key DOTENV_PRIVATE_KEY_PRODUCTION=key run - Combine Multiple](/docs/cli/run-dotenv-private-key-multiple)
-* [run --verbose](/docs/cli/run-verbose)
-* [run --debug](/docs/cli/run-debug)
-* [run --quiet](/docs/cli/run-quiet)
-* [run --log-level](/docs/cli/run-log-level)
-* [run --validate](/docs/cli/run-validate)
-* [run --strict](/docs/cli/run-strict)
-* [run --convention=nextjs](/docs/cli/run-convention-nextjs)
-* [run -f directory --convention=nextjs](/docs/cli/run-f-directory-convention-nextjs)
-* [run --convention=flow](/docs/cli/run-convention-flow)
-* [run --no-native](/docs/cli/run-no-native)
-* [run --no-armor](/docs/cli/run-no-armor)
+<DesignList
+  title="Options"
+  items={[
+    { href: "/docs/cli/run-variable-expansion", title: "run - Variable Expansion" },
+    { href: "/docs/cli/run-default-values", title: "run - Default Values" },
+    { href: "/docs/cli/run-alternate-values", title: "run - Alternate Values" },
+    { href: "/docs/cli/run-interpolation-syntax-summary", title: "run - Interpolation Syntax Summary (Variable Expansion, Default/Alternate Values)" },
+    { href: "/docs/cli/run-command-substitution", title: "run - Command Substitution" },
+    { href: "/docs/cli/run-shell-expansion", title: "run - Shell Expansion" },
+    { href: "/docs/cli/run-multiline", title: "run - Multiline" },
+    { href: "/docs/cli/run-contextual-help", title: "run - Contextual Help" },
+    { href: "/docs/cli/run-f", title: "run -f" },
+    { href: "/docs/cli/run-f-directory", title: "run -f directory" },
+    { href: "/docs/cli/run-fk", title: "run -fk" },
+    { href: "/docs/cli/run-env", title: "run --env HELLO=String" },
+    { href: "/docs/cli/run-redact", title: "run --redact" },
+    { href: "/docs/cli/run-redact-claude-print", title: "run --redact -- claude -p" },
+    { href: "/docs/cli/run-redact-claude", title: "run --redact -- claude" },
+    { href: "/docs/cli/run-redact-codex-exec", title: "run --redact -- codex exec" },
+    { href: "/docs/cli/run-redact-codex", title: "run --redact -- codex" },
+    { href: "/docs/cli/run-mask", title: "run --mask" },
+    { href: "/docs/cli/run-token", title: "run --token" },
+    { href: "/docs/cli/run-overload", title: "run --overload" },
+    { href: "/docs/cli/run-ignore", title: "run --ignore" },
+    { href: "/docs/cli/run-environment-variable-precedence", title: "run - Environment Variable Precedence" },
+    { href: "/docs/cli/run-dotenv-private-key", title: "DOTENV_PRIVATE_KEY=key run" },
+    { href: "/docs/cli/run-dotenv-private-key-production", title: "DOTENV_PRIVATE_KEY_PRODUCTION=key run" },
+    { href: "/docs/cli/run-dotenv-private-key-ci", title: "DOTENV_PRIVATE_KEY_CI=key run" },
+    { href: "/docs/cli/run-dotenv-private-key-multiple", title: "DOTENV_PRIVATE_KEY=key DOTENV_PRIVATE_KEY_PRODUCTION=key run - Combine Multiple" },
+    { href: "/docs/cli/run-verbose", title: "run --verbose" },
+    { href: "/docs/cli/run-debug", title: "run --debug" },
+    { href: "/docs/cli/run-quiet", title: "run --quiet" },
+    { href: "/docs/cli/run-log-level", title: "run --log-level" },
+    { href: "/docs/cli/run-validate", title: "run --validate" },
+    { href: "/docs/cli/run-strict", title: "run --strict" },
+    { href: "/docs/cli/run-convention-nextjs", title: "run --convention=nextjs" },
+    { href: "/docs/cli/run-f-directory-convention-nextjs", title: "run -f directory --convention=nextjs" },
+    { href: "/docs/cli/run-convention-flow", title: "run --convention=flow" },
+    { href: "/docs/cli/run-no-native", title: "run --no-native" },
+    { href: "/docs/cli/run-no-armor", title: "run --no-armor" },
+  ]}
+/>

@@ -28,6 +28,7 @@ function cycleThemeMode() {
   }
 }
 
+/** Corner [M] theme cycle — mirrored from ../radar design/_theme_control */
 export function ModeToggle() {
   useEffect(() => {
     function handleKeyDown(event) {
@@ -66,7 +67,17 @@ export function ModeToggle() {
       aria-label="Cycle theme"
       onClick={cycleThemeMode}
     >
-      <span className="design-kbd design-theme-control-key">M</span>
+      <svg
+        className="design-theme-control-fan"
+        viewBox="0 0 100 100"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M0 100 L0 0 A100 100 0 0 1 100 100 Z" />
+      </svg>
+      <span className="design-theme-control-disc">
+        <span className="design-kbd design-theme-control-key">M</span>
+      </span>
       <span className="design-theme-control-label">Cycle theme</span>
     </button>
   )

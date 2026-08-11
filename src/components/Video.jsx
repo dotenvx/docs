@@ -1,7 +1,7 @@
 export function Video(props) {
   return (
     <section className="not-prose mt-12 border-t border-zinc-900/10 pt-8 dark:border-white/10">
-      <h2 className="mb-4 text-base font-semibold text-zinc-900 dark:text-white">
+      <h2 className="mb-4 text-size font-medium text-zinc-900 dark:text-white">
         Watch it in action
       </h2>
       <div className="rounded-md border border-zinc-200 dark:border-zinc-700">

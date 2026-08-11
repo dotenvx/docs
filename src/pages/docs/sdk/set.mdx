@@ -6,7 +6,7 @@ export const description =
 
 <Breadcrumb
   items={[
-    { label: 'SDK Reference', href: '/docs/sdk' },
+    { label: 'SDK', href: '/docs/sdk' },
     { label: 'Set', href: '/docs/sdk/set' },
   ]}
 />
@@ -33,6 +33,9 @@ const parsed = dotenvx.parse(src)
 console.log(`Hello ${parsed.HELLO}`)
 ```
 
-## Advanced
-
-* [set(KEY, value, \{plain: true\})](/docs/sdk/config-set-key-value-plain)
+<DesignList
+  title="Advanced"
+  items={[
+    { href: "/docs/sdk/config-set-key-value-plain", title: "set(KEY, value, {plain: true})" },
+  ]}
+/>

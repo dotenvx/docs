@@ -139,7 +139,7 @@ function SearchResult({
       <div
         id={`${id}-title`}
         aria-hidden="true"
-        className="text-sm font-medium text-zinc-900 group-aria-selected:text-yellow-500 dark:text-white"
+        className="text-compact font-medium text-zinc-900 group-aria-selected:text-yellow-500 dark:text-white"
       >
         <HighlightQuery text={result.title} query={query} />
       </div>
@@ -147,7 +147,7 @@ function SearchResult({
         <div
           id={`${id}-hierarchy`}
           aria-hidden="true"
-          className="mt-1 truncate whitespace-nowrap text-2xs text-zinc-500"
+          className="mt-1 truncate whitespace-nowrap text-compact text-zinc-500"
         >
           {hierarchy.map((item, itemIndex, items) => (
             <Fragment key={itemIndex}>
@@ -166,7 +166,7 @@ function SearchResult({
         </div>
       )}
       {result.pageUrl && (
-        <div className="mt-1 truncate text-xs text-zinc-400 dark:text-zinc-500">
+        <div className="mt-1 truncate text-compact text-zinc-400 dark:text-zinc-500">
           {result.pageUrl}
         </div>
       )}
@@ -179,9 +179,9 @@ function SearchResults({ autocomplete, query, collection }) {
     return (
       <div className="p-6 text-center">
         <NoResultsIcon className="mx-auto h-5 w-5 stroke-zinc-900 dark:stroke-zinc-600" />
-        <p className="mt-2 text-xs text-zinc-700 dark:text-zinc-400">
+        <p className="mt-2 text-compact text-zinc-700 dark:text-zinc-400">
           Nothing found for{' '}
-          <strong className="break-words font-semibold text-zinc-900 dark:text-white">
+          <strong className="break-words font-bold text-zinc-900 dark:text-white">
             &lsquo;{query}&rsquo;
           </strong>
           . Please try again.
@@ -218,7 +218,7 @@ const SearchInput = forwardRef(function SearchInput(
       <input
         ref={inputRef}
         className={clsx(
-          'flex-auto appearance-none bg-transparent pl-10 text-zinc-900 outline-none placeholder:text-zinc-500 focus:w-full focus:flex-none dark:text-white sm:text-sm [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden [&::-webkit-search-results-button]:hidden [&::-webkit-search-results-decoration]:hidden',
+          'flex-auto appearance-none bg-transparent pl-10 text-zinc-900 outline-none placeholder:text-zinc-500 focus:w-full focus:flex-none dark:text-white sm:text-compact [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden [&::-webkit-search-results-button]:hidden [&::-webkit-search-results-decoration]:hidden',
           autocompleteState.status === 'stalled' ? 'pr-11' : 'pr-4'
         )}
         {...inputProps}
@@ -260,12 +260,12 @@ function SearchButton(props) {
     <>
       <button
         type="button"
-        className="hidden h-8 w-full items-center gap-2 rounded-full bg-white pl-2 pr-3 text-sm text-zinc-500 ring-1 ring-zinc-900/10 transition hover:ring-zinc-900/20 dark:bg-white/5 dark:text-zinc-400 dark:ring-inset dark:ring-white/10 dark:hover:ring-white/20 lg:flex focus:[&:not(:focus-visible)]:outline-none"
+        className="hidden h-8 w-full items-center gap-2 rounded-full bg-white pl-2 pr-3 text-compact text-zinc-500 ring-1 ring-zinc-900/10 transition hover:ring-zinc-900/20 dark:bg-white/5 dark:text-zinc-400 dark:ring-inset dark:ring-white/10 dark:hover:ring-white/20 lg:flex focus:[&:not(:focus-visible)]:outline-none"
         {...props}
       >
         <SearchIcon className="h-5 w-5 stroke-current" />
         Find something...
-        <kbd className="ml-auto text-2xs text-zinc-400 dark:text-zinc-500">
+        <kbd className="ml-auto text-compact text-zinc-400 dark:text-zinc-500">
           <kbd className="font-sans">{modifierKey}</kbd>
           <kbd className="font-sans">K</kbd>
         </kbd>
@@ -432,12 +432,12 @@ export function Search({ className }) {
     <div className={clsx('hidden lg:block', className)}>
       <button
         type="button"
-        className="hidden h-8 w-full items-center gap-2 rounded-full bg-white pl-2 pr-3 text-sm text-zinc-500 ring-1 ring-zinc-900/10 transition hover:ring-zinc-900/20 dark:bg-white/5 dark:text-zinc-400 dark:ring-inset dark:ring-white/10 dark:hover:ring-white/20 lg:flex focus:[&:not(:focus-visible)]:outline-none"
+        className="hidden h-8 w-full items-center gap-2 rounded-full bg-white pl-2 pr-3 text-compact text-zinc-500 ring-1 ring-zinc-900/10 transition hover:ring-zinc-900/20 dark:bg-white/5 dark:text-zinc-400 dark:ring-inset dark:ring-white/10 dark:hover:ring-white/20 lg:flex focus:[&:not(:focus-visible)]:outline-none"
         {...buttonProps}
       >
         <SearchIcon className="h-5 w-5 stroke-current" />
         Find something...
-        <kbd className="ml-auto text-2xs text-zinc-400 dark:text-zinc-500">
+        <kbd className="ml-auto text-compact text-zinc-400 dark:text-zinc-500">
           <kbd className="font-sans">{modifierKey}</kbd>
           <kbd className="font-sans">K</kbd>
         </kbd>

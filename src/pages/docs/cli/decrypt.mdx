@@ -6,7 +6,7 @@ export const description =
 
 <Breadcrumb
   items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'CLI', href: '/docs/cli' },
     { label: 'Decrypt', href: '/docs/cli/decrypt' },
   ]}
 />
@@ -20,12 +20,15 @@ $ dotenvx decrypt
 ◇ decrypted (.env)
 ```
 
-## Options
-
-* [decrypt -f](/docs/cli/decrypt-f)
-* [decrypt -fk](/docs/cli/decrypt-fk)
-* [decrypt -k](/docs/cli/decrypt-k)
-* [decrypt -ek](/docs/cli/decrypt-ek)
-* [decrypt --stdout](/docs/cli/decrypt-stdout)
-* [decrypt --stdout --mask](/docs/cli/decrypt-stdout-mask)
-* [decrypt --no-armor](/docs/cli/decrypt-no-armor)
+<DesignList
+  title="Options"
+  items={[
+    { href: "/docs/cli/decrypt-f", title: "decrypt -f" },
+    { href: "/docs/cli/decrypt-fk", title: "decrypt -fk" },
+    { href: "/docs/cli/decrypt-k", title: "decrypt -k" },
+    { href: "/docs/cli/decrypt-ek", title: "decrypt -ek" },
+    { href: "/docs/cli/decrypt-stdout", title: "decrypt --stdout" },
+    { href: "/docs/cli/decrypt-stdout-mask", title: "decrypt --stdout --mask" },
+    { href: "/docs/cli/decrypt-no-armor", title: "decrypt --no-armor" },
+  ]}
+/>

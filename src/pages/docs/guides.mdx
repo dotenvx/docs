@@ -1,100 +1,117 @@
 export const description =
   'Language, platform, and framework guides'
 
-##### [Documentation](/docs)
+##### [Docs](/docs)
 # Guides
 
 Go deeper into using `dotenvx` with detailed framework and platform guides. {{ className: 'lead' }}
 
-## Quickstart
-
-* [Run](/docs/quickstart/run)
-* [Environments](/docs/quickstart/environments)
-* [Encrypt](/docs/introduction)
-* [Deploy](/docs/quickstart/deploy)
-* [Claude](/docs/secrets-in-claude)
-* [Codex](/docs/secrets-in-codex)
-* [Cursor](/docs/secrets-in-cursor)
-* [1Password](/docs/secrets-in-1password)
-* [Bitwarden](/docs/secrets-in-bitwarden)
-
-## Password Managers
-
-* [1Password](/docs/secrets-in-1password)
-* [Bitwarden](/docs/secrets-in-bitwarden)
-
-## Node.js
-
-* [astro.js with netlify](/docs/platforms/netlify)
-* [astro.js with npm](/docs/package-managers/npm#astro)
-* [astro.js with vercel](/docs/platforms/vercel)
-* [express.js with docker](/docs/secrets-in-docker)
-* [express.js with docker-compose](/docs/secrets-in-docker-compose)
-* [express.js with digital ocean](/docs/platforms/digital-ocean)
-* [express.js with fly.io](/docs/platforms/fly)
-* [express.js with heroku](/docs/platforms/heroku)
-* [express.js with npm](/docs/package-managers/npm#express)
-* [express.js with railway](/docs/platforms/railway)
-* [express.js with render](/docs/platforms/render)
-* [expo](/docs/secrets-in-expo)
-* [next.js](/docs/secrets-in-nextjs)
-* [remix.js with npm](/docs/package-managers/npm#remix)
-* [node.js with github actions](/docs/secrets-in-github-actions)
-* [cloudflare](/docs/platforms/cloudflare)
-* [monorepos](/docs/secrets-in-monorepos)
-* [nx](/docs/secrets-in-nx)
-* [turborepo](/docs/secrets-in-turborepo)
-* [npm](/docs/package-managers/npm)
-* [pnpm](/docs/package-managers/pnpm)
-* [pm2](/docs/process-managers/pm2)
-
-## Python
-
-* [flask with digital ocean](/docs/platforms/digital-ocean)
-* [flask with docker](/docs/secrets-in-docker)
-* [flask with docker-compose](/docs/secrets-in-docker-compose)
-* [flask with fly.io](/docs/platforms/fly)
-* [flask with heroku](/docs/platforms/heroku)
-* [flask with railway](/docs/platforms/railway)
-* [flask with render](/docs/platforms/render)
-* [python with github actions](/docs/secrets-in-github-actions)
-
-## PHP
-
-* [php with digital ocean](/docs/platforms/digital-ocean)
-* [php with docker](/docs/secrets-in-docker)
-* [php with docker-compose](/docs/secrets-in-docker-compose)
-* [php with fly.io](/docs/platforms/fly)
-* [php with heroku](/docs/platforms/heroku)
-* [php with railway](/docs/platforms/railway)
-* [php with render](/docs/platforms/render)
-
-## Sinatra
-
-* [sinatra with digital ocean](/docs/platforms/digital-ocean)
-* [sinatra with docker](/docs/secrets-in-docker)
-* [sinatra with docker-compose](/docs/secrets-in-docker-compose)
-* [sinatra with fly.io](/docs/platforms/fly)
-* [sinatra with heroku](/docs/platforms/heroku)
-* [sinatra with railway](/docs/platforms/railway)
-* [sinatra with render](/docs/platforms/render)
-
-## Go
-
-* [echo with digital ocean](/docs/platforms/digital-ocean)
-* [echo with docker](/docs/secrets-in-docker)
-* [echo with docker-compose](/docs/secrets-in-docker-compose)
-* [echo with fly.io](/docs/platforms/fly)
-* [echo with heroku](/docs/platforms/heroku)
-* [echo with railway](/docs/platforms/railway)
-* [echo with render](/docs/platforms/render)
-
-## Rust
-
-* [rocket.rs with digital ocean](/docs/platforms/digital-ocean)
-* [rocket.rs with docker](/docs/secrets-in-docker)
-* [rocket.rs with docker-compose](/docs/secrets-in-docker-compose)
-* [rocket.rs with fly.io](/docs/platforms/fly)
-* [rocket.rs with heroku](/docs/platforms/heroku)
-* [rocket.rs with railway](/docs/platforms/railway)
-* [rocket.rs with render](/docs/platforms/render)
+<DesignList
+  title="Quickstart"
+  items={[
+    { href: "/docs/quickstart/run", title: "Run" },
+    { href: "/docs/quickstart/environments", title: "Environments" },
+    { href: "/docs/introduction", title: "Encrypt" },
+    { href: "/docs/quickstart/deploy", title: "Deploy" },
+    { href: "/docs/secrets-in-claude", title: "Claude" },
+    { href: "/docs/secrets-in-codex", title: "Codex" },
+    { href: "/docs/secrets-in-cursor", title: "Cursor" },
+    { href: "/docs/secrets-in-1password", title: "1Password" },
+    { href: "/docs/secrets-in-bitwarden", title: "Bitwarden" },
+  ]}
+/>
+<DesignList
+  title="Password Managers"
+  items={[
+    { href: "/docs/secrets-in-1password", title: "1Password" },
+    { href: "/docs/secrets-in-bitwarden", title: "Bitwarden" },
+  ]}
+/>
+<DesignList
+  title="Node.js"
+  items={[
+    { href: "/docs/platforms/netlify", title: "astro.js with netlify" },
+    { href: "/docs/package-managers/npm#astro", title: "astro.js with npm" },
+    { href: "/docs/platforms/vercel", title: "astro.js with vercel" },
+    { href: "/docs/secrets-in-docker", title: "express.js with docker" },
+    { href: "/docs/secrets-in-docker-compose", title: "express.js with docker-compose" },
+    { href: "/docs/platforms/digital-ocean", title: "express.js with digital ocean" },
+    { href: "/docs/platforms/fly", title: "express.js with fly.io" },
+    { href: "/docs/platforms/heroku", title: "express.js with heroku" },
+    { href: "/docs/package-managers/npm#express", title: "express.js with npm" },
+    { href: "/docs/platforms/railway", title: "express.js with railway" },
+    { href: "/docs/platforms/render", title: "express.js with render" },
+    { href: "/docs/secrets-in-expo", title: "expo" },
+    { href: "/docs/secrets-in-nextjs", title: "next.js" },
+    { href: "/docs/package-managers/npm#remix", title: "remix.js with npm" },
+    { href: "/docs/secrets-in-github-actions", title: "node.js with github actions" },
+    { href: "/docs/platforms/cloudflare", title: "cloudflare" },
+    { href: "/docs/secrets-in-monorepos", title: "monorepos" },
+    { href: "/docs/secrets-in-nx", title: "nx" },
+    { href: "/docs/secrets-in-turborepo", title: "turborepo" },
+    { href: "/docs/package-managers/npm", title: "npm" },
+    { href: "/docs/package-managers/pnpm", title: "pnpm" },
+    { href: "/docs/process-managers/pm2", title: "pm2" },
+  ]}
+/>
+<DesignList
+  title="Python"
+  items={[
+    { href: "/docs/platforms/digital-ocean", title: "flask with digital ocean" },
+    { href: "/docs/secrets-in-docker", title: "flask with docker" },
+    { href: "/docs/secrets-in-docker-compose", title: "flask with docker-compose" },
+    { href: "/docs/platforms/fly", title: "flask with fly.io" },
+    { href: "/docs/platforms/heroku", title: "flask with heroku" },
+    { href: "/docs/platforms/railway", title: "flask with railway" },
+    { href: "/docs/platforms/render", title: "flask with render" },
+    { href: "/docs/secrets-in-github-actions", title: "python with github actions" },
+  ]}
+/>
+<DesignList
+  title="PHP"
+  items={[
+    { href: "/docs/platforms/digital-ocean", title: "php with digital ocean" },
+    { href: "/docs/secrets-in-docker", title: "php with docker" },
+    { href: "/docs/secrets-in-docker-compose", title: "php with docker-compose" },
+    { href: "/docs/platforms/fly", title: "php with fly.io" },
+    { href: "/docs/platforms/heroku", title: "php with heroku" },
+    { href: "/docs/platforms/railway", title: "php with railway" },
+    { href: "/docs/platforms/render", title: "php with render" },
+  ]}
+/>
+<DesignList
+  title="Sinatra"
+  items={[
+    { href: "/docs/platforms/digital-ocean", title: "sinatra with digital ocean" },
+    { href: "/docs/secrets-in-docker", title: "sinatra with docker" },
+    { href: "/docs/secrets-in-docker-compose", title: "sinatra with docker-compose" },
+    { href: "/docs/platforms/fly", title: "sinatra with fly.io" },
+    { href: "/docs/platforms/heroku", title: "sinatra with heroku" },
+    { href: "/docs/platforms/railway", title: "sinatra with railway" },
+    { href: "/docs/platforms/render", title: "sinatra with render" },
+  ]}
+/>
+<DesignList
+  title="Go"
+  items={[
+    { href: "/docs/platforms/digital-ocean", title: "echo with digital ocean" },
+    { href: "/docs/secrets-in-docker", title: "echo with docker" },
+    { href: "/docs/secrets-in-docker-compose", title: "echo with docker-compose" },
+    { href: "/docs/platforms/fly", title: "echo with fly.io" },
+    { href: "/docs/platforms/heroku", title: "echo with heroku" },
+    { href: "/docs/platforms/railway", title: "echo with railway" },
+    { href: "/docs/platforms/render", title: "echo with render" },
+  ]}
+/>
+<DesignList
+  title="Rust"
+  items={[
+    { href: "/docs/platforms/digital-ocean", title: "rocket.rs with digital ocean" },
+    { href: "/docs/secrets-in-docker", title: "rocket.rs with docker" },
+    { href: "/docs/secrets-in-docker-compose", title: "rocket.rs with docker-compose" },
+    { href: "/docs/platforms/fly", title: "rocket.rs with fly.io" },
+    { href: "/docs/platforms/heroku", title: "rocket.rs with heroku" },
+    { href: "/docs/platforms/railway", title: "rocket.rs with railway" },
+    { href: "/docs/platforms/render", title: "rocket.rs with render" },
+  ]}
+/>

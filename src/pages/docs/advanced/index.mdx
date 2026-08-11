@@ -1,7 +1,7 @@
 export const description =
   'Advanced usage and commands for `dotenvx`'
 
-##### [Documentation](/docs)
+##### [Docs](/docs)
 # Advanced
 
 Become a power user of `dotenvx`. {{ className: 'lead' }}
@@ -10,175 +10,187 @@ Become a power user of `dotenvx`. {{ className: 'lead' }}
 
 Advanced CLI commands.
 
-* [run - Variable Expansion](/docs/cli/run-variable-expansion)
-* [run - Default Values](/docs/cli/run-default-values)
-* [run - Alternate Values](/docs/cli/run-alternate-values)
-* [run - Interpolation Syntax Summary (Variable Expansion, Default/Alternate Values)](/docs/cli/run-interpolation-syntax-summary)
-* [run - Command Substitution](/docs/cli/run-command-substitution)
-* [run - Shell Expansion](/docs/cli/run-shell-expansion)
-* [run - Multiline](/docs/cli/run-multiline)
-* [run - Contextual Help](/docs/cli/run-contextual-help)
-* [run -f](/docs/cli/run-f)
-* [run -f directory](/docs/cli/run-f-directory)
-* [run --env HELLO=String](/docs/cli/run-env)
-* [run --redact](/docs/cli/run-redact)
-* [run --redact -- claude -p](/docs/cli/run-redact-claude-print)
-* [run --redact -- claude](/docs/cli/run-redact-claude)
-* [run --redact -- codex exec](/docs/cli/run-redact-codex-exec)
-* [run --redact -- codex](/docs/cli/run-redact-codex)
-* [run --mask](/docs/cli/run-mask)
-* [run --overload](/docs/cli/run-overload)
-* [run --ignore](/docs/cli/run-ignore)
-* [run - Environment Variable Precedence](/docs/cli/run-environment-variable-precedence)
-* [DOTENV_PRIVATE_KEY=key run](/docs/cli/run-dotenv-private-key)
-* [DOTENV_PRIVATE_KEY_PRODUCTION=key run](/docs/cli/run-dotenv-private-key-production)
-* [DOTENV_PRIVATE_KEY_CI=key run](/docs/cli/run-dotenv-private-key-ci)
-* [DOTENV_PRIVATE_KEY=key DOTENV_PRIVATE_KEY_PRODUCTION=key run - Combine Multiple](/docs/cli/run-dotenv-private-key-multiple)
-* [run --verbose](/docs/cli/run-verbose)
-* [run --debug](/docs/cli/run-debug)
-* [run --quiet](/docs/cli/run-quiet)
-* [run --log-level](/docs/cli/run-log-level)
-* [run --validate](/docs/cli/run-validate)
-* [run --strict](/docs/cli/run-strict)
-* [run --convention=nextjs](/docs/cli/run-convention-nextjs)
-* [run -f directory --convention=nextjs](/docs/cli/run-f-directory-convention-nextjs)
-* [DOTENV_CONFIG_CONVENTION=nextjs run](/docs/cli/run-convention-nextjs)
-* [run --convention=flow](/docs/cli/run-convention-flow)
-* [DOTENV_CONFIG_CONVENTION=flow run](/docs/cli/run-convention-flow)
-* [DOTENV_ENV=production run --convention=flow](/docs/cli/run-convention-flow-dotenv-env)
-* [run -fk](/docs/cli/run-fk)
-* [run --no-native](/docs/cli/run-no-native)
-* [run --no-armor](/docs/cli/run-no-armor)
-* [get KEY](/docs/cli/get-key)
-* [get KEY --mask](/docs/cli/get-key-mask)
-* [get KEY -f](/docs/cli/get-key-f)
-* [get KEY -f directory](/docs/cli/get-key-f-directory)
-* [get KEY --env](/docs/cli/get-key-env)
-* [get KEY --overload](/docs/cli/get-key-overload)
-* [get KEY --strict](/docs/cli/get-key-strict)
-* [get KEY --ignore](/docs/cli/get-key-ignore)
-* [get KEY --no-native](/docs/cli/get-no-native)
-* [get KEY --no-armor](/docs/cli/get-no-armor)
-* [get KEY --convention=nextjs](/docs/cli/get-key-convention-nextjs)
-* [get KEY -f directory --convention=nextjs](/docs/cli/get-key-f-directory-convention-nextjs)
-* [DOTENV_CONFIG_CONVENTION=nextjs get KEY](/docs/cli/get-key-convention-nextjs)
-* [get KEY --convention=flow](/docs/cli/get-key-convention-flow)
-* [DOTENV_CONFIG_CONVENTION=flow get KEY](/docs/cli/get-key-convention-flow)
-* [get (json)](/docs/cli/get-json)
-* [get -ik](/docs/cli/get-include-key)
-* [get -ek](/docs/cli/get-exclude-key)
-* [get --format shell](/docs/cli/get-shell)
-* [get --format eval](/docs/cli/get-eval)
-* [get --format eval-export](/docs/cli/get-eval-export)
-* [get --all](/docs/cli/get-all)
-* [get --all --pretty-print](/docs/cli/get-all-pretty-print)
-* [set KEY value](/docs/cli/set-key-value)
-* [set KEY value -f](/docs/cli/set-key-value-f)
-* [set KEY "value with spaces"](/docs/cli/set-key-value-with-spaces)
-* [set KEY -- "- + * ÷"](/docs/cli/set-key-value-with-leading-dash)
-* [set KEY value --plain](/docs/cli/set-key-value-plain)
-* [set KEY_PLAIN value](/docs/cli/set-key-plain-suffix)
-* [set KEY value --no-native](/docs/cli/set-key-value-no-native)
-* [set KEY value --no-armor](/docs/cli/set-key-value-no-armor)
-* [del KEY](/docs/cli/del-key)
-* [del KEY -f](/docs/cli/del-key-f)
-* [encrypt](/docs/cli/encrypt)
-* [encrypt -f](/docs/cli/encrypt-f)
-* [encrypt -fk](/docs/cli/encrypt-fk)
-* [encrypt -k](/docs/cli/encrypt-k)
-* [encrypt -ek](/docs/cli/encrypt-ek)
-* [encrypt KEY_PLAIN](/docs/cli/encrypt-plain-suffix)
-* [encrypt --stdout](/docs/cli/encrypt-stdout)
-* [encrypt --no-native](/docs/cli/encrypt-no-native)
-* [encrypt --no-armor](/docs/cli/encrypt-no-armor)
-* [decrypt](/docs/cli/decrypt)
-* [decrypt -f](/docs/cli/decrypt-f)
-* [decrypt -fk](/docs/cli/decrypt-fk)
-* [decrypt -k](/docs/cli/decrypt-k)
-* [decrypt -ek](/docs/cli/decrypt-ek)
-* [decrypt --stdout](/docs/cli/decrypt-stdout)
-* [decrypt --stdout --mask](/docs/cli/decrypt-stdout-mask)
-* [decrypt --no-native](/docs/cli/decrypt-no-native)
-* [decrypt --no-armor](/docs/cli/decrypt-no-armor)
-* [keypair](/docs/cli/keypair)
-* [keypair -f](/docs/cli/keypair-f)
-* [keypair -fk](/docs/cli/keypair-fk)
-* [keypair DOTENV_PRIVATE_KEY](/docs/cli/keypair-key)
-* [keypair --format shell](/docs/cli/keypair-shell)
-* [keypair --no-native](/docs/cli/keypair-no-native)
-* [keypair --no-armor](/docs/cli/keypair-no-armor)
-
+<DesignList
+  items={[
+    { href: "/docs/cli/run-variable-expansion", title: "run - Variable Expansion" },
+    { href: "/docs/cli/run-default-values", title: "run - Default Values" },
+    { href: "/docs/cli/run-alternate-values", title: "run - Alternate Values" },
+    { href: "/docs/cli/run-interpolation-syntax-summary", title: "run - Interpolation Syntax Summary (Variable Expansion, Default/Alternate Values)" },
+    { href: "/docs/cli/run-command-substitution", title: "run - Command Substitution" },
+    { href: "/docs/cli/run-shell-expansion", title: "run - Shell Expansion" },
+    { href: "/docs/cli/run-multiline", title: "run - Multiline" },
+    { href: "/docs/cli/run-contextual-help", title: "run - Contextual Help" },
+    { href: "/docs/cli/run-f", title: "run -f" },
+    { href: "/docs/cli/run-f-directory", title: "run -f directory" },
+    { href: "/docs/cli/run-env", title: "run --env HELLO=String" },
+    { href: "/docs/cli/run-redact", title: "run --redact" },
+    { href: "/docs/cli/run-redact-claude-print", title: "run --redact -- claude -p" },
+    { href: "/docs/cli/run-redact-claude", title: "run --redact -- claude" },
+    { href: "/docs/cli/run-redact-codex-exec", title: "run --redact -- codex exec" },
+    { href: "/docs/cli/run-redact-codex", title: "run --redact -- codex" },
+    { href: "/docs/cli/run-mask", title: "run --mask" },
+    { href: "/docs/cli/run-overload", title: "run --overload" },
+    { href: "/docs/cli/run-ignore", title: "run --ignore" },
+    { href: "/docs/cli/run-environment-variable-precedence", title: "run - Environment Variable Precedence" },
+    { href: "/docs/cli/run-dotenv-private-key", title: "DOTENV_PRIVATE_KEY=key run" },
+    { href: "/docs/cli/run-dotenv-private-key-production", title: "DOTENV_PRIVATE_KEY_PRODUCTION=key run" },
+    { href: "/docs/cli/run-dotenv-private-key-ci", title: "DOTENV_PRIVATE_KEY_CI=key run" },
+    { href: "/docs/cli/run-dotenv-private-key-multiple", title: "DOTENV_PRIVATE_KEY=key DOTENV_PRIVATE_KEY_PRODUCTION=key run - Combine Multiple" },
+    { href: "/docs/cli/run-verbose", title: "run --verbose" },
+    { href: "/docs/cli/run-debug", title: "run --debug" },
+    { href: "/docs/cli/run-quiet", title: "run --quiet" },
+    { href: "/docs/cli/run-log-level", title: "run --log-level" },
+    { href: "/docs/cli/run-validate", title: "run --validate" },
+    { href: "/docs/cli/run-strict", title: "run --strict" },
+    { href: "/docs/cli/run-convention-nextjs", title: "run --convention=nextjs" },
+    { href: "/docs/cli/run-f-directory-convention-nextjs", title: "run -f directory --convention=nextjs" },
+    { href: "/docs/cli/run-convention-nextjs", title: "DOTENV_CONFIG_CONVENTION=nextjs run" },
+    { href: "/docs/cli/run-convention-flow", title: "run --convention=flow" },
+    { href: "/docs/cli/run-convention-flow", title: "DOTENV_CONFIG_CONVENTION=flow run" },
+    { href: "/docs/cli/run-convention-flow-dotenv-env", title: "DOTENV_ENV=production run --convention=flow" },
+    { href: "/docs/cli/run-fk", title: "run -fk" },
+    { href: "/docs/cli/run-no-native", title: "run --no-native" },
+    { href: "/docs/cli/run-no-armor", title: "run --no-armor" },
+    { href: "/docs/cli/get-key", title: "get KEY" },
+    { href: "/docs/cli/get-key-mask", title: "get KEY --mask" },
+    { href: "/docs/cli/get-key-f", title: "get KEY -f" },
+    { href: "/docs/cli/get-key-f-directory", title: "get KEY -f directory" },
+    { href: "/docs/cli/get-key-env", title: "get KEY --env" },
+    { href: "/docs/cli/get-key-overload", title: "get KEY --overload" },
+    { href: "/docs/cli/get-key-strict", title: "get KEY --strict" },
+    { href: "/docs/cli/get-key-ignore", title: "get KEY --ignore" },
+    { href: "/docs/cli/get-no-native", title: "get KEY --no-native" },
+    { href: "/docs/cli/get-no-armor", title: "get KEY --no-armor" },
+    { href: "/docs/cli/get-key-convention-nextjs", title: "get KEY --convention=nextjs" },
+    { href: "/docs/cli/get-key-f-directory-convention-nextjs", title: "get KEY -f directory --convention=nextjs" },
+    { href: "/docs/cli/get-key-convention-nextjs", title: "DOTENV_CONFIG_CONVENTION=nextjs get KEY" },
+    { href: "/docs/cli/get-key-convention-flow", title: "get KEY --convention=flow" },
+    { href: "/docs/cli/get-key-convention-flow", title: "DOTENV_CONFIG_CONVENTION=flow get KEY" },
+    { href: "/docs/cli/get-json", title: "get (json)" },
+    { href: "/docs/cli/get-include-key", title: "get -ik" },
+    { href: "/docs/cli/get-exclude-key", title: "get -ek" },
+    { href: "/docs/cli/get-shell", title: "get --format shell" },
+    { href: "/docs/cli/get-eval", title: "get --format eval" },
+    { href: "/docs/cli/get-eval-export", title: "get --format eval-export" },
+    { href: "/docs/cli/get-all", title: "get --all" },
+    { href: "/docs/cli/get-all-pretty-print", title: "get --all --pretty-print" },
+    { href: "/docs/cli/set-key-value", title: "set KEY value" },
+    { href: "/docs/cli/set-key-value-f", title: "set KEY value -f" },
+    { href: "/docs/cli/set-key-value-with-spaces", title: "set KEY \"value with spaces\"" },
+    { href: "/docs/cli/set-key-value-with-leading-dash", title: "set KEY -- \"- + * \u00f7\"" },
+    { href: "/docs/cli/set-key-value-plain", title: "set KEY value --plain" },
+    { href: "/docs/cli/set-key-plain-suffix", title: "set KEY_PLAIN value" },
+    { href: "/docs/cli/set-key-value-no-native", title: "set KEY value --no-native" },
+    { href: "/docs/cli/set-key-value-no-armor", title: "set KEY value --no-armor" },
+    { href: "/docs/cli/del-key", title: "del KEY" },
+    { href: "/docs/cli/del-key-f", title: "del KEY -f" },
+    { href: "/docs/cli/encrypt", title: "encrypt" },
+    { href: "/docs/cli/encrypt-f", title: "encrypt -f" },
+    { href: "/docs/cli/encrypt-fk", title: "encrypt -fk" },
+    { href: "/docs/cli/encrypt-k", title: "encrypt -k" },
+    { href: "/docs/cli/encrypt-ek", title: "encrypt -ek" },
+    { href: "/docs/cli/encrypt-plain-suffix", title: "encrypt KEY_PLAIN" },
+    { href: "/docs/cli/encrypt-stdout", title: "encrypt --stdout" },
+    { href: "/docs/cli/encrypt-no-native", title: "encrypt --no-native" },
+    { href: "/docs/cli/encrypt-no-armor", title: "encrypt --no-armor" },
+    { href: "/docs/cli/decrypt", title: "decrypt" },
+    { href: "/docs/cli/decrypt-f", title: "decrypt -f" },
+    { href: "/docs/cli/decrypt-fk", title: "decrypt -fk" },
+    { href: "/docs/cli/decrypt-k", title: "decrypt -k" },
+    { href: "/docs/cli/decrypt-ek", title: "decrypt -ek" },
+    { href: "/docs/cli/decrypt-stdout", title: "decrypt --stdout" },
+    { href: "/docs/cli/decrypt-stdout-mask", title: "decrypt --stdout --mask" },
+    { href: "/docs/cli/decrypt-no-native", title: "decrypt --no-native" },
+    { href: "/docs/cli/decrypt-no-armor", title: "decrypt --no-armor" },
+    { href: "/docs/cli/keypair", title: "keypair" },
+    { href: "/docs/cli/keypair-f", title: "keypair -f" },
+    { href: "/docs/cli/keypair-fk", title: "keypair -fk" },
+    { href: "/docs/cli/keypair-key", title: "keypair DOTENV_PRIVATE_KEY" },
+    { href: "/docs/cli/keypair-shell", title: "keypair --format shell" },
+    { href: "/docs/cli/keypair-no-native", title: "keypair --no-native" },
+    { href: "/docs/cli/keypair-no-armor", title: "keypair --no-armor" },
+  ]}
+/>
 ## Utility Commands 🔌
 
 Advanced CLI utilities.
 
-* [ls --json](/docs/cli/ls#json-output)
-* [gitignore](/docs/cli/gitignore)
-* [gitignore --pattern](/docs/cli/gitignore-pattern)
-* [genexample](/docs/cli/genexample)
-* [genexample -f](/docs/cli/genexample-f)
-* [genexample directory](/docs/cli/genexample-directory)
-* [validate](/docs/cli/validate)
-* [validate --ignore](/docs/cli/validate-ignore)
-* [precommit](/docs/cli/precommit)
-* [precommit --install](/docs/cli/precommit-install)
-* [precommit directory](/docs/cli/precommit-directory)
-* [prebuild](/docs/cli/prebuild)
-* [prebuild directory](/docs/cli/prebuild-directory)
-* [lock](/docs/cli/lock)
-* [lock up](/docs/cli/lock/up)
-* [lock down](/docs/cli/lock/down)
-* [native](/docs/cli/native)
-* [native up](/docs/cli/native/up)
-* [native down](/docs/cli/native/down)
-* [native push](/docs/cli/native/push)
-* [native pull](/docs/cli/native/pull)
-* [armor](/docs/cli/armor/introduction)
-* [armor up](/docs/cli/armor/up)
-* [armor down](/docs/cli/armor/down)
-* [armor push](/docs/cli/armor/push)
-* [armor pull](/docs/cli/armor/pull)
-* [armor move](/docs/cli/armor/move)
-* [armor login](/docs/cli/armor/login)
-* [armor logout](/docs/cli/armor/logout)
-* [armor status](/docs/cli/armor/status)
-* [armor settings](/docs/cli/armor/settings)
-* [help](/docs/cli/help)
-* [--version](/docs/cli/version)
-
+<DesignList
+  items={[
+    { href: "/docs/cli/ls#json-output", title: "ls --json" },
+    { href: "/docs/cli/gitignore", title: "gitignore" },
+    { href: "/docs/cli/gitignore-pattern", title: "gitignore --pattern" },
+    { href: "/docs/cli/genexample", title: "genexample" },
+    { href: "/docs/cli/genexample-f", title: "genexample -f" },
+    { href: "/docs/cli/genexample-directory", title: "genexample directory" },
+    { href: "/docs/cli/validate", title: "validate" },
+    { href: "/docs/cli/validate-ignore", title: "validate --ignore" },
+    { href: "/docs/cli/precommit", title: "precommit" },
+    { href: "/docs/cli/precommit-install", title: "precommit --install" },
+    { href: "/docs/cli/precommit-directory", title: "precommit directory" },
+    { href: "/docs/cli/prebuild", title: "prebuild" },
+    { href: "/docs/cli/prebuild-directory", title: "prebuild directory" },
+    { href: "/docs/cli/lock", title: "lock" },
+    { href: "/docs/cli/lock/up", title: "lock up" },
+    { href: "/docs/cli/lock/down", title: "lock down" },
+    { href: "/docs/cli/native", title: "native" },
+    { href: "/docs/cli/native/up", title: "native up" },
+    { href: "/docs/cli/native/down", title: "native down" },
+    { href: "/docs/cli/native/push", title: "native push" },
+    { href: "/docs/cli/native/pull", title: "native pull" },
+    { href: "/docs/cli/armor/introduction", title: "armor" },
+    { href: "/docs/cli/armor/up", title: "armor up" },
+    { href: "/docs/cli/armor/down", title: "armor down" },
+    { href: "/docs/cli/armor/push", title: "armor push" },
+    { href: "/docs/cli/armor/pull", title: "armor pull" },
+    { href: "/docs/cli/armor/move", title: "armor move" },
+    { href: "/docs/cli/armor/login", title: "armor login" },
+    { href: "/docs/cli/armor/logout", title: "armor logout" },
+    { href: "/docs/cli/armor/status", title: "armor status" },
+    { href: "/docs/cli/armor/settings", title: "armor settings" },
+    { href: "/docs/cli/help", title: "help" },
+    { href: "/docs/cli/version", title: "--version" },
+  ]}
+/>
 ## Extensions 🔌
 
 CLI extensions.
 
-* [ext scan](/docs/cli/scan)
-
+<DesignList
+  items={[
+    { href: "/docs/cli/scan", title: "ext scan" },
+  ]}
+/>
 ## Library 📦
 
 Use dotenvx directly in code.
 
-* [config()](/docs/sdk/config)
-* [config(path: ['.env.local', '.env'])](/docs/sdk/config-path)
-* [config(overload: true)](/docs/sdk/config-overload)
-* [config(mask: true)](/docs/sdk/config-mask)
-* [config(quiet: true)](/docs/sdk/config-quiet)
-* [config(strict: true)](/docs/sdk/config-strict)
-* [config(ignore: ['.env.missing', '.env'])](/docs/sdk/config-ignore)
-* [config(envKeysFile: '../../.env.keys')](/docs/sdk/config-env-keys-file)
-* [config(convention: 'nextjs')](/docs/sdk/config-convention)
-* [config(path: directory, convention: 'nextjs')](/docs/sdk/config-path-directory-convention)
-* [config(noArmor: true)](/docs/sdk/config-no-armor)
-* [config(no1Password: true)](/docs/sdk/config-no-1password)
-* [config(noBitwarden: true)](/docs/sdk/config-no-bitwarden)
-* [DOTENV_CONFIG_CONVENTION=nextjs config()](/docs/sdk/config-convention)
-* [DOTENV_CONFIG_CONVENTION=flow config()](/docs/sdk/config-convention)
-* [parse(src)](/docs/sdk/parse)
-* [parse(src, \{processEnv:\})](/docs/sdk/parse-process-env)
-* [parse(src, \{privateKey:\})](/docs/sdk/parse-private-key)
-* [set(KEY, value)](/docs/sdk/config-set-key-value)
-* [set(KEY, value, \{plain: true\})](/docs/sdk/config-set-key-value-plain)
-* [get(KEY)](/docs/sdk/config-get-key)
-* [get(KEY, \{mask: true\})](/docs/sdk/get-mask)
-
+<DesignList
+  items={[
+    { href: "/docs/sdk/config", title: "config()" },
+    { href: "/docs/sdk/config-path", title: "config(path: ['.env.local', '.env'])" },
+    { href: "/docs/sdk/config-overload", title: "config(overload: true)" },
+    { href: "/docs/sdk/config-mask", title: "config(mask: true)" },
+    { href: "/docs/sdk/config-quiet", title: "config(quiet: true)" },
+    { href: "/docs/sdk/config-strict", title: "config(strict: true)" },
+    { href: "/docs/sdk/config-ignore", title: "config(ignore: ['.env.missing', '.env'])" },
+    { href: "/docs/sdk/config-env-keys-file", title: "config(envKeysFile: '../../.env.keys')" },
+    { href: "/docs/sdk/config-convention", title: "config(convention: 'nextjs')" },
+    { href: "/docs/sdk/config-path-directory-convention", title: "config(path: directory, convention: 'nextjs')" },
+    { href: "/docs/sdk/config-no-armor", title: "config(noArmor: true)" },
+    { href: "/docs/sdk/config-no-1password", title: "config(no1Password: true)" },
+    { href: "/docs/sdk/config-no-bitwarden", title: "config(noBitwarden: true)" },
+    { href: "/docs/sdk/config-convention", title: "DOTENV_CONFIG_CONVENTION=nextjs config()" },
+    { href: "/docs/sdk/config-convention", title: "DOTENV_CONFIG_CONVENTION=flow config()" },
+    { href: "/docs/sdk/parse", title: "parse(src)" },
+    { href: "/docs/sdk/parse-process-env", title: "parse(src, {processEnv:})" },
+    { href: "/docs/sdk/parse-private-key", title: "parse(src, {privateKey:})" },
+    { href: "/docs/sdk/config-set-key-value", title: "set(KEY, value)" },
+    { href: "/docs/sdk/config-set-key-value-plain", title: "set(KEY, value, {plain: true})" },
+    { href: "/docs/sdk/config-get-key", title: "get(KEY)" },
+    { href: "/docs/sdk/get-mask", title: "get(KEY, {mask: true})" },
+  ]}
+/>
 ## Whitepaper 📄
 
 > **Dotenvx: Reducing Secrets Risk with Cryptographic Separation**

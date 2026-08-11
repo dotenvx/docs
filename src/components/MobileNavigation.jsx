@@ -74,7 +74,7 @@ export function MobileNavigation() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 top-14 bg-zinc-400/20 backdrop-blur-sm dark:bg-black/40" />
+              <div className="fixed inset-0 top-[calc(var(--radar-chrome-height)+3.5rem)] bg-zinc-400/20 backdrop-blur-sm dark:bg-black/40" />
             </Transition.Child>
 
             <Dialog.Panel>
@@ -101,7 +101,7 @@ export function MobileNavigation() {
               >
                 <motion.div
                   layoutScroll
-                  className="fixed bottom-0 left-0 top-14 w-full overflow-y-auto bg-[var(--design-bg)] px-4 pb-4 pt-6 shadow-lg shadow-zinc-900/10 ring-1 ring-[color:var(--design-line)] min-[416px]:max-w-sm sm:px-6 sm:pb-10"
+                  className="fixed bottom-0 left-0 top-[calc(var(--radar-chrome-height)+3.5rem)] w-full overflow-y-auto bg-[var(--design-bg)] px-4 pb-4 pt-6 shadow-lg shadow-zinc-900/10 ring-1 ring-[color:var(--design-line)] min-[416px]:max-w-sm sm:px-6 sm:pb-10"
                 >
                   <Navigation />
                 </motion.div>

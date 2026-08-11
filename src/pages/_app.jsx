@@ -22,9 +22,9 @@ export default function App({ Component, pageProps }) {
     router.pathname === '/'
       ? 'Dotenvx'
       : router.pathname.startsWith('/docs/cli')
-        ? `${pageProps.title} · Dotenvx CLI Reference`
+        ? `${pageProps.title} · Dotenvx CLI`
         : router.pathname.startsWith('/docs/sdk')
-          ? `${pageProps.title} · Dotenvx SDK Reference`
+          ? `${pageProps.title} · Dotenvx SDK`
         : `${pageProps.title} · Dotenvx`
   let url = `https://dotenvx.com${router.asPath}`
   let encodedUrl = encodeURIComponent(url)

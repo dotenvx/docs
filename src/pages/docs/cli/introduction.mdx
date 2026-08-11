@@ -1,20 +1,12 @@
 import InstallWithArmorCurlCodeGroup from '@/pages/partials/installWithArmorCurlCodeGroup.mdx'
 import { Breadcrumb } from '@/components/Breadcrumb'
 import { GuideHeading } from '@/components/GuideHeading'
-import {
-  CliBetterSecurityReferenceCards,
-  CliForSecurityTeamsReferenceCards,
-  CliReferenceCards,
-} from '@/components/CliReferenceCards'
-import { HeroPattern } from '@/components/HeroPattern'
-
+import { CliReferenceLists } from '@/components/CliReferenceCards'
 export const description = 'Dotenvx – secure .env files.'
-
-<HeroPattern />
 
 <Breadcrumb
   items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'CLI', href: '/docs/cli' },
   ]}
 />
 
@@ -26,14 +18,4 @@ export const description = 'Dotenvx – secure .env files.'
 
 <InstallWithArmorCurlCodeGroup/>
 
-## Commands
-
-<CliReferenceCards />
-
-## Better Security
-
-<CliBetterSecurityReferenceCards />
-
-## For Security Teams
-
-<CliForSecurityTeamsReferenceCards />
+<CliReferenceLists />

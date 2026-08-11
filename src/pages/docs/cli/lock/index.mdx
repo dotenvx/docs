@@ -6,7 +6,7 @@ export const description =
 
 <Breadcrumb
   items={[
-    { label: 'CLI Reference', href: '/docs/cli' },
+    { label: 'CLI', href: '/docs/cli' },
     { label: 'Lock', href: '/docs/cli/lock' },
   ]}
 />
@@ -25,7 +25,10 @@ Lock security is only as good as the passphrase you choose. If an attacker gets 
 
 For stronger security, use [Armor](/docs/cli/armor/introduction) to move private keys out of `.env.keys` and into Dotenvx Armor.
 
-## Commands
-
-* [up](/docs/cli/lock/up)
-* [down](/docs/cli/lock/down)
+<DesignList
+  title="Commands"
+  items={[
+    { href: "/docs/cli/lock/up", title: "up" },
+    { href: "/docs/cli/lock/down", title: "down" },
+  ]}
+/>

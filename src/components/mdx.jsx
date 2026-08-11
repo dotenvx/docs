@@ -1,12 +1,14 @@
-import Link from 'next/link'
 import clsx from 'clsx'
 
+import { DesignLink } from '@/components/DesignLink'
 import { Heading } from '@/components/Heading'
 import { RenderableTab, RenderableTabs } from '@/components/RenderableTabs'
 
-export const a = Link
+export const a = DesignLink
 export { Button } from '@/components/Button'
 export { CodeGroup, Code as code, Pre as pre } from '@/components/Code'
+export { DesignList } from '@/components/DesignList'
+export { DesignLink } from '@/components/DesignLink'
 export { RenderableTab, RenderableTabs }
 
 export const h2 = function H2(props) {
@@ -83,7 +85,7 @@ export function Property({ name, type, children }) {
           <code>{name}</code>
         </dd>
         <dt className="sr-only">Type</dt>
-        <dd className="font-mono text-xs text-zinc-400 dark:text-zinc-500">
+        <dd className="font-mono text-compact text-zinc-400 dark:text-zinc-500">
           {type}
         </dd>
         <dt className="sr-only">Description</dt>
